@@ -1,0 +1,99 @@
+{
+  "project_info": {
+    "project_number": "454898563182",
+    "firebase_url": "https://alzeker-h.firebaseio.com",
+    "project_id": "alzeker-h",
+    "storage_bucket": "alzeker-h.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:454898563182:android:2c13e4de159568b3cc0e7f",
+        "android_client_info": {
+          "package_name": "com.example.faserholmak"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "454898563182-ql1avu6ppjldpal1l1lsvsh0b0uidaj0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.faserholmak",
+            "certificate_hash": "808f1258f4d6cdd1dd5cf05e1e44d3d67ee5a077"
+          }
+        },
+        {
+          "client_id": "454898563182-au8v0t51f8oahlfldajca51f5n0qbtbm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrLk9hIOOWGU6aUpMKiZsCcWFI7KjjznA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "454898563182-au8v0t51f8oahlfldajca51f5n0qbtbm.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "454898563182-g21odgsej1dqiltnieohq70nhbnbv4pr.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.faserholmak"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:454898563182:android:80ddf41e3ec73eb7cc0e7f",
+        "android_client_info": {
+          "package_name": "com.faserholmak.alzeker.faserholmak"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "454898563182-d64a4qmui41r1tungf37rthrjgentrc4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.faserholmak.alzeker.faserholmak",
+            "certificate_hash": "808f1258f4d6cdd1dd5cf05e1e44d3d67ee5a077"
+          }
+        },
+        {
+          "client_id": "454898563182-au8v0t51f8oahlfldajca51f5n0qbtbm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrLk9hIOOWGU6aUpMKiZsCcWFI7KjjznA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "454898563182-au8v0t51f8oahlfldajca51f5n0qbtbm.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "454898563182-g21odgsej1dqiltnieohq70nhbnbv4pr.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.faserholmak"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
