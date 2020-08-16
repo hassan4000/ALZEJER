@@ -18,10 +18,11 @@ class CardDreams extends StatelessWidget {
   VoidCallback commentPress;
   VoidCallback explanationPress;
   VoidCallback ratingPress;
+  VoidCallback sharePress;
   VoidCallback toAnotherMofaserPress;
 
 
-  CardDreams({this.toAnotherMofaserPress,this.showToAnotherMofaser=false,this.likes, this.views, this.desc,this.showComment=false,this.explantaion,
+  CardDreams({this.sharePress,this.toAnotherMofaserPress,this.showToAnotherMofaser=false,this.likes, this.views, this.desc,this.showComment=false,this.explantaion,
     this.press,this.commentPress,this.explanationPress,this.ratingPress,this.showRating=false,this.showExplnationButton=false,this.showExplanationText=false});
 
   @override
@@ -47,41 +48,56 @@ class CardDreams extends StatelessWidget {
               ),
 
 
-              child: Row(
-
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
-                  showExplnationButton? Expanded(
-                   child: InkWell(
-                     onTap: explanationPress,
-                     child: Padding(
-                       padding: EdgeInsets.all(4),
-                       child: Text(addExplanation,style: getTextSyle(16, Colors.white),textDirection: TextDirection.rtl,
-                       textAlign: TextAlign.center,),
-                     ),
-                   ),
-                 ):Container(),
-                  showRating? Expanded(
-                    child: InkWell(
-                      onTap: ratingPress,
-                      child: Padding(
-                        padding: EdgeInsets.all(4),
-                        child: Text(addRating,style: getTextSyle(16, Colors.white),textAlign: TextAlign.center,
-                          textDirection: TextDirection.rtl,),
+                  Row(
+
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      showExplnationButton? Expanded(
+                       child: InkWell(
+                         onTap: explanationPress,
+                         child: Padding(
+                           padding: EdgeInsets.all(4),
+                           child: Text(addExplanation,style: getTextSyle(16, Colors.white),textDirection: TextDirection.rtl,
+                           textAlign: TextAlign.center,),
+                         ),
+                       ),
+                     ):Container(),
+                      showRating? Expanded(
+                        child: InkWell(
+                          onTap: ratingPress,
+                          child: Padding(
+                            padding: EdgeInsets.all(4),
+                            child: Text(addRating,style: getTextSyle(16, Colors.white),textAlign: TextAlign.center,
+                              textDirection: TextDirection.rtl,),
+                          ),
+                        ),
+                      ):Container(),
+                      showToAnotherMofaser? Expanded(
+                        child: InkWell(
+                          onTap: toAnotherMofaserPress,
+                          child: Padding(
+                            padding: EdgeInsets.all(4),
+                            child: Text(receive,style: getTextSyle(16, Colors.white),textAlign: TextAlign.center,
+                              textDirection: TextDirection.rtl,),
+                          ),
+                        ),
+                      ):Container(),
+                    ],
+                  ),
+
+                  showRating?InkWell(
+                    onTap: sharePress,
+                    child: Padding(
+                      padding: EdgeInsets.all(4),
+                      child: Text(
+                          shareForMofaserHint,style: getTextSyle(14, Colors.white),
                       ),
                     ),
-                  ):Container(),
-                  showToAnotherMofaser? Expanded(
-                    child: InkWell(
-                      onTap: toAnotherMofaserPress,
-                      child: Padding(
-                        padding: EdgeInsets.all(4),
-                        child: Text(receive,style: getTextSyle(16, Colors.white),textAlign: TextAlign.center,
-                          textDirection: TextDirection.rtl,),
-                      ),
-                    ),
-                  ):Container(),
+                  ):Container()
                 ],
               ),
             ),

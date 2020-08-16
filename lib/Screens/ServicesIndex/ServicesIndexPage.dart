@@ -81,7 +81,8 @@ class _ServicesIndexPageState extends State<ServicesIndexPage> {
             if(isLoadingMore&&index==data.length-1)
               return Center(child: CircularProgressIndicator(),);
             else{  AllServicesData item=listServicesData[index];
-            return CardDreams(desc: item.description,likes: item.numberOfLikes,views: item.numberOfViews,);}
+            return CardDreams(desc: item.description,likes: item.numberOfLikes,views: item.numberOfViews,
+            explantaion: emptyString(item.explanation),showExplanationText: true,);}
           });
     else
       return Container(
@@ -144,7 +145,7 @@ class _ServicesIndexPageState extends State<ServicesIndexPage> {
         else{
 
           int listSize=listServicesData.length;
-          if(listSize<allCount&&!isLoadingRefersh){
+          if(listSize<allCount&&!isLoadingRefersh&&!isLoadingMore){
             skipNumber=listSize;
             if((allCount-listSize)<10)
               topNumber=(allCount-listSize);

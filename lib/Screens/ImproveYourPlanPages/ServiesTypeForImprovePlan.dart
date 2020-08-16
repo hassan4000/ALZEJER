@@ -212,54 +212,6 @@ class _ServiesTypeForImprovePlanState extends State<ServiesTypeForImprovePlan> {
 
                   child: Column(
                     children: <Widget>[
-
-                      SizedBox(height: 10,),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Expanded(child: Text("رصيدك من النقاط ${userInfo.pointsBalance.toString()}"
-                            ,style: getTextSyle(16, Colors.grey),
-                          textDirection: TextDirection.rtl,textAlign: TextAlign.center,)),
-                        ],
-                      ),
-                      MyButton(txt: "الدفع باستخدام النقاط",press: () async {
-
-                       bool canPayPyPoint=await checkPoint();
-
-                       if(canPayPyPoint){
-                         reSetLoadingHUD(true);
-
-
-
-
-
-                           Response response= await openPayByPointDialog(context,
-                               new SingleServicesModel(id: widget.paymentModel.serviceId
-                                   ,servicePathId: widget.paymentModel.servicePathId));
-                           if(response.statusCode==200){
-
-                             var  point=response.object;
-                             userInfo.pointsBalance=int.parse(point['Modifier']['PointsBalance'].toString());
-                             showToast("تمت العملية بنجاح");
-                             openPageAndClearPrev(context: context,route:HomePageRoute,page: GeneralPageClient() );
-
-                           }else{
-                             showToast("فشلت عملية الدفع بالنقاط  حاولا لاحقا");
-                           }
-
-
-                         reSetLoadingHUD(false);
-                       }else{
-                         showToast("عذرا انت لاتملك رصيد كافي ");
-                       }
-
-
-                      },textStyle: getTextSyle(18, Colors.white),
-                        raduis: 4,),
-
-                      SizedBox(height: 4,),
-                      Text("أو",style: getTextSyle(16, Colors.grey),),
-                      SizedBox(height: 4,),
                       Flexible(flex: 1,child: dataListView(listServices,context)),
                     ],
                   ),

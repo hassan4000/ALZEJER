@@ -135,7 +135,7 @@ class _ShareAfterDialogState extends State<ShareAfterDialog> {
                                   title: 'يرجى مشاركة هذا الرابط ',
 
                                   text:
-                                  '  ${serviceProvider}: ${name}\n ${specalist}: ${widget.userWorkname}\n${shareHitn2}\n${userInfo.userSpecialCode}',
+                                  '  ${serviceProvider}: ${widget.name}\n ${specalist}: ${widget.userWorkname}\n${shareHitn2}\n${userInfo.userSpecialCode}',
                                   linkUrl:
                                   '${linkApp} \n ${googlePlayUrl}',
                                   chooserTitle:

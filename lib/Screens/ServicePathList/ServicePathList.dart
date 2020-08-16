@@ -24,7 +24,7 @@ class _ServicePathListState extends State<ServicePathList> {
   GlobalKey<RefreshIndicatorState> refreshKey=new GlobalKey<RefreshIndicatorState>();
 
   String getAvg(String txt){
-    if(emptyString(txt)=="") return "سوف يتم التفسير قريبا";
+    if(emptyString(txt)=="") return soonTxt;
     else return emptyString(txt);
   }
 

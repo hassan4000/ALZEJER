@@ -11,6 +11,7 @@ import 'package:faserholmak/Screens/Login/components/background.dart';
 import 'package:faserholmak/wigets/CardDreams.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_share/flutter_share.dart';
 
 import '../../../constants.dart';
 
@@ -82,7 +83,10 @@ class _CompletedServicesClientState extends State<CompletedServicesClient> {
               return Center(child: CircularProgressIndicator(),);
           else{  AllServicesData item=listServicesData[index];
             return CardDreams(desc: item.description,likes: item.numberOfLikes,views: item.numberOfViews,
-                press: (){ openPage(context, DetailsServiceYouWant(servicesData: item,));});}
+                press: (){ openPage(context, DetailsServiceYouWant(servicesData: item,));},
+            sharePress: () async {
+
+            },);}
           });
     else
       return Container(

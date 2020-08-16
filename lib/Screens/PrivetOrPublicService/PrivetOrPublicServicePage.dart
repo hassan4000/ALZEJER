@@ -66,7 +66,7 @@ class _PrivetOrPublicServicePageState extends State<PrivetOrPublicServicePage> {
           var  response=await AddServicesRQ(widget.addServiceModel);
           reSetLoadingHUD(false);
           if(response.statusCode==200){
-        showToast("تمت العملية بنجاح");
+        showToast(successfulOpreation);
         openPageAndClearPrev(context:context,page: GeneralPageClient(),route: HomePageRoute);}
       }
 
@@ -184,7 +184,7 @@ class _PrivetOrPublicServicePageState extends State<PrivetOrPublicServicePage> {
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text('اختر نوع الخدمة '),
+          title: Text('اختر نوع الخدمة'),
         ),
         body: ModalProgressHUD(
           inAsyncCall: isLoadingHUD,
@@ -226,7 +226,7 @@ class _PrivetOrPublicServicePageState extends State<PrivetOrPublicServicePage> {
               ):
               Column(
                 children: <Widget>[
-                  Row(
+                /*  Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Expanded(child: Text("رصيدك من النقاط ${userInfo.pointsBalance.toString()}"
@@ -269,7 +269,7 @@ class _PrivetOrPublicServicePageState extends State<PrivetOrPublicServicePage> {
 
 
                   },textStyle: getTextSyle(18, Colors.white),
-                    raduis: 4,),
+                    raduis: 4,),*/
 
 
                   Flexible(flex: 1, child: dataListView(listServices,context)),

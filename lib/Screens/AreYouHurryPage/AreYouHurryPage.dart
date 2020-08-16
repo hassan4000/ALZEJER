@@ -43,6 +43,11 @@ class _AreYouHarryPageState extends State<AreYouHarryPage> {
     });
   }
 
+
+  String getAvg(String txt){
+    if(emptyString(txt)=="") return soonTxt;
+    else return emptyString(txt);
+  }
   Widget dataListView(List<ServicesPathModel> data, context) {
     if (data == null)
       return ListView(
@@ -70,7 +75,7 @@ class _AreYouHarryPageState extends State<AreYouHarryPage> {
               child:CardTimeDreams(price: item.cost.toString(),
                 name: item.name,
                 textAboveLine: item.numberOfPeopleWaiting.toString(),
-                textUnderLine: item.avgWaitingTime,
+                textUnderLine: getAvg(emptyString(item.avgWaitingTime)),
                 press: (){
 
 
@@ -116,7 +121,7 @@ class _AreYouHarryPageState extends State<AreYouHarryPage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("استعجال التفسير",style: getTextSyle(16, Colors.white),),
+        title: Text("استعجال الخدمة",style: getTextSyle(16, Colors.white),),
       ),
 
       body: SafeArea(

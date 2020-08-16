@@ -39,7 +39,7 @@ class _AddExplnationDialogState extends State<AddExplnationDialog> {
           SizedBox(
             width: 4.0,
           ),
-          Text("اضف تفسير  ",
+          Text("اضافة رد على الخدمة  ",
               style:
                   getTextSyle(20, kPrimaryColor, fontWeight: FontWeight.w600)),
         ],

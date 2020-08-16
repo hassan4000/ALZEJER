@@ -1,18 +1,22 @@
 import 'dart:convert';
 
+import 'package:faserholmak/Dialog/MyShowDialog.dart';
 import 'package:faserholmak/Helper/AppApi.dart';
 import 'package:faserholmak/Helper/BasicTools.dart';
 import 'package:faserholmak/Helper/Content.dart';
+import 'package:faserholmak/Helper/StyleForApp.dart';
 import 'package:faserholmak/Model/AddServices/AddServiceModel.dart';
 import 'package:faserholmak/Model/AllPaymentMethodModel/AllPaymentMethodModel.dart';
 import 'package:faserholmak/Model/AllPaymentMethodModel/PaymentMethod.dart';
 import 'package:faserholmak/Model/PaymentModel/PaymentModel.dart';
 import 'package:faserholmak/Model/PrivetOrPublicServiceModel/PrivetOrPublicServiceModel.dart';
 import 'package:faserholmak/Model/ServicesPathModel.dart';
+import 'package:faserholmak/Model/SingleServicesModel/SingleServicesModel.dart';
 import 'package:faserholmak/Screens/GeneralPage/GeneralPageClient.dart';
 import 'package:faserholmak/Screens/Login/components/background.dart';
 import 'package:faserholmak/wigets/CardPaymentMethod.dart';
 import 'package:faserholmak/wigets/CardTimeDreams.dart';
+import 'package:faserholmak/wigets/MyButton.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:myfatoorah_flutter/myfatoorah_flutter.dart';
@@ -165,6 +169,22 @@ class _AllPaymentMethodPageState extends State<AllPaymentMethodPage> {
   }
 
 
+  Future<bool> checkPoint() async {
+    reSetLoadingHUD(true);
+
+
+
+    Response response=await getServicePricePerPoints();
+    reSetLoadingHUD(false);
+    if(response.statusCode==200){
+
+      int result=userInfo.pointsBalance-response.object;
+      if(result>0) return true;
+    }
+    return false;
+
+  }
+
   Future<void> addServicesFun(PrivetOrPublicServiceModel item) async {
     double cost=widget.paymentModel.myMoeny;
     widget.paymentModel.currency="\$";
@@ -274,7 +294,57 @@ class _AllPaymentMethodPageState extends State<AllPaymentMethodPage> {
                   child: Container(height: MediaQuery.of(context).size.height,)
 
               ):
-              dataListView(listServices,context),
+              Column(
+
+                children: <Widget>[
+                  SizedBox(height: 10,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Expanded(child: Text("$yourBalanceByPoint ${userInfo.pointsBalance.toString()}"
+                        ,style: getTextSyle(16, Colors.grey),
+                        textDirection: TextDirection.rtl,textAlign: TextAlign.center,)),
+                    ],
+                  ),
+                  MyButton(txt: payByPointTxt,press: () async {
+
+                    bool canPayPyPoint=await checkPoint();
+
+                    if(canPayPyPoint){
+                      reSetLoadingHUD(true);
+                      var addServiesResponse=await AddServicesRQ(widget.addServiceModel);
+                      if(addServiesResponse.statusCode==200){
+
+                        reSetLoadingHUD(false);
+                        int serviesID=addServiesResponse.object;
+                        widget.paymentModel.serviceId=serviesID;
+
+                        Response response= await openPayByPointDialog(context,
+                            new SingleServicesModel(id: widget.paymentModel.serviceId,servicePathId: widget.paymentModel.servicePathId));
+                        if(response.statusCode==200){
+
+                          var  point=response.object;
+                          userInfo.pointsBalance=int.parse(point['Modifier']['PointsBalance'].toString());
+                          showToast(successfulOpreation);
+                          openPageAndClearPrev(context: context,route:HomePageRoute,page: GeneralPageClient() );
+
+                        }else{
+                          showToast(failedToPayOpreation);
+                        }
+
+                      }else
+                        showToast(faildToAddService);
+                      reSetLoadingHUD(false);
+                    }else{
+                      showToast(youDonotHaveEnoughtPoint);
+                    }
+
+
+                  },textStyle: getTextSyle(18, Colors.white),
+                    raduis: 4,),
+                  Flexible(child: dataListView(listServices,context)),
+                ],
+              ),
             ),
           ),
         ),

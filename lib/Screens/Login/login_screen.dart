@@ -40,10 +40,10 @@ class _LoginScreenState extends State<LoginScreen> {
 
   bool isLoading=false;
   var formKeyValidation = GlobalKey<FormState>();
-  TextEditingController userNameControler=TextEditingController(text: "kinan.3bbas23");
-  //TextEditingController userNameControler=TextEditingController();
-  TextEditingController passwordControler=TextEditingController(text:"123456");
- // TextEditingController passwordControler=TextEditingController();
+  //TextEditingController userNameControler=TextEditingController(text: "kinan.3bbas23");
+  TextEditingController userNameControler=TextEditingController();
+//  TextEditingController passwordControler=TextEditingController(text:"123456");
+  TextEditingController passwordControler=TextEditingController();
   bool erros=false;
   bool shildPasswrod = true;
   Map userProfileFacebook;

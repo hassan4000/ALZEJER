@@ -18,6 +18,12 @@ const String SERVER_TOKEN="AAAAaeoROG4:APA91bEq4mIHEkhrXMzjYGHL9K6HqNRsuo-lsrtq7
 
 const String googlePlayUrl="https://play.google.com/store/apps/details?id=com.faserholmak.alzeker.faserholmak";
 
+
+const String yourBalanceByPoint="رصيدك من النقاط";
+const String payByPointTxt="الدفع باستخدام النقاط";
+const String faildToAddService="فشلت عملية اضفة خدمة";
+const String youDonotHaveEnoughtPoint="عذرا انت لاتملك رصيد كافي ";
+
 const pointDesc="شارك التطبيق واكسب نقاط تستطيع من خلالها ترقية خدماتك";
 const String FACEBOOK="Facebook";
 const String GOOGLE="Google";
@@ -111,13 +117,15 @@ const String chatForPeople="دردشة الجمهور";
 const String people="عدد الجمهور في الانتظار";
 const String successfulOpreation="تمت العملية بنجاح";
 const String timeToStart="الوقت المتوقع  لتنفيذ الخدمة";
-const String expectedTimeForInterpretation="الوقت المتوقع لتفسير حلمك";
+const String expectedTimeForInterpretation="الوقت المتوقع  لتنفيذ الخدمة";
 const String areYouHurryToExplain="هل انت مستعجل اضفط هنا";
 const String publicServicesHint="سوف يتم النشر الى الجمهور بدون ذكر اسمك";
 const String publicTxt="عام";
 const String privateTxt="خاص";
 const String privateServicesHint="تفسير خاص لك لا احد يراه غيرك";
 
+const String soonTxt="سوف يتم التنفيذ قريبا";
+const String shareForMofaserHint="تقديرا لجهود المفسر اضغط للمشاركة";
 const String linkApp="رابط التطبيق";
 const String shareHitn1="يقدم تطبيق أهل الذكر مجموعة من الخدماتمثل -تفسير الاحلام - الفتاوي الشرعية - الرقية الشرعية - استشارات أسرية وطبية وقانونية دخل الكود  للحصول على خدمة سريعة";
 const String shareHitn2="يسعدني تقديم خدماتي للجمهور بواسطه تطبيق أهل الذكر حيث نقدم مجموعة من الخدمات مثل -تفسير الاحلام - الفتاوي الشرعية - الرقية الشرعية - استشارات أسرية وطبية وقانونية  دخل الكود  للحصول على خدمة سريعة ";
@@ -145,6 +153,7 @@ const String  single="اعزب";
 
 const String forbiddenRequest="غير مسموح لك بطلب هذا الأمر";
 const String failedOpreation="فشل الطلب حاول لاحقا";
+const String failedToPayOpreation="فشلت عملية الدفع  حاولا لاحقا";
 const String failedOpreationWorkType="فشلت عملية طلب الاعمال";
 const String incurrectLogin="اسم المستخدم أو كلمة المرور خطأ";
 const String joinToOutApp="انضم إلى البرنامج";

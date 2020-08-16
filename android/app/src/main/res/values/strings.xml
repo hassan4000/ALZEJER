@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+
+<string name="app_name">اهل الذكر</string>
 <string name="facebook_app_id">290513985490845</string>
+
 
         <!--
           Replace "000000000000" with your Facebook App ID here.

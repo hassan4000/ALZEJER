@@ -19,6 +19,7 @@ import 'package:faserholmak/wigets/MessageComment.dart';
 import 'package:faserholmak/wigets/MyButton.dart';
 import 'package:faserholmak/wigets/PersonalProfileContent.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_share/flutter_share.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
 class DetailsServiceYouWant extends StatefulWidget {
@@ -316,6 +317,17 @@ class _DetailsServiceYouWantState extends State<DetailsServiceYouWant> {
                                 ratingPress: (){
                                         openPage(context,RateMofaser(servicesData));
                                 },
+                                     sharePress: () async {
+                                       var response=     await FlutterShare.share(
+                                           title: 'يرجى مشاركة هذا الرابط ',
+
+                                           text:
+                                           '  ${serviceProvider}: ${servicesData.serviceProvider.name}\n ${specalist}: ${servicesData.userWork.name}\n${shareHitn2}\n${userInfo.userSpecialCode}',
+                                           linkUrl:
+                                           '${linkApp} \n ${googlePlayUrl}',
+                                           chooserTitle:
+                                           'share');
+                                     },
 
                                 toAnotherMofaserPress: () async {
                                   SetLoadingHUD(true);
