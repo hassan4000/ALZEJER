@@ -198,6 +198,7 @@ const String share="شارك";
 const String logout="تسجيل الخروج";
 
 const String editProfile="تعديل الملف الشخصي";
+const String moreInfo="تفاصيل الحساب";
 const String addUserWork="اضافة اختصاص";
 
 

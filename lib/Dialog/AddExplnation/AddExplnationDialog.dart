@@ -12,7 +12,7 @@ import '../../constants.dart';
 class AddExplnationDialog extends StatefulWidget {
   String servicesID;
   bool fromPublicPage=false;
-  String clientToken;
+  List<String>  clientToken;
 
   AddExplnationDialog({this.servicesID,this.fromPublicPage=false,this.clientToken});
 

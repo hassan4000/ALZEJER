@@ -401,7 +401,7 @@ class _TabWithImageState extends State<TabWithImage> with TickerProviderStateMix
     return SafeArea(
       top: true,
       child: Scaffold(
-        drawer: MyDrawer(),
+
         body: DefaultTabController(
 
 

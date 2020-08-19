@@ -11,6 +11,7 @@ import 'package:faserholmak/Screens/Login/login_screen.dart';
 import 'package:faserholmak/Screens/SelectUserType/SelectUserType.dart';
 import 'package:faserholmak/Screens/ServicesForClient/OnProgressServicesClient/OnProgressServicesClient.dart';
 import 'package:faserholmak/Screens/ServicesYouWant/ServiceYouWant.dart';
+import 'package:faserholmak/Screens/privacyPolicy/PrivacyPolicyPage.dart';
 import 'package:faserholmak/wigets/LogoIcon.dart';
 import 'package:faserholmak/wigets/MyCircularImage.dart';
 import 'package:flutter/material.dart';
@@ -236,7 +237,33 @@ class _MyDrawerState extends State<MyDrawer> {
                           color:  Colors.grey,
                           thickness: 1,
                         ),
+
+
+                        GestureDetector(
+                          onTap: () async {
+
+
+                            openPage(context,PrivacyPolicyPage());
+
+
+                          },
+                          child: Container(
+                              padding: EdgeInsets.symmetric(vertical: 0,horizontal: 0)
+                              ,child: Row(
+                            children: <Widget>[
+                              IconButton(onPressed: (){},icon: Icon(Icons.collections_bookmark,color:  kPrimaryColor),),
+                              Text(privacyPolicy,style: getTextSyle(16, kPrimaryColor),)
+                            ],
+                          )),
+                        ),
+
+                        Divider(
+                          color:  Colors.grey,
+                          thickness: 1,
+                        ),
+
                         /*audienceChat*/
+
                         GestureDetector(
                           onTap: (){
 

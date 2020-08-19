@@ -81,16 +81,29 @@ String fireBASETOKEN="";
 
 
 
-String getSplit(String txt){
-  if(txt==null ||txt.isEmpty) return "";
+List<String> getSplit(String txt){
+/*  if(txt==null ||txt.isEmpty) return List();
   else {
     var x=txt.split(";");
     int size=x.length;
+
     if(size==0) return x[0];
     else return x[x.length-1];
 
   }
-  return "";
+  return List();*/
+
+
+
+  if(txt==null ||txt.isEmpty) return List();
+  else {
+    List<String> x=txt.split(";");
+    int size=x.length;
+
+    return x;
+
+  }
+  return List();
 }
 
 Future<String> getPassword() async {

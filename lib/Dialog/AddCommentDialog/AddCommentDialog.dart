@@ -12,8 +12,8 @@ import '../../constants.dart';
 
 class AddCommentDialog extends StatefulWidget {
   String servicesID;
-  String clinetToken;
-  String prividerToken;
+  List<String> clinetToken;
+  List<String>  prividerToken;
 
 
   AddCommentDialog(this.servicesID,this.clinetToken,this.prividerToken);
@@ -148,7 +148,7 @@ class _AddCommentDialogState extends State<AddCommentDialog> {
                                   CommentModel item=response.object;
 
                                   if(userInfo.type==interpreterTxt)
-                                    await sendAndRetrieveMessage(body: " على خدمة لك  ${userInfo.name} علق المفسر  ",
+                                    await sendAndRetrieveMessage(body: " على خدمة لك  ${userInfo.name} علق   ",
                                         title: "${textEditingController.text.toString().trim()}",clientToken: widget.clinetToken).then((onValue){
 
                                       //    showToast(widget.clinetToken);

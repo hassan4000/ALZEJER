@@ -76,17 +76,18 @@ class Response {
 }
 
 
-Future<Response> sendAndRetrieveMessage({String body,String title,String providerToken="",String clientToken=""}) async {
+Future<Response> sendAndRetrieveMessage({String body,String title,List<String> providerToken,
+  List<String>  clientToken}) async {
   await firebaseMessaging.requestNotificationPermissions(
     const IosNotificationSettings(sound: true, badge: true, alert: true, provisional: false),
   );
 
 
-  printWrapped("PROVIDER TOKEM"+providerToken);
-  String to="";
-  if(clientToken.isNotEmpty)
+  printWrapped("PROVIDER TOKEM"+providerToken.toString());
+  List<String> to=new List();
+  if(clientToken!=null&& clientToken.isNotEmpty)
     to=clientToken;
-  else if(providerToken.isNotEmpty)
+  else if(providerToken!=null&& providerToken.isNotEmpty)
     to=providerToken;
  var response=  await http.post(
     'https://fcm.googleapis.com/fcm/send',
@@ -100,20 +101,43 @@ Future<Response> sendAndRetrieveMessage({String body,String title,String provide
           'body': '$body',
           'title': '$title'
         },
+        'registration_ids':to,
         'priority': 'high',
         'data': <String, dynamic>{
           'click_action': 'FLUTTER_NOTIFICATION_CLICK',
           'id': '1',
-          'status': 'done'
+          'status': 'done',
+
         },
       //  'to': await firebaseMessaging.getToken(),
-        'to': "$to",
+        //'to': "$to",
       },
     ),
   );
 
  print("code ${response.statusCode}");
 
+
+
+ print( jsonEncode(
+   <String, dynamic>{
+     'notification': <String, dynamic>{
+       'body': '$body',
+       'title': '$title',
+       'sound':'default'
+     },
+     'registration_ids':to,
+     'priority': 'high',
+     'data': <String, dynamic>{
+       'click_action': 'FLUTTER_NOTIFICATION_CLICK',
+       'id': '1',
+       'status': 'done',
+
+     },
+     //  'to': await firebaseMessaging.getToken(),
+     //'to': "$to",
+   },
+ ),);
  print(jsonEncode(response.body));
  return Response(response.statusCode,response.body);
 

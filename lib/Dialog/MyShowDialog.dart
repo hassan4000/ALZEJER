@@ -48,7 +48,7 @@ Future<void> openDialog2GeneralPage(BuildContext context) async {
   );
 }
 
-Future<String> openAddExplnation(BuildContext context,String id,bool fromPublicPage,String clinetToken) async {
+Future<String> openAddExplnation(BuildContext context,String id,bool fromPublicPage,List<String>  clinetToken) async {
   return showDialog<String>(
     context: context,
     barrierDismissible: true, // user must tap button!
@@ -68,7 +68,7 @@ Future<String> openShareAfterRate(BuildContext context,String name,String userWo
     },
   );
 }
-Future<CommentModel> openCommentDialog(BuildContext context,String serivesID,String clientToken,String providerToken) async {
+Future<CommentModel> openCommentDialog(BuildContext context,String serivesID,List<String>  clientToken,List<String> providerToken) async {
   return showDialog<CommentModel>(
     context: context,
     barrierDismissible: true, // user must tap button!
