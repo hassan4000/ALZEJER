@@ -12,10 +12,11 @@ import 'package:faserholmak/Model/PrivetOrPublicServiceModel/PrivetOrPublicServi
 import 'package:faserholmak/Model/ServicesPathModel.dart';
 import 'package:faserholmak/Model/SingleServicesModel/SingleServicesModel.dart';
 import 'package:faserholmak/Screens/AreYouHurryPage/AllPaymentMethodPage.dart';
-import 'package:faserholmak/Screens/AreYouHurryPage/PrivetOrPublicAfterAreYouHurry.dart';
+
 import 'package:faserholmak/Screens/GeneralPage/GeneralPageClient.dart';
 import 'package:faserholmak/Screens/Login/components/background.dart';
 import 'package:faserholmak/wigets/CardTimeDreams.dart';
+import 'package:faserholmak/wigets/CardTimeDreamsV2.dart';
 import 'package:faserholmak/wigets/MyButton.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
@@ -41,14 +42,18 @@ class _PrivetOrPublicServicePageState extends State<PrivetOrPublicServicePage> {
 
 
   Future<void> addServicesFun(PrivetOrPublicServiceModel item) async {
+    PaymentModel paymentModel=PaymentModel(myMoeny: double.parse(widget.addServiceModel.privateServicePrice),
+      servicePathId: widget.addServiceModel.servicePathId,serviceId:0,);
     double cost= double.parse(widget.addServiceModel.privateServicePrice);
-    if(item.price=="0"||item.price=="0.0"){
+    if(item.name==publicTxt||item.name=="0"||item.price=="0.0"){
       widget.addServiceModel.privateService=false;
+      paymentModel.privateServices=false;
 
     }else{
       widget.addServiceModel.privateService=true;
       double cost2=  double.parse(item.price);
       cost+=cost2;
+      paymentModel.privateServices=true;
       widget.addServiceModel.privateServicePrice=item.price.toString();
     }
 
@@ -73,8 +78,8 @@ class _PrivetOrPublicServicePageState extends State<PrivetOrPublicServicePage> {
       else{
 
         //int  serivesID=response.object;
-        PaymentModel paymentModel=PaymentModel(myMoeny: double.parse(widget.addServiceModel.privateServicePrice),
-          servicePathId: widget.addServiceModel.servicePathId,serviceId:0,);
+       /* PaymentModel paymentModel=PaymentModel(myMoeny: double.parse(widget.addServiceModel.privateServicePrice),
+          servicePathId: widget.addServiceModel.servicePathId,serviceId:0,);*/
         paymentModel.currency="\$";
         paymentModel.amount= item.price;
         print(jsonEncode(paymentModel.toJson()).toString());
@@ -82,7 +87,7 @@ class _PrivetOrPublicServicePageState extends State<PrivetOrPublicServicePage> {
 
         openPage(context,
             AllPaymentMethodPage(paymentModel:paymentModel,
-              addServiceModel: widget.addServiceModel,formAddSerives: true));
+              addServiceModel: widget.addServiceModel,formAddSerives: true,pathPrice: item.orginalPrice,));
 
 
 /*        openPage(context, PrivetOrPublicAfterAreYouHurry(paymentModel: paymentModel,
@@ -118,7 +123,7 @@ class _PrivetOrPublicServicePageState extends State<PrivetOrPublicServicePage> {
             PrivetOrPublicServiceModel item=listServices[index];
             return Padding(
               padding: const EdgeInsets.all(4.0),
-              child:CardTimeDreams(price: item.price.toString(),
+              child:CardTimeDreamsV2(price: item.price.toString(),
                 line: false,
                 name: item.name,
                 textAboveLine: item.desc.toString(),
@@ -144,18 +149,18 @@ class _PrivetOrPublicServicePageState extends State<PrivetOrPublicServicePage> {
   }
 
 
-  Future<bool> checkPoint() async {
-    reSetLoadingHUD(true);
+  Future<bool> checkPoint(int amount) async {
+    //  reSetLoadingHUD(true);
 
 
 
-    Response response=await getServicePricePerPoints();
-    reSetLoadingHUD(false);
-    if(response.statusCode==200){
+    //  Response response=await getServicePricePerPoints(amount);
+    //reSetLoadingHUD(false);
+    // if(response.statusCode==200){
+    // }
+    int result=userInfo.pointsBalance-amount;
+    if(result>0) return true;
 
-      int result=userInfo.pointsBalance-response.object;
-      if(result>0) return true;
-    }
     return false;
 
   }
@@ -204,8 +209,8 @@ class _PrivetOrPublicServicePageState extends State<PrivetOrPublicServicePage> {
                   double oldPrice=double.parse(widget.addServiceModel.privateServicePrice);
                   double allPrice=oldPrice+newPrice;
 
-                 dataList.add(PrivetOrPublicServiceModel(price: "${widget.addServiceModel.privateServicePrice}",desc: publicServicesHint,name: publicTxt));
-                 dataList.add(PrivetOrPublicServiceModel(price: allPrice.toString(),desc: privateServicesHint,name: privateTxt));
+                 dataList.add(PrivetOrPublicServiceModel(orginalPrice:"${widget.addServiceModel.privateServicePrice}" ,price: "${widget.addServiceModel.privateServicePrice}",desc: publicServicesHint,name: publicTxt));
+                 dataList.add(PrivetOrPublicServiceModel(orginalPrice:"${widget.addServiceModel.privateServicePrice}",price: allPrice.toString(),desc: privateServicesHint,name: privateTxt));
 
                   setState(() {
                     listServices=dataList;

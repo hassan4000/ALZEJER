@@ -103,9 +103,20 @@ class _Dialog1GeneralPageState extends State<Dialog1GeneralPage> {
               child: Column(
                 children: <Widget>[
                   ApplicationInfoPage(hint:"عدد الجمهور المتصل" ,text:emptyString(data.allActiveClients.toString()) ),
-                  ApplicationInfoPage(hint:"المتصلين خلال 3 ايام" ,text:emptyString(data.allActiveClientsInThePastThreeDays.toString()) ),
+                  ApplicationInfoPage(hint:"عدد  الزيارات" ,text:emptyString(data.allActiveClientsInThePastThreeDays.toString()) ),
                   ApplicationInfoPage(hint:"كل العملاء" ,text:emptyString(data.allClients.toString()) ),
                   ApplicationInfoPage(hint:"كل المستخدمين" ,text:emptyString(data.allUsers.toString()) ),
+
+                  ApplicationInfoPage(hint:"مجموع مقدمي الخدمات" ,text:emptyString(data.allServiceProviders.toString()) ),
+                  ApplicationInfoPage(hint:"عدد مفسرين الاحلام" ,text:emptyString(data.allDreamUsers.toString()) ),
+                  ApplicationInfoPage(hint:"عدد الرقاة الشرعيين" ,text:emptyString(data.allRouqiaUsers.toString()) ),
+                  ApplicationInfoPage(hint:"عدد المستشارين الاسريين" ,text:emptyString(data.allIstasharaUsers.toString()) ),
+                  ApplicationInfoPage(hint:"عدد المستشارين الطبيين" ,text:emptyString(data.allMedicalUsers.toString()) ),
+
+
+                  ApplicationInfoPage(hint:"عدد الخدمات القيد التنفيذ" ,text:emptyString(data.allActiveServices.toString()) ),
+                  ApplicationInfoPage(hint:"عدد الخدمات المنفذة" ,text:emptyString(data.allDoneServices.toString()) ),
+                  ApplicationInfoPage(hint:"عدد المفتين" ,text:emptyString(data.allIftaaUsers.toString()) ),
 
                 ],
               ),

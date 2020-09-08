@@ -80,8 +80,39 @@ class _PublicServiceServiceProvidersState extends State<PublicServiceServiceProv
             if(isLoadingMore&&index==data.length-1)
               return Center(child: CircularProgressIndicator(),);
             else{  AllServicesData item=listServicesData[index];
-            return CardDreams(desc: item.description,likes: item.numberOfLikes,views: item.numberOfViews,
-                press: (){ openPage(context, DetailsServiceYouWant(servicesData: item,forPublicPage: true,));});}
+            return CardDreams(showLove: item.showLove,desc: item.description,likes: item.numberOfLikes,views: item.numberOfViews,
+                lovePress: () async {
+                  setState(() {
+                    item.showLove=true;
+                  });
+
+                  Response response=await addLike(item.id);
+
+                  setState(() {
+                    item.showLove=false;
+                    if(response.statusCode==200 ){
+                      if(item.numberOfLikes!=null){
+                        int num=   int.parse(item.numberOfLikes);
+                        num++;
+                        item.numberOfLikes=num.toString();
+                      }
+                      else{
+                        item.numberOfLikes="1";
+                      }
+
+                    }
+
+                  });
+
+
+                },
+
+                press: (){
+
+              print("---------------------");
+              printWrapped(item.toJson().toString());
+
+              openPage(context, DetailsServiceYouWant(servicesData: item,forPublicPage: true,));});}
           });
     else
       return Container(

@@ -5,6 +5,7 @@ import 'dart:ffi';
 import 'package:country_pickers/country.dart';
 import 'package:faserholmak/Dialog/AddExplnation/AddExplnationDialog.dart';
 import 'package:faserholmak/Dialog/Dialog1GeneralPage/Dialog1GeneralPage.dart';
+import 'package:faserholmak/Dialog/EditText/EditTextDialog.dart';
 import 'package:faserholmak/Dialog/DialogCode/MyCountryPickerDialog.dart';
 import 'package:faserholmak/Dialog/PayByPointDialog/PayByPointDialog.dart';
 import 'package:faserholmak/Dialog/WaitDilaog/WaitDialog.dart';
@@ -16,6 +17,8 @@ import 'package:flutter/material.dart';
 
 import 'AddCommentDialog/AddCommentDialog.dart';
 import 'Dialog2GeneralPage/Dialog2GeneralPage.dart';
+import 'EditExplanationDialog/EditExplanationDialog.dart';
+import 'deleteDialog/DeleteDialog.dart';
 
 Future<Country> openCountryDialog(BuildContext context,{String search,String selectedHint,ValueChanged<Country> onValuePicked}) async {
   return showDialog<Country>(
@@ -79,12 +82,43 @@ Future<CommentModel> openCommentDialog(BuildContext context,String serivesID,Lis
 }
 
 
-Future<Response> openPayByPointDialog(BuildContext context,SingleServicesModel servicesModel) async {
+Future<String> openEditTextCilentDialog(BuildContext context,String serivesID,String text) async {
+  return showDialog<String>(
+    context: context,
+    barrierDismissible: true, // user must tap button!
+    builder: (BuildContext context) {
+      return EditTextDialog(serivesID,text);
+    },
+  );
+}
+
+Future<bool> openDeleteServicesDialog(BuildContext context,String serivesID,{String text}) async {
+  return showDialog<bool>(
+    context: context,
+    barrierDismissible: true, // user must tap button!
+    builder: (BuildContext context) {
+      return DeleteServiceDialog(serivesID);
+    },
+  );
+}
+
+Future<String> openEditExplanationDialog(BuildContext context,String serivesID,String text) async {
+  return showDialog<String>(
+    context: context,
+    barrierDismissible: true, // user must tap button!
+    builder: (BuildContext context) {
+      return EditExplanationDialog(serivesID,text);
+    },
+  );
+}
+
+
+Future<Response> openPayByPointDialog(BuildContext context,SingleServicesModel servicesModel,int  amount) async {
   return showDialog<Response>(
     context: context,
     barrierDismissible: true, // user must tap button!
     builder: (BuildContext context) {
-      return PayByPointDialog(servicesModel: servicesModel);
+      return PayByPointDialog(servicesModel: servicesModel,amount: amount,);
     },
   );
 }

@@ -1,4 +1,5 @@
 import 'package:faserholmak/Helper/AppApi.dart';
+import 'package:faserholmak/Helper/BasicTools.dart';
 import 'package:faserholmak/Helper/StyleForApp.dart';
 import 'package:faserholmak/Model/SingleServicesModel/SingleServicesModel.dart';
 import 'package:flutter/material.dart';
@@ -13,8 +14,9 @@ class PayByPointDialog extends StatefulWidget {
 
   int servicePathId;
   int sericesId;
+  int amount;
 
-  PayByPointDialog({this.servicesModel});
+  PayByPointDialog({this.servicesModel,this.amount});
 
 /*  PayByPointDialog.LocalData(this.servicePathId,this.sericesId){
     servicesModel=new SingleServicesModel();
@@ -35,7 +37,9 @@ class _PayByPointDialogState extends State<PayByPointDialog> {
     Map<String,dynamic> data={
     "ServicePathId":widget.servicesModel.servicePathId,
     "ServiceId":widget.servicesModel.id,
-    "UseUserPoints":true};
+    "UseUserPoints":true,
+    "NumberOfPoints":widget.amount,
+    "PrivateService":widget.servicesModel.privateService};
 
     return data;
 

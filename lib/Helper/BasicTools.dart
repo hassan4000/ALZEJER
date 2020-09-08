@@ -35,6 +35,9 @@ Future<bool> logOutFacebook() async {
   }
 }
 
+
+
+
 final GoogleSignIn googleSignIn = GoogleSignIn(
   scopes: [
     'email',
@@ -137,6 +140,11 @@ String getZeroWithNumber(int num){
   else return num.toString();
 }
 
+
+bool canLikeServies(String id,String idProvider,String idClient){
+  if(id=="" ||id=="null"||id==idProvider||id==idClient) return false;
+  else return true;
+}
 void setToken(String data) async {
   tokenValue=data;
   token=data;
@@ -217,6 +225,40 @@ bool showExplnationButton({String userType,String explnation,String servicesProv
 }
 
 
+
+bool showDeleteIcon({String clinetId,String providerID}){
+  if(userInfo==null||userInfo.id==null||clinetId=="") return false;
+
+  if(userInfo.id==clinetId){
+    return true;
+  }
+  else if(userInfo.id==providerID){
+    return true;
+  }
+
+  return false;
+
+}
+
+bool showEditIcon({String clinetId,String providerID,String explanation}){
+  if(userInfo==null||userInfo.id==null||clinetId=="") return false;
+
+
+  if(userInfo.id==clinetId){
+    return true;
+  }
+
+  else if(userInfo.id==providerID){
+    if(explanation==null ||explanation.isEmpty) return false;
+    else return true;
+  }
+
+
+
+  return false;
+
+}
+
 bool showAnotherMofaser({bool fromPublicPage=false,String servicesProvider}){
 print("my id= ${userInfo.id}");
 print("provider id= ${servicesProvider}");
@@ -286,6 +328,14 @@ void openPageAndClearPrev({BuildContext context,page,String route}){
 
 }
 
+
+int addPointInPaymnet(String amount){
+  print("------AmountString  $amount");
+  double result1=double.parse(amount);
+  int result= result1.toInt();
+  print("------Amount  ${result*10}");
+  return result*10;
+}
 
 void openPage(context, page) async {
   var route = new MaterialPageRoute(builder: (BuildContext context) {

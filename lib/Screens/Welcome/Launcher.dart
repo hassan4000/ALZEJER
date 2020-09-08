@@ -1,11 +1,14 @@
 import 'package:faserholmak/Helper/AppApi.dart';
 import 'package:faserholmak/Helper/BasicTools.dart';
 import 'package:faserholmak/Helper/Content.dart';
+import 'package:faserholmak/MyServices/MySericesPage.dart';
 import 'package:faserholmak/Screens/GeneralPage/GeneralPageClient.dart';
 import 'package:faserholmak/Screens/GeneralPageServicesProvider/GeneralPageServicesProvider.dart';
 import 'package:faserholmak/Screens/Login/login_screen.dart';
 import 'package:faserholmak/Screens/SelectUserType/SelectUserType.dart';
 import 'package:faserholmak/Screens/Login/components/background.dart';
+import 'package:faserholmak/Screens/TabWithImage/TabWithImage.dart';
+import 'package:faserholmak/Screens/TabWithImage/TabWithImageHomePage.dart';
 import 'package:faserholmak/Screens/Welcome/welcome_screen.dart';
 import 'package:faserholmak/wigets/LogoIcon.dart';
 import 'package:flutter/cupertino.dart';
@@ -38,16 +41,22 @@ class _LauncherState extends State<Launcher>
         var t=await getToken();
         token=t;
         tokenValue=t;
-        if(userInfo.type==clientTxt)
-          openPage(context, GeneralPageClient());
+        if(userInfo.type==clientTxt){
+        //  openPageAndClearPrev(context:context,page: MySericesPage(),route: MyServicesPageRoute);
+          openPageAndClearPrev(context:context,page: GeneralPageClient(),route: HomePageRoute);
+          // openPage(context, GeneralPageClient());
+        }
+
         else if(userInfo.type==interpreterTxt){
-          openPage(context, GeneralPageServicesProvider());
+       //   openPageAndClearPrev(context:context,page: TabWithImageHomePage(userInfo),route: TabWithImageRoute);
+          openPageAndClearPrev(context:context,page: GeneralPageServicesProvider(),route: HomePageRoute2);
         }
         
 
       }else{
         showToast(userDataRequest.object.toString());
-        openPage(context,  LoginScreen());
+        openPageAndClearPrev(context: context,route: SelectUserTypeRoute,page:  LoginScreen());
+     //   openPage(context,  LoginScreen());
         Navigator.pop(context);
 
       }

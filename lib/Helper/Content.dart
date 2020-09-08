@@ -13,6 +13,8 @@ const String  HomePageRoute="HomePage";
 const String  HomePageRoute2="HomePage2";
 const String  HomePageRoute3="HomePage3";
 const String  SelectUserTypeRoute="SelectUserType";
+const String  TabWithImageRoute="TabWtihImage";
+const String  MyServicesPageRoute="MyServicesPage";
 
 const String SERVER_TOKEN="AAAAaeoROG4:APA91bEq4mIHEkhrXMzjYGHL9K6HqNRsuo-lsrtq7M694axkEpI29d5rfCCbX_sgvqkpqzRsjvVgjyWuWqSUBBnHdMnJp5Z_cavV5PuSMxmhdtMXAStrvjCcURP8IDUIHi3Fku9GHJbd";
 
@@ -30,6 +32,7 @@ const String GOOGLE="Google";
 const String TWITTER="Twitter";
 const String addExplanation="اضاف الرد على الخدمة";
 const String add="اضف ";
+const String editTxt="تعديل ";
 const String logoText="فَاسْأَلُوا أَهْلَ الذِّكْرِ إِن كُنتُمْ لَا تَعْلَمُونََ ";
 const String explanation="الجواب على الخدمة";
 const String state="الحالة";
@@ -86,8 +89,9 @@ const String gener="الجنس";
 const String userName="اسم المستخدم";
 const String email="الايميل ";
 const String noData="لايوجد بيانات ";
+const String noSpecaist="لايوجد اختصاصات ";
 const String noComment="لايوجد تعليقات ";
-const String usernameOrEmail="اسم المستخدم أو الايميل ";
+const String usernameOrEmail="اسم المستخدم  ";
 const String sendDreamCheckBoxHint="اذا تأخر تنفيذ الخدمة سوف تنتقل الى مقدم خدمة آخر هل انت موافق ";
 const String dreamsText="نص الخدمة ";
 const String phone="رقم الهاتف";
@@ -109,25 +113,31 @@ const String dreamsExplained="الخدمات المنفذة";
 const String interpreters="المفسرون";
 const String code="الكود";
 const String youAreHere="أنت هنا";
+const String hintHomeClient="ترتيبك بين الجمهور في الانتظار";
 const String interpreter="المفسر";
 const String users="المستخدمون";
 const String comments="التعليقات";
 const String sendComments="اضف تعليقاً";
+const String editText="تعديل نص الخدمة";
+const String deleteServiceText=" حذف الخدمة";
+const String deleteText=" حذف ";
+const String editExplnation="تعديل جواب الخدمة";
+const String editTextProvider="تعديل رد الخدمة";
 const String chatForPeople="دردشة الجمهور";
 const String people="عدد الجمهور في الانتظار";
 const String successfulOpreation="تمت العملية بنجاح";
 const String timeToStart="الوقت المتوقع  لتنفيذ الخدمة";
 const String expectedTimeForInterpretation="الوقت المتوقع  لتنفيذ الخدمة";
 const String areYouHurryToExplain="هل انت مستعجل اضفط هنا";
-const String publicServicesHint="سوف يتم النشر الى الجمهور بدون ذكر اسمك";
+const String publicServicesHint="يتم عرض نص الخدمة للجمهور بدون ذكر اسمك";
 const String publicTxt="عام";
 const String privateTxt="خاص";
-const String privateServicesHint="تفسير خاص لك لا احد يراه غيرك";
+const String privateServicesHint="نص الخدمة لا يراه احد غيرك";
 
 const String soonTxt="سوف يتم التنفيذ قريبا";
 const String shareForMofaserHint="تقديرا لجهود المفسر اضغط للمشاركة";
 const String linkApp="رابط التطبيق";
-const String shareHitn1="يقدم تطبيق أهل الذكر مجموعة من الخدماتمثل -تفسير الاحلام - الفتاوي الشرعية - الرقية الشرعية - استشارات أسرية وطبية وقانونية دخل الكود  للحصول على خدمة سريعة";
+const String shareHitn1="يقدم تطبيق أهل الذكر مجموعة من الخدمات مثل -تفسير الاحلام - الفتاوي الشرعية - الرقية الشرعية - استشارات أسرية وطبية وقانونية دخل الكود  للحصول على خدمة سريعة";
 const String shareHitn2="يسعدني تقديم خدماتي للجمهور بواسطه تطبيق أهل الذكر حيث نقدم مجموعة من الخدمات مثل -تفسير الاحلام - الفتاوي الشرعية - الرقية الشرعية - استشارات أسرية وطبية وقانونية  دخل الكود  للحصول على خدمة سريعة ";
 const String serviceProviderPape="صفحة مقدم الخدمة";
 const String providedHint="قام بتقديم";
@@ -153,6 +163,7 @@ const String  single="اعزب";
 
 const String forbiddenRequest="غير مسموح لك بطلب هذا الأمر";
 const String failedOpreation="فشل الطلب حاول لاحقا";
+const String failedOpreationDelete="فشلت عملية الحذف حاول لاحقا";
 const String failedToPayOpreation="فشلت عملية الدفع  حاولا لاحقا";
 const String failedOpreationWorkType="فشلت عملية طلب الاعمال";
 const String incurrectLogin="اسم المستخدم أو كلمة المرور خطأ";
@@ -198,8 +209,10 @@ const String share="شارك";
 const String logout="تسجيل الخروج";
 
 const String editProfile="تعديل الملف الشخصي";
-const String moreInfo="تفاصيل الحساب";
+const String homePage="الصفحة الرئيسية";
+const String moreInfo="صفحتي";
 const String addUserWork="اضافة اختصاص";
+const String byUser=":";
 
 
 

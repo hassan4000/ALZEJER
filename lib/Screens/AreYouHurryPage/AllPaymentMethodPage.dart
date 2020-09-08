@@ -26,8 +26,9 @@ class AllPaymentMethodPage extends StatefulWidget {
   PaymentModel paymentModel;
   AddServiceModel addServiceModel;
   bool formAddSerives;
+  String pathPrice;
 
-  AllPaymentMethodPage({this.paymentModel,this.addServiceModel,this.formAddSerives=false});
+  AllPaymentMethodPage({this.paymentModel,this.addServiceModel,this.formAddSerives=false,this.pathPrice});
 
   @override
   _AllPaymentMethodPageState createState() => _AllPaymentMethodPageState();
@@ -122,7 +123,7 @@ class _AllPaymentMethodPageState extends State<AllPaymentMethodPage> {
       );}
     else if (data.length > 0){
 
-      print("hiiiiiiiiii");
+
       return ListView.builder(
           itemCount: data.length,
           //      controller: _controllerScrollRecevier,
@@ -142,7 +143,7 @@ class _AllPaymentMethodPageState extends State<AllPaymentMethodPage> {
             );
           });}
     else{
-      print("no data");
+
       return ListView(
         children: <Widget>[
           Container(
@@ -169,18 +170,18 @@ class _AllPaymentMethodPageState extends State<AllPaymentMethodPage> {
   }
 
 
-  Future<bool> checkPoint() async {
-    reSetLoadingHUD(true);
+  Future<bool> checkPoint(int amount) async {
+    //  reSetLoadingHUD(true);
 
 
 
-    Response response=await getServicePricePerPoints();
-    reSetLoadingHUD(false);
-    if(response.statusCode==200){
+    //  Response response=await getServicePricePerPoints(amount);
+    //reSetLoadingHUD(false);
+    // if(response.statusCode==200){
+    // }
+    int result=userInfo.pointsBalance-amount;
+    if(result>0) return true;
 
-      int result=userInfo.pointsBalance-response.object;
-      if(result>0) return true;
-    }
     return false;
 
   }
@@ -308,7 +309,7 @@ class _AllPaymentMethodPageState extends State<AllPaymentMethodPage> {
                   ),
                   MyButton(txt: payByPointTxt,press: () async {
 
-                    bool canPayPyPoint=await checkPoint();
+                    bool canPayPyPoint=await checkPoint(addPointInPaymnet(widget.paymentModel.amount));
 
                     if(canPayPyPoint){
                       reSetLoadingHUD(true);
@@ -320,7 +321,8 @@ class _AllPaymentMethodPageState extends State<AllPaymentMethodPage> {
                         widget.paymentModel.serviceId=serviesID;
 
                         Response response= await openPayByPointDialog(context,
-                            new SingleServicesModel(id: widget.paymentModel.serviceId,servicePathId: widget.paymentModel.servicePathId));
+                            new SingleServicesModel(id: widget.paymentModel.serviceId,servicePathId: widget.paymentModel.servicePathId,
+                            privateService: widget.paymentModel.privateServices),addPointInPaymnet(widget.paymentModel.amount));
                         if(response.statusCode==200){
 
                           var  point=response.object;

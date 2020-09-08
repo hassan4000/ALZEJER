@@ -15,7 +15,6 @@ import 'package:faserholmak/wigets/MyButton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_share/flutter_share.dart';
 
-import 'PrivetOrPublicAfterAreYouHurry.dart';
 
 
 class AreYouHarryPage extends StatefulWidget {

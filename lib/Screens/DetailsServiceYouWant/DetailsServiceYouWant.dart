@@ -1,3 +1,4 @@
+import 'package:faserholmak/Helper/HassanCountry.dart';
 import 'package:faserholmak/Screens/AreYouHurryPage/AreYouHurryPage.dart';
 import 'package:faserholmak/Dialog/MyShowDialog.dart';
 import 'package:faserholmak/Helper/AppApi.dart';
@@ -7,6 +8,7 @@ import 'package:faserholmak/Helper/StyleForApp.dart';
 import 'package:faserholmak/Model/AllServicesModel/AllServicesData.dart';
 import 'package:faserholmak/Model/CommentModel/CommentModel.dart';
 import 'package:faserholmak/Model/SingleServicesModel/SingleServicesModel.dart';
+import 'package:faserholmak/Screens/GeneralPage/GeneralPageClient.dart';
 
 import 'package:faserholmak/Screens/GeneralPageServicesProvider/GeneralPageServicesProvider.dart';
 import 'package:faserholmak/Screens/Login/components/background.dart';
@@ -191,7 +193,7 @@ class _DetailsServiceYouWantState extends State<DetailsServiceYouWant> {
                                 CardTimeDreams(textAboveLine: emptyString(servicesData.numberOfAllPeopleWaiting.toString()),
                                   textUnderLine: emptyString(servicesData.numberOfRemainingPeople.toString()),
                                   textUnderLineHint: "$youAreHere",
-                                  name: emptyString(servicesData.serviceProvider.name),
+                                  name: emptyString(servicesData.serviceProvider==null?"":servicesData.serviceProvider.name),
                                   price: "",
                                   showDolar: false,),
                               ],
@@ -262,6 +264,10 @@ class _DetailsServiceYouWantState extends State<DetailsServiceYouWant> {
                                       providerID:
                                           widget.servicesData.serviceProviderId,forPublicPage: widget.forPublicPage)*/
                                    CardDreams(
+                                     showDelete:showDeleteIcon(clinetId: servicesData.creatorId,providerID: servicesData.serviceProviderId) ,
+                                     showEditText: showEditIcon(clinetId: servicesData.creatorId,providerID: servicesData.serviceProviderId,
+                                     explanation: emptyString(servicesData.explanation)),
+                                     showLove: servicesData.showLove,
                                       views: emptyString(
                                           servicesData.numberOfViews.toString()),
                                       likes: emptyString(
@@ -285,6 +291,21 @@ class _DetailsServiceYouWantState extends State<DetailsServiceYouWant> {
                                           explnation: emptyString(servicesData.explanation)),
                                       showToAnotherMofaser: showAnotherMofaser(fromPublicPage: widget.forPublicPage,
                                       servicesProvider: servicesData.serviceProviderId),
+                                  /*    lovePress: () async {
+                                       setState(() {
+                                         servicesData.showLove=true;
+                                       });
+
+                                       Response response=await addLike(servicesData.id);
+
+                                       setState(() {
+                                         servicesData.showLove=false;
+                                         if(response.statusCode==200)
+                                           servicesData.numberOfLikes++;
+                                       });
+
+
+                                      },*/
                                       commentPress: () async {
                                       /*  openPage(
                                             context,
@@ -299,6 +320,39 @@ class _DetailsServiceYouWantState extends State<DetailsServiceYouWant> {
                                           servicesData.comments.add(item);
                                         });
                                       },
+                                      deletePress: ()async{
+                                        bool info=await openDeleteServicesDialog(context, servicesData.id.toString());
+                                        if(userInfo.id==servicesData.creatorId&&info!=null&&info){
+                                          openPageAndClearPrev(context:context,page: GeneralPageClient(),route: HomePageRoute);
+                                        }
+
+                                        else if(userInfo.id==emptyString(servicesData.serviceProviderId)&&info!=null&&info){
+                                          openPageAndClearPrev(context:context,page: GeneralPageServicesProvider(),route: HomePageRoute2);
+
+                                        }
+
+                                      },
+                                     editTextPress: () async {
+                                        if(userInfo.id==servicesData.creatorId){
+                                        String desc=await openEditTextCilentDialog(context,servicesData.id.toString(),servicesData.description);
+                                        if(desc!=null&&desc.isNotEmpty){
+                                          setState(() {
+                                            servicesData.description=desc;
+                                          });
+                                          openPageAndClearPrev(context:context,page: GeneralPageClient(),route: HomePageRoute);
+
+                                        }
+                                        }else if(userInfo.id==emptyString(servicesData.serviceProviderId)){
+                                          String desc=await openEditExplanationDialog(context,servicesData.id.toString(),servicesData.explanation);
+                                          if(desc!=null&&desc.isNotEmpty){
+                                            setState(() {
+                                              servicesData.description=desc;
+                                            });
+                                            openPageAndClearPrev(context:context,page: GeneralPageServicesProvider(),route: HomePageRoute2);
+
+                                          }
+                                        }
+                                     },
                                       explanationPress: () async {
                                         String map = await openAddExplnation(
                                             context,

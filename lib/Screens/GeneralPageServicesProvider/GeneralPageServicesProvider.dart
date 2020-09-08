@@ -1,8 +1,10 @@
+import 'package:faserholmak/Dialog/MyShowDialog.dart';
 import 'package:faserholmak/Helper/BasicTools.dart';
 import 'package:faserholmak/Helper/Content.dart';
 import 'package:faserholmak/Model/AllServicesModel/AllServicesData.dart';
 import 'package:faserholmak/Model/AllServicesModel/AllServicesModel.dart';
 import 'package:faserholmak/Model/CommentModel/CommentModel.dart';
+import 'package:faserholmak/Screens/ChatsForMofaser/ChatForMofaser.dart';
 import 'package:faserholmak/Screens/DetailsServiceYouWant/DetailsServiceYouWant.dart';
 import 'package:faserholmak/Screens/Drawer/MyDrawerServiceProviders.dart';
 import 'package:faserholmak/Screens/MofaserBalance/MofaserBalance.dart';
@@ -10,12 +12,15 @@ import 'package:faserholmak/Screens/ServicesForServiceProviders/CompletedService
 import 'package:faserholmak/Screens/ServicesForServiceProviders/OnProgressServiceServiceProviders/OnProgressServiceServiceProviders.dart';
 import 'package:faserholmak/Screens/ServicesForServiceProviders/PublicServiceServiceProviders/PublicServiceServiceProviders.dart';
 import 'package:faserholmak/Screens/ServicesYouWant/ServiceYouWant.dart';
+import 'package:faserholmak/Screens/TabWithImage/TabWithImageHomePage.dart';
 import 'package:faserholmak/wigets/CardDreams.dart';
 import 'package:faserholmak/wigets/MessageChat.dart';
 import 'package:faserholmak/wigets/SmallHomeCard.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:faserholmak/Helper/AppApi.dart';
+
+import '../../constants.dart';
 
 class GeneralPageServicesProvider extends StatefulWidget {
   @override
@@ -57,7 +62,32 @@ class _GeneralPageServicesProviderState extends State<GeneralPageServicesProvide
 
           itemBuilder: (context, index) {
             AllServicesData item=listServicesData[index];
-            return CardDreams(desc: item.description,likes: item.numberOfLikes,views: item.numberOfViews,
+            return CardDreams(showLove: item.showLove,desc: item.description,likes: item.numberOfLikes,views: item.numberOfViews,
+              lovePress: () async {
+                setState(() {
+                  item.showLove=true;
+                });
+
+                Response response=await addLike(item.id);
+
+                setState(() {
+                  item.showLove=false;
+                  if(response.statusCode==200 ){
+                    if(item.numberOfLikes!=null){
+                      int num=   int.parse(item.numberOfLikes);
+                      num++;
+                      item.numberOfLikes=num.toString();
+                    }
+                    else{
+                      item.numberOfLikes="1";
+                    }
+
+                  }
+
+                });
+
+
+              },
             press: () async {
               Map map=await openMapPage(context, DetailsServiceYouWant(servicesData: item,));
               if(map!=null)
@@ -169,7 +199,7 @@ class _GeneralPageServicesProviderState extends State<GeneralPageServicesProvide
           key: refreshKey,
           onRefresh: ()async{
             reSetLoading(true);
-            var response=await getAllServiceServicesProvider(filterUserID: userInfo.id);
+            var response=await getAllServiceForProvider(filterUserID: userInfo.id);
             if(response.statusCode==200){
               AllServicesModel item=response.object;
               setState(() {
@@ -244,9 +274,46 @@ class _GeneralPageServicesProviderState extends State<GeneralPageServicesProvide
                               children: <Widget>[
                                 Expanded(child: Padding(
                                   padding: const EdgeInsets.all(8.0),
-                                  child: SmallHomeCard(txt: chatProviders,),
+                                  child: SmallHomeCard(txt: chatProviders,press: (){
+                                    openPage(context, ChatForMofaser());
+                                  },),
                                 )),
 
+                                Expanded(child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: SmallHomeCard(txt:moreInfo,press: (){
+                                    openPage(context, TabWithImageHomePage(userInfo));
+                                  },),
+                                )),
+
+                              ],
+                            ),
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: <Widget>[
+                                Expanded(child: GestureDetector(
+                                  onTap: (){
+
+
+                                    openDialog2GeneralPage(context);
+                                  },
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Icon(Icons.assessment,color: kPrimaryColor,size: 30,)
+                                    ,
+                                  ),
+                                )),
+                              /*  Expanded(child: GestureDetector(
+                                  onTap: (){
+
+                                    openDialog1GeneralPage(context);
+                                  },
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Icon(Icons.people,color: kPrimaryColor,size: 30,)
+                                    ,
+                                  ),
+                                )),*/
                               ],
                             ),
 

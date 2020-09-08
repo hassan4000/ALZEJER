@@ -80,7 +80,34 @@ class _OnProgressServiceServiceProvidersState extends State<OnProgressServiceSer
             if(isLoadingMore&&index==data.length-1)
               return Center(child: CircularProgressIndicator(),);
             else{  AllServicesData item=listServicesData[index];
-            return CardDreams(desc: item.description,likes: item.numberOfLikes,views: item.numberOfViews,
+            return CardDreams(showLove: item.showLove,desc: item.description,likes: item.numberOfLikes,views: item.numberOfViews,
+                provierName: emptyString(item.serviceProvider.name),
+                lovePress: () async {
+                  setState(() {
+                    item.showLove=true;
+                  });
+
+                  Response response=await addLike(item.id);
+
+                  setState(() {
+                    item.showLove=false;
+                    if(response.statusCode==200 ){
+                      if(item.numberOfLikes!=null){
+                        int num=   int.parse(item.numberOfLikes);
+                        num++;
+                        item.numberOfLikes=num.toString();
+                      }
+                      else{
+                        item.numberOfLikes="1";
+                      }
+
+                    }
+
+                  });
+
+
+                },
+                explantaion: emptyString(item.explanation),showExplanationText: true,
                 press: (){ openPage(context, DetailsServiceYouWant(servicesData: item,));});}
           });
     else
@@ -113,7 +140,7 @@ class _OnProgressServiceServiceProvidersState extends State<OnProgressServiceSer
     var filterUserWork;
     if(selectedUserWork!=null &&selectedUserWork.id!=null)
       filterUserWork=selectedUserWork.id;
-    var response=await getAllServiceServicesProvider(filterUserID: userInfo.id,top: top,skip: skip,filterWorkType: filterUserWork,);
+    var response=await getAllServiceForProvider(filterUserID: userInfo.id,top: top,skip: skip,filterWorkType: filterUserWork,);
     if(response.statusCode==200){
       AllServicesModel item=response.object;
       setState(() {

@@ -7,6 +7,7 @@ import 'package:faserholmak/MyServices/MySericesPage.dart';
 import 'package:faserholmak/Screens/AllProvidersPage/AllProvidersPage.dart';
 import 'package:faserholmak/Screens/ChatForPublic/ChatForPublic.dart';
 import 'package:faserholmak/Screens/EditProfile/EditProfileClient/EditProfileClient.dart';
+import 'package:faserholmak/Screens/GeneralPage/GeneralPageClient.dart';
 import 'package:faserholmak/Screens/Login/login_screen.dart';
 import 'package:faserholmak/Screens/SelectUserType/SelectUserType.dart';
 import 'package:faserholmak/Screens/ServicesForClient/OnProgressServicesClient/OnProgressServicesClient.dart';
@@ -101,6 +102,25 @@ class _MyDrawerState extends State<MyDrawer> {
 
                         (emptyString(userInfo.socialStatus)==GOOGLE||emptyString(userInfo.socialStatus)==FACEBOOK)?
                             Container():
+                        GestureDetector(
+                          onTap: (){
+                            openPageAndClearPrev(context:context,page: GeneralPageClient(),route: HomePageRoute);
+                          },
+                          child: Container(
+                              padding: EdgeInsets.symmetric(vertical: 0,horizontal: 0)
+                              ,child: Row(
+                            children: <Widget>[
+                              IconButton(onPressed: (){},icon: Icon(Icons.home,color:  kPrimaryColor),),
+                              Text(homePage,style: getTextSyle(16, kPrimaryColor),)
+                            ],
+                          )),
+                        ),
+
+                        Divider(
+                          color:  Colors.grey,
+                          thickness: 1,
+                        ),
+
                         GestureDetector(
                           onTap: (){
                             openPage(context, EditProfileClient());

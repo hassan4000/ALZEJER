@@ -7,6 +7,7 @@ import 'package:faserholmak/Model/AllServicesModel/AllServicesData.dart';
 import 'package:faserholmak/Model/AllServicesModel/AllServicesModel.dart';
 import 'package:faserholmak/Model/UserInfoModel/UserInfoModel.dart';
 import 'package:faserholmak/Screens/Drawer/MyDrawer.dart';
+import 'package:faserholmak/Screens/Drawer/MyDrawerServiceProviders.dart';
 import 'package:faserholmak/Screens/Login/components/background.dart';
 import 'package:faserholmak/Screens/TabWithImage/SliverAppBarDelegate.dart';
 import 'package:faserholmak/Screens/TabWithImage/ratingTab/RatingInsideTab.dart';
@@ -19,17 +20,17 @@ import 'package:faserholmak/Helper/AppApi.dart';
 import '../../constants.dart';
 import 'PersnalInfo/PersonlaInfo.dart';
 
-class TabWithImage extends StatefulWidget {
+class TabWithImageHomePage extends StatefulWidget {
 
   UserInfoModel item;
 
-  TabWithImage(this.item);
+  TabWithImageHomePage(this.item);
 
   @override
-  _TabWithImageState createState() => _TabWithImageState();
+  _TabWithImageHomePageState createState() => _TabWithImageHomePageState();
 }
 
-class _TabWithImageState extends State<TabWithImage> with TickerProviderStateMixin{
+class _TabWithImageHomePageState extends State<TabWithImageHomePage> with TickerProviderStateMixin{
 
   TabController tabController;
 
@@ -411,6 +412,7 @@ class _TabWithImageState extends State<TabWithImage> with TickerProviderStateMix
     return SafeArea(
       top: true,
       child: Scaffold(
+        drawer: MyDrawerServicsProvider(),
 
         body: DefaultTabController(
 

@@ -6,8 +6,10 @@ class PaymentModel {
     double myMoeny;
     int serviceId;
     int servicePathId;
+    bool privateServices;
 
-    PaymentModel({this.myPaymnetMethod,this.amount, this.currency, this.method, this.myMoeny, this.serviceId, this.servicePathId});
+    PaymentModel({this.myPaymnetMethod,this.amount, this.currency, this.method, this.myMoeny, this.serviceId, this.servicePathId,
+    this.privateServices=false});
 
     factory PaymentModel.fromJson(Map<String, dynamic> json) {
         return PaymentModel(

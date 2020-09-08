@@ -1,28 +1,41 @@
 import 'package:faserholmak/Helper/AppApi.dart';
 import 'package:faserholmak/Helper/BasicTools.dart';
-import 'package:faserholmak/Helper/Content.dart';
 import 'package:faserholmak/Helper/StyleForApp.dart';
-import 'package:faserholmak/Screens/GeneralPage/GeneralPageClient.dart';
+import 'package:faserholmak/Model/CommentModel/CommentModel.dart';
 import 'package:faserholmak/wigets/MyButton.dart';
+import 'package:faserholmak/Helper/Content.dart';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_share/flutter_share.dart';
 
 import '../../constants.dart';
 
+class DeleteServiceDialog extends StatefulWidget {
+  String servicesID;
 
-class ShareAfterDialog extends StatefulWidget {
-  String name;
-  String userWorkname;
+  String txt;
 
-  ShareAfterDialog(this.name,this.userWorkname);
+
+  DeleteServiceDialog(this.servicesID,{this.txt});
 
   @override
-  _ShareAfterDialogState createState() => _ShareAfterDialogState();
+  _DeleteServiceDialogState createState() => _DeleteServiceDialogState();
 }
 
-class _ShareAfterDialogState extends State<ShareAfterDialog> {
+
+
+class _DeleteServiceDialogState extends State<DeleteServiceDialog> {
+
+
+
+  @override
+  void initState() {
+    textEditingController=TextEditingController(text: widget.txt);
+    super.initState();
+  }
+
   bool isLoading = false;
+  TextEditingController textEditingController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -39,7 +52,7 @@ class _ShareAfterDialogState extends State<ShareAfterDialog> {
           SizedBox(
             width: 4.0,
           ),
-          Text(" مشاركة التطبيق  ",
+          Text( deleteServiceText,
               style:
               getTextSyle(20, kPrimaryColor, fontWeight: FontWeight.w600)),
         ],
@@ -48,7 +61,7 @@ class _ShareAfterDialogState extends State<ShareAfterDialog> {
           padding: EdgeInsets.symmetric(horizontal: 10),
           child: isLoading
               ? Container(
-            height: 120,
+            height: MediaQuery.of(context).size.height/2,
             width: width,
             child: Column(
               mainAxisSize: MainAxisSize.max,
@@ -61,7 +74,7 @@ class _ShareAfterDialogState extends State<ShareAfterDialog> {
                 Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      'Loading ..',
+                      'انتظر قليلا ..',
                       style: TextStyle(
                         fontFamily: 'Heading',
                         fontSize: 18.0,
@@ -75,33 +88,7 @@ class _ShareAfterDialogState extends State<ShareAfterDialog> {
               child: Container(
                 width: width,
                 child: Column(
-                  textDirection: TextDirection.rtl,
-
                   children: <Widget>[
-
-                    Padding(
-                      padding: EdgeInsets.all(8),
-                      child: Text(" تقدير لجهود منفذ الخدمة ${widget.name}  يرجى مشاركة هذا الرابط واحصل على نقاط لتسريع تنفيذ خدمتك القادمة  ",textDirection: TextDirection.rtl,
-                        style: getTextSyle(16, kPrimaryColor),),
-                    ),
-
-
-                    Padding(
-                      padding: EdgeInsets.all(8),
-                      child: Text(" ${googlePlayUrl} \n رابط التطبيق",textDirection: TextDirection.rtl,style: getTextSyle(16, Colors.blue),
-                      ),
-                    ),
-
-                    Padding(
-                      padding: EdgeInsets.all(8),
-                      child: Text("قم بإدخال الكود التالي عند التسجيل واكسب نقاط لتسريع تنفيذ خدمتك ",
-                        textDirection: TextDirection.rtl,style: getTextSyle(16, kPrimaryColor),),
-                    ),
-
-                    Padding(
-                      padding: EdgeInsets.all(8),
-                      child: Text("${userInfo.userSpecialCode}",textDirection: TextDirection.rtl,style: getTextSyle(16, Colors.blue),),
-                    ),
 
                     SizedBox(
                       height: 8,
@@ -115,7 +102,7 @@ class _ShareAfterDialogState extends State<ShareAfterDialog> {
                             txt: cancel,
                             raduis: 4,
                             press: () {
-                              openPageAndClearPrev(context:context,page: GeneralPageClient(),route: HomePageRoute);
+                              Navigator.of(context).pop();
                             },
                             borderColor: Colors.transparent,
                             borderWidth: 0,
@@ -124,29 +111,27 @@ class _ShareAfterDialogState extends State<ShareAfterDialog> {
                           ),
                         ),
 
-                        SizedBox(width: 8,),
+                        SizedBox(width: 10,),
                         Expanded(
                           child: MyButton(
-                            txt:share,
+                            txt: deleteText,
                             raduis: 4,
                             press: () async {
 
-                       var response=     await FlutterShare.share(
-                                  title: 'يرجى مشاركة هذا الرابط ',
-
-                                  text:
-                                  '  ${serviceProvider}: ${widget.name}\n ${specalist}: ${widget.userWorkname}\n${shareHitn2}\n${userInfo.userSpecialCode}',
-                                  linkUrl:
-                                  '${linkApp} \n ${googlePlayUrl}',
-                                  chooserTitle:
-                                  'share');
+                                setState(() {
+                                  isLoading=true;
+                                });
 
 
-                       if(response)
-                           Navigator.of(context).pop("hassan");
+                                var response=await deleteService(widget.servicesID);
+                                if(response.statusCode==200){
+                                  Navigator.of(context).pop(true);
+                                }
 
 
-
+                                setState(() {
+                                  isLoading=false;
+                                });
 
                             },
                             borderColor: Colors.transparent,
@@ -166,4 +151,3 @@ class _ShareAfterDialogState extends State<ShareAfterDialog> {
     );
   }
 }
-

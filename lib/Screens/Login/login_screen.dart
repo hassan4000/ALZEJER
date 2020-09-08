@@ -4,6 +4,7 @@ import 'package:faserholmak/Helper/AppApi.dart';
 import 'package:faserholmak/Helper/BasicTools.dart';
 import 'package:faserholmak/Helper/Content.dart';
 import 'package:faserholmak/Helper/StyleForApp.dart';
+import 'package:faserholmak/MyServices/MySericesPage.dart';
 import 'package:faserholmak/Screens/GeneralPage/GeneralPageClient.dart';
 import 'package:faserholmak/Screens/GeneralPageServicesProvider/GeneralPageServicesProvider.dart';
 import 'package:faserholmak/Screens/HowAppWork/HowAppWork.dart';
@@ -12,6 +13,8 @@ import 'package:faserholmak/Screens/Login/components/body.dart';
 import 'package:faserholmak/Screens/Signup/components/or_divider.dart';
 import 'package:faserholmak/Screens/Signup/components/social_icon.dart';
 import 'package:faserholmak/Screens/Signup/signup_screen.dart';
+import 'package:faserholmak/Screens/TabWithImage/TabWithImage.dart';
+import 'package:faserholmak/Screens/TabWithImage/TabWithImageHomePage.dart';
 import 'package:faserholmak/Screens/TemrsPage/TermsPage.dart';
 import 'package:faserholmak/Screens/code/Code.dart';
 import 'package:faserholmak/Screens/privacyPolicy/PrivacyPolicyPage.dart';
@@ -232,10 +235,16 @@ class _LoginScreenState extends State<LoginScreen> {
           var t=await getToken();
 
 
-         if(userInfo.type==clientTxt)
-           openPageAndClearPrev(context:context,page: GeneralPageClient(),route: HomePageRoute);
+         if(userInfo.type==clientTxt) {
+         //  openPageAndClearPrev(context:context,page: MySericesPage(),route: MyServicesPageRoute);
+           openPageAndClearPrev(context: context,
+               page: GeneralPageClient(),
+               route: HomePageRoute);
+         }
          else if(userInfo.type==interpreterTxt){
+          // openPage(context, GeneralPageServicesProvider());
            openPageAndClearPrev(context:context,page: GeneralPageServicesProvider(),route: HomePageRoute2);
+         //  openPageAndClearPrev(context:context,page: TabWithImageHomePage(userInfo),route: TabWithImageRoute);
          }
         }else{
        //   showToast(userDataRequest.object.toString());
@@ -274,10 +283,13 @@ class _LoginScreenState extends State<LoginScreen> {
           var t=await getToken();
 
 
-          if(userInfo.type==clientTxt)
-            openPageAndClearPrev(context:context,page: GeneralPageClient(),route: HomePageRoute);
+          if(userInfo.type==clientTxt){
+            openPageAndClearPrev(context:context,page: MySericesPage(),route: MyServicesPageRoute);
+           // openPageAndClearPrev(context:context,page: GeneralPageClient(),route: HomePageRoute);
+            }
           else if(userInfo.type==interpreterTxt){
-            openPageAndClearPrev(context:context,page: GeneralPageServicesProvider(),route: HomePageRoute2);
+            openPageAndClearPrev(context:context,page: TabWithImageHomePage(userInfo),route: TabWithImageRoute);
+         //   openPageAndClearPrev(context:context,page: GeneralPageServicesProvider(),route: HomePageRoute2);
           }
         }else{
           //   showToast(userDataRequest.object.toString());

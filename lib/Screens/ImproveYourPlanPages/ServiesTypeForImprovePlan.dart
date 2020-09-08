@@ -13,6 +13,7 @@ import 'package:faserholmak/Model/SingleServicesModel/SingleServicesModel.dart';
 import 'package:faserholmak/Screens/GeneralPage/GeneralPageClient.dart';
 import 'package:faserholmak/Screens/Login/components/background.dart';
 import 'package:faserholmak/wigets/CardTimeDreams.dart';
+import 'package:faserholmak/wigets/CardTimeDreamsV2.dart';
 import 'package:faserholmak/wigets/MyButton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_share/flutter_share.dart';
@@ -67,7 +68,7 @@ class _ServiesTypeForImprovePlanState extends State<ServiesTypeForImprovePlan> {
             PrivetOrPublicServiceModel item=listServices[index];
             return Padding(
               padding: const EdgeInsets.all(4.0),
-              child:CardTimeDreams(price: item.price.toString(),
+              child:CardTimeDreamsV2(price: item.price.toString(),
                 line: false,
                 name: item.name,
                 textAboveLine: item.desc.toString(),
@@ -104,18 +105,18 @@ class _ServiesTypeForImprovePlanState extends State<ServiesTypeForImprovePlan> {
   }
 
 
-  Future<bool> checkPoint() async {
-    reSetLoadingHUD(true);
+  Future<bool> checkPoint(int amount) async {
+    //  reSetLoadingHUD(true);
 
 
 
-    Response response=await getServicePricePerPoints();
-    reSetLoadingHUD(false);
-    if(response.statusCode==200){
+    //  Response response=await getServicePricePerPoints(amount);
+    //reSetLoadingHUD(false);
+    // if(response.statusCode==200){
+    // }
+    int result=userInfo.pointsBalance-amount;
+    if(result>0) return true;
 
-      int result=userInfo.pointsBalance-response.object;
-      if(result>0) return true;
-    }
     return false;
 
   }
@@ -123,9 +124,10 @@ class _ServiesTypeForImprovePlanState extends State<ServiesTypeForImprovePlan> {
   Future<void> addServicesFun(PrivetOrPublicServiceModel item) async {
     double cost=widget.paymentModel.myMoeny;
     widget.paymentModel.currency="\$";
-    if(item.price=="0"||item.price=="0.0"){
+    if(item.name==publicTxt||item.price=="0"||item.price=="0.0"){
      // widget.paymentModel.amount= widget.paymentModel.myMoeny.toString();
       widget.paymentModel.amount= item.price;
+      widget.paymentModel.privateServices=false;
 //      widget.addServiceModel.privateService=false;
 
     }else{
@@ -133,6 +135,7 @@ class _ServiesTypeForImprovePlanState extends State<ServiesTypeForImprovePlan> {
      // widget.paymentModel.amount= widget.paymentModel.myMoeny.toString();
 
       widget.paymentModel.amount= item.price;
+      widget.paymentModel.privateServices=true;
 
     }
 
@@ -143,7 +146,8 @@ class _ServiesTypeForImprovePlanState extends State<ServiesTypeForImprovePlan> {
     }
     else
     openPage(context,
-        AllPaymentMethodToImprovePlan(paymentModel: widget.paymentModel,formAddSerives: widget.formAddsericesPage,));
+        AllPaymentMethodToImprovePlan(paymentModel: widget.paymentModel,formAddSerives: widget.formAddsericesPage,
+          pricePath:item.orginalPrice ,));
 
    /* reSetLoadingHUD(true);
     var  response=await AddServicesRQ(widget.addServiceModel);
@@ -188,8 +192,8 @@ class _ServiesTypeForImprovePlanState extends State<ServiesTypeForImprovePlan> {
                     double newPrice=double.parse(price);
                     double oldPrice=double.parse(widget.paymentModel.myMoeny.toString());
                     double allPrice=oldPrice+newPrice;
-                    dataList.add(PrivetOrPublicServiceModel(price: widget.paymentModel.myMoeny.toString(),desc: publicServicesHint,name: publicTxt));
-                    dataList.add(PrivetOrPublicServiceModel(price: allPrice.toString(),desc: privateServicesHint,name: privateTxt));
+                    dataList.add(PrivetOrPublicServiceModel(orginalPrice: widget.paymentModel.myMoeny.toString(),price: widget.paymentModel.myMoeny.toString(),desc: publicServicesHint,name: publicTxt));
+                    dataList.add(PrivetOrPublicServiceModel(orginalPrice: widget.paymentModel.myMoeny.toString(),price: allPrice.toString(),desc: privateServicesHint,name: privateTxt));
 
                     setState(() {
                       listServices=dataList;

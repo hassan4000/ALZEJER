@@ -1,4 +1,6 @@
+import 'package:faserholmak/Model/AllServicesModel/MyServicesProvider.dart';
 import 'package:faserholmak/Model/CommentModel/CommentModel.dart';
+import 'package:faserholmak/Model/SingleServicesModel/ServiceProvider.dart';
 
 class AllServicesData {
     String attachmentId;
@@ -34,8 +36,10 @@ class AllServicesData {
     String ratingMessage;
     int userRating;
     List <CommentModel> commentList;
+    bool showLove;
+    MyServicesProvider serviceProvider;
 
-    AllServicesData({this.userRating,this.ratingDate,this.ratingMessage,this.attachmentId, this.country, this.creationDate, this.creatorId, this.description, this.didYouExorcism, this.dreamDate, this.explanation, this.explanationDate, this.haveYouPrayedBeforeTheDream, this.id, this.isThereWakefulness, this.jobStatus, this.kidsStatus, this.lastModificationDate, this.modifierId, this.name, this.numberOfLikes, this.numberOfViews, this.privateService, this.privateServicePrice, this.publicServiceAction, this.regligionStatus, this.servicePathId, this.serviceProviderId, this.sex, this.socialStatus, this.status, this.userWorkId,this.commentList});
+    AllServicesData({this.serviceProvider,this.showLove=false,this.userRating,this.ratingDate,this.ratingMessage,this.attachmentId, this.country, this.creationDate, this.creatorId, this.description, this.didYouExorcism, this.dreamDate, this.explanation, this.explanationDate, this.haveYouPrayedBeforeTheDream, this.id, this.isThereWakefulness, this.jobStatus, this.kidsStatus, this.lastModificationDate, this.modifierId, this.name, this.numberOfLikes, this.numberOfViews, this.privateService, this.privateServicePrice, this.publicServiceAction, this.regligionStatus, this.servicePathId, this.serviceProviderId, this.sex, this.socialStatus, this.status, this.userWorkId,this.commentList});
 
     factory AllServicesData.fromJson(Map<String, dynamic> json) {
         return AllServicesData(
@@ -71,7 +75,9 @@ class AllServicesData {
             userRating: json['UserRating'],
             ratingDate: json['RatingDate'],
             ratingMessage: json['RatingMessage'],
+            serviceProvider: json['ServiceProvider'] != null ? MyServicesProvider.fromJson(json['ServiceProvider']) : null,
             commentList: json['Comments'] != null ? (json['Comments'] as List).map((i) => CommentModel.fromJson(i)).toList() : null,
+
 
         );
     }
@@ -113,6 +119,9 @@ class AllServicesData {
         if (this.commentList != null) {
             data['Comments'] = this.commentList.map((v) => v.toJson()).toList();
         }
+      /*  if (this.serviceProvider != null) {
+            data['ServiceProvider'] = this.serviceProvider.toJson();
+        }*/
         return data;
     }
 }

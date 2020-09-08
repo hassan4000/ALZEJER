@@ -854,6 +854,45 @@ Future<Response> getServicePath(String id) async {
 }
 
 
+Future<Response> addLike(int idService) async {
+
+  String t=await getToken();
+  String url = baseUrl + 'api/Actions/Like?id=$idService';
+  printWrapped('url  = $url');
+  try {
+    var response = await http.get(
+      url,
+      headers: {
+        'Authorization': 'Bearer $t',
+      },
+    );
+    var res = json.decode(response.body);
+    printWrapped('code  = ${response.statusCode}');
+    printWrapped('response  = ${response.body}');
+    printWrapped('token  = $t');
+    if (response.statusCode == 200) {
+
+      return new Response(200, "");
+    }
+
+
+    else {
+   //   showToast(failedOpreation);
+      return new Response(response.statusCode, "");
+    }
+  }
+  on TimeoutException catch (_) {
+    showToast(checkEnternet);
+    return Response(-1000, checkEnternet);
+  }
+  catch (e) {
+    printWrapped(e.toString());
+   // showToast(failedOpreation);
+    return new Response(-1, failedOpreation);
+  }
+}
+
+
 Future<Response> getServicePrivatePrice() async {
   String url = baseUrl + 'api/Core/GetParameter?code=Privacy_Price';
   printWrapped('url  = $url');
@@ -1238,8 +1277,10 @@ Future<Response> getSingleServicesInfo({
 
 
 
-  Future<Response> getServicePricePerPoints() async {
-  String url = baseUrl + 'api/Core/GetParameter?code=ServicePricePerPoints';
+  Future<Response> getServicePricePerPoints(int amount) async {
+
+
+/*  String url = baseUrl + 'api/Core/GetParameter?code=ServicePricePerPoints';
   printWrapped('url  = $url');
   try {
     var response = await http.get(
@@ -1274,7 +1315,7 @@ Future<Response> getSingleServicesInfo({
     printWrapped(e.toString());
     showToast(failedOpreation);
     return new Response(-1, failedOpreation);
-  }
+  }*/
 }
 
 
@@ -1428,6 +1469,7 @@ Future<Response> getAllServiceVisitor({
   url+='&\$skip=$skip';
   url+='&\$orderby=$orderby';
   url+="&\$filter=Status eq \'${filterType}\'";
+  url+="&\$expand=ServiceProvider";
 
   if(filterWorkType!=null)
     url+='&\$filter=UserWorkId eq $filterWorkType';
@@ -1481,7 +1523,7 @@ Future<Response> getAllServiceClient({
   url+='&\$skip=$skip';
   url+='&\$filter=CreatorId eq \'$filterUserID\' and Status eq \'${filterType}\'';
   url+='&\$orderby=$orderby';
-  url+='&\$expand=Comments';
+  url+='&\$expand=Comments,ServiceProvider';
 //  url+="&\$filter=Status eq \'${filterType}\'";
 
   if(filterWorkType!=null)
@@ -1540,7 +1582,7 @@ Future<Response> getAllMyService({
   url+='&\$skip=$skip';
   url+='&\$filter=CreatorId eq \'$filterUserID\'';
   url+='&\$orderby=$orderby';
-  url+='&\$expand=Comments';}
+  url+='&\$expand=Comments,ServiceProvider';}
 //  url+="&\$filter=Status eq \'${filterType}\'";
 
 
@@ -1599,7 +1641,7 @@ Future<Response> getAllServiceServicesProvider({
   String t=await getToken();
   String url = baseUrl + 'odata/Services?\$inlinecount=allpages';
   url+='&\$top=$top';
-  url+='&\$expand=Comments';
+  url+='&\$expand=Comments,ServiceProvider';
   url+='&\$skip=$skip';
   url+='&\$filter=ServiceProviderId eq \'$filterUserID\' and Status eq \'${filterType}\'';
   url+='&\$orderby=$orderby';
@@ -1644,6 +1686,65 @@ Future<Response> getAllServiceServicesProvider({
   }
 }
 
+
+
+Future<Response> getAllServiceForProvider({
+  int top=10,
+  int skip=0
+  ,String filterUserID,
+  String orderby='CreationDate asc',
+  String filterType='Active',
+  var filterWorkType,
+
+}) async {
+
+  String t=await getToken();
+  String url = baseUrl + 'odata/Services?\$inlinecount=allpages';
+  url+='&\$top=$top';
+  url+='&\$expand=Comments,ServiceProvider';
+  url+='&\$skip=$skip';
+  url+='&\$filter=ServiceProviderId eq \'$filterUserID\' and Status eq \'${filterType}\'&\$orderby=$orderby';
+ // url+='&\$orderby=$orderby';
+  //url+="&\$filter=Status eq \'${filterType}\'";
+
+  if(filterWorkType!=null)
+    url+='&\$filter=UserWorkId eq $filterWorkType';
+
+
+
+  printWrapped('url  = $url');
+  try {
+    var response = await http.get(
+      url,
+      headers: {
+        'Authorization': 'Bearer $t',
+      },
+    );
+    var res = json.decode(response.body);
+    printWrapped('code  = ${response.statusCode}');
+    printWrapped('response  = ${response.body}');
+    printWrapped('token  = $t');
+    if (response.statusCode == 200) {
+      AllServicesModel item = AllServicesModel.fromJson(res);
+      return new Response(200, item);
+    }
+
+
+    else {
+      showToast(failedOpreation);
+      return new Response(response.statusCode, failedOpreation);
+    }
+  }
+  on TimeoutException catch (_) {
+    showToast(checkEnternet);
+    return Response(-1000, checkEnternet);
+  }
+  catch (e) {
+    printWrapped(e.toString());
+    showToast(failedOpreation);
+    return new Response(-1, failedOpreation);
+  }
+}
 
 
 Future<Response> getAllServicePublic({
@@ -1822,11 +1923,15 @@ Future<Response> addPaymentToServer(PaymentModel map) async {
 
 
 
+
+
   var t=await getToken();
   String url = baseUrl + 'api/Actions/ChangePlan';
-  printWrapped(json.encode(map));
+  printWrapped("body ${json.encode(map)}");
   printWrapped(url);
 
+
+/*  return Response(400,"");*/
   try {
     var response = await http.post(url, headers: {
       'Authorization': 'Bearer $t',
@@ -1928,10 +2033,6 @@ Future<Response> addFirebaseToken({String fireToken,String userID}) async {
 }
 
 Future<Response> AddCommentRQ(Map<String,dynamic> map) async {
-
-
-
-
   var t=await getToken();
   String url = baseUrl + 'odata/ServiceComments';
   printWrapped(json.encode(map));
@@ -1953,6 +2054,56 @@ Future<Response> AddCommentRQ(Map<String,dynamic> map) async {
 
 
       return new Response(200,item);
+
+    }
+    /*   else if (response.statusCode == 401) {
+      return new Response(response.statusCode, sharedData.tryLater);
+    } else if(response.statusCode==500)  {
+      sharedData.flutterToast(sharedData.phoneAlreadyUserd);
+      return new Response(response.statusCode, sharedData.tryLater);
+    }*/
+    else {
+      showToast(failedOpreation);
+      return new Response(response.statusCode, failedOpreation);
+    }
+  }
+  on TimeoutException catch (_) {
+    showToast(checkEnternet);
+    return Response(-1000, checkEnternet);
+  }
+
+  catch (e) {
+    printWrapped(e.toString());
+    showToast(failedOpreation);
+    return new Response(-1, failedOpreation);
+  }
+}
+
+
+Future<Response> EditTextClientRQ(Map<String,dynamic> map) async {
+  var t=await getToken();
+  String url = baseUrl + 'api/actions/EditService';
+  printWrapped("url = $url");
+  printWrapped(json.encode(map));
+
+  try {
+    var response = await http.post(url, headers: {
+      'Authorization': 'Bearer $t',
+      'content-type': 'application/json',
+    },
+        body: jsonEncode(map));
+
+    printWrapped('code  = ${response.statusCode}');
+
+    if (response.statusCode == 201||response.statusCode==200) {
+      var res = json.decode(response.body);
+      printWrapped('response  = ${response.body}');
+
+     // CommentModel item=CommentModel.fromJson(res);
+
+
+
+      return new Response(200,"");
 
     }
     /*   else if (response.statusCode == 401) {
@@ -2158,6 +2309,54 @@ Future<Response> getApplicationInfo() async {
   }
 }
 
+
+
+
+Future<Response> deleteService(String id) async {
+
+  String t=await getToken();
+  String url = baseUrl + 'odata/Services($id)';
+  printWrapped('url  = $url');
+
+  try {
+    var response = await http.delete(
+      url,
+      headers: {
+        'Authorization': 'Bearer $t',
+
+      },
+    );
+
+    printWrapped('code  = ${response.statusCode}');
+
+    if (response.statusCode == 200||response.statusCode==204) {
+
+  /*    var res = json.decode(response.body);
+      printWrapped('response  = ${response.body}');*/
+      return new Response(200,true);
+
+    }
+
+
+
+    else  {
+
+        showToast(failedOpreation);
+        return new Response(response.statusCode, failedOpreationDelete);}
+
+
+  }
+  on TimeoutException catch (_) {
+    showToast(checkEnternet);
+    return Response(-1000, checkEnternet);
+  }
+
+  catch (e) {
+    printWrapped(e.toString());
+    showToast(failedOpreation);
+    return new Response(-1, failedOpreationDelete);
+  }
+}
 
 /*------------------------------asdasdasdasd-----------------------*/
 

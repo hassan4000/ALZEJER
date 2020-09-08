@@ -47,8 +47,9 @@ class SingleServicesModel {
     String serviceProviderToken;
     String clientToken;
     int userWorkId;
+    bool showLove;
 
-    SingleServicesModel({this.serviceProviderToken,this.clientToken,this.attachmentId, this.avgWaitingTime, this.comments, this.country, this.creationDate, this.creator, this.creatorId, this.description, this.didYouExorcism, this.dreamDate, this.explanation, this.explanationDate, this.haveYouPrayedBeforeTheDream, this.id, this.isThereWakefulness, this.jobStatus, this.kidsStatus, this.lastModificationDate, this.modifier, this.modifierId, this.name, this.numberOfAllPeopleWaiting, this.numberOfLikes, this.numberOfRemainingPeople, this.numberOfViews, this.privateService, this.privateServicePrice, this.publicServiceAction, this.regligionStatus, this.servicePath, this.servicePathId, this.serviceProvider, this.serviceProviderId, this.sex, this.socialStatus, this.status, this.userWork, this.userWorkId});
+    SingleServicesModel({this.showLove=false,this.serviceProviderToken,this.clientToken,this.attachmentId, this.avgWaitingTime, this.comments, this.country, this.creationDate, this.creator, this.creatorId, this.description, this.didYouExorcism, this.dreamDate, this.explanation, this.explanationDate, this.haveYouPrayedBeforeTheDream, this.id, this.isThereWakefulness, this.jobStatus, this.kidsStatus, this.lastModificationDate, this.modifier, this.modifierId, this.name, this.numberOfAllPeopleWaiting, this.numberOfLikes, this.numberOfRemainingPeople, this.numberOfViews, this.privateService, this.privateServicePrice, this.publicServiceAction, this.regligionStatus, this.servicePath, this.servicePathId, this.serviceProvider, this.serviceProviderId, this.sex, this.socialStatus, this.status, this.userWork, this.userWorkId});
 
     factory SingleServicesModel.fromJson(Map<String, dynamic> json) {
         return SingleServicesModel(
@@ -65,7 +66,7 @@ class SingleServicesModel {
             explanation: json['Explanation'],
             explanationDate: json['ExplanationDate'],
             haveYouPrayedBeforeTheDream: json['HaveYouPrayedBeforeTheDream'],
-            id: json['Id'],
+            id: json['id'],
             isThereWakefulness: json['IsThereWakefulness'],
             jobStatus: json['JobStatus'],
             kidsStatus: json['KidsStatus'],
@@ -108,7 +109,7 @@ class SingleServicesModel {
         data['Explanation'] = this.explanation;
         data['ExplanationDate'] = this.explanationDate;
         data['HaveYouPrayedBeforeTheDream'] = this.haveYouPrayedBeforeTheDream;
-        data['Id'] = this.id;
+        data['id'] = this.id;
         data['IsThereWakefulness'] = this.isThereWakefulness;
         data['JobStatus'] = this.jobStatus;
         data['KidsStatus'] = this.kidsStatus;

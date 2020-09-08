@@ -7,6 +7,7 @@ import 'package:faserholmak/Model/AllServicesModel/AllServicesModel.dart';
 import 'package:faserholmak/Model/WorkTypeUser/Value.dart';
 import 'package:faserholmak/Model/WorkTypeUser/WorkTypeModel.dart';
 import 'package:faserholmak/Screens/DetailsServiceYouWant/DetailsServiceYouWant.dart';
+import 'package:faserholmak/Screens/Drawer/MyDrawer.dart';
 import 'package:faserholmak/Screens/Login/components/background.dart';
 import 'package:faserholmak/wigets/CardDreams.dart';
 import 'package:flutter/cupertino.dart';
@@ -83,7 +84,34 @@ class _MySericesPageState extends State<MySericesPage> {
             if(isLoadingMore&&index==data.length-1)
               return Center(child: CircularProgressIndicator(),);
           else{  AllServicesData item=listServicesData[index];
-            return CardDreams(desc: item.description,likes: item.numberOfLikes,views: item.numberOfViews,
+            return CardDreams(showLove: item.showLove,desc: item.description,likes: item.numberOfLikes,views: item.numberOfViews,
+                provierName: emptyString(item.serviceProvider.name),
+                lovePress: () async {
+                  setState(() {
+                    item.showLove=true;
+                  });
+
+                  Response response=await addLike(item.id);
+
+                  setState(() {
+                    item.showLove=false;
+                    if(response.statusCode==200 ){
+                    if(item.numberOfLikes!=null){
+                      int num=   int.parse(item.numberOfLikes);
+                      num++;
+                      item.numberOfLikes=num.toString();
+                    }
+                    else{
+                      item.numberOfLikes="1";
+                    }
+
+                    }
+
+                  });
+
+
+                },
+                explantaion: emptyString(item.explanation),showExplanationText: true,
                 press: (){ openPage(context, DetailsServiceYouWant(servicesData: item,));});}
           });
     else
@@ -170,6 +198,7 @@ class _MySericesPageState extends State<MySericesPage> {
     return SafeArea(
       top: true,
       child: Scaffold(
+        drawer: MyDrawer(),
         appBar: AppBar(
           centerTitle: true,
           title: Text("خدماتي "),
@@ -181,14 +210,19 @@ class _MySericesPageState extends State<MySericesPage> {
              /* selectedUserWork=Value();*/
            //   userWorkList=List();
             //  listServicesData=List();
+
+              selectedUserWork=null;
               isLoadingRefersh=true;
             });
+
+
            // setRefresh(true);
             await getAllUserWorkRQ();
             await getAllServicesRQ(skip: skipNumber,top: topNumber);
             setRefresh(false);
           },
           child: SingleChildScrollView(
+            physics: AlwaysScrollableScrollPhysics(),
             controller: controllerScroll,
             child:isLoadingRefersh?
             Container(
@@ -202,6 +236,7 @@ class _MySericesPageState extends State<MySericesPage> {
 
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   SizedBox(height: 30,),
                   Padding(
@@ -222,7 +257,7 @@ class _MySericesPageState extends State<MySericesPage> {
                         elevation: 10,
                         hint: Text(orderBy,style: getTextSyle(16, Colors.black,fontWeight: FontWeight.w600),
                           textDirection: TextDirection.rtl, textAlign: TextAlign.center,),
-                        value: selectedUserWork!=null?selectedUserWork:null,
+                        value: selectedUserWork,
                         onChanged: (Value value) async {
                           print("-----------------");
                           setState(() {
@@ -255,7 +290,7 @@ class _MySericesPageState extends State<MySericesPage> {
                   ),
                   SizedBox(height: 10,),
 
-                  dataListView(listServicesData,context),
+                  Flexible(child: dataListView(listServicesData,context)),
 
 
                 ],

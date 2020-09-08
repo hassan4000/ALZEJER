@@ -25,6 +25,7 @@ class CardPaymentMethod extends StatelessWidget {
     return GestureDetector(
       onTap: press,
       child: Card(
+
         clipBehavior: Clip.hardEdge,
         elevation: 8,
 
@@ -34,6 +35,7 @@ class CardPaymentMethod extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
+
 
             children: <Widget>[
               SizedBox(height: 4,),

@@ -80,7 +80,34 @@ class _CompletedServiceServiceProvidersState extends State<CompletedServiceServi
             if(isLoadingMore&&index==data.length-1)
               return Center(child: CircularProgressIndicator(),);
             else{  AllServicesData item=listServicesData[index];
-            return CardDreams(desc: item.description,likes: item.numberOfLikes,views: item.numberOfViews,
+            return CardDreams(showLove: item.showLove,desc: item.description,likes: item.numberOfLikes,views: item.numberOfViews,
+                provierName: emptyString(item.serviceProvider.name),
+                lovePress: () async {
+                  setState(() {
+                    item.showLove=true;
+                  });
+
+                  Response response=await addLike(item.id);
+
+                  setState(() {
+                    item.showLove=false;
+                    if(response.statusCode==200 ){
+                      if(item.numberOfLikes!=null){
+                        int num=   int.parse(item.numberOfLikes);
+                        num++;
+                        item.numberOfLikes=num.toString();
+                      }
+                      else{
+                        item.numberOfLikes="1";
+                      }
+
+                    }
+
+                  });
+
+
+                },
+                explantaion: emptyString(item.explanation),showExplanationText: true,
                 press: (){ openPage(context, DetailsServiceYouWant(servicesData: item,));});}
           });
     else

@@ -1,3 +1,4 @@
+import 'package:barcode_scan/barcode_scan.dart';
 import 'package:faserholmak/Dialog/MyShowDialog.dart';
 import 'package:faserholmak/Helper/AppApi.dart';
 import 'package:faserholmak/Helper/BasicTools.dart';
@@ -8,6 +9,7 @@ import 'package:faserholmak/Model/AllServicesModel/AllServicesModel.dart';
 import 'package:faserholmak/Model/CommentModel/CommentModel.dart';
 import 'package:faserholmak/Model/SingleServicesModel/SingleServicesModel.dart';
 import 'package:faserholmak/Model/UserWorkWithNumber/UserWorkWithNumber.dart';
+import 'package:faserholmak/MyServices/MySericesPage.dart';
 import 'package:faserholmak/Screens/AreYouHurryPage/AreYouHurryPage.dart';
 import 'package:faserholmak/Screens/ChatForPublic/ChatForPublic.dart';
 import 'package:faserholmak/Screens/DetailsServiceYouWant/DetailsServiceYouWant.dart';
@@ -84,7 +86,32 @@ class _GeneralPageClientState extends State<GeneralPageClient> {
 
           itemBuilder: (context, index) {
             AllServicesData item=listServicesData[index];
-            return CardDreams(desc: item.description,likes: item.numberOfLikes,views: item.numberOfViews,
+            return CardDreams(showLove: item.showLove,desc: item.description,likes: item.numberOfLikes,views: item.numberOfViews,
+              lovePress: () async {
+                setState(() {
+                  item.showLove=true;
+                });
+
+                Response response=await addLike(item.id);
+
+                setState(() {
+                  item.showLove=false;
+                  if(response.statusCode==200 ){
+                    if(item.numberOfLikes!=null){
+                      int num=   int.parse(item.numberOfLikes);
+                      num++;
+                      item.numberOfLikes=num.toString();
+                    }
+                    else{
+                      item.numberOfLikes="1";
+                    }
+
+                  }
+
+                });
+
+
+              },
             press: (){ openPage(context, DetailsServiceYouWant(servicesData: item,));},);
           });
     else
@@ -140,8 +167,8 @@ class _GeneralPageClientState extends State<GeneralPageClient> {
         Text("$expectedTimeForInterpretation  ",style: getTextSyle(16, kPrimaryColor),textAlign: TextAlign.center,),
         Text("  ${getAvg(singleServicesModel.avgWaitingTime)} ",style: getTextSyle(16, kPrimaryColor),textAlign: TextAlign.center,),
 
-        CardTimeDreams(showDolar: false,name: emptyString(singleServicesModel.serviceProvider.name),
-        price: "",textUnderLineHint:youAreHere,
+        CardTimeDreams(showDolar: false,name: emptyString(singleServicesModel.serviceProvider!=null?singleServicesModel.serviceProvider.name:""),
+        price: "",textUnderLineHint:hintHomeClient,
           textUnderLine: emptyString(singleServicesModel.numberOfRemainingPeople.toString()),
         textAboveLine: emptyString(singleServicesModel.numberOfAllPeopleWaiting.toString()),),
       ],
@@ -495,8 +522,13 @@ class _GeneralPageClientState extends State<GeneralPageClient> {
                               children: <Widget>[
                                 Expanded(child: Padding(
                                   padding: const EdgeInsets.all(8.0),
-                                  child: SmallHomeCard(txt: chatForPeople,press: (){
-                                    openPage(context, ChatForPublic());
+                                  child: SmallHomeCard(txt: chatForPeople,press: () async {
+                                   // openPage(context, ChatForPublic());
+
+
+
+
+                                   /* String barcode = await BarcodeScanner.scan();*/
                                   },),
                                 )),
                                 Expanded(child: Padding(
@@ -509,8 +541,11 @@ class _GeneralPageClientState extends State<GeneralPageClient> {
                             ),
                             Row(
                               mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.start,
                               children: <Widget>[
-                                Expanded(child: GestureDetector(
+
+
+                                GestureDetector(
                                   onTap: (){
 
 
@@ -521,8 +556,16 @@ class _GeneralPageClientState extends State<GeneralPageClient> {
                                     child: Icon(Icons.assessment,color: kPrimaryColor,size: 30,)
                                    ,
                                   ),
-                                )),
-                                Expanded(child: GestureDetector(
+                                ),
+                                Flexible(
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                                    child: SmallHomeCard(txt: myServices,press: (){
+                                      openPage(context, MySericesPage());
+                                    },),
+                                  ),
+                                ),
+                             /*   Expanded(child: GestureDetector(
                                   onTap: (){
 
                                     openDialog1GeneralPage(context);
@@ -532,7 +575,7 @@ class _GeneralPageClientState extends State<GeneralPageClient> {
                                     child: Icon(Icons.people,color: kPrimaryColor,size: 30,)
                                     ,
                                   ),
-                                )),
+                                )),*/
                               ],
                             ),
 

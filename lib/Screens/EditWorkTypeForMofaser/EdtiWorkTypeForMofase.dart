@@ -41,17 +41,13 @@ class _EditWotkTypeForMofaseState extends State<EditWotkTypeForMofase> {
 
   Widget _dataListView(List<Value> data, context) {
     if (data == null)
-      return ListView(
-        children: <Widget>[
-          Container(
-            height: MediaQuery.of(context).size.height,
-            child: Center(
-                child: Text(
-                  failedOpreation,
-                  style: TextStyle(color: Colors.grey, fontSize: 16),
-                )),
-          ),
-        ],
+      return Container(
+
+        child: Center(
+            child: Text(
+              failedOpreation,
+              style: TextStyle(color: Colors.grey, fontSize: 16),
+            )),
       );
     else if (data.length > 0)
       return ListView.builder(
@@ -74,17 +70,12 @@ class _EditWotkTypeForMofaseState extends State<EditWotkTypeForMofase> {
             );
           });
     else
-      return ListView(
-        children: <Widget>[
-          Container(
-            height: MediaQuery.of(context).size.height,
-            child: Center(
-                child: Text(
-                  noData,
-                  style: TextStyle(color: Colors.grey, fontSize: 16),
-                )),
-          ),
-        ],
+      return Container(
+        child: Center(
+            child: Text(
+              noSpecaist,
+              style: TextStyle(color: Colors.grey, fontSize: 16),
+            )),
       );
   }
 
@@ -127,6 +118,10 @@ class _EditWotkTypeForMofaseState extends State<EditWotkTypeForMofase> {
 
 
 
+      }else{
+        setState(() {
+          listViewItem=workTypeModel.value;
+        });
       }
     }
 
@@ -159,6 +154,7 @@ class _EditWotkTypeForMofaseState extends State<EditWotkTypeForMofase> {
           inAsyncCall: isLoading,
           child: Background(
             child: SingleChildScrollView(
+              physics: AlwaysScrollableScrollPhysics(),
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 40),
                 child: Column(

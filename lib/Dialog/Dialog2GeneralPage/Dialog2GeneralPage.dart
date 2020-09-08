@@ -113,6 +113,11 @@ class _Dialog2GeneralPageState extends State<Dialog2GeneralPage> {
                   ApplicationInfoPage(hint:"عدد الخدمات المنفذة" ,text:emptyString(data.allDoneServices.toString()) ),
                   ApplicationInfoPage(hint:"عدد المفتين" ,text:emptyString(data.allIftaaUsers.toString()) ),
 
+                  ApplicationInfoPage(hint:"عدد الجمهور المتصل" ,text:emptyString(data.allActiveClients.toString()) ),
+                  ApplicationInfoPage(hint:"عدد  الزيارات" ,text:emptyString(data.allActiveClientsInThePastThreeDays.toString()) ),
+                  ApplicationInfoPage(hint:"كل العملاء" ,text:emptyString(data.allClients.toString()) ),
+                  ApplicationInfoPage(hint:"كل المستخدمين" ,text:emptyString(data.allUsers.toString()) ),
+
                 ],
               ),
             ))

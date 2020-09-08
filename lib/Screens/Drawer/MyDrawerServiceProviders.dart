@@ -7,6 +7,7 @@ import 'package:faserholmak/Model/UserInfoModel/UserInfoModel.dart';
 import 'package:faserholmak/Screens/ChatForPublic/ChatForPublic.dart';
 import 'package:faserholmak/Screens/ChatsForMofaser/ChatForMofaser.dart';
 import 'package:faserholmak/Screens/EditProfile/EditProfileMofaser/EditProfileMofaser.dart';
+import 'package:faserholmak/Screens/GeneralPageServicesProvider/GeneralPageServicesProvider.dart';
 import 'package:faserholmak/Screens/Login/login_screen.dart';
 import 'package:faserholmak/Screens/MofaserBalance/MofaserBalance.dart';
 import 'package:faserholmak/Screens/SelectUserType/SelectUserType.dart';
@@ -98,6 +99,26 @@ class _MyDrawerServicsProviderState extends State<MyDrawerServicsProvider> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
+                          GestureDetector(
+                            onTap: (){
+                              openPageAndClearPrev(context:context,page: GeneralPageServicesProvider(),route: HomePageRoute2);
+                              //   openPage(context, EditProfileMofaser());
+                            },
+                            child: Container(
+                                padding: EdgeInsets.symmetric(vertical: 0,horizontal: 0)
+                                ,child: Row(
+                              children: <Widget>[
+                                IconButton(onPressed: (){},icon: Icon(Icons.home,color:  kPrimaryColor),),
+                                Text(homePage,style: getTextSyle(16, kPrimaryColor),)
+                              ],
+                            )),
+                          ),
+
+                          Divider(
+                            color:  Colors.grey,
+                            thickness: 1,
+                          ),
+
 
                           GestureDetector(
                             onTap: (){
@@ -117,6 +138,8 @@ class _MyDrawerServicsProviderState extends State<MyDrawerServicsProvider> {
                             color:  Colors.grey,
                             thickness: 1,
                           ),
+
+
 
 
                           GestureDetector(

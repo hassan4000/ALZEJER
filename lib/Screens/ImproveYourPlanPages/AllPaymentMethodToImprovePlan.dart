@@ -26,8 +26,9 @@ class AllPaymentMethodToImprovePlan extends StatefulWidget {
   PaymentModel paymentModel;
 
   bool formAddSerives;
+  String pricePath;
 
-  AllPaymentMethodToImprovePlan({this.paymentModel,this.formAddSerives=false});
+  AllPaymentMethodToImprovePlan({this.paymentModel,this.formAddSerives=false,this.pricePath});
 
   @override
   _AllPaymentMethodToImprovePlanState createState() => _AllPaymentMethodToImprovePlanState();
@@ -41,18 +42,18 @@ class _AllPaymentMethodToImprovePlanState extends State<AllPaymentMethodToImprov
   String _response = '';
 
 
-  Future<bool> checkPoint() async {
-    reSetLoadingHUD(true);
+  Future<bool> checkPoint(int amount) async {
+  //  reSetLoadingHUD(true);
 
 
 
-    Response response=await getServicePricePerPoints();
-    reSetLoadingHUD(false);
-    if(response.statusCode==200){
-
-      int result=userInfo.pointsBalance-response.object;
+  //  Response response=await getServicePricePerPoints(amount);
+    //reSetLoadingHUD(false);
+   // if(response.statusCode==200){
+    // }
+      int result=userInfo.pointsBalance-amount;
       if(result>0) return true;
-    }
+
     return false;
 
   }
@@ -300,7 +301,7 @@ class _AllPaymentMethodToImprovePlanState extends State<AllPaymentMethodToImprov
                   ),
                   MyButton(txt: payByPointTxt,press: () async {
 
-                    bool canPayPyPoint=await checkPoint();
+                    bool canPayPyPoint=await checkPoint(addPointInPaymnet(widget.paymentModel.amount));
 
                     if(canPayPyPoint){
                       reSetLoadingHUD(true);
@@ -311,7 +312,8 @@ class _AllPaymentMethodToImprovePlanState extends State<AllPaymentMethodToImprov
 
                       Response response= await openPayByPointDialog(context,
                           new SingleServicesModel(id: widget.paymentModel.serviceId
-                              ,servicePathId: widget.paymentModel.servicePathId));
+                              ,servicePathId: widget.paymentModel.servicePathId,privateService: widget.paymentModel.privateServices),
+                      addPointInPaymnet(widget.paymentModel.amount));
                       if(response.statusCode==200){
 
                         var  point=response.object;

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 import '../constants.dart';
 
-class CardTimeDreams extends StatelessWidget {
+class CardTimeDreamsHome extends StatelessWidget {
   String price;
   String name;
   String textAboveLine;
@@ -16,7 +16,7 @@ class CardTimeDreams extends StatelessWidget {
   bool line;
 
 
-  CardTimeDreams({this.price, this.name, this.showDolar=true,this.textAboveLine, this.textUnderLineHint=timeToStart,this.textUnderLine,this.press,this.line=true});
+  CardTimeDreamsHome({this.price, this.name, this.showDolar=true,this.textAboveLine, this.textUnderLineHint=timeToStart,this.textUnderLine,this.press,this.line=true});
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +35,6 @@ class CardTimeDreams extends StatelessWidget {
 
             mainAxisSize: MainAxisSize.max,
             children: <Widget>[
-
               Expanded(
                 flex: 2,
                 child: Column(children: <Widget>[
@@ -44,7 +43,7 @@ class CardTimeDreams extends StatelessWidget {
                   Divider(thickness: 2,height: 2,)
                       :SizedBox(height:2,),
                   line?
-                  Text('$textUnderLineHint $textUnderLine',style: getTextSyle(12, kPrimaryColor),textDirection: TextDirection.rtl,)
+                  Text('$textUnderLineHint $textUnderLine',style: getTextSyle(16, kPrimaryColor),textDirection: TextDirection.rtl,)
                   :Container(),
                 ],),
               ),
