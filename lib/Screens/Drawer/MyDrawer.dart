@@ -100,8 +100,8 @@ class _MyDrawerState extends State<MyDrawer> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
 
-                        (emptyString(userInfo.socialStatus)==GOOGLE||emptyString(userInfo.socialStatus)==FACEBOOK)?
-                            Container():
+
+
                         GestureDetector(
                           onTap: (){
                             openPageAndClearPrev(context:context,page: GeneralPageClient(),route: HomePageRoute);
@@ -121,6 +121,9 @@ class _MyDrawerState extends State<MyDrawer> {
                           thickness: 1,
                         ),
 
+
+                        (emptyString(userInfo.socialStatus)==GOOGLE||emptyString(userInfo.socialStatus)==FACEBOOK)?
+                            Container():
                         GestureDetector(
                           onTap: (){
                             openPage(context, EditProfileClient());
@@ -134,7 +137,8 @@ class _MyDrawerState extends State<MyDrawer> {
                             ],
                           )),
                         ),
-
+                        (emptyString(userInfo.socialStatus)==GOOGLE||emptyString(userInfo.socialStatus)==FACEBOOK)?
+                        Container():
                         Divider(
                           color:  Colors.grey,
                           thickness: 1,

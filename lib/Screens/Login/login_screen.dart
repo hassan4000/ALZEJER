@@ -89,10 +89,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
       }
 
-      setState(() {
-        isLoading = false;
-      });
-
 
 
 
@@ -284,12 +280,12 @@ class _LoginScreenState extends State<LoginScreen> {
 
 
           if(userInfo.type==clientTxt){
-            openPageAndClearPrev(context:context,page: MySericesPage(),route: MyServicesPageRoute);
-           // openPageAndClearPrev(context:context,page: GeneralPageClient(),route: HomePageRoute);
+          //  openPageAndClearPrev(context:context,page: MySericesPage(),route: MyServicesPageRoute);
+         openPageAndClearPrev(context:context,page: GeneralPageClient(),route: HomePageRoute);
             }
           else if(userInfo.type==interpreterTxt){
-            openPageAndClearPrev(context:context,page: TabWithImageHomePage(userInfo),route: TabWithImageRoute);
-         //   openPageAndClearPrev(context:context,page: GeneralPageServicesProvider(),route: HomePageRoute2);
+         //   openPageAndClearPrev(context:context,page: TabWithImageHomePage(userInfo),route: TabWithImageRoute);
+            openPageAndClearPrev(context:context,page: GeneralPageServicesProvider(),route: HomePageRoute2);
           }
         }else{
           //   showToast(userDataRequest.object.toString());

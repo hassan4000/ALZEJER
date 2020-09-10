@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "454898563182-5ebqoqeqs04h00cslibqfd719adlj705.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.faserholmak",
+            "certificate_hash": "3391e84fab8f9cea9dc240ef143ea48fac562ed0"
+          }
+        },
+        {
           "client_id": "454898563182-ql1avu6ppjldpal1l1lsvsh0b0uidaj0.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
@@ -58,6 +66,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "454898563182-hqo3t3iqblinji56s6vda8f574m4psus.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.faserholmak.alzeker.faserholmak",
+            "certificate_hash": "3391e84fab8f9cea9dc240ef143ea48fac562ed0"
+          }
+        },
         {
           "client_id": "454898563182-d64a4qmui41r1tungf37rthrjgentrc4.apps.googleusercontent.com",
           "client_type": 1,
