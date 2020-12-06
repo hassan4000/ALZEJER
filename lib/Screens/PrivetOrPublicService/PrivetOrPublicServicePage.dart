@@ -45,7 +45,7 @@ class _PrivetOrPublicServicePageState extends State<PrivetOrPublicServicePage> {
     PaymentModel paymentModel=PaymentModel(myMoeny: double.parse(widget.addServiceModel.privateServicePrice),
       servicePathId: widget.addServiceModel.servicePathId,serviceId:0,);
     double cost= double.parse(widget.addServiceModel.privateServicePrice);
-    if(item.name==publicTxt||item.name=="0"||item.price=="0.0"){
+    if(item.name=="0"||item.price=="0.0"){
       widget.addServiceModel.privateService=false;
       paymentModel.privateServices=false;
 

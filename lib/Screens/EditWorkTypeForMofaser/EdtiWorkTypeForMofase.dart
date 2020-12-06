@@ -87,6 +87,7 @@ class _EditWotkTypeForMofaseState extends State<EditWotkTypeForMofase> {
       WorkTypeModel workTypeModel=response.object;
 
 
+
       print("size befor ${workTypeModel.value.length}");
       for(int i =0;i<userInfo.userWorks.length;i++) {
         for (int j=0; j < workTypeModel.value.length; j++) {

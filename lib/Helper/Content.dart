@@ -18,7 +18,8 @@ const String  MyServicesPageRoute="MyServicesPage";
 
 const String SERVER_TOKEN="AAAAaeoROG4:APA91bEq4mIHEkhrXMzjYGHL9K6HqNRsuo-lsrtq7M694axkEpI29d5rfCCbX_sgvqkpqzRsjvVgjyWuWqSUBBnHdMnJp5Z_cavV5PuSMxmhdtMXAStrvjCcURP8IDUIHi3Fku9GHJbd";
 
-const String googlePlayUrl="https://play.google.com/store/apps/details?id=com.faserholmak.alzeker.faserholmak";
+//const String googlePlayUrl="https://play.google.com/store/apps/details?id=com.faserholmak.alzeker.faserholmak";
+const String googlePlayUrl="https://mks.onelink.me/yTgK/ba6b0f45";
 
 
 const String yourBalanceByPoint="رصيدك من النقاط";
@@ -27,6 +28,7 @@ const String faildToAddService="فشلت عملية اضفة خدمة";
 const String youDonotHaveEnoughtPoint="عذرا انت لاتملك رصيد كافي ";
 
 const pointDesc="شارك التطبيق واكسب نقاط تستطيع من خلالها ترقية خدماتك";
+const pointPrice="كل 10 نقاط تساوي 1\$";
 const String FACEBOOK="Facebook";
 const String GOOGLE="Google";
 const String TWITTER="Twitter";
@@ -82,7 +84,7 @@ const String addYourOpinionInMofaser="اضف رأيك بالمفسر";
 
 const String whatIsServicesYouWant="ماهي الخدمة المطلوبة";
 const String whatIsServicesYouWant_v2="ماهي الخدمة التي تريدها";
-const String selectProvider="اختر مقدم الخدمة المناسب";
+const String selectProvider="الخدمة مجانية عند بعض مقدمي الخدمات";
 const String servicesIndex="فهرس الخدمات";
 const String name="الاسم";
 const String gener="الجنس";
@@ -107,7 +109,7 @@ const String password="كلمة المرور";
 const String rePassword="تأكيد كلمة المرور";
 const String whenWasTheDream="متى كان الحلم";
 const String doYouhaveChildern="هل يوجد اطفال؟";
-const String deschint1="الوصف الشخصي \n اكتب ما لايتجاوز 50 حرف";
+const String deschint1="اكتب السيره الذاتية والخبرات العملية ليتم قبولك في الوظيفة";
 
 const String dreamsExplained="الخدمات المنفذة";
 const String interpreters="المفسرون";
@@ -176,6 +178,8 @@ const String isThereAnyChild="هل يوجد اولاد";
 
 
 const String howAppWork="آلية عمل البرنامج";
+const String cotactWithUsTxt="تواصل معنا";
+
 const String swear="ميثاق الشرف";
 const String ageTxt="العمر";
 const String specalist="التخصص";
@@ -213,6 +217,7 @@ const String homePage="الصفحة الرئيسية";
 const String moreInfo="صفحتي";
 const String addUserWork="اضافة اختصاص";
 const String byUser=":";
+const String privateServies="خدمة خاصة";
 
 
 

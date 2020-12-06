@@ -30,7 +30,7 @@ class ServicePath {
             modifier: json['Modifier'],
             modifierId: json['ModifierId'],
             name: json['Name'],
-            serviceProvider: json['ServiceProvider'],
+           // serviceProvider: json['ServiceProvider'],
             serviceProviderId: json['ServiceProviderId'],
         );
     }
@@ -49,7 +49,7 @@ class ServicePath {
         data['Modifier'] = this.modifier;
         data['ModifierId'] = this.modifierId;
         data['Name'] = this.name;
-        data['ServiceProvider'] = this.serviceProvider;
+       // data['ServiceProvider'] = this.serviceProvider;
         data['ServiceProviderId'] = this.serviceProviderId;
         return data;
     }

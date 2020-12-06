@@ -1,4 +1,4 @@
-import 'package:barcode_scan/barcode_scan.dart';
+
 import 'package:faserholmak/Dialog/MyShowDialog.dart';
 import 'package:faserholmak/Helper/AppApi.dart';
 import 'package:faserholmak/Helper/BasicTools.dart';
@@ -55,7 +55,7 @@ class _GeneralPageClientState extends State<GeneralPageClient> {
 
 
   String getAvg(String txt){
-    if(emptyString(txt)=="") return "سوف يتم التفسير قريبا";
+    if(emptyString(txt)=="") return "سوف يتم تنفيذ الخدمة قريبا";
     else return emptyString(txt);
   }
 
@@ -225,7 +225,8 @@ class _GeneralPageClientState extends State<GeneralPageClient> {
               style: TextStyle(color: Colors.grey, fontSize: 16),
             )),
       );
-    else if (data.length > 0)
+    else if (data.length > 0){
+
       return GridView.builder(
           shrinkWrap: true,
           physics: NeverScrollableScrollPhysics(),
@@ -243,12 +244,15 @@ class _GeneralPageClientState extends State<GeneralPageClient> {
 
           itemBuilder: (context, index) {
             UserWorkWithNumber item=data[index];
+
+
+
             return MyButtonWithNumber(txt: emptyString(item.userWork.name),
             number: item.userCount,raduis: 6,textStyle: getTextSyle(14, Colors.white),
             press: (){
               openPage(context, ServiceProviders(selectedService: item.userWork,));
             },);
-          });
+          });}
     else
       return Container(
         height: MediaQuery.of(context).size.height,
@@ -421,7 +425,13 @@ class _GeneralPageClientState extends State<GeneralPageClient> {
 
               if(response.statusCode==200)
                 setState(() {
+
+
+
                   listUserWork=response.object;
+
+
+
                 });
             });
 
@@ -457,7 +467,7 @@ class _GeneralPageClientState extends State<GeneralPageClient> {
                       subtitle:   Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Expanded(child: Text("رصيدك من النقاط ${userInfo.pointsBalance.toString()}"
+                          Expanded(child: Text("رصيدك من النقاط ${userInfo.pointsBalance.toString()} \n $pointPrice"
                             ,style: getTextSyle(16, Colors.grey),
                             textDirection: TextDirection.rtl,textAlign: TextAlign.center,)),
                         ],
@@ -523,7 +533,7 @@ class _GeneralPageClientState extends State<GeneralPageClient> {
                                 Expanded(child: Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: SmallHomeCard(txt: chatForPeople,press: () async {
-                                   // openPage(context, ChatForPublic());
+                                    openPage(context, ChatForPublic());
 
 
 

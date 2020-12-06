@@ -5,6 +5,7 @@ import 'package:faserholmak/Screens/SelectUserType/SelectUserType.dart';
 import 'package:faserholmak/Screens/ServicesForClient/OnProgressServicesClient/OnProgressServicesClient.dart';
 import 'package:faserholmak/Screens/ServicesForVisitor/CompletedServicesVisitor/CompletedServicesVisitor.dart';
 import 'package:faserholmak/Screens/ServicesForVisitor/OnProgressServiceVisitor/OnProgressServiceVisitor.dart';
+import 'package:faserholmak/Screens/contactWithUs/ContactWithUs.dart';
 import 'package:faserholmak/Screens/privacyPolicy/PrivacyPolicyPage.dart';
 import 'package:faserholmak/wigets/LogoIcon.dart';
 import 'package:flutter/material.dart';
@@ -228,6 +229,27 @@ class _MyDrawerVistorState extends State<MyDrawerVistor> {
                             children: <Widget>[
                               IconButton(onPressed: (){},icon: Icon(Icons.share,color:  Colors.grey,),),
                               Text(shareApp,style: getTextSyle(16, kPrimaryColor),)
+                            ],
+                          )),
+                        ),
+                        Divider(
+                          color:  Colors.grey,
+                          thickness: 1,
+                        ),
+
+
+
+                        /*contact with us*/
+                        GestureDetector(
+                          onTap: () async {
+                            openPage(context, ContactWithUs());
+                          },
+                          child: Container(
+                              padding: EdgeInsets.symmetric(vertical: 0,horizontal: 0)
+                              ,child: Row(
+                            children: <Widget>[
+                              IconButton(onPressed: (){},icon: Icon(Icons.contacts,color: kPrimaryColor,),),
+                              Text(cotactWithUsTxt,style: getTextSyle(16, kPrimaryColor),)
                             ],
                           )),
                         ),

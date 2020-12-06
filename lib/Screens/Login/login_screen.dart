@@ -1,5 +1,8 @@
 
 
+
+import 'dart:io';
+
 import 'package:faserholmak/Helper/AppApi.dart';
 import 'package:faserholmak/Helper/BasicTools.dart';
 import 'package:faserholmak/Helper/Content.dart';
@@ -17,6 +20,7 @@ import 'package:faserholmak/Screens/TabWithImage/TabWithImage.dart';
 import 'package:faserholmak/Screens/TabWithImage/TabWithImageHomePage.dart';
 import 'package:faserholmak/Screens/TemrsPage/TermsPage.dart';
 import 'package:faserholmak/Screens/code/Code.dart';
+import 'package:faserholmak/Screens/informationBeforHireMe/InfoBeforHireMe.dart';
 import 'package:faserholmak/Screens/privacyPolicy/PrivacyPolicyPage.dart';
 import 'package:faserholmak/components/rounded_input_field.dart';
 import 'package:faserholmak/wigets/LogoIcon.dart';
@@ -34,6 +38,7 @@ import '../../constants.dart';
 import 'components/background.dart';
 
 
+
 class LoginScreen extends StatefulWidget {
   @override
   _LoginScreenState createState() => _LoginScreenState();
@@ -41,6 +46,8 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
 
+
+ // AppsflyerSdk _appsflyerSdk;
   bool isLoading=false;
   var formKeyValidation = GlobalKey<FormState>();
   //TextEditingController userNameControler=TextEditingController(text: "kinan.3bbas23");
@@ -232,12 +239,15 @@ class _LoginScreenState extends State<LoginScreen> {
 
 
          if(userInfo.type==clientTxt) {
+
+
+
          //  openPageAndClearPrev(context:context,page: MySericesPage(),route: MyServicesPageRoute);
-           openPageAndClearPrev(context: context,
-               page: GeneralPageClient(),
-               route: HomePageRoute);
+
+         openPageAndClearPrev(context: context, page: GeneralPageClient(),route: HomePageRoute);
          }
          else if(userInfo.type==interpreterTxt){
+
           // openPage(context, GeneralPageServicesProvider());
            openPageAndClearPrev(context:context,page: GeneralPageServicesProvider(),route: HomePageRoute2);
          //  openPageAndClearPrev(context:context,page: TabWithImageHomePage(userInfo),route: TabWithImageRoute);
@@ -281,10 +291,16 @@ class _LoginScreenState extends State<LoginScreen> {
 
           if(userInfo.type==clientTxt){
           //  openPageAndClearPrev(context:context,page: MySericesPage(),route: MyServicesPageRoute);
+
+
          openPageAndClearPrev(context:context,page: GeneralPageClient(),route: HomePageRoute);
+
+
             }
           else if(userInfo.type==interpreterTxt){
          //   openPageAndClearPrev(context:context,page: TabWithImageHomePage(userInfo),route: TabWithImageRoute);
+
+
             openPageAndClearPrev(context:context,page: GeneralPageServicesProvider(),route: HomePageRoute2);
           }
         }else{
@@ -307,6 +323,10 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   void initState() {
     super.initState();
+
+
+
+
 
   }
 
@@ -436,21 +456,21 @@ class _LoginScreenState extends State<LoginScreen> {
                       ],),
 
                       SizedBox(height: 10,),
-                      /*HIREME*/
-                      Row(children: <Widget>[
-                        /*------HIR MEr*/
-                        Expanded(
-                          child:MyButton(
-                            txt: hireMe,
-                            buttonColor: kPrimaryColor,
-                            raduis: 4,
-                            press: () {openPage(context, HowAppWork.interprete());},
-                          ),
-                        ),
+                      Row(
+                        textDirection: TextDirection.rtl,
 
+                        children: <Widget>[
+                          Expanded(
+                            child: InkWell(child: Text("هل نسيت كلمة المرور؟",
+                              style: getTextSyle(16, Colors.grey.shade500),
+                              textDirection: TextDirection.rtl,textAlign: TextAlign.right,),
+                              onTap: (){
+                                openPage(context, Code());
+                              },),
+                          )
+                        ],
+                      ),
 
-
-                      ],),
 
                       OrDivider(),
                       Row(
@@ -481,22 +501,50 @@ class _LoginScreenState extends State<LoginScreen> {
 
 
 
-                      Row(
+
+
+
+
+                      OrDivider(),
+                     /* Row(
                         textDirection: TextDirection.rtl,
 
                         children: <Widget>[
                           Expanded(
-                            child: InkWell(child: Text("هل نسيت كلمة المرور؟",
+                            child: InkWell(child: Text(hireMe,
                               style: getTextSyle(16, Colors.grey.shade500),
                               textDirection: TextDirection.rtl,textAlign: TextAlign.right,),
-                            onTap: (){
-                              openPage(context, Code());
-                            },),
+                              onTap: (){openPage(context, HowAppWork.interprete());},),
                           )
                         ],
-                      ),
+                      ),*/
 
-                      SizedBox(height: 30,),
+
+                      //  HIREME
+                      Row(children: <Widget>[
+                        //  ------HIR MEr
+                        Expanded(
+                          child:MyButton(
+                            txt: hireMe,
+                            textStyle: TextStyle(color: kPrimaryColor,fontSize: 16),
+                            buttonColor:kPrimaryLightColor,
+                            raduis: 4,
+                            press: () {
+
+                             // openPage(context, HowAppWork.interprete());
+                              openPage(context, InfoBeforHireMe());
+
+
+                              },
+                          ),
+                        ),
+
+
+
+                      ],),
+
+                      SizedBox(height: 20,),
+
                       Row(
                         textDirection: TextDirection.rtl,
                         mainAxisSize: MainAxisSize.max,

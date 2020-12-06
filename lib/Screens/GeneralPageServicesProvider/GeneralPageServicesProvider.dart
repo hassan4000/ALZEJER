@@ -11,6 +11,7 @@ import 'package:faserholmak/Screens/MofaserBalance/MofaserBalance.dart';
 import 'package:faserholmak/Screens/ServicesForServiceProviders/CompletedServiceServiceProviders/CompletedServiceServiceProviders.dart';
 import 'package:faserholmak/Screens/ServicesForServiceProviders/OnProgressServiceServiceProviders/OnProgressServiceServiceProviders.dart';
 import 'package:faserholmak/Screens/ServicesForServiceProviders/PublicServiceServiceProviders/PublicServiceServiceProviders.dart';
+import 'package:faserholmak/Screens/ServicesIndex/ServicesIndexPage.dart';
 import 'package:faserholmak/Screens/ServicesYouWant/ServiceYouWant.dart';
 import 'package:faserholmak/Screens/TabWithImage/TabWithImageHomePage.dart';
 import 'package:faserholmak/wigets/CardDreams.dart';
@@ -302,6 +303,13 @@ class _GeneralPageServicesProviderState extends State<GeneralPageServicesProvide
                                     child: Icon(Icons.assessment,color: kPrimaryColor,size: 30,)
                                     ,
                                   ),
+                                )),
+
+                                Expanded(child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: SmallHomeCard(txt: servicesIndex,press: (){
+                                    openPage(context, ServicesIndexPage());
+                                  },),
                                 )),
                               /*  Expanded(child: GestureDetector(
                                   onTap: (){

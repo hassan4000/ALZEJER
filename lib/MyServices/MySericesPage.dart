@@ -134,6 +134,7 @@ class _MySericesPageState extends State<MySericesPage> {
 
         userWorkList=List();
         userWorkList.addAll(item.value);
+
       });
     }
   }

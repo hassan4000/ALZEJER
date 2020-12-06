@@ -124,7 +124,7 @@ class _ServiesTypeForImprovePlanState extends State<ServiesTypeForImprovePlan> {
   Future<void> addServicesFun(PrivetOrPublicServiceModel item) async {
     double cost=widget.paymentModel.myMoeny;
     widget.paymentModel.currency="\$";
-    if(item.name==publicTxt||item.price=="0"||item.price=="0.0"){
+    if(item.price=="0"||item.price=="0.0"){
      // widget.paymentModel.amount= widget.paymentModel.myMoeny.toString();
       widget.paymentModel.amount= item.price;
       widget.paymentModel.privateServices=false;

@@ -104,6 +104,7 @@ class _ServiceYouWantState extends State<ServiceYouWant> {
 
                 setState(() {
                   listViewItem=workTypeModel.value;
+
                 });
 
 

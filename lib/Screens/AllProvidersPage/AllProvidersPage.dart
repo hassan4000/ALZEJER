@@ -78,7 +78,7 @@ class _AllProvidersPageState extends State<AllProvidersPage> {
     var response=await getSingleUserInfo(id: item.id);
     if(response.statusCode==200){
       UserInfoModel item=response.object;
-      openPage(context, TabWithImage(item));
+      openPage(context, TabWithImage(item,normalUser: true,));
     }
     setHUD(false);
 

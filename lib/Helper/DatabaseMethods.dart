@@ -2,16 +2,15 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'Content.dart';
 
 Future<void> addUserInfo(userData) async {
-  Firestore.instance.collection(TableUser).add(userData).catchError((e) {
+  FirebaseFirestore.instance.collection(TableUser).add(userData).catchError((e) {
     print("Firebase database"+e.toString());
   });
 }
 
 getUserInfo(String email) async {
-  return Firestore.instance
+  return FirebaseFirestore.instance
       .collection(TableUser)
-      .where(TableUserName, isEqualTo: email)
-      .getDocuments()
+      .where(TableUserName, isEqualTo: email).get()
       .catchError((e) {
     print("Firebase database"+e.toString());
   });
@@ -19,14 +18,14 @@ getUserInfo(String email) async {
 
 
 getChats() async{
-  return Firestore.instance
+  return FirebaseFirestore.instance
       .collection("Chats")
       .orderBy('Time')
       .snapshots();
 }
 
 getChatsMofaser() async{
-  return Firestore.instance
+  return FirebaseFirestore.instance
       .collection("ChatsMofaser")
       .orderBy('Time')
       .snapshots();
@@ -34,7 +33,7 @@ getChatsMofaser() async{
 
 Future<void> addMessageFirebase( chatMessageData){
 
-  Firestore.instance.collection("Chats")
+  FirebaseFirestore.instance.collection("Chats")
       .add(chatMessageData).catchError((e){
     print(e.toString());
   });
@@ -42,7 +41,7 @@ Future<void> addMessageFirebase( chatMessageData){
 
 Future<void> addMessageFirebaseMofaser( chatMessageData){
 
-  Firestore.instance.collection("ChatsMofaser")
+  FirebaseFirestore.instance.collection("ChatsMofaser")
       .add(chatMessageData).catchError((e){
     print(e.toString());
   });

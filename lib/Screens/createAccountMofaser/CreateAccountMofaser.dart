@@ -276,25 +276,25 @@ class _CreateAccountMofaserState extends State<CreateAccountMofaser> {
                               borderRadius: BorderRadius.circular(30),
                                color: erros?Colors.transparent:kPrimaryLightColor
                           ),
-                          child: TextFormField(
-                            maxLines: 1,
-                            textDirection: TextDirection.rtl,
-                            textAlign: TextAlign.start,
-                            style: TextStyle(
-                              color: kPrimaryColor,
-                              fontSize: 20,
+                            child: TextFormField(
+                              maxLines: 1,
+                              textDirection: TextDirection.rtl,
+                              textAlign: TextAlign.start,
+                              style: TextStyle(
+                                color: kPrimaryColor,
+                                fontSize: 20,
+                              ),
+                              keyboardType: TextInputType.text,
+                              controller: nameController,
+                              cursorColor: kPrimaryColor,
+                              decoration: getInputDecorationHassan(label: name),
+                              validator: (String item) {
+                                if (nameController.text.isEmpty)
+                                  return emptyValidation;
+                                else
+                                  return null;
+                              },
                             ),
-                            keyboardType: TextInputType.text,
-                            controller: nameController,
-                            cursorColor: kPrimaryColor,
-                            decoration: getInputDecorationHassan(label: name),
-                            validator: (String item) {
-                              if (nameController.text.isEmpty)
-                                return emptyValidation;
-                              else
-                                return null;
-                            },
-                          ),
                         ),
                         SizedBox(
                           height: 24,

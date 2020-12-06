@@ -16,6 +16,7 @@ import 'package:faserholmak/Screens/ServicesForServiceProviders/CompletedService
 import 'package:faserholmak/Screens/ServicesForServiceProviders/OnProgressServiceServiceProviders/OnProgressServiceServiceProviders.dart';
 import 'package:faserholmak/Screens/ServicesForServiceProviders/PublicServiceServiceProviders/PublicServiceServiceProviders.dart';
 import 'package:faserholmak/Screens/TabWithImage/TabWithImage.dart';
+import 'package:faserholmak/Screens/contactWithUs/ContactWithUs.dart';
 import 'package:faserholmak/Screens/privacyPolicy/PrivacyPolicyPage.dart';
 import 'package:faserholmak/wigets/LogoIcon.dart';
 import 'package:faserholmak/wigets/MyCircularImage.dart';
@@ -382,6 +383,25 @@ class _MyDrawerServicsProviderState extends State<MyDrawerServicsProvider> {
                             thickness: 1,
                           ),
 
+
+                          /*contact with us*/
+                          GestureDetector(
+                            onTap: () async {
+                              openPage(context, ContactWithUs());
+                            },
+                            child: Container(
+                                padding: EdgeInsets.symmetric(vertical: 0,horizontal: 0)
+                                ,child: Row(
+                              children: <Widget>[
+                                IconButton(onPressed: (){},icon: Icon(Icons.contacts,color: kPrimaryColor,),),
+                                Text(cotactWithUsTxt,style: getTextSyle(16, kPrimaryColor),)
+                              ],
+                            )),
+                          ),
+                          Divider(
+                            color:  Colors.grey,
+                            thickness: 1,
+                          ),
                           /*logout*/
                           GestureDetector(
                             onTap: () async {

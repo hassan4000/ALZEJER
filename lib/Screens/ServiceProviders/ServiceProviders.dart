@@ -1,6 +1,7 @@
 import 'package:faserholmak/Helper/AppApi.dart';
 import 'package:faserholmak/Helper/BasicTools.dart';
 import 'package:faserholmak/Helper/Content.dart';
+import 'package:faserholmak/Helper/StyleForApp.dart';
 import 'package:faserholmak/Model/AddServices/AddServiceModel.dart';
 import 'package:faserholmak/Model/ProvidersModelPagination/ProviderModelPagination.dart';
 import 'package:faserholmak/Model/UserInfoModel/UserInfoModel.dart';
@@ -132,7 +133,7 @@ class _ServiceProvidersState extends State<ServiceProviders> {
     var response=await getSingleUserInfo(id: item.id);
     if(response.statusCode==200){
       UserInfoModel item=response.object;
-      openPage(context, TabWithImage(item));
+      openPage(context, TabWithImage(item,normalUser: true,));
     }
     setHUD(false);
 
@@ -189,7 +190,7 @@ class _ServiceProvidersState extends State<ServiceProviders> {
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text(selectProvider),
+          title: Text(selectProvider,style: getTextSyle(14, Colors.white),),
         ),
         body: ModalProgressHUD(
           inAsyncCall: isLoadingHUD,

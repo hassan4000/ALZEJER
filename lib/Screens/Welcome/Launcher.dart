@@ -1,3 +1,7 @@
+import 'dart:io';
+
+
+import 'package:appsflyer_sdk/appsflyer_sdk.dart';
 import 'package:faserholmak/Helper/AppApi.dart';
 import 'package:faserholmak/Helper/BasicTools.dart';
 import 'package:faserholmak/Helper/Content.dart';
@@ -22,14 +26,24 @@ import 'package:flutter_svg/svg.dart';
 
 
 class Launcher extends StatefulWidget {
+
   @override
   _LauncherState createState() => _LauncherState();
 }
 
+
+
+
+
 class _LauncherState extends State<Launcher>
     with SingleTickerProviderStateMixin {
+  AppsflyerSdk _appsflyerSdk;
+
+
   AnimationController _animationController;
   Animation<double> animation;
+
+
 
 
 
@@ -81,8 +95,26 @@ class _LauncherState extends State<Launcher>
   @override
    void  initState()  {
     super.initState();
+
+    final AppsFlyerOptions options = AppsFlyerOptions(
+        afDevKey: "hvFxVsn8LYbjhnSKRM9Dpe", appId: "123456789", showDebug: true);
+    _appsflyerSdk = AppsflyerSdk(options);
+
+   if(mounted) {
+      if(Platform.isAndroid){
+        _appsflyerSdk.setCollectAndroidId(true);
+        _appsflyerSdk.setCollectIMEI(false);}
+      _appsflyerSdk.initSdk(registerConversionDataCallback: true,
+
+          registerOnAppOpenAttributionCallback: true).then((value){
+
+
+            printWrapped("apps flyes begine");
+      });
+    }
+
     _animationController = AnimationController(
-      duration: const Duration(milliseconds: 1500),
+      duration: const Duration(milliseconds: 2000),
       vsync: this,
     );
     animation = CurvedAnimation(

@@ -37,6 +37,7 @@ class _CreateWorkTypeState extends State<CreateWorkType> {
 
 
   Widget _dataListView(List<Value> data, context) {
+
     if (data == null)
       return ListView(
         children: <Widget>[
@@ -50,7 +51,9 @@ class _CreateWorkTypeState extends State<CreateWorkType> {
           ),
         ],
       );
-    else if (data.length > 0)
+    else if (data.length > 0){
+
+      //data.removeRange(0, 3);
       return ListView.builder(
           itemCount: data.length,
     //      controller: _controllerScrollRecevier,
@@ -70,6 +73,7 @@ class _CreateWorkTypeState extends State<CreateWorkType> {
                   ,),
               );
           });
+    }
     else
       return ListView(
         children: <Widget>[
@@ -96,7 +100,9 @@ class _CreateWorkTypeState extends State<CreateWorkType> {
       if(workTypeModel.value.isNotEmpty){
 
         setState(() {
+        
           listViewItem=workTypeModel.value;
+
           selectedIndex= new List(workTypeModel.value.length);
           selectedIndex.fillRange(0, workTypeModel.value.length,false);
 

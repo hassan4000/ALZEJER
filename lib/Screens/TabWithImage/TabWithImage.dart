@@ -23,7 +23,8 @@ class TabWithImage extends StatefulWidget {
 
   UserInfoModel item;
 
-  TabWithImage(this.item);
+  bool normalUser=false;
+  TabWithImage(this.item,{this.normalUser=false});
 
   @override
   _TabWithImageState createState() => _TabWithImageState();
@@ -189,6 +190,7 @@ class _TabWithImageState extends State<TabWithImage> with TickerProviderStateMix
             if(onProgessIsLoadingMore&&index==data.length-1)
               return Center(child: CircularProgressIndicator(),);
             else{  AllServicesData item=onProgessListServicesData[index];
+            if(!widget.normalUser){
             return CardDreams(desc: emptyString(item.description),likes: item.numberOfLikes,views: item.numberOfViews,
               showExplanationText: showExplnationText(
                   explnation: item.explanation),
@@ -196,6 +198,27 @@ class _TabWithImageState extends State<TabWithImage> with TickerProviderStateMix
               emptyString(item.explanation),
        
             );}
+
+            else {
+
+              if(item.privateService==null||!item.privateService)
+                 return CardDreams(desc: emptyString(item.description),likes: item.numberOfLikes,views: item.numberOfViews,
+                showExplanationText: showExplnationText(
+                    explnation: item.explanation),
+                explantaion:
+                emptyString(item.explanation),
+
+              );
+
+              else return  Container();
+            }
+
+
+
+
+
+
+            }
           });
     else
       return Container(
@@ -275,11 +298,34 @@ class _TabWithImageState extends State<TabWithImage> with TickerProviderStateMix
             if(doneIsLoadingMore&&index==data.length-1)
               return Center(child: CircularProgressIndicator(),);
             else{  AllServicesData item=doneListServicesData[index];
+
+            if(!widget.normalUser)
             return CardDreams(desc: emptyString(item.description),likes: item.numberOfLikes,views: item.numberOfViews,
               showExplanationText: showExplnationText(
                   explnation: item.explanation),
               explantaion:
-              emptyString(item.explanation),);}
+              emptyString(item.explanation),);
+
+
+            else{
+
+              if(item.privateService==null||!item.privateService)
+                return CardDreams(desc: emptyString(item.description),likes: item.numberOfLikes,views: item.numberOfViews,
+                  showExplanationText: showExplnationText(
+                      explnation: item.explanation),
+                  explantaion:
+                  emptyString(item.explanation),);
+              else   return Container();
+
+
+
+            }
+
+
+
+
+
+            }
           });
     else
       return Container(

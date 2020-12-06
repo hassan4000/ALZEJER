@@ -9,7 +9,7 @@ import 'package:faserholmak/Helper/AppApi.dart';
 import 'package:faserholmak/Model/SingleServicesModel/SingleServicesModel.dart';
 import 'package:faserholmak/Model/UserInfoModel/UserInfoModel.dart';
 import 'package:faserholmak/constants.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
@@ -45,33 +45,33 @@ final GoogleSignIn googleSignIn = GoogleSignIn(
   ],
 );
 
-final FirebaseAuth _auth = FirebaseAuth.instance;
+//final FirebaseAuth _auth = FirebaseAuth.instance;
 final GoogleSignIn googleSignIn1 = GoogleSignIn();
-Future<String> signInWithGoogle() async {
+//Future<String> signInWithGoogle() async {
+//
+//
+//  final GoogleSignInAccount googleSignInAccount = await googleSignIn1.signIn();
+//  final GoogleSignInAuthentication googleSignInAuthentication =
+//  await googleSignInAccount.authentication;
 
-
-  final GoogleSignInAccount googleSignInAccount = await googleSignIn1.signIn();
-  final GoogleSignInAuthentication googleSignInAuthentication =
-  await googleSignInAccount.authentication;
-
-  final AuthCredential credential = GoogleAuthProvider.getCredential(
+/*  final AuthCredential credential = GoogleAuthProvider.getCredential(
     accessToken: googleSignInAuthentication.accessToken,
     idToken: googleSignInAuthentication.idToken,
-  );
+  );*/
 
-  final AuthResult authResult = await _auth.signInWithCredential(credential);
-  final FirebaseUser user = authResult.user;
+  //final AuthResult authResult = await _auth.signInWithCredential(credential);
+  //final FirebaseUser user = authResult.user;
 
 
-  print("id ${user.uid}");
-  assert(!user.isAnonymous);
-  assert(await user.getIdToken() != null);
+//  print("id ${user.uid}");
+//  assert(!user.isAnonymous);
+//  assert(await user.getIdToken() != null);
 
-  final FirebaseUser currentUser = await _auth.currentUser();
-  assert(user.uid == currentUser.uid);
+//  final FirebaseUser currentUser = await _auth.currentUser();
+//  assert(user.uid == currentUser.uid);
 
-  return  'signInWithGoogle succeeded: $user';
-}
+//  return  'signInWithGoogle succeeded: $user';
+//}
 
 void signOutGoogle() async {
   await googleSignIn.signOut();
@@ -232,9 +232,7 @@ bool showDeleteIcon({String clinetId,String providerID}){
   if(userInfo.id==clinetId){
     return true;
   }
-  else if(userInfo.id==providerID){
-    return true;
-  }
+
 
   return false;
 
