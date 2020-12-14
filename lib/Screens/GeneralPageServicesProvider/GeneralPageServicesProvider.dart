@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:faserholmak/Dialog/MyShowDialog.dart';
 import 'package:faserholmak/Helper/BasicTools.dart';
 import 'package:faserholmak/Helper/Content.dart';
+import 'package:faserholmak/Helper/StyleForApp.dart';
 import 'package:faserholmak/Model/AllServicesModel/AllServicesData.dart';
 import 'package:faserholmak/Model/AllServicesModel/AllServicesModel.dart';
 import 'package:faserholmak/Model/CommentModel/CommentModel.dart';
@@ -16,10 +19,12 @@ import 'package:faserholmak/Screens/ServicesYouWant/ServiceYouWant.dart';
 import 'package:faserholmak/Screens/TabWithImage/TabWithImageHomePage.dart';
 import 'package:faserholmak/wigets/CardDreams.dart';
 import 'package:faserholmak/wigets/MessageChat.dart';
+import 'package:faserholmak/wigets/MyButton.dart';
 import 'package:faserholmak/wigets/SmallHomeCard.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:faserholmak/Helper/AppApi.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../constants.dart';
 
@@ -42,6 +47,35 @@ class _GeneralPageServicesProviderState extends State<GeneralPageServicesProvide
     });
   }
 
+
+  void launchWhatsApp(
+      {@required String phone,
+        @required String message,
+      }) async {
+    String url() {
+      if (Platform.isIOS) {
+        return "whatsapp://wa.me/$phone/?text=${Uri.parse(message)}";
+      } else {
+        return "whatsapp://send?phone=$phone&text=${Uri.parse(message)}";
+      }
+    }
+
+    if (await canLaunch(url())) {
+      await launch(url());
+    } else {
+      throw 'Could not launch ${url()}';
+    }
+  }
+
+
+  _launchURL({String toMailId, String subject, String body}) async {
+    var url = 'mailto:$toMailId?subject=$subject&body=$body';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
 
   Widget dataListView(List<AllServicesData> data, context) {
     if (data == null)
@@ -232,6 +266,29 @@ class _GeneralPageServicesProviderState extends State<GeneralPageServicesProvide
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
+
+
+                            (userInfo.verifiedUser==null||userInfo.verifiedUser==false)?
+                            Column(
+                              children: [
+                                Text(youHaveToCallUs,style: getTextSyle(18, kPrimaryColor),),
+                                Row(
+                                  children: [
+                                    MyButton(txt: "تواصل معنا عبر واتس",textStyle: getTextSyle(16, Colors.white),press: (){
+
+                                    launchWhatsApp(phone: "+971555661133", message: "مرحبا ");
+                                    },raduis: 4,),
+                                    SizedBox(width: 4,),
+                                    MyButton(txt: "تواصل معنا عبر الايميل",textStyle: getTextSyle(16, Colors.white),press: (){
+
+                                      _launchURL(toMailId: "FSRHILMAK@GMAIL.COM",subject: "رسالة الى الادارة من تطبيق اهل الذكر",
+                                          body: "");
+
+                                    },raduis: 4,),
+                                  ],
+                                ),
+                              ],
+                            ):Container(),
                             Row(
                               mainAxisSize: MainAxisSize.max,
                               children: <Widget>[

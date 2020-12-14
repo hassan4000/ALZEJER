@@ -1,3 +1,5 @@
+
+
 import 'package:faserholmak/Dialog/MyShowDialog.dart';
 import 'package:faserholmak/Helper/AppApi.dart';
 import 'package:faserholmak/Helper/BasicTools.dart';
@@ -16,6 +18,7 @@ import 'package:faserholmak/Screens/ServicesForServiceProviders/CompletedService
 import 'package:faserholmak/Screens/ServicesForServiceProviders/OnProgressServiceServiceProviders/OnProgressServiceServiceProviders.dart';
 import 'package:faserholmak/Screens/ServicesForServiceProviders/PublicServiceServiceProviders/PublicServiceServiceProviders.dart';
 import 'package:faserholmak/Screens/TabWithImage/TabWithImage.dart';
+import 'package:faserholmak/Screens/compititionMofaser/compitition_mofaser.dart';
 import 'package:faserholmak/Screens/contactWithUs/ContactWithUs.dart';
 import 'package:faserholmak/Screens/privacyPolicy/PrivacyPolicyPage.dart';
 import 'package:faserholmak/wigets/LogoIcon.dart';
@@ -306,6 +309,30 @@ class _MyDrawerServicsProviderState extends State<MyDrawerServicsProvider> {
                               children: <Widget>[
                                 IconButton(onPressed: (){},icon: Icon(Icons.collections_bookmark,color:  kPrimaryColor),),
                                 Text(privacyPolicy,style: getTextSyle(16, kPrimaryColor),)
+                              ],
+                            )),
+                          ),
+
+                          Divider(
+                            color:  Colors.grey,
+                            thickness: 1,
+                          ),
+
+
+                          GestureDetector(
+                            onTap: () async {
+
+
+                              openPage(context,CompititionMofaser(normalUser: true,));
+
+
+                            },
+                            child: Container(
+                                padding: EdgeInsets.symmetric(vertical: 0,horizontal: 0)
+                                ,child: Row(
+                              children: <Widget>[
+                                IconButton(onPressed: (){},icon: Icon(Icons.collections_bookmark,color:  kPrimaryColor),),
+                                Text(comptiotn,style: getTextSyle(16, kPrimaryColor),)
                               ],
                             )),
                           ),

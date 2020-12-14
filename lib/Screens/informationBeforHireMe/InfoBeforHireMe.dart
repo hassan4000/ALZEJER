@@ -86,12 +86,13 @@ class _InfoBeforHireMeState extends State<InfoBeforHireMe> {
 //<array>
 //  <string>whatsapp</string>
 //</array>
-                SizedBox(height: 4,),
+              /*  SizedBox(height: 4,),
                 Row(
                   children: [
                     MyButton(txt: "تواصل معنا عبر واتس",textStyle: getTextSyle(16, Colors.white),press: (){
 
-                      launchWhatsApp(phone: "+971505018450", message: "مرحبا ");
+                      //+971505018450
+                      launchWhatsApp(phone: "+971555661133", message: "مرحبا ");
                     },raduis: 4,),
                     SizedBox(width: 4,),
                     MyButton(txt: "تواصل معنا عبر الايميل",textStyle: getTextSyle(16, Colors.white),press: (){
@@ -101,7 +102,7 @@ class _InfoBeforHireMeState extends State<InfoBeforHireMe> {
 
                     },raduis: 4,),
                   ],
-                ),
+                ),*/
 
                 SizedBox(height: 20,),
                 MyButton(txt: continueTxt,textStyle: getTextSyle(16, Colors.white),press: (){

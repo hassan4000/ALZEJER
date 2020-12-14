@@ -21,6 +21,7 @@ import 'package:faserholmak/Model/UserInfoModel/UserInfoModel.dart';
 import 'package:faserholmak/Model/UserWorkWithNumber/UserWorkWithNumber.dart';
 import 'package:faserholmak/Model/WorkTypeUser/Value.dart';
 import 'package:faserholmak/Model/WorkTypeUser/WorkTypeModel.dart';
+import 'package:faserholmak/Model/compitionList/CompitionResponse.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:http/http.dart' as http;
 import 'package:myfatoorah_flutter/myfatoorah_flutter.dart';
@@ -833,6 +834,47 @@ Future<Response> getServicePath(String id) async {
     printWrapped('token  = $t');
     if (response.statusCode == 200) {
       List<ServicesPathModel> item = (res as List).map((i)=>ServicesPathModel.fromJson(i)).toList();
+      return new Response(200, item);
+    }
+
+
+    else {
+      showToast(failedOpreation);
+      return new Response(response.statusCode, failedOpreation);
+    }
+  }
+  on TimeoutException catch (_) {
+    showToast(checkEnternet);
+    return Response(-1000, checkEnternet);
+  }
+  catch (e) {
+    printWrapped(e.toString());
+    showToast(failedOpreation);
+    return new Response(-1, failedOpreation);
+  }
+}
+
+
+
+
+Future<Response> getAllCompition() async {
+
+  String t=await getToken();
+  String url = baseUrl + 'api/Actions/GetCompetitions';
+  printWrapped('url  = $url');
+  try {
+    var response = await http.get(
+      url,
+      headers: {
+        'Authorization': 'Bearer $t',
+      },
+    );
+    var res = json.decode(response.body);
+    printWrapped('code  = ${response.statusCode}');
+    printWrapped('response  = ${response.body}');
+    printWrapped('token  = $t');
+    if (response.statusCode == 200) {
+     CompitionResponse item = CompitionResponse.fromJson(res);
       return new Response(200, item);
     }
 

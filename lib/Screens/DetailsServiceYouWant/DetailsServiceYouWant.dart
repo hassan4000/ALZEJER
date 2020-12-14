@@ -264,7 +264,8 @@ class _DetailsServiceYouWantState extends State<DetailsServiceYouWant> {
                                       providerID:
                                           widget.servicesData.serviceProviderId,forPublicPage: widget.forPublicPage)*/
                                    CardDreams(
-                                     showDelete:showDeleteIcon(clinetId: servicesData.creatorId,providerID: servicesData.serviceProviderId) ,
+//                                     showDelete:showDeleteIcon(clinetId: servicesData.creatorId,providerID: servicesData.serviceProviderId) ,
+                                   showDelete: false,
                                      showEditText: showEditIcon(clinetId: servicesData.creatorId,providerID: servicesData.serviceProviderId,
                                      explanation: emptyString(servicesData.explanation)),
                                      showLove: servicesData.showLove,

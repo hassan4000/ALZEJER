@@ -23,7 +23,7 @@ class PersonalProfileContent extends StatelessWidget {
            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
            mainAxisSize: MainAxisSize.max,
            children: <Widget>[
-             Expanded(flex:1,child: Text(text,
+             Expanded(flex:2,child: Text(text,
                textDirection: TextDirection.rtl,textAlign: TextAlign.center,style: getTextSyle(16, Colors.black),)),
              Expanded(flex:1,child: Text(hint,textDirection: TextDirection.rtl,style: getTextSyle(16, Colors.black)),
              ),

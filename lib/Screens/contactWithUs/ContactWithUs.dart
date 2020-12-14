@@ -93,7 +93,9 @@ class _ContactWithUsState extends State<ContactWithUs> {
                     children: [
                       MyButton(txt: "تواصل معنا عبر واتس",textStyle: getTextSyle(16, Colors.white),press: (){
 
+                        if(userInfo.type==clientTxt)
                         launchWhatsApp(phone: "+971505018450", message: "مرحبا ");
+                        else  launchWhatsApp(phone: "+971555661133", message: "مرحبا ");
                       },raduis: 4,),
                       SizedBox(width: 4,),
                       MyButton(txt: "تواصل معنا عبر الايميل",textStyle: getTextSyle(16, Colors.white),press: (){

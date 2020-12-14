@@ -22,6 +22,7 @@ const String SERVER_TOKEN="AAAAaeoROG4:APA91bEq4mIHEkhrXMzjYGHL9K6HqNRsuo-lsrtq7
 const String googlePlayUrl="https://mks.onelink.me/yTgK/ba6b0f45";
 
 
+const String youHaveToCallUs="حسابك غير مفعل تواصل مع الادارة لتفعيله";
 const String yourBalanceByPoint="رصيدك من النقاط";
 const String payByPointTxt="الدفع باستخدام النقاط";
 const String faildToAddService="فشلت عملية اضفة خدمة";
@@ -41,7 +42,10 @@ const String state="الحالة";
 const String addRating="اضف تقييم";
 const String receive="استلم";
 const String personalInfo="المعلومات الشخصية";
+const String compitionDone="المنتهية";
+const String compitionNotDone="القائمة";
 const String rating="التقييم";
+const String comptiotn="المسابقة";
 const String visionText="نص الخدمة";
 const String dreamsDone="هل الخدمة مفيدة";
 const String dreamsiInterpreted="الخدمات المنفذة";
@@ -81,6 +85,7 @@ const String rateMofaser="تقييم المفسر";
 const String whatIsYourRateAboutMrater="ماهو تقييمك للمفسر؟";
 const String honestIntrepreted="هل صدق التعبير؟";
 const String addYourOpinionInMofaser="اضف رأيك بالمفسر";
+
 
 const String whatIsServicesYouWant="ماهي الخدمة المطلوبة";
 const String whatIsServicesYouWant_v2="ماهي الخدمة التي تريدها";
@@ -162,7 +167,7 @@ const String failedRegister="فشلت عملية انشاء حساب";
 const String checkEnternet="الرجاء التحقق من اتصالك بالانترنت";
 const String picValidation="الرجاء اختيار صورة";
 const String  single="اعزب";
-
+const String  pleazeWait="الرجاء الانتظار";
 const String forbiddenRequest="غير مسموح لك بطلب هذا الأمر";
 const String failedOpreation="فشل الطلب حاول لاحقا";
 const String failedOpreationDelete="فشلت عملية الحذف حاول لاحقا";
@@ -178,7 +183,7 @@ const String isThereAnyChild="هل يوجد اولاد";
 
 
 const String howAppWork="آلية عمل البرنامج";
-const String cotactWithUsTxt="تواصل معنا";
+const String cotactWithUsTxt="الشكاوي والاقتراحات";
 
 const String swear="ميثاق الشرف";
 const String ageTxt="العمر";
@@ -220,6 +225,10 @@ const String byUser=":";
 const String privateServies="خدمة خاصة";
 
 
+
+const String typeCompition="نوع المسابقة";
+const String prizeCompition="جائزة المسابقة";
+const String endCompition="تنتهي خلال";
 
 
 
