@@ -6,6 +6,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
+import '../app_localizations.dart';
+
 class CardDreams extends StatelessWidget {
   String likes;
   String views;
@@ -78,7 +80,7 @@ class CardDreams extends StatelessWidget {
                        onTap: explanationPress,
                        child: Padding(
                          padding: EdgeInsets.all(4),
-                         child: Text(addExplanation,style: getTextSyle(16, Colors.white),textDirection: TextDirection.rtl,
+                         child: Text(AppLocalizations.of(context).translate("addExplanation"),style: getTextSyle(16, Colors.white),
                          textAlign: TextAlign.center,),
                        ),
                      ),
@@ -104,8 +106,9 @@ class CardDreams extends StatelessWidget {
                         onTap: toAnotherMofaserPress,
                         child: Padding(
                           padding: EdgeInsets.all(4),
-                          child: Text(receive,style: getTextSyle(16, Colors.white),textAlign: TextAlign.center,
-                            textDirection: TextDirection.rtl,),
+                          child: Text(AppLocalizations.of(context).translate("receive"),
+                            style: getTextSyle(16, Colors.white),textAlign: TextAlign.center,
+                          ),
                         ),
                       ),
                     ):Container(),
@@ -132,7 +135,7 @@ class CardDreams extends StatelessWidget {
                   child: Padding(
                     padding: EdgeInsets.all(4),
                     child: Text(
-                        shareForMofaserHint,style: getTextSyle(14, Colors.white),
+                      AppLocalizations.of(context).translate("shareForMofaserHint"),style: getTextSyle(14, Colors.white),
                     ),
                   ),
                 ):Container()
@@ -149,7 +152,7 @@ class CardDreams extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
-                  Text(visionText,textDirection: TextDirection.rtl,textAlign: TextAlign.center,),
+                  Text(AppLocalizations.of(context).translate("visionText"),textAlign: TextAlign.center,),
                   Padding(
                     padding: const EdgeInsets.all(0.0),
                     child: Text("$desc",
@@ -170,7 +173,8 @@ class CardDreams extends StatelessWidget {
                 child: Divider(height: 1,color: Colors.grey.shade400),
               ),
               SizedBox(height: 4,),
-              Text("$explanation $byUser  ${emptyString(provierName)}",textDirection: TextDirection.rtl,style: getTextSyle(16, Colors.black),
+              Text("${AppLocalizations.of(context).translate("explanation")} ${AppLocalizations.of(context).translate("byUser")}  ${emptyString(provierName)}",
+                style: getTextSyle(16, Colors.black),
               textAlign: TextAlign.center,),
 
               Padding(
@@ -208,7 +212,8 @@ class CardDreams extends StatelessWidget {
                 showComment?Flexible(
                   child: GestureDetector(
                     onTap: commentPress,
-                      child: Text("اضف تعليق", style: TextStyle(color: Colors.white,fontSize: 12),)),
+                      child: Text(AppLocalizations.of(context).translate("sendComments"),
+                        style: TextStyle(color: Colors.white,fontSize: 12),)),
                 ):Container(),
 
                 showRating?Icon(Icons.star_half,color:Colors.white,size: 20,):Container(),
@@ -217,8 +222,9 @@ class CardDreams extends StatelessWidget {
                     onTap: ratingPress,
                     child: Padding(
                       padding: EdgeInsets.all(4),
-                      child: Text(addRating,style: getTextSyle(12, Colors.white),textAlign: TextAlign.center,
-                        textDirection: TextDirection.rtl,),
+                      child: Text(AppLocalizations.of(context).translate("addRating"),
+                        style: getTextSyle(12, Colors.white),textAlign: TextAlign.center,
+                       ),
                     ),
                   ),
                 ):Container(),

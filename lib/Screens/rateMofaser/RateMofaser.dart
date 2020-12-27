@@ -16,6 +16,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
+import '../../app_localizations.dart';
 import '../../constants.dart';
 import '../../who.dart';
 
@@ -38,7 +39,7 @@ class _RateMofaserState extends State<RateMofaser> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(centerTitle: true,
-      title: Text(rateMofaser),),
+      title: Text(AppLocalizations.of(context).translate("rateMofaser")),),
 
       body: ModalProgressHUD(
         inAsyncCall: isLoading,
@@ -63,7 +64,7 @@ class _RateMofaserState extends State<RateMofaser> {
                       child: ClipOval(child: Image.network(imageUrl+emptyString(widget.servicesModel.serviceProvider.pictureId))),),
                     SizedBox(height: 20,),
 
-                    Text(whatIsYourRateAboutMrater),
+                    Text(AppLocalizations.of(context).translate("whatIsYourRateAboutMrater")),
                     SizedBox(height: 20,),
                     RatingBar(
                       itemSize: 40,
@@ -97,15 +98,15 @@ class _RateMofaserState extends State<RateMofaser> {
                         activeColor: Colors.yellow,
 
 
-                        title: Text(honestIntrepreted,style: TextStyle(),textAlign: TextAlign.end,),
+                        title: Text(AppLocalizations.of(context).translate("honestIntrepreted"),style: TextStyle(),textAlign: TextAlign.end,),
                       ),
                     ),
                     SizedBox(height: 10,),
-                    Text(addYourOpinionInMofaser),
+                    Text(AppLocalizations.of(context).translate("addYourOpinionInMofaser")),
                     TextFormField(
                       controller: textEditingController,
                       decoration: getInputDecorationHassan(hint: "",icon: Icon(Icons.description,color: kPrimaryColor,)),
-                      textDirection: TextDirection.rtl,
+
                       textAlign: TextAlign.start,
                       minLines: 3,
                       maxLines: 3,
@@ -147,7 +148,7 @@ class _RateMofaserState extends State<RateMofaser> {
                             ),
                           ),*/
                           Expanded(
-                            child:MyButton(txt: done,press: () async {
+                            child:MyButton(txt: AppLocalizations.of(context).translate("done"),press: () async {
 
 
                               setState(() {

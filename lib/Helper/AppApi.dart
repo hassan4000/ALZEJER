@@ -10,6 +10,7 @@ import 'package:faserholmak/Model/AllServicesModel/AllServicesData.dart';
 import 'package:faserholmak/Model/AllServicesModel/AllServicesModel.dart';
 import 'package:faserholmak/Model/ApplicationInfoModel/ApplicationInfoModel.dart';
 import 'package:faserholmak/Model/CommentModel/CommentModel.dart';
+import 'package:faserholmak/Model/CompitionUserModel/CompitionListUser.dart';
 import 'package:faserholmak/Model/PaymentModel/PaymentModel.dart';
 import 'package:faserholmak/Model/PostCreatAccountMofaser/PostCreatAccountMofaserModel.dart';
 import 'package:faserholmak/Model/ProvidersModelPagination/ProviderModelPagination.dart';
@@ -857,10 +858,15 @@ Future<Response> getServicePath(String id) async {
 
 
 
-Future<Response> getAllCompition() async {
+Future<Response> getAllCompition({
+  int top=10,
+  int skip=0,
+  String filterType='Active',}) async {
 
   String t=await getToken();
-  String url = baseUrl + 'api/Actions/GetCompetitions';
+  String url = baseUrl + 'api/Actions/GetCompetitions?status=$filterType&skip=$skip&top=$top';
+
+
   printWrapped('url  = $url');
   try {
     var response = await http.get(
@@ -875,6 +881,53 @@ Future<Response> getAllCompition() async {
     printWrapped('token  = $t');
     if (response.statusCode == 200) {
      CompitionResponse item = CompitionResponse.fromJson(res);
+      return new Response(200, item);
+    }
+
+
+    else {
+      showToast(failedOpreation);
+      return new Response(response.statusCode, failedOpreation);
+    }
+  }
+  on TimeoutException catch (_) {
+    showToast(checkEnternet);
+    return Response(-1000, checkEnternet);
+  }
+  catch (e) {
+    printWrapped(e.toString());
+    showToast(failedOpreation);
+    return new Response(-1, failedOpreation);
+  }
+}
+
+
+
+Future<Response> getAllUserForCompition({
+  int top=10,
+  int skip=0,
+  String filterid,}) async {
+
+  String t=await getToken();
+  String url = baseUrl + 'api/Actions/GetCompetitionResult?CompetitionId=$filterid';
+ // String url = baseUrl + 'api/Actions/GetCompetitionResult?CompetitionId=$filterType&skip=$skip&top=$top';
+
+
+  printWrapped('url  = $url');
+  try {
+    var response = await http.get(
+      url,
+      headers: {
+        'Authorization': 'Bearer $t',
+      },
+    );
+    var res = json.decode(response.body);
+    printWrapped('code  = ${response.statusCode}');
+
+    printWrapped('token  = $t');
+    if (response.statusCode == 200) {
+      printWrapped('response  = ${response.body}');
+      List<CompitionListUser> item=(res as List).map((i) => CompitionListUser.fromJson(i)).toList();
       return new Response(200, item);
     }
 

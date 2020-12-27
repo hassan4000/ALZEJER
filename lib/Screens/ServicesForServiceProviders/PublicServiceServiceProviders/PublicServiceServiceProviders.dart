@@ -11,6 +11,7 @@ import 'package:faserholmak/wigets/CardDreams.dart';
 import 'package:flutter/material.dart';
 import 'package:faserholmak/Helper/AppApi.dart';
 
+import '../../../app_localizations.dart';
 import '../../../constants.dart';
 
 class PublicServiceServiceProviders extends StatefulWidget {
@@ -62,7 +63,7 @@ class _PublicServiceServiceProvidersState extends State<PublicServiceServiceProv
         height: MediaQuery.of(context).size.height,
         child: Center(
           child: Text(
-            failedOpreation,
+            AppLocalizations.of(context).translate("failedOpreation"),
             style: TextStyle(color: Colors.grey, fontSize: 16),
           ),
         ),
@@ -119,7 +120,7 @@ class _PublicServiceServiceProvidersState extends State<PublicServiceServiceProv
         height: MediaQuery.of(context).size.height,
         child: Center(
             child: Text(
-              noData,
+              AppLocalizations.of(context).translate("noData"),
               style: TextStyle(color: Colors.grey, fontSize: 16),
             )),
       );
@@ -203,7 +204,7 @@ class _PublicServiceServiceProvidersState extends State<PublicServiceServiceProv
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text("الخدمات العامة"),
+          title: Text(AppLocalizations.of(context).translate("publicServices")),
         ),
         body: RefreshIndicator(
           key: refreshKey,

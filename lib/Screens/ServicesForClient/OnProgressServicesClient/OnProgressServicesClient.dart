@@ -12,6 +12,7 @@ import 'package:faserholmak/wigets/CardDreams.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../../app_localizations.dart';
 import '../../../constants.dart';
 
 class OnProgressServicesClient extends StatefulWidget {
@@ -63,7 +64,7 @@ class _OnProgressServicesClientState extends State<OnProgressServicesClient> {
         height: 100,
         child: Center(
           child: Text(
-            failedOpreation,
+            AppLocalizations.of(context).translate("failedOpreation"),
             style: TextStyle(color: Colors.grey, fontSize: 16),
           ),
         ),
@@ -116,7 +117,7 @@ class _OnProgressServicesClientState extends State<OnProgressServicesClient> {
         height: 100,
         child: Center(
             child: Text(
-              noData,
+              AppLocalizations.of(context).translate("noData"),
               style: TextStyle(color: Colors.grey, fontSize: 16),
             )),
       );
@@ -197,7 +198,7 @@ class _OnProgressServicesClientState extends State<OnProgressServicesClient> {
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text("الخدمات قيد التنفيذ"),
+          title: Text(AppLocalizations.of(context).translate("servicesInProgress")),
         ),
         body: RefreshIndicator(
           key: refreshKey,

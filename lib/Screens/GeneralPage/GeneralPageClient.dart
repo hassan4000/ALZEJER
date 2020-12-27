@@ -33,6 +33,8 @@ import 'package:http/http.dart' as http;
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'dart:convert' as JSON;
 
+import '../../app_localizations.dart';
+
 
 class GeneralPageClient extends StatefulWidget {
 
@@ -55,7 +57,7 @@ class _GeneralPageClientState extends State<GeneralPageClient> {
 
 
   String getAvg(String txt){
-    if(emptyString(txt)=="") return "سوف يتم تنفيذ الخدمة قريبا";
+    if(emptyString(txt)=="") return AppLocalizations.of(context).translate("soonTxt");
     else return emptyString(txt);
   }
 
@@ -72,7 +74,7 @@ class _GeneralPageClientState extends State<GeneralPageClient> {
         height: MediaQuery.of(context).size.height,
         child: Center(
             child: Text(
-              failedOpreation,
+              AppLocalizations.of(context).translate("failedOpreation"),
               style: TextStyle(color: Colors.grey, fontSize: 16),
             )),
       );
@@ -119,7 +121,7 @@ class _GeneralPageClientState extends State<GeneralPageClient> {
         height: MediaQuery.of(context).size.height,
         child: Center(
             child: Text(
-              noData,
+              AppLocalizations.of(context).translate("noData"),
               style: TextStyle(color: Colors.grey, fontSize: 16),
             )),
       );
@@ -164,7 +166,7 @@ class _GeneralPageClientState extends State<GeneralPageClient> {
 
     else  return Column(
       children: <Widget>[
-        Text("$expectedTimeForInterpretation  ",style: getTextSyle(16, kPrimaryColor),textAlign: TextAlign.center,),
+        Text(  AppLocalizations.of(context).translate("expectedTimeForInterpretation"),style: getTextSyle(16, kPrimaryColor),textAlign: TextAlign.center,),
         Text("  ${getAvg(singleServicesModel.avgWaitingTime)} ",style: getTextSyle(16, kPrimaryColor),textAlign: TextAlign.center,),
 
         CardTimeDreams(showDolar: false,name: emptyString(singleServicesModel.serviceProvider!=null?singleServicesModel.serviceProvider.name:""),
@@ -207,7 +209,7 @@ class _GeneralPageClientState extends State<GeneralPageClient> {
         height: 60,
         child: Center(
             child: Text(
-              noData,
+              AppLocalizations.of(context).translate("noData"),
               style: TextStyle(color: Colors.grey, fontSize: 16),
             )),
       );
@@ -221,7 +223,7 @@ class _GeneralPageClientState extends State<GeneralPageClient> {
         height: MediaQuery.of(context).size.height,
         child: Center(
             child: Text(
-              failedOpreation,
+              AppLocalizations.of(context).translate("failedOpreation"),
               style: TextStyle(color: Colors.grey, fontSize: 16),
             )),
       );
@@ -258,7 +260,7 @@ class _GeneralPageClientState extends State<GeneralPageClient> {
         height: MediaQuery.of(context).size.height,
         child: Center(
             child: Text(
-              noData,
+              AppLocalizations.of(context).translate("noData"),
               style: TextStyle(color: Colors.grey, fontSize: 16),
             )),
       );
@@ -413,7 +415,7 @@ class _GeneralPageClientState extends State<GeneralPageClient> {
         drawer: MyDrawer(),
         appBar: AppBar(
           centerTitle: true,
-          title: Text("صفحة العميل "),
+          title: Text(AppLocalizations.of(context).translate("homePageTxt")),
         ),
         body: RefreshIndicator(
           key: refreshKey,
@@ -462,26 +464,26 @@ class _GeneralPageClientState extends State<GeneralPageClient> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
                     ListTile(
-                      title: Text(pointDesc,style: getTextSyle(16, Colors.black),textDirection: TextDirection.rtl,),
+                      title: Text(AppLocalizations.of(context).translate("pointDesc"),style: getTextSyle(16, Colors.black)),
                       selected: true,
                       subtitle:   Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Expanded(child: Text("رصيدك من النقاط ${userInfo.pointsBalance.toString()} \n $pointPrice"
+                          Expanded(child: Text(" ${AppLocalizations.of(context).translate("yourBalanceByPoint")}  ${userInfo.pointsBalance.toString()} \n ${AppLocalizations.of(context).translate("pointPrice")} "
                             ,style: getTextSyle(16, Colors.grey),
-                            textDirection: TextDirection.rtl,textAlign: TextAlign.center,)),
+                           textAlign: TextAlign.center,)),
                         ],
                       ),
                       trailing: Icon(Icons.group_add),
                       enabled: true,
                       onTap: () async {
                         await FlutterShare.share(
-                            title: 'يرجى مشاركة هذا الرابط ',
+                            title: '${AppLocalizations.of(context).translate("pleaseShareThisLink")}',
 
                             text:
-                            '${shareHitn1}\n ${userInfo.userSpecialCode}',
+                            '${AppLocalizations.of(context).translate("shareHitn1")}\n ${userInfo.userSpecialCode}',
                             linkUrl:
-                            ' {$linkApp} \n  ${googlePlayUrl}',
+                            ' ${AppLocalizations.of(context).translate("linkApp")} \n  ${googlePlayUrl}',
                             chooserTitle:
                             'Share');
                       },
@@ -505,7 +507,7 @@ class _GeneralPageClientState extends State<GeneralPageClient> {
                               children: <Widget>[
                                 Expanded(child: Padding(
                                   padding: const EdgeInsets.all(8.0),
-                                  child: SmallHomeCard(txt: logoText,press:(){
+                                  child: SmallHomeCard(txt: AppLocalizations.of(context).translate("logoText"),press:(){
                                     openPage(context, ServiceYouWant());
                                   },),
                                 )),
@@ -532,7 +534,7 @@ class _GeneralPageClientState extends State<GeneralPageClient> {
                               children: <Widget>[
                                 Expanded(child: Padding(
                                   padding: const EdgeInsets.all(8.0),
-                                  child: SmallHomeCard(txt: chatForPeople,press: () async {
+                                  child: SmallHomeCard(txt: AppLocalizations.of(context).translate("chatForPeople"),press: () async {
                                     openPage(context, ChatForPublic());
 
 
@@ -543,7 +545,7 @@ class _GeneralPageClientState extends State<GeneralPageClient> {
                                 )),
                                 Expanded(child: Padding(
                                   padding: const EdgeInsets.all(8.0),
-                                  child: SmallHomeCard(txt: servicesIndex,press: (){
+                                  child: SmallHomeCard(txt: AppLocalizations.of(context).translate("servicesIndex"),press: (){
                                     openPage(context, ServicesIndexPage());
                                   },),
                                 )),
@@ -570,7 +572,7 @@ class _GeneralPageClientState extends State<GeneralPageClient> {
                                 Flexible(
                                   child: Padding(
                                     padding: const EdgeInsets.symmetric(horizontal: 8),
-                                    child: SmallHomeCard(txt: myServices,press: (){
+                                    child: SmallHomeCard(txt: AppLocalizations.of(context).translate("myServices"),press: (){
                                       openPage(context, MySericesPage());
                                     },),
                                   ),

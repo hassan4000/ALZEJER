@@ -7,6 +7,8 @@ import 'package:faserholmak/Screens/Login/components/background.dart';
 import 'package:faserholmak/constants.dart';
 import 'package:flutter/material.dart';
 
+import '../../../app_localizations.dart';
+
 class EditProfileMofaser extends StatefulWidget {
   @override
   _EditProfileMofaserState createState() => _EditProfileMofaserState();
@@ -18,7 +20,7 @@ class _EditProfileMofaserState extends State<EditProfileMofaser> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          editProfile,
+          AppLocalizations.of(context).translate("editProfile"),
           style: getTextSyle(16, Colors.white),
         ),
         centerTitle: true,
@@ -33,7 +35,7 @@ class _EditProfileMofaserState extends State<EditProfileMofaser> {
               children: <Widget>[
                 ListTile(
                   title: Text(
-                    editProfile,
+                    AppLocalizations.of(context).translate("editProfile"),
                     style: getTextSyle(16, kPrimaryColor),textDirection: TextDirection.rtl,
                   ),
                   onTap: () {
@@ -44,7 +46,7 @@ class _EditProfileMofaserState extends State<EditProfileMofaser> {
                 ),
                 ListTile(
                   title: Text(
-                    addUserWork,
+                    AppLocalizations.of(context).translate("addUserWork"),
                     style: getTextSyle(16, kPrimaryColor),textDirection: TextDirection.rtl,
                   ),
                   onTap: () {openPage(context, EditWotkTypeForMofase());},

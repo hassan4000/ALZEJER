@@ -10,6 +10,7 @@ import 'package:faserholmak/wigets/MyButton.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
+import '../../app_localizations.dart';
 import '../../constants.dart';
 
 class CodeRe extends StatefulWidget {
@@ -44,7 +45,7 @@ class _CodeReState extends State<CodeRe> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("تأكيد الرمز",style: getTextSyle(16, Colors.white),),
+        title: Text(AppLocalizations.of(context).translate("ConfirmTheCode"),style: getTextSyle(16, Colors.white),),
       ),
       body:ModalProgressHUD(
         inAsyncCall: isLoading,
@@ -66,7 +67,7 @@ class _CodeReState extends State<CodeRe> {
                       children: <Widget>[
                         Expanded(
                           child: Text(
-                            "تم إرسال الرمز إلى البريد الإلكتروني وهو صالح لمدة ساعتين فقط",
+                            AppLocalizations.of(context).translate("codeSendTime"),
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                         ),
@@ -85,7 +86,7 @@ class _CodeReState extends State<CodeRe> {
                       ),
                       child: TextFormField(
                           maxLines: 1,
-                          textDirection: TextDirection.rtl,
+
                           textAlign: TextAlign.start,
                           style: TextStyle(
                             color: kPrimaryColor,
@@ -97,7 +98,7 @@ class _CodeReState extends State<CodeRe> {
                           decoration: getInputDecorationHassan(label: code,icon: Icon(Icons.code,color: kPrimaryColor,)),
                           validator: (String item) {
                             if (codeController.text.isEmpty)
-                              return emptyValidation;
+                              return AppLocalizations.of(context).translate("emptyValidation");
 
                             return null;
                           }
@@ -106,7 +107,7 @@ class _CodeReState extends State<CodeRe> {
                     ),
                     SizedBox(height: 10,),
                     MyButton(
-                      txt: "إعادة الإرسال",
+                      txt: AppLocalizations.of(context).translate("reSendCode"),
                       press: () async {
                         if(validationForm(formKeyValidation)){
                           setState(() {
@@ -130,7 +131,7 @@ class _CodeReState extends State<CodeRe> {
                     ),
                     SizedBox(height: 10,),
                     MyButton(
-                      txt: "تأكيد الرمز",
+                      txt: AppLocalizations.of(context).translate("ConfirmTheCode"),
                       press: () async {
                         if(validationForm(formKeyValidation)){
                           setState(() {

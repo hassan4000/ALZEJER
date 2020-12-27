@@ -21,6 +21,8 @@ import 'package:flutter/material.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:myfatoorah_flutter/myfatoorah_flutter.dart';
 
+import '../../app_localizations.dart';
+
 class AllPaymentMethodToImprovePlan extends StatefulWidget {
 
   PaymentModel paymentModel;
@@ -87,7 +89,7 @@ class _AllPaymentMethodToImprovePlanState extends State<AllPaymentMethodToImprov
 
               var respose=await addPaymentToServer(widget.paymentModel);
               if(respose.statusCode==200){
-                showToast("تم الدفع بنجاح");
+                showToast(AppLocalizations.of(context).translate("PaymentWasSuccessful"));
                 openPageAndClearPrev(context:context,page: GeneralPageClient(),route: HomePageRoute);
               }
 
@@ -159,7 +161,7 @@ class _AllPaymentMethodToImprovePlanState extends State<AllPaymentMethodToImprov
             height: MediaQuery.of(context).size.height,
             child: Center(
                 child: Text(
-                  noData,
+                  AppLocalizations.of(context).translate("noData"),
                   style: TextStyle(color: Colors.grey, fontSize: 16),
                 )),
           ),
@@ -252,8 +254,10 @@ class _AllPaymentMethodToImprovePlanState extends State<AllPaymentMethodToImprov
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text('اختر طريقة الدفع'),
+          //title: Text('اختر طريقة الدفع'),
+          title: Text(AppLocalizations.of(context).translate("choosePaymentMethod")),
         ),
+        //اختر طريقة الدف
         body: ModalProgressHUD(
           inAsyncCall: isLoadingHUD,
           child: Background(
@@ -294,9 +298,9 @@ class _AllPaymentMethodToImprovePlanState extends State<AllPaymentMethodToImprov
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Expanded(child: Text("${yourBalanceByPoint}${userInfo.pointsBalance.toString()}"
+                      Expanded(child: Text("${AppLocalizations.of(context).translate("yourBalanceByPoint")}${userInfo.pointsBalance.toString()}"
                         ,style: getTextSyle(16, Colors.grey),
-                        textDirection: TextDirection.rtl,textAlign: TextAlign.center,)),
+                       textAlign: TextAlign.center,)),
                     ],
                   ),
                   MyButton(txt: payByPointTxt,press: () async {
@@ -318,17 +322,17 @@ class _AllPaymentMethodToImprovePlanState extends State<AllPaymentMethodToImprov
 
                         var  point=response.object;
                         userInfo.pointsBalance=int.parse(point['Modifier']['PointsBalance'].toString());
-                        showToast(successfulOpreation);
+                        showToast(AppLocalizations.of(context).translate("successfulOpreation"));
                         openPageAndClearPrev(context: context,route:HomePageRoute,page: GeneralPageClient() );
 
                       }else{
-                        showToast(failedToPayOpreation);
+                        showToast(AppLocalizations.of(context).translate("failedToPayOpreation"));
                       }
 
 
                       reSetLoadingHUD(false);
                     }else{
-                      showToast(youDonotHaveEnoughtPoint);
+                      showToast(AppLocalizations.of(context).translate("youDonotHaveEnoughtPoint"));
                     }
 
 
@@ -336,7 +340,7 @@ class _AllPaymentMethodToImprovePlanState extends State<AllPaymentMethodToImprov
                     raduis: 4,),
 
                   SizedBox(height: 4,),
-                  Text("أو",style: getTextSyle(16, Colors.grey),),
+                  Text(AppLocalizations.of(context).translate("orTxt"),style: getTextSyle(16, Colors.grey),),
                   SizedBox(height: 4,),
                   Flexible(child: dataListView(listServices,context)),
                 ],

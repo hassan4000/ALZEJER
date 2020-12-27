@@ -2,6 +2,7 @@ import 'package:faserholmak/Helper/AppApi.dart';
 import 'package:faserholmak/Helper/StyleForApp.dart';
 import 'package:flutter/material.dart';
 
+import '../../app_localizations.dart';
 import '../../constants.dart';
 
 class WaitDialog extends StatefulWidget {
@@ -51,7 +52,7 @@ class _WaitDialogState extends State<WaitDialog> {
               width: 4.0,
             ),
             Text(
-                "تسجيل الخروج  ",
+                AppLocalizations.of(context).translate("logout"),
                 style: getTextSyle(20, kPrimaryColor,fontWeight: FontWeight.w600)
             ),
           ],
@@ -74,7 +75,7 @@ class _WaitDialogState extends State<WaitDialog> {
                   Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        'الرجاء الانتظار ..',
+                        AppLocalizations.of(context).translate("waitLittleBit"),
                         style: TextStyle(
                           fontFamily: 'Heading',
                           fontSize: 18.0,

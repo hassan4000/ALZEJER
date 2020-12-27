@@ -20,6 +20,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_share/flutter_share.dart';
 
 
+import '../../app_localizations.dart';
 import '../../constants.dart';
 import 'package:faserholmak/Helper/Content.dart';
 
@@ -112,7 +113,7 @@ class _MyDrawerState extends State<MyDrawer> {
                               ,child: Row(
                             children: <Widget>[
                               IconButton(onPressed: (){},icon: Icon(Icons.home,color:  kPrimaryColor),),
-                              Text(homePage,style: getTextSyle(16, kPrimaryColor),)
+                              Text(AppLocalizations.of(context).translate("homePage"),style: getTextSyle(16, kPrimaryColor),)
                             ],
                           )),
                         ),
@@ -134,7 +135,7 @@ class _MyDrawerState extends State<MyDrawer> {
                               ,child: Row(
                             children: <Widget>[
                               IconButton(onPressed: (){},icon: Icon(Icons.mode_edit,color:  kPrimaryColor),),
-                              Text(editProfile,style: getTextSyle(16, kPrimaryColor),)
+                              Text(AppLocalizations.of(context).translate("editProfile"),style: getTextSyle(16, kPrimaryColor),)
                             ],
                           )),
                         ),
@@ -155,7 +156,7 @@ class _MyDrawerState extends State<MyDrawer> {
                               IconButton(onPressed: (){
 
                               },icon: Icon(Icons.add_box,color: kPrimaryColor,),),
-                              Text(serviceRequest,style: getTextSyle(16, kPrimaryColor),)
+                              Text(AppLocalizations.of(context).translate("serviceRequest"),style: getTextSyle(16, kPrimaryColor),)
                             ],
                           )),
                      ),
@@ -176,7 +177,7 @@ class _MyDrawerState extends State<MyDrawer> {
                               ,child: Row(
                             children: <Widget>[
                               IconButton(onPressed: (){},icon: Icon(Icons.account_circle,color: kPrimaryColor),),
-                              Text(myServices,style: getTextSyle(16, kPrimaryColor),)
+                              Text(AppLocalizations.of(context).translate("myServices"),style: getTextSyle(16, kPrimaryColor),)
                             ],
                           )),
                         ),
@@ -196,7 +197,7 @@ class _MyDrawerState extends State<MyDrawer> {
                               ,child: Row(
                             children: <Widget>[
                               IconButton(onPressed: (){},icon: Icon(Icons.done,color: kPrimaryColor,),),
-                              Text(completedServices,style: getTextSyle(16, kPrimaryColor),)
+                              Text(AppLocalizations.of(context).translate("completedServices"),style: getTextSyle(16, kPrimaryColor),)
                             ],
                           )),
                         ),
@@ -215,7 +216,7 @@ class _MyDrawerState extends State<MyDrawer> {
                               ,child: Row(
                             children: <Widget>[
                               IconButton(onPressed: (){},icon: Icon(Icons.timelapse,color: kPrimaryColor,),),
-                              Text(servicesInProgress,style: getTextSyle(16, kPrimaryColor),)
+                              Text(AppLocalizations.of(context).translate("servicesInProgress"),style: getTextSyle(16, kPrimaryColor),)
                             ],
                           )),
                         ),
@@ -235,7 +236,7 @@ class _MyDrawerState extends State<MyDrawer> {
                               ,child: Row(
                             children: <Widget>[
                               IconButton(onPressed: (){},icon: Icon(Icons.attach_money,color:  kPrimaryColor),),
-                              Text(balanceRecord,style: getTextSyle(16, kPrimaryColor),)
+                              Text(AppLocalizations.of(context).translate("balanceRecord"),style: getTextSyle(16, kPrimaryColor),)
                             ],
                           )),
                         ),
@@ -254,7 +255,7 @@ class _MyDrawerState extends State<MyDrawer> {
                               ,child: Row(
                             children: <Widget>[
                               IconButton(onPressed: (){},icon: Icon(Icons.people,color: kPrimaryColor,),),
-                              Text(serviceProviders,style: getTextSyle(16, kPrimaryColor),)
+                              Text(AppLocalizations.of(context).translate("serviceProviders"),style: getTextSyle(16, kPrimaryColor),)
                             ],
                           )),
                         ),
@@ -277,7 +278,7 @@ class _MyDrawerState extends State<MyDrawer> {
                               ,child: Row(
                             children: <Widget>[
                               IconButton(onPressed: (){},icon: Icon(Icons.collections_bookmark,color:  kPrimaryColor),),
-                              Text(privacyPolicy,style: getTextSyle(16, kPrimaryColor),)
+                              Text(AppLocalizations.of(context).translate("privacyPolicy"),style: getTextSyle(16, kPrimaryColor),)
                             ],
                           )),
                         ),
@@ -299,7 +300,7 @@ class _MyDrawerState extends State<MyDrawer> {
                               ,child: Row(
                             children: <Widget>[
                               IconButton(onPressed: (){},icon: Icon(Icons.chat,color:  kPrimaryColor),),
-                              Text(audienceChat,style: getTextSyle(16, kPrimaryColor),)
+                              Text(AppLocalizations.of(context).translate("audienceChat"),style: getTextSyle(16, kPrimaryColor),)
                             ],
                           )),
                         ),
@@ -317,7 +318,7 @@ class _MyDrawerState extends State<MyDrawer> {
                               ,child: Row(
                             children: <Widget>[
                               IconButton(onPressed: (){},icon: Icon(Icons.rate_review,color:  kPrimaryColor),),
-                              Text(rateApplication,style: getTextSyle(16, kPrimaryColor),)
+                              Text(AppLocalizations.of(context).translate("rateApplication"),style: getTextSyle(16, kPrimaryColor),)
                             ],
                           )),
                         ),
@@ -332,12 +333,12 @@ class _MyDrawerState extends State<MyDrawer> {
                         GestureDetector(
                           onTap: () async {
                             await FlutterShare.share(
-                                title: 'يرجى مشاركة هذا الرابط ',
+                                title: AppLocalizations.of(context).translate("pleaseShareThisLink"),
 
                                 text:
-                                '${shareHitn1}\n ${userInfo.userSpecialCode}',
+                                '${AppLocalizations.of(context).translate("shareHitn1")}\n ${userInfo.userSpecialCode}',
                                 linkUrl:
-                                ' {$linkApp} \n  ${googlePlayUrl}',
+                                ' ${AppLocalizations.of(context).translate("linkApp")} \n  ${googlePlayUrl}',
                                 chooserTitle:
                                 'Share');
                           },
@@ -346,7 +347,7 @@ class _MyDrawerState extends State<MyDrawer> {
                               ,child: Row(
                             children: <Widget>[
                               IconButton(onPressed: (){},icon: Icon(Icons.share,color: kPrimaryColor,),),
-                              Text(shareApp,style: getTextSyle(16, kPrimaryColor),)
+                              Text(AppLocalizations.of(context).translate("shareApp"),style: getTextSyle(16, kPrimaryColor),)
                             ],
                           )),
                         ),
@@ -366,7 +367,7 @@ class _MyDrawerState extends State<MyDrawer> {
                               ,child: Row(
                             children: <Widget>[
                               IconButton(onPressed: (){},icon: Icon(Icons.contacts,color: kPrimaryColor,),),
-                              Text(cotactWithUsTxt,style: getTextSyle(16, kPrimaryColor),)
+                              Text(AppLocalizations.of(context).translate("cotactWithUsTxt"),style: getTextSyle(16, kPrimaryColor),)
                             ],
                           )),
                         ),
@@ -393,7 +394,7 @@ class _MyDrawerState extends State<MyDrawer> {
                               ,child: Row(
                             children: <Widget>[
                               IconButton(onPressed: (){},icon: Icon(Icons.assignment_return,color: kPrimaryColor,),),
-                              Text(logout,style: getTextSyle(16, kPrimaryColor),)
+                              Text(AppLocalizations.of(context).translate("logout"),style: getTextSyle(16, kPrimaryColor),)
                             ],
                           )),
                         ),

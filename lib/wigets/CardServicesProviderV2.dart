@@ -7,6 +7,8 @@ import 'package:faserholmak/wigets/MyCircularImage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../app_localizations.dart';
+
 class CardServicesProviderV2 extends StatelessWidget {
   UserInfoModel userInfoModel;
   VoidCallback pressShowProviderPage;
@@ -77,7 +79,7 @@ class CardServicesProviderV2 extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.all(4.0),
                         child: Text(
-                          '$providedHint ${userInfoModel.numberOfDoneServices} $serviceTxt',
+                          '${AppLocalizations.of(context).translate("providedHint")} ${userInfoModel.numberOfDoneServices} ${AppLocalizations.of(context).translate("serviceTxt")}',
                           style: getTextSyle(16, Colors.black,fontWeight: FontWeight.w300),
                         textDirection: TextDirection.rtl,),
                       ),
@@ -86,7 +88,7 @@ class CardServicesProviderV2 extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.all(4.0),
                         child: Text(
-                            '$onProgress ${userInfoModel.numberOfActiveServices} $serviceTxt',
+                            '${AppLocalizations.of(context).translate("onProgress")} ${userInfoModel.numberOfActiveServices} ${AppLocalizations.of(context).translate("serviceTxt")}',
                           style: getTextSyle(16, Colors.black,fontWeight: FontWeight.w300),
                             textDirection: TextDirection.ltr,textAlign: TextAlign.right,),
                       ),

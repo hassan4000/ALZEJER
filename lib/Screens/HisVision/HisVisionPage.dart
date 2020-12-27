@@ -12,6 +12,7 @@ import 'package:faserholmak/components/rounded_button.dart';
 import 'package:flutter/material.dart';
 
 
+import '../../app_localizations.dart';
 import '../../constants.dart';
 
 class HisVisionPage extends StatefulWidget {
@@ -60,51 +61,50 @@ class _HisVisionPageState extends State<HisVisionPage> {
 
 
   List<DropDownItem> genderList = <DropDownItem>[
-    const DropDownItem(male),
-    const DropDownItem(female),
+     const DropDownItem("male"),
+    const DropDownItem("female"),
   ];
 
   List<DropDownItem> socialStatusList = <DropDownItem>[
-    const DropDownItem(single,),
-    const DropDownItem(marred,),
-    const DropDownItem(divorcee,),
+    const DropDownItem("single",),
+    const DropDownItem("marred",),
+    const DropDownItem("divorcee",),
   ];
 
 
 
   List<DropDownItem> childernList = <DropDownItem>[
-    const DropDownItem('يوجد اطفال',),
-    const DropDownItem('لا يوجد اطفال',),
+    const  DropDownItem("ThereAreChildren",),
+    const DropDownItem("ThereIsNoChildren",),
 
   ];
 
   List<DropDownItem> workList = <DropDownItem>[
-    const DropDownItem(heHasWork),
-    const DropDownItem(heHasnotWork),
-    const DropDownItem(studying),
+    const   DropDownItem("heHasWork"),
+    const   DropDownItem("heHasnotWork"),
+    const DropDownItem("studying"),
 
   ];
 
   List<DropDownItem> prayList = <DropDownItem>[
-    const DropDownItem(yes,state: true),
-    const DropDownItem(no,state: false),
+    const DropDownItem("yes",state: true),
+    const  DropDownItem("no",state: false),
   ];
 
   List<DropDownItem> religiousList = <DropDownItem>[
-    const DropDownItem(committed,),
-    const DropDownItem(halfCommitted),
-    const DropDownItem(noCommitted),
+    const   DropDownItem("committed",),
+    const  DropDownItem("halfCommitted"),
+    const  DropDownItem("noCommitted"),
 
   ];
 
   List<DropDownItem> insomniaList = <DropDownItem>[
-    const DropDownItem(yes,state: true),
-    const DropDownItem(no,state: false),
+    const DropDownItem("yes",state: true),
+    const  DropDownItem("no",state: false),
   ];
   List<DropDownItem> exorcismList = <DropDownItem>[
-    const DropDownItem(yes,state: true),
-    const DropDownItem(no,state: false),
-
+    const DropDownItem("yes",state: true),
+    const  DropDownItem("no",state: false),
   ];
 
   var date = DateTime.now();
@@ -113,7 +113,7 @@ class _HisVisionPageState extends State<HisVisionPage> {
   void initState() {
     myFocusNode=FocusNode();
     setState(() {
-      myCountry=addCountreisHasssan();
+      myCountry=countryList;
     });
     super.initState();
 
@@ -128,6 +128,9 @@ class _HisVisionPageState extends State<HisVisionPage> {
 
   @override
   Widget build(BuildContext context) {
+
+
+
     return SafeArea(
       top: true,
       child: GestureDetector(
@@ -135,7 +138,7 @@ class _HisVisionPageState extends State<HisVisionPage> {
         child: Scaffold(
           appBar: AppBar(
             centerTitle: true,
-            title: Text("صاحب الرؤية"),
+            title: Text(AppLocalizations.of(context).translate("DreamOwner")),
           ),
           body: Background(
 
@@ -155,7 +158,7 @@ class _HisVisionPageState extends State<HisVisionPage> {
                         child: TextFormField(
 
                             maxLines: 1,
-                            textDirection: TextDirection.rtl,
+                          //  textDirection: TextDirection.rtl,
                             textAlign: TextAlign.start,
                             style: TextStyle(color: kPrimaryColor,fontSize: 20,),
                             keyboardType: TextInputType.text,
@@ -163,10 +166,10 @@ class _HisVisionPageState extends State<HisVisionPage> {
                             focusNode: myFocusNode,
 
                             cursorColor: kPrimaryColor,
-                            decoration:getInputDecorationHassan(label: name),
+                            decoration:getInputDecorationHassan(label: AppLocalizations.of(context).translate("name")),
                             validator: (String item) {
                               if (nameControler.text.isEmpty)
-                                return emptyValidation;
+                                return AppLocalizations.of(context).translate("emptyValidation");
                               else
                                 return null;
                             }
@@ -217,17 +220,17 @@ class _HisVisionPageState extends State<HisVisionPage> {
 
 
                               maxLines: 1,
-                              textDirection: TextDirection.rtl,
+                            //  textDirection: TextDirection.rtl,
                               textAlign: TextAlign.start,
                               style: TextStyle(color: kPrimaryColor,fontSize: 20,),
                               keyboardType: TextInputType.text,
                               controller: dreamTimeControler,
                               cursorColor: kPrimaryColor,
-                              decoration:getInputDecorationHassan(label: whenWasTheDream,
+                              decoration:getInputDecorationHassan(label: AppLocalizations.of(context).translate("whenWasTheDream"),
                                 icon:Icon(Icons.timelapse,color: kPrimaryColor,), ),
                               validator: (String item) {
                                 if (dreamTimeControler.text.isEmpty)
-                                  return emptyValidation;
+                                  return AppLocalizations.of(context).translate("emptyValidation");
                                 else
                                   return null;
                               }
@@ -258,7 +261,7 @@ class _HisVisionPageState extends State<HisVisionPage> {
                                 underline: Container(),
                                 elevation: 10,
 
-                                hint:  Text(gener),
+                                hint:  Text(AppLocalizations.of(context).translate("gener")),
                                 value: genderSelected,
 
                                 onChanged: (DropDownItem Value) {
@@ -279,7 +282,7 @@ class _HisVisionPageState extends State<HisVisionPage> {
 
 
                                         Text(
-                                          data.name.toString(),
+                                    AppLocalizations.of(context).translate((data.name.toString())),
                                           textAlign: TextAlign.center,
                                           style:  TextStyle(color: Colors.black),
                                         ),
@@ -307,7 +310,7 @@ class _HisVisionPageState extends State<HisVisionPage> {
                                 underline: Container(),
                                 elevation: 10,
 
-                                hint:  Text(socialStatus),
+                                hint:  Text(AppLocalizations.of(context).translate("socialStatus")),
                                 value: socialStatusSelected,
                                 onChanged: (DropDownItem Value) {
                                   setState(() {
@@ -323,7 +326,7 @@ class _HisVisionPageState extends State<HisVisionPage> {
 
 
                                         Text(
-                                          data.name.toString(),
+                                    AppLocalizations.of(context).translate(data.name.toString()),
                                           textAlign: TextAlign.center,
                                           style:  TextStyle(color: Colors.black),
                                         ),
@@ -354,7 +357,7 @@ class _HisVisionPageState extends State<HisVisionPage> {
                               ),
                               child: DropdownButton<DropDownItem>(
                                 isExpanded: true,
-                                hint:  Text(workStatus),
+                                hint:  Text(AppLocalizations.of(context).translate("workStatus")),
                                 value: workStatusSelected,
                                 underline: Container(),
                                 onChanged: (DropDownItem Value) {
@@ -371,7 +374,7 @@ class _HisVisionPageState extends State<HisVisionPage> {
 
 
                                         Text(
-                                          data.name.toString(),
+                                    AppLocalizations.of(context).translate(data.name.toString()),
                                           textAlign: TextAlign.center,
                                           style:  TextStyle(color: Colors.black),
                                         ),
@@ -399,7 +402,7 @@ class _HisVisionPageState extends State<HisVisionPage> {
                                 underline: Container(),
                                 elevation: 10,
 
-                                hint:  Text(doYouHaveinsomnia),
+                                hint:  Text(AppLocalizations.of(context).translate("doYouHaveinsomnia")),
                                 value: insomniaSelected,
                                 onChanged: (DropDownItem Value) {
                                   setState(() {
@@ -415,7 +418,7 @@ class _HisVisionPageState extends State<HisVisionPage> {
 
 
                                         Text(
-                                          data.name.toString(),
+                                    AppLocalizations.of(context).translate(data.name.toString()),
                                           textAlign: TextAlign.center,
                                           style:  TextStyle(color: Colors.black),
                                         ),
@@ -447,7 +450,7 @@ class _HisVisionPageState extends State<HisVisionPage> {
                               ),
                               child: DropdownButton<Country>(
                                 isExpanded: true,
-                                hint:  Text(country),
+                                hint:  Text(AppLocalizations.of(context).translate("country")),
                                 value: countrySelected,
                                 underline: Container(),
                                 onChanged: (Country Value) {
@@ -465,7 +468,7 @@ class _HisVisionPageState extends State<HisVisionPage> {
 
                                         Flexible(
                                           child: Text(
-                                            data.name.toString(),
+                                        data.name.toString(),
                                             textAlign: TextAlign.center,
                                             style:  TextStyle(color: Colors.black),
                                           ),
@@ -491,7 +494,7 @@ class _HisVisionPageState extends State<HisVisionPage> {
                               ),
                               child: DropdownButton<DropDownItem>(
                                 isExpanded: true,
-                                hint:  Text(doYouhaveChildern),
+                                hint:  Text(AppLocalizations.of(context).translate("doYouhaveChildern")),
                                 value: childernSelected,
                                 underline: Container(),
                                 onChanged: (DropDownItem Value) {
@@ -509,7 +512,7 @@ class _HisVisionPageState extends State<HisVisionPage> {
 
 
                                         Text(
-                                          data.name.toString(),
+                                    AppLocalizations.of(context).translate(data.name.toString()),
                                           textAlign: TextAlign.center,
                                           style:  TextStyle(color: Colors.black),
                                         ),
@@ -542,7 +545,7 @@ class _HisVisionPageState extends State<HisVisionPage> {
                               ),
                               child: DropdownButton<DropDownItem>(
                                 isExpanded: true,
-                                hint:  Text(didYouExorcism),
+                                hint:  Text(AppLocalizations.of(context).translate("didYouExorcism")),
                                 value: exorcismSelected,
                                 underline: Container(),
                                 onChanged: (DropDownItem Value) {
@@ -559,7 +562,7 @@ class _HisVisionPageState extends State<HisVisionPage> {
 
 
                                         Text(
-                                          data.name.toString(),
+                                          AppLocalizations.of(context).translate(data.name.toString()),
                                           textAlign: TextAlign.center,
                                           style:  TextStyle(color: Colors.black),
                                         ),
@@ -587,7 +590,7 @@ class _HisVisionPageState extends State<HisVisionPage> {
                                 underline: Container(),
                                 elevation: 10,
 
-                                hint:  Text(religiousState),
+                                hint:  Text(AppLocalizations.of(context).translate("religiousState")),
                                 value: religiousSelected,
                                 onChanged: (DropDownItem Value) {
                                   setState(() {
@@ -670,7 +673,7 @@ class _HisVisionPageState extends State<HisVisionPage> {
                       ),*/
 
                       RoundedButton(
-                        text: next,
+                        text: AppLocalizations.of(context).translate("next"),
                         color: kPrimaryColor,
                         textColor: Colors.white,
                         press: () {

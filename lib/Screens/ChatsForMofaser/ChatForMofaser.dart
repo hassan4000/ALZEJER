@@ -12,6 +12,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
+import '../../app_localizations.dart';
 import '../../constants.dart';
 
 class ChatForMofaser extends StatefulWidget {
@@ -51,7 +52,7 @@ class _ChatForMofaserState extends State<ChatForMofaser> {
                 name: snapshot.data.documents[index]["SendBy"],
               );
             }) : Container(height: MediaQuery.of(context).size.height,
-        child: Text("لايوجد رسائل"),);
+        child: Text(AppLocalizations.of(context).translate("ThereAreNoMessages")),);
       },
     );
   }
@@ -106,7 +107,7 @@ class _ChatForMofaserState extends State<ChatForMofaser> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("دردشة المفسرين"),
+        title: Text(AppLocalizations.of(context).translate("ExplainersChat")),
       ),
 
       body: SafeArea(
@@ -139,11 +140,11 @@ class _ChatForMofaserState extends State<ChatForMofaser> {
                         flex:4,
                         child: TextFormField(
                           controller: controller,
-                          textDirection: TextDirection.rtl,
+                       //   textDirection: TextDirection.rtl,
                           minLines: 1,
                           maxLines: 2,
 
-                          decoration: getInputDecorationChat(hint: "ارسال ",
+                          decoration: getInputDecorationChat(hint: AppLocalizations.of(context).translate("sendTxt"),
                           ),
 
                         ),

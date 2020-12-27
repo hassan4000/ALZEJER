@@ -8,6 +8,8 @@ import 'package:faserholmak/Screens/PrivetOrPublicService/PrivetOrPublicServiceP
 import 'package:faserholmak/wigets/CardTimeDreams.dart';
 import 'package:flutter/material.dart';
 
+import '../../app_localizations.dart';
+
 class ServicePathList extends StatefulWidget {
 
   AddServiceModel addServiceModel;
@@ -24,7 +26,7 @@ class _ServicePathListState extends State<ServicePathList> {
   GlobalKey<RefreshIndicatorState> refreshKey=new GlobalKey<RefreshIndicatorState>();
 
   String getAvg(String txt){
-    if(emptyString(txt)=="") return soonTxt;
+    if(emptyString(txt)=="") return AppLocalizations.of(context).translate("soonTxt");
     else return emptyString(txt);
   }
 
@@ -36,7 +38,7 @@ class _ServicePathListState extends State<ServicePathList> {
             height: MediaQuery.of(context).size.height,
             child: Center(
                 child: Text(
-                  failedOpreation,
+                  AppLocalizations.of(context).translate("failedOpreation"),
                   style: TextStyle(color: Colors.grey, fontSize: 16),
                 )),
           ),
@@ -73,7 +75,7 @@ class _ServicePathListState extends State<ServicePathList> {
             height: MediaQuery.of(context).size.height,
             child: Center(
                 child: Text(
-                  noData,
+                  AppLocalizations.of(context).translate("noData"),
                   style: TextStyle(color: Colors.grey, fontSize: 16),
                 )),
           ),
@@ -102,7 +104,7 @@ class _ServicePathListState extends State<ServicePathList> {
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text('اختر الوقت والمسار المناسب'),
+          title: Text(AppLocalizations.of(context).translate("chooseTimeAndPath")),
         ),
         body: Background(
           topAlignment: true,

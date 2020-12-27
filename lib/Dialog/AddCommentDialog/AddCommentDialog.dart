@@ -8,6 +8,7 @@ import 'package:faserholmak/Helper/Content.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../app_localizations.dart';
 import '../../constants.dart';
 
 class AddCommentDialog extends StatefulWidget {
@@ -51,7 +52,7 @@ class _AddCommentDialogState extends State<AddCommentDialog> {
           SizedBox(
             width: 4.0,
           ),
-          Text( sendComments,
+          Text(AppLocalizations.of(context).translate("sendComments"),
               style:
               getTextSyle(20, kPrimaryColor, fontWeight: FontWeight.w600)),
         ],
@@ -73,7 +74,7 @@ class _AddCommentDialogState extends State<AddCommentDialog> {
                 Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      'انتظر قليلا ..',
+                AppLocalizations.of(context).translate("waitLittleBit"),
                       style: TextStyle(
                         fontFamily: 'Heading',
                         fontSize: 18.0,
@@ -91,12 +92,12 @@ class _AddCommentDialogState extends State<AddCommentDialog> {
                     TextFormField(
                       controller: textEditingController,
                       decoration: getInputDecorationHassan(
-                          hint: sendComments,
+                          hint:AppLocalizations.of(context).translate("sendComments"),
                           icon: Icon(
                             Icons.description,
                             color: kPrimaryColor,
                           )),
-                      textDirection: TextDirection.rtl,
+                    //  textDirection: TextDirection.rtl,
                       textAlign: TextAlign.start,
                       minLines: 4,
                       maxLines: 6,
@@ -116,7 +117,7 @@ class _AddCommentDialogState extends State<AddCommentDialog> {
                       children: <Widget>[
                         Expanded(
                           child: MyButton(
-                            txt: cancel,
+                            txt: AppLocalizations.of(context).translate("cancel"),
                             raduis: 4,
                             press: () {
                               Navigator.of(context).pop();
@@ -131,7 +132,7 @@ class _AddCommentDialogState extends State<AddCommentDialog> {
                         SizedBox(width: 10,),
                         Expanded(
                           child: MyButton(
-                            txt: add,
+                            txt:AppLocalizations.of(context).translate("add"),
                             raduis: 4,
                             press: () async {
                               if(textEditingController.text.toString().isEmpty)
@@ -148,7 +149,7 @@ class _AddCommentDialogState extends State<AddCommentDialog> {
                                   CommentModel item=response.object;
 
                                   if(userInfo.type==interpreterTxt)
-                                    await sendAndRetrieveMessage(body: " على خدمة لك  ${userInfo.name} علق   ",
+                                    await sendAndRetrieveMessage(body: " ${AppLocalizations.of(context).translate("commentedYourService")} ${userInfo.name} ",
                                         title: "${textEditingController.text.toString().trim()}",clientToken: widget.clinetToken).then((onValue){
 
                                       //    showToast(widget.clinetToken);
@@ -158,7 +159,7 @@ class _AddCommentDialogState extends State<AddCommentDialog> {
 
 
                                   else if(userInfo.type==clientTxt)
-                                      await sendAndRetrieveMessage(body: " على خدمة لك  ${userInfo.name} علق المستخدم  ",
+                                      await sendAndRetrieveMessage(body: " ${AppLocalizations.of(context).translate("commentedYourService")} ${userInfo.name}",
                                           title: "${textEditingController.text.toString().trim()}",
                                           providerToken: widget.prividerToken).then((onValue){
                                         Navigator.of(context).pop(item);

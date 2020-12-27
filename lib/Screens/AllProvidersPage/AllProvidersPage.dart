@@ -10,6 +10,8 @@ import 'package:faserholmak/wigets/CardServicesProviderV2.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
+import '../../app_localizations.dart';
+
 class AllProvidersPage extends StatefulWidget {
   @override
   _AllProvidersPageState createState() => _AllProvidersPageState();
@@ -30,7 +32,7 @@ class _AllProvidersPageState extends State<AllProvidersPage> {
             height: MediaQuery.of(context).size.height,
             child: Center(
                 child: Text(
-                  failedOpreation,
+                  AppLocalizations.of(context).translate("failedOpreation"),
                   style: TextStyle(color: Colors.grey, fontSize: 16),
                 )),
           ),
@@ -61,7 +63,7 @@ class _AllProvidersPageState extends State<AllProvidersPage> {
             height: MediaQuery.of(context).size.height,
             child: Center(
                 child: Text(
-                  noData,
+                  AppLocalizations.of(context).translate("noData"),
                   style: TextStyle(color: Colors.grey, fontSize: 16),
                 )),
           ),
@@ -110,7 +112,7 @@ class _AllProvidersPageState extends State<AllProvidersPage> {
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text("مقدمو الخدمات"),
+          title: Text( AppLocalizations.of(context).translate("serviceProviders_v2")),
         ),
         body: ModalProgressHUD(
           inAsyncCall: isLoadingHUD,

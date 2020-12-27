@@ -9,6 +9,8 @@ import 'package:faserholmak/wigets/MyButton.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
+import '../../app_localizations.dart';
+
 class ServiceYouWant extends StatefulWidget {
   @override
   _ServiceYouWantState createState() => _ServiceYouWantState();
@@ -28,7 +30,7 @@ class _ServiceYouWantState extends State<ServiceYouWant> {
             height: MediaQuery.of(context).size.height,
             child: Center(
                 child: Text(
-                  failedOpreation,
+                  AppLocalizations.of(context).translate("failedOpreation"),
                   style: TextStyle(color: Colors.grey, fontSize: 16),
                 )),
           ),
@@ -61,7 +63,7 @@ class _ServiceYouWantState extends State<ServiceYouWant> {
             height: MediaQuery.of(context).size.height,
             child: Center(
                 child: Text(
-                  'No DATA ',
+                  AppLocalizations.of(context).translate("noData"),
                   style: TextStyle(color: Colors.grey, fontSize: 16),
                 )),
           ),
@@ -89,7 +91,7 @@ class _ServiceYouWantState extends State<ServiceYouWant> {
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text(whatIsServicesYouWant_v2),
+          title: Text(AppLocalizations.of(context).translate("whatIsServicesYouWant_v2")),
         ),
         body: Background(
           topAlignment: true,

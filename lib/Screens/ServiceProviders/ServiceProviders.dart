@@ -14,6 +14,8 @@ import 'package:faserholmak/wigets/CardServicesProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
+import '../../app_localizations.dart';
+
 class ServiceProviders extends StatefulWidget {
   final Value selectedService;
 
@@ -72,7 +74,7 @@ class _ServiceProvidersState extends State<ServiceProviders> {
         height:100,
         child: Center(
           child: Text(
-            failedOpreation,
+            AppLocalizations.of(context).translate("failedOpreation"),
             style: TextStyle(color: Colors.grey, fontSize: 16),
           ),
         ),
@@ -108,7 +110,7 @@ class _ServiceProvidersState extends State<ServiceProviders> {
         height: 100,
         child: Center(
             child: Text(
-              noData,
+              AppLocalizations.of(context).translate("noData"),
               style: TextStyle(color: Colors.grey, fontSize: 16),
             )),
       );
@@ -190,7 +192,7 @@ class _ServiceProvidersState extends State<ServiceProviders> {
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text(selectProvider,style: getTextSyle(14, Colors.white),),
+          title: Text(AppLocalizations.of(context).translate("selectProvider"),style: getTextSyle(14, Colors.white),),
         ),
         body: ModalProgressHUD(
           inAsyncCall: isLoadingHUD,

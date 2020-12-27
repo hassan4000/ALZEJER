@@ -25,6 +25,8 @@ import 'package:flutter/services.dart';
 
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
+import '../../../app_localizations.dart';
+
 class EditProfileClient extends StatefulWidget {
   List<Value> userWorks;
 
@@ -122,7 +124,7 @@ class _EditProfileClientState extends State<EditProfileClient> {
         appBar: AppBar(
           centerTitle: true,
           backgroundColor: kPrimaryColor,
-          title: Text(editProfile,style: getTextSyle(16, Colors.white),textDirection: TextDirection.rtl,),
+          title: Text(AppLocalizations.of(context).translate("editProfile"),style: getTextSyle(16, Colors.white),textDirection: TextDirection.rtl,),
         ),
         body: ModalProgressHUD(
           inAsyncCall: isLoading,
@@ -171,10 +173,10 @@ class _EditProfileClientState extends State<EditProfileClient> {
                           keyboardType: TextInputType.text,
                           controller: nameController,
                           cursorColor: kPrimaryColor,
-                          decoration: getInputDecorationHassan(label: name),
+                          decoration: getInputDecorationHassan(label: AppLocalizations.of(context).translate("name")),
                           validator: (String item) {
                             if (nameController.text.isEmpty)
-                              return emptyValidation;
+                              return AppLocalizations.of(context).translate("emptyValidation");
                             else
                               return null;
                           },
@@ -185,7 +187,7 @@ class _EditProfileClientState extends State<EditProfileClient> {
                       ),
 
                       RoundedButton(
-                        text: save,
+                        text: AppLocalizations.of(context).translate("save"),
                         color: kPrimaryColor,
                         textColor: Colors.white,
                         press: () async {

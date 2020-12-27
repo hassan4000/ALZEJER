@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../app_localizations.dart';
 import '../../../constants.dart';
 
 
@@ -16,7 +17,7 @@ class OrDivider extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Text(
-              "أو",
+              AppLocalizations.of(context).translate("orTxt"),
               style: TextStyle(
                 color: kPrimaryColor,
                 fontWeight: FontWeight.w600,

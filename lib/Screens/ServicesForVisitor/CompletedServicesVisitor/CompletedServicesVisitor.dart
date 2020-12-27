@@ -11,6 +11,7 @@ import 'package:faserholmak/wigets/CardDreams.dart';
 import 'package:flutter/material.dart';
 import 'package:faserholmak/Helper/AppApi.dart';
 
+import '../../../app_localizations.dart';
 import '../../../constants.dart';
 
 class CompletedServiceVisitor extends StatefulWidget {
@@ -62,7 +63,7 @@ class _CompletedServiceVisitorState extends State<CompletedServiceVisitor> {
         height: MediaQuery.of(context).size.height,
         child: Center(
           child: Text(
-            failedOpreation,
+            AppLocalizations.of(context).translate("failedOpreation"),
             style: TextStyle(color: Colors.grey, fontSize: 16),
           ),
         ),
@@ -88,7 +89,7 @@ class _CompletedServiceVisitorState extends State<CompletedServiceVisitor> {
         height: MediaQuery.of(context).size.height,
         child: Center(
             child: Text(
-              noData,
+              AppLocalizations.of(context).translate("noData"),
               style: TextStyle(color: Colors.grey, fontSize: 16),
             )),
       );
@@ -170,7 +171,7 @@ class _CompletedServiceVisitorState extends State<CompletedServiceVisitor> {
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text("الخدمات المنجزة"),
+          title: Text(AppLocalizations.of(context).translate("completedServices")),
         ),
         body: RefreshIndicator(
           key: refreshKey,
@@ -219,7 +220,7 @@ class _CompletedServiceVisitorState extends State<CompletedServiceVisitor> {
                         underline: Container(),
                         elevation: 10,
                         hint: Text(orderBy,style: getTextSyle(16, Colors.black,fontWeight: FontWeight.w600),
-                          textDirection: TextDirection.rtl, textAlign: TextAlign.center,),
+                         textAlign: TextAlign.center,),
                         value: selectedUserWork!=null?selectedUserWork:null,
                         onChanged: (Value value) async {
                           print("-----------------");

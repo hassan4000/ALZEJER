@@ -17,6 +17,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:faserholmak/Helper/AppApi.dart';
 
+import '../../app_localizations.dart';
 import '../../constants.dart';
 import 'PersnalInfo/PersonlaInfo.dart';
 
@@ -44,14 +45,14 @@ class _TabWithImageHomePageState extends State<TabWithImageHomePage> with Ticker
 
           children: <Widget>[
 
-            PersonalProfileContent(hint:personalDescription ,text:emptyString(userInfoModel.personalDescription) ),
-            PersonalProfileContent(hint:socialStatus,text: emptyString(userInfoModel.socialStatus)),
-            PersonalProfileContent(hint:country ,text:emptyString(userInfoModel.country)),
-            PersonalProfileContent(hint: work,text: emptyString(userInfoModel.jobDescription)),
-            PersonalProfileContent(hint:dreamsDone ,text: emptyString(userInfoModel.numberOfDoneServices.toString())),
-            PersonalProfileContent(hint: dreamsPending,text:  emptyString(userInfoModel.numberOfActiveServices.toString())),
-            PersonalProfileContent(hint: speen,text:  emptyString(userInfoModel.speed.toString())),
-            PersonalProfileContent(hint: dreamsPerDay, text:emptyString(userInfoModel.avgServicesInOneDay.toString())),
+            PersonalProfileContent(hint:AppLocalizations.of(context).translate("personalDescription") ,text:emptyString(userInfoModel.personalDescription) ),
+            PersonalProfileContent(hint:AppLocalizations.of(context).translate("socialStatus"),text: emptyString(userInfoModel.socialStatus)),
+            PersonalProfileContent(hint:AppLocalizations.of(context).translate("country") ,text:emptyString(userInfoModel.country)),
+            PersonalProfileContent(hint:AppLocalizations.of(context).translate("work"),text: emptyString(userInfoModel.jobDescription)),
+            PersonalProfileContent(hint:AppLocalizations.of(context).translate("dreamsDone") ,text: emptyString(userInfoModel.numberOfDoneServices.toString())),
+            PersonalProfileContent(hint:AppLocalizations.of(context).translate("dreamsPending"),text:  emptyString(userInfoModel.numberOfActiveServices.toString())),
+            PersonalProfileContent(hint:AppLocalizations.of(context).translate("speen"),text:  emptyString(userInfoModel.speed.toString())),
+            PersonalProfileContent(hint:AppLocalizations.of(context).translate("dreamsPerDay"), text:emptyString(userInfoModel.avgServicesInOneDay.toString())),
 
           ],
         ),
@@ -91,7 +92,7 @@ class _TabWithImageHomePageState extends State<TabWithImageHomePage> with Ticker
         height: MediaQuery.of(context).size.height,
         child: Center(
           child: Text(
-            failedOpreation,
+                 AppLocalizations.of(context).translate("failedOpreation"),
             style: TextStyle(color: Colors.grey, fontSize: 16),
           ),
         ),
@@ -120,7 +121,7 @@ class _TabWithImageHomePageState extends State<TabWithImageHomePage> with Ticker
         height: MediaQuery.of(context).size.height,
         child: Center(
             child: Text(
-              noData,
+                   AppLocalizations.of(context).translate("noData"),
               style: TextStyle(color: Colors.grey, fontSize: 16),
             )),
       );
@@ -171,7 +172,7 @@ class _TabWithImageHomePageState extends State<TabWithImageHomePage> with Ticker
         height: MediaQuery.of(context).size.height,
         child: Center(
           child: Text(
-            failedOpreation,
+                 AppLocalizations.of(context).translate("failedOpreation"),
             style: TextStyle(color: Colors.grey, fontSize: 16),
           ),
         ),
@@ -203,7 +204,7 @@ class _TabWithImageHomePageState extends State<TabWithImageHomePage> with Ticker
         height: MediaQuery.of(context).size.height,
         child: Center(
             child: Text(
-              noData,
+                   AppLocalizations.of(context).translate("noData"),
               style: TextStyle(color: Colors.grey, fontSize: 16),
             )),
       );
@@ -257,7 +258,7 @@ class _TabWithImageHomePageState extends State<TabWithImageHomePage> with Ticker
         height: MediaQuery.of(context).size.height,
         child: Center(
           child: Text(
-            failedOpreation,
+                 AppLocalizations.of(context).translate("failedOpreation"),
             style: TextStyle(color: Colors.grey, fontSize: 16),
           ),
         ),
@@ -287,7 +288,7 @@ class _TabWithImageHomePageState extends State<TabWithImageHomePage> with Ticker
         height: MediaQuery.of(context).size.height,
         child: Center(
             child: Text(
-              noData,
+                   AppLocalizations.of(context).translate("noData"),
               style: TextStyle(color: Colors.grey, fontSize: 16),
             )),
       );
@@ -428,7 +429,7 @@ class _TabWithImageHomePageState extends State<TabWithImageHomePage> with Ticker
                     pinned: true,
                     centerTitle: true,
                     title: SABT(
-                        child: Text("صفحة مقدم الخدمة",
+                        child: Text(AppLocalizations.of(context).translate("serviceProviderPape"),
                             style: TextStyle(color: Colors.blue))),
                     backgroundColor: Colors.white,
                     shape: RoundedRectangleBorder(
@@ -495,12 +496,12 @@ class _TabWithImageHomePageState extends State<TabWithImageHomePage> with Ticker
                       unselectedLabelColor: Colors.grey,
                       tabs: [
                         InkWell(
-                            child: Tab(icon: Icon(Icons.info), text: personalInfo),
+                            child: Tab(icon: Icon(Icons.info), text:AppLocalizations.of(context).translate("personalInfo")),
                        ),
-                        Tab(icon: Icon(Icons.info), text: rating),
-                        Tab(icon: Icon(Icons.info), text: dreamsPending),
+                        Tab(icon: Icon(Icons.info), text:AppLocalizations.of(context).translate("rating")),
+                        Tab(icon: Icon(Icons.info), text:AppLocalizations.of(context).translate("dreamsPending")),
 
-                        Tab(icon: Icon(Icons.info), text: dreamsiInterpreted),
+                        Tab(icon: Icon(Icons.info), text:AppLocalizations.of(context).translate("dreamsiInterpreted")),
                       ],
                     ),
                   ),

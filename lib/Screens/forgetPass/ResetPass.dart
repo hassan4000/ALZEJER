@@ -13,6 +13,7 @@ import 'package:faserholmak/wigets/MyButton.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
+import '../../app_localizations.dart';
 import '../../constants.dart';
 
 class ResetPass extends StatefulWidget {
@@ -59,7 +60,7 @@ class _ResetPassState extends State<ResetPass> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("كلمة السر الجديدة",style: getTextSyle(16, Colors.white),),
+        title: Text(AppLocalizations.of(context).translate("newPassword"),style: getTextSyle(16, Colors.white),),
       ),
       body:ModalProgressHUD(
         inAsyncCall: isLoading,
@@ -91,7 +92,7 @@ class _ResetPassState extends State<ResetPass> {
                       child: TextFormField(
                           obscureText: shildPasswrod,
                           maxLines: 1,
-                          textDirection: TextDirection.rtl,
+
                           textAlign: TextAlign.start,
                           style: TextStyle(
                             color: kPrimaryColor,
@@ -101,18 +102,18 @@ class _ResetPassState extends State<ResetPass> {
                           controller: passwordController,
                           cursorColor: kPrimaryColor,
                           decoration: getInputDecorationPassword(
-                              label: password,
+                              label: AppLocalizations.of(context).translate("password"),
                               icon: Icon(Icons.remove_red_eye),
                               pressPrifix: reSetShild,
                               obsecure: shildPasswrod),
 
                           validator: (String item) {
                             if (passwordController.text.isEmpty)
-                              return emptyValidation;
+                              return AppLocalizations.of(context).translate("emptyValidation");
                             if(!validatePassWord(passwordController.text.trim()))
                               return passwordLengthValidation;
                             if(passwordController.text.trim()!=rePasswordController.text.trim())
-                              return  passwordValidation;
+                              return  AppLocalizations.of(context).translate("passwordValidation");
 
                             return null;
                           }
@@ -132,7 +133,7 @@ class _ResetPassState extends State<ResetPass> {
                       ),
                       child: TextFormField(
                           obscureText: reShildPasswrod,
-                          textDirection: TextDirection.rtl,
+                        //  textDirection: TextDirection.rtl,
                           textAlign: TextAlign.start,
                           maxLines: 1,
                           style: TextStyle(
@@ -143,17 +144,17 @@ class _ResetPassState extends State<ResetPass> {
                           controller: rePasswordController,
                           cursorColor: kPrimaryColor,
                           decoration: getInputDecorationPassword(
-                              label: rePassword,
+                              label: AppLocalizations.of(context).translate("rePassword"),
                               icon: Icon(Icons.remove_red_eye),
                               pressPrifix: reSetReShild,
                               obsecure: reShildPasswrod),
                           validator: (String item) {
                             if (rePasswordController.text.isEmpty)
-                              return emptyValidation;
+                              return AppLocalizations.of(context).translate("emptyValidation");
                             if(!validatePassWord(rePasswordController.text.trim()))
-                              return passwordLengthValidation;
+                              return AppLocalizations.of(context).translate("passwordLengthValidation");
                             if(passwordController.text.trim()!=rePasswordController.text.toString())
-                              return passwordValidation;
+                              return AppLocalizations.of(context).translate("passwordValidation");
 
 
                             return null;
@@ -163,7 +164,7 @@ class _ResetPassState extends State<ResetPass> {
 
                     SizedBox(height: 10,),
                     MyButton(
-                      txt: "موافق",
+                      txt: AppLocalizations.of(context).translate("okTXT"),
                       press: () async {
                         if(validationForm(formKeyValidation)){
                           setState(() {

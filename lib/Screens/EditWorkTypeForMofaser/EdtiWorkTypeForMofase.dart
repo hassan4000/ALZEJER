@@ -16,6 +16,7 @@ import 'package:flutter/material.dart';
 import 'package:faserholmak/Helper/AppApi.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
+import '../../app_localizations.dart';
 import '../../constants.dart';
 
 
@@ -45,7 +46,7 @@ class _EditWotkTypeForMofaseState extends State<EditWotkTypeForMofase> {
 
         child: Center(
             child: Text(
-              failedOpreation,
+              AppLocalizations.of(context).translate("failedOpreation"),
               style: TextStyle(color: Colors.grey, fontSize: 16),
             )),
       );
@@ -73,7 +74,7 @@ class _EditWotkTypeForMofaseState extends State<EditWotkTypeForMofase> {
       return Container(
         child: Center(
             child: Text(
-              noSpecaist,
+              AppLocalizations.of(context).translate("noSpecaist"),
               style: TextStyle(color: Colors.grey, fontSize: 16),
             )),
       );
@@ -149,7 +150,7 @@ class _EditWotkTypeForMofaseState extends State<EditWotkTypeForMofase> {
         appBar: AppBar(
           centerTitle: true,
           backgroundColor: kPrimaryColor,
-          title: Text(addUserWork,style: getTextSyle(16, Colors.white),textDirection: TextDirection.rtl,),
+          title: Text(AppLocalizations.of(context).translate("addUserWork"),style: getTextSyle(16, Colors.white),textAlign: TextAlign.center,),
         ),
         body: ModalProgressHUD(
           inAsyncCall: isLoading,
@@ -174,8 +175,8 @@ class _EditWotkTypeForMofaseState extends State<EditWotkTypeForMofase> {
                         Expanded(
                           child: Padding(
                             padding: EdgeInsets.all(4),
-                            child: Text(hint1CreateWorkTypePage,style:getTextSyle(20,kPrimaryColor),
-                              textDirection: TextDirection.rtl,),
+                            child: Text(AppLocalizations.of(context).translate("hint1CreateWorkTypePage"),style:getTextSyle(20,kPrimaryColor),
+                           ),
                           ),
                         )
                       ],
@@ -187,8 +188,8 @@ class _EditWotkTypeForMofaseState extends State<EditWotkTypeForMofase> {
                         Expanded(
                           child: Padding(
                             padding: EdgeInsets.all(4),
-                            child: Text(hint2CreateWorkTypePage,style:getTextSyle(20,kPrimaryColor),
-                              textDirection: TextDirection.rtl,),
+                            child: Text(  AppLocalizations.of(context).translate("hint2CreateWorkTypePage"),style:getTextSyle(20,kPrimaryColor),
+                             ),
                           ),
                         )
                       ],
@@ -196,8 +197,8 @@ class _EditWotkTypeForMofaseState extends State<EditWotkTypeForMofase> {
                     SizedBox(height: 30,),
                     Padding(
                       padding: EdgeInsets.all(4),
-                      child: Text(whatSpecializationAreYouGoodAt,style:getTextSyle(20,kPrimaryColor,fontWeight: FontWeight.w400),
-                        textDirection: TextDirection.rtl,),
+                      child: Text(AppLocalizations.of(context).translate("whatSpecializationAreYouGoodAt"),style:getTextSyle(20,kPrimaryColor,fontWeight: FontWeight.w400),
+                       ),
                     ),
                     Container(
 
@@ -208,7 +209,7 @@ class _EditWotkTypeForMofaseState extends State<EditWotkTypeForMofase> {
 
                     Padding(
                       padding: EdgeInsets.all(8),
-                      child: MyButton(txt: continueTxt,
+                      child: MyButton(txt:   AppLocalizations.of(context).translate("continueTxt"),
                         press: () async {
 
                           List<Value> item=List();

@@ -13,6 +13,7 @@ import 'package:flutter/material.dart';
 import 'package:faserholmak/Helper/AppApi.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
+import '../../app_localizations.dart';
 import '../../constants.dart';
 
 
@@ -45,7 +46,7 @@ class _CreateWorkTypeState extends State<CreateWorkType> {
             height: MediaQuery.of(context).size.height,
             child: Center(
                 child: Text(
-                  failedOpreation,
+                  AppLocalizations.of(context).translate("failedOpreation"),
                   style: TextStyle(color: Colors.grey, fontSize: 16),
                 )),
           ),
@@ -81,7 +82,7 @@ class _CreateWorkTypeState extends State<CreateWorkType> {
             height: MediaQuery.of(context).size.height,
             child: Center(
                 child: Text(
-                  noData,
+                  AppLocalizations.of(context).translate("noData"),
                   style: TextStyle(color: Colors.grey, fontSize: 16),
                 )),
           ),
@@ -137,7 +138,7 @@ class _CreateWorkTypeState extends State<CreateWorkType> {
          appBar: AppBar(
         centerTitle: true,
         backgroundColor: kPrimaryColor,
-        title: Text(joinToOutApp,style: getTextSyle(16, Colors.white),textDirection: TextDirection.rtl,),
+        title: Text(AppLocalizations.of(context).translate("joinToOutApp"),style: getTextSyle(16, Colors.white)),
       ),
         body: ModalProgressHUD(
           inAsyncCall: isLoading,
@@ -161,8 +162,8 @@ class _CreateWorkTypeState extends State<CreateWorkType> {
                         Expanded(
                           child: Padding(
                             padding: EdgeInsets.all(4),
-                            child: Text(hint1CreateWorkTypePage,style:getTextSyle(20,kPrimaryColor),
-                              textDirection: TextDirection.rtl,),
+                            child: Text(AppLocalizations.of(context).translate("hint1CreateWorkTypePage"),style:getTextSyle(20,kPrimaryColor),
+                             ),
                           ),
                         )
                       ],
@@ -174,8 +175,8 @@ class _CreateWorkTypeState extends State<CreateWorkType> {
                         Expanded(
                           child: Padding(
                             padding: EdgeInsets.all(4),
-                            child: Text(hint2CreateWorkTypePage,style:getTextSyle(20,kPrimaryColor),
-                              textDirection: TextDirection.rtl,),
+                            child: Text(AppLocalizations.of(context).translate("hint2CreateWorkTypePage"),style:getTextSyle(20,kPrimaryColor),
+                              ),
                           ),
                         )
                       ],
@@ -183,8 +184,8 @@ class _CreateWorkTypeState extends State<CreateWorkType> {
                     SizedBox(height: 30,),
                     Padding(
                       padding: EdgeInsets.all(4),
-                      child: Text(whatSpecializationAreYouGoodAt,style:getTextSyle(20,kPrimaryColor,fontWeight: FontWeight.w400),
-                        textDirection: TextDirection.rtl,),
+                      child: Text(AppLocalizations.of(context).translate("whatSpecializationAreYouGoodAt"),style:getTextSyle(20,kPrimaryColor,fontWeight: FontWeight.w400),
+                       ),
                     ),
                     Container(
 
@@ -195,7 +196,7 @@ class _CreateWorkTypeState extends State<CreateWorkType> {
 
                     Padding(
                       padding: EdgeInsets.all(8),
-                      child: MyButton(txt: continueTxt,
+                      child: MyButton(txt: AppLocalizations.of(context).translate("continueTxt"),
                       press: (){
                         
                         List<Value> item=List();
@@ -206,7 +207,7 @@ class _CreateWorkTypeState extends State<CreateWorkType> {
                         }
                         
                         if(item.isEmpty)
-                          showToast(plz_pick_specalist);
+                          showToast(AppLocalizations.of(context).translate("plz_pick_specalist"));
                         else
                           openPage(context, SwearPage.interprete(item));
                         },),

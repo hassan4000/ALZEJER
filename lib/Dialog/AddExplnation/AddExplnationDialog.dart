@@ -7,6 +7,7 @@ import 'package:faserholmak/Helper/Content.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../app_localizations.dart';
 import '../../constants.dart';
 
 class AddExplnationDialog extends StatefulWidget {
@@ -39,7 +40,7 @@ class _AddExplnationDialogState extends State<AddExplnationDialog> {
           SizedBox(
             width: 4.0,
           ),
-          Text("اضافة رد على الخدمة  ",
+          Text(AppLocalizations.of(context).translate("AddResponseToTheService"),
               style:
                   getTextSyle(20, kPrimaryColor, fontWeight: FontWeight.w600)),
         ],
@@ -61,7 +62,7 @@ class _AddExplnationDialogState extends State<AddExplnationDialog> {
                       Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
-                            'الرجاء الانتظار ..',
+                            AppLocalizations.of(context).translate("waitLittleBit"),
                             style: TextStyle(
                               fontFamily: 'Heading',
                               fontSize: 18.0,
@@ -78,13 +79,15 @@ class _AddExplnationDialogState extends State<AddExplnationDialog> {
                     children: <Widget>[
                       TextFormField(
                         controller: textEditingController,
+                        maxLengthEnforced: true,
+                        maxLength: 300,
                         decoration: getInputDecorationHassan(
-                            hint: "اضف تفسير",
+                            hint: AppLocalizations.of(context).translate("AddAnExplanation"),
                             icon: Icon(
                               Icons.description,
                               color: kPrimaryColor,
                             )),
-                        textDirection: TextDirection.rtl,
+                      //  textDirection: TextDirection.rtl,
                         textAlign: TextAlign.start,
                         minLines: 4,
                         maxLines: 6,
@@ -104,7 +107,7 @@ class _AddExplnationDialogState extends State<AddExplnationDialog> {
                         children: <Widget>[
                           Expanded(
                             child: MyButton(
-                              txt: cancel,
+                              txt: AppLocalizations.of(context).translate("cancel"),
                               raduis: 4,
                               press: () {
                                 Navigator.of(context).pop();
@@ -119,11 +122,11 @@ class _AddExplnationDialogState extends State<AddExplnationDialog> {
                           SizedBox(width: 4,),
                           Expanded(
                             child: MyButton(
-                              txt: add,
+                              txt: AppLocalizations.of(context).translate("add"),
                               raduis: 4,
                               press: () async {
                                 if(textEditingController.text.toString().isEmpty)
-                                  showToast(addAllEmptyField);
+                                  showToast(AppLocalizations.of(context).translate("addAllEmptyField"));
                                 else{
                                   setState(() {
                                     isLoading=true;
@@ -137,8 +140,8 @@ class _AddExplnationDialogState extends State<AddExplnationDialog> {
                                   providerID: userInfo.id);
                                   if(response.statusCode==200){
 
-                                    await sendAndRetrieveMessage(body: "${userInfo.name}  تم التفسير من قبل المفسر ",
-                                    title: " تم التفسير بنجاح ",clientToken: widget.clientToken).then((onValue){
+                                    await sendAndRetrieveMessage(body: "${userInfo.name}  ${AppLocalizations.of(context).translate("TheInterpretationWasMadeByTheInterpreter")} ",
+                                    title: AppLocalizations.of(context).translate("InterpretationWasSuccessful"),clientToken: widget.clientToken).then((onValue){
                                       Navigator.of(context).pop("hassan");
                                     });
 

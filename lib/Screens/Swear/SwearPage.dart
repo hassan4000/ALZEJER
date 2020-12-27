@@ -15,6 +15,8 @@ import 'package:faserholmak/wigets/MyButton.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../app_localizations.dart';
+
 class SwearPage extends StatefulWidget {
 
   bool vistiors=false;
@@ -64,7 +66,7 @@ class _SwearPageState extends State<SwearPage> {
     return  Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text(swear,style: getTextSyle(16, Colors.white),),
+        title: Text(AppLocalizations.of(context).translate("swear"),style: getTextSyle(16, Colors.white),),
       ),
         body:SafeArea(
           top: true,
@@ -90,7 +92,7 @@ class _SwearPageState extends State<SwearPage> {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 30,vertical:2),
               child: Column(
-                textDirection: TextDirection.rtl,
+
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   SizedBox(height: 4,),
@@ -101,7 +103,7 @@ class _SwearPageState extends State<SwearPage> {
                     children: <Widget>[
                       LogoIcon(),
                       Expanded(
-                        child: Text(swear,style: getTextSyle(16, kPrimaryColor,fontWeight: FontWeight.w600),textDirection: TextDirection.rtl,),
+                        child: Text(AppLocalizations.of(context).translate("swear"),style: getTextSyle(16, kPrimaryColor,fontWeight: FontWeight.w600),),
                       )
                     ],
                   ),
@@ -110,14 +112,14 @@ class _SwearPageState extends State<SwearPage> {
                       (child:
                     Container(
                         width: MediaQuery.of(context).size.width,
-                        child: Text(txt,style: getTextSyle(14, Colors.black87),textDirection: TextDirection.rtl))
+                        child: Text(AppLocalizations.of(context).translate("txt"),style: getTextSyle(14, Colors.black87),))
                     ),
                   ),
 
                   Row(mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
-                      MyButton(txt: swearTXT,press: (){
+                      MyButton(txt: AppLocalizations.of(context).translate("swearTXT"),press: (){
                         if(widget.vistiors){
                           openPage(context, GeneralPageVisitor());
                         }else if(widget.clinet){

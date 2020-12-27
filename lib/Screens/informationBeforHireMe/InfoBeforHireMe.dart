@@ -9,6 +9,8 @@ import 'package:flutter/material.dart';
 
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../app_localizations.dart';
+
 class InfoBeforHireMe extends StatefulWidget {
   @override
   _InfoBeforHireMeState createState() => _InfoBeforHireMeState();
@@ -50,7 +52,7 @@ class _InfoBeforHireMeState extends State<InfoBeforHireMe> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text(howAppWork,style: getTextSyle(16, Colors.white),),
+        title: Text(   AppLocalizations.of(context).translate("howAppWork"),style: getTextSyle(16, Colors.white),),
       ),
 
       body: SafeArea(
@@ -62,23 +64,23 @@ class _InfoBeforHireMeState extends State<InfoBeforHireMe> {
             child: Column(
               children: [
 
-                Text("الوظائف المتوفره حاليا",style: getTextSyle(20, Colors.black),),
+                Text(AppLocalizations.of(context).translate("CurrentlyAvailableJobs"),style: getTextSyle(20, Colors.black),),
                 SizedBox(height: 4,),
-                Text("مفسر احلام",style: getTextSyle(16, Colors.black),),
+                Text(AppLocalizations.of(context).translate("InterpreterDreams"),style: getTextSyle(16, Colors.black),),
                 SizedBox(height: 4,),
-                Text("مفتي شرعي",style: getTextSyle(16, Colors.black),),
+                Text(AppLocalizations.of(context).translate("LegalMufti"),style: getTextSyle(16, Colors.black),),
                 SizedBox(height: 4,),
-                Text("راقي شرعي",style: getTextSyle(16, Colors.black),),
+                Text(AppLocalizations.of(context).translate("LegitClassy"),style: getTextSyle(16, Colors.black),),
                 SizedBox(height: 4,),
-                Text("مستشار طبي",style: getTextSyle(16, Colors.black),),
+                Text(AppLocalizations.of(context).translate("MedicalAdvisor"),style: getTextSyle(16, Colors.black),),
                 SizedBox(height: 4,),
-                Text("مستشار قانوني",style: getTextSyle(16, Colors.black),),
+                Text(AppLocalizations.of(context).translate("Counsel"),style: getTextSyle(16, Colors.black),),
                 SizedBox(height: 4,),
-                Text("مستشار اسري",style: getTextSyle(16, Colors.black),),
+                Text(AppLocalizations.of(context).translate("FamilyCounselor"),style: getTextSyle(16, Colors.black),),
                 SizedBox(height: 4,),
-                Text("اذا كنت تجيد احد هذه التخصصات ولديك خبره كافيه يرجى متابعة التسجيل وكتابة السيره الذاتيه ليتم قبولك",
+                Text(AppLocalizations.of(context).translate("hint_1_callUs"),
                   style: getTextSyle(16, Colors.black),textAlign: TextAlign.center,),
-                Text("بعد اكمال التسجيل يرجى التواصل مع الإدارة ليتم تفعيل حسابك",
+                Text(AppLocalizations.of(context).translate("hint_2_callUs"),
                   style: getTextSyle(16, Colors.black),textAlign: TextAlign.center,),
 
 
@@ -105,7 +107,7 @@ class _InfoBeforHireMeState extends State<InfoBeforHireMe> {
                 ),*/
 
                 SizedBox(height: 20,),
-                MyButton(txt: continueTxt,textStyle: getTextSyle(16, Colors.white),press: (){
+                MyButton(txt:AppLocalizations.of(context).translate("continueTxt"),textStyle: getTextSyle(16, Colors.white),press: (){
 
                   openPage(context, HowAppWork.interprete());
 

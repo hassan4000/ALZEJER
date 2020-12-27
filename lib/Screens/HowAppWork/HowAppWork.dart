@@ -15,6 +15,8 @@ import 'package:faserholmak/wigets/MyButton.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../app_localizations.dart';
+
 class HowAppWork extends StatefulWidget {
 
   bool vistiors=false;
@@ -65,7 +67,7 @@ class _HowAppWorkState extends State<HowAppWork> {
     return  Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text(howAppWork,style: getTextSyle(16, Colors.white),),
+        title: Text( AppLocalizations.of(context).translate("howAppWork"),style: getTextSyle(16, Colors.white),),
       ),
         body:SafeArea(
           top: true,
@@ -102,7 +104,7 @@ class _HowAppWorkState extends State<HowAppWork> {
                     children: <Widget>[
                       LogoIcon(),
                       Expanded(
-                        child: Text(howAppWork,style: getTextSyle(16, kPrimaryColor,fontWeight: FontWeight.w600),textDirection: TextDirection.rtl,),
+                        child: Text( AppLocalizations.of(context).translate("howAppWork"),style: getTextSyle(16, kPrimaryColor,fontWeight: FontWeight.w600)),
                       )
                     ],
                   ),
@@ -111,7 +113,7 @@ class _HowAppWorkState extends State<HowAppWork> {
                       (child:
                     Container(
                         width: MediaQuery.of(context).size.width,
-                        child: Text(txt,style: getTextSyle(14, Colors.black87),textDirection: TextDirection.rtl))
+                        child: Text(txt,style: getTextSyle(14, Colors.black87)))
                     ),
                   ),
 

@@ -20,6 +20,7 @@ import 'package:flutter_share/flutter_share.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
 
+import '../../app_localizations.dart';
 import 'AllPaymentMethodToImprovePlan.dart';
 
 class ServiesTypeForImprovePlan extends StatefulWidget {
@@ -52,7 +53,7 @@ class _ServiesTypeForImprovePlanState extends State<ServiesTypeForImprovePlan> {
             height: MediaQuery.of(context).size.height,
             child: Center(
                 child: Text(
-                  failedOpreation,
+                  AppLocalizations.of(context).translate("failedOpreation"),
                   style: TextStyle(color: Colors.grey, fontSize: 16),
                 )),
           ),
@@ -85,7 +86,7 @@ class _ServiesTypeForImprovePlanState extends State<ServiesTypeForImprovePlan> {
             height: MediaQuery.of(context).size.height,
             child: Center(
                 child: Text(
-                  noData,
+                  AppLocalizations.of(context).translate("noData"),
                   style: TextStyle(color: Colors.grey, fontSize: 16),
                 )),
           ),
@@ -142,7 +143,7 @@ class _ServiesTypeForImprovePlanState extends State<ServiesTypeForImprovePlan> {
     print(jsonEncode(widget.paymentModel.toJson()).toString());
 
     if(double.parse(widget.paymentModel.amount)<=0){
-      showToast("يجب اختيار مبلغ للدفع");
+      showToast(AppLocalizations.of(context).translate(("chooseAmoutToPay")));
     }
     else
     openPage(context,
@@ -174,7 +175,8 @@ class _ServiesTypeForImprovePlanState extends State<ServiesTypeForImprovePlan> {
         child: Scaffold(
           appBar: AppBar(
             centerTitle: true,
-            title: Text('اختر نوع الخدمة'),
+            //title: Text('اختر نوع الخدمة'),
+            title: Text(AppLocalizations.of(context).translate("ChooseTypeService")),
           ),
           body: ModalProgressHUD(
             inAsyncCall: isLoadingHUD,
@@ -192,8 +194,8 @@ class _ServiesTypeForImprovePlanState extends State<ServiesTypeForImprovePlan> {
                     double newPrice=double.parse(price);
                     double oldPrice=double.parse(widget.paymentModel.myMoeny.toString());
                     double allPrice=oldPrice+newPrice;
-                    dataList.add(PrivetOrPublicServiceModel(orginalPrice: widget.paymentModel.myMoeny.toString(),price: widget.paymentModel.myMoeny.toString(),desc: publicServicesHint,name: publicTxt));
-                    dataList.add(PrivetOrPublicServiceModel(orginalPrice: widget.paymentModel.myMoeny.toString(),price: allPrice.toString(),desc: privateServicesHint,name: privateTxt));
+                    dataList.add(PrivetOrPublicServiceModel(orginalPrice: widget.paymentModel.myMoeny.toString(),price: widget.paymentModel.myMoeny.toString(),desc: AppLocalizations.of(context).translate("publicServicesHint"),name: AppLocalizations.of(context).translate("publicTxt")));
+                    dataList.add(PrivetOrPublicServiceModel(orginalPrice: widget.paymentModel.myMoeny.toString(),price: allPrice.toString(),desc: AppLocalizations.of(context).translate("privateServicesHint"),name: AppLocalizations.of(context).translate("privateTxt")));
 
                     setState(() {
                       listServices=dataList;

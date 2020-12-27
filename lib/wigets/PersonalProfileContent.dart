@@ -25,8 +25,7 @@ class PersonalProfileContent extends StatelessWidget {
            children: <Widget>[
              Expanded(flex:2,child: Text(text,
                textDirection: TextDirection.rtl,textAlign: TextAlign.center,style: getTextSyle(16, Colors.black),)),
-             Expanded(flex:1,child: Text(hint,textDirection: TextDirection.rtl,style: getTextSyle(16, Colors.black)),
-             ),
+             Flexible(flex: 2,child: Text(hint,style: getTextSyle(14, Colors.black))),
 
 
            ],

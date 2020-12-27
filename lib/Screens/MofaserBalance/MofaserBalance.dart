@@ -11,6 +11,8 @@ import 'package:faserholmak/wigets/ApplicationInfoPage.dart';
 import 'package:faserholmak/wigets/CardMofaserBalance.dart';
 import 'package:flutter/material.dart';
 
+import '../../app_localizations.dart';
+
 class MofaserBalance extends StatefulWidget {
   @override
   _MofaserBalanceState createState() => _MofaserBalanceState();
@@ -32,7 +34,7 @@ class _MofaserBalanceState extends State<MofaserBalance> {
             height: MediaQuery.of(context).size.height,
             child: Center(
                 child: Text(
-                  failedOpreation,
+                  AppLocalizations.of(context).translate("failedOpreation"),
                   style: TextStyle(color: Colors.grey, fontSize: 16),
                 )),
           ),
@@ -48,7 +50,7 @@ class _MofaserBalanceState extends State<MofaserBalance> {
           itemBuilder: (context, index) {
             TransactionRecordData item=dataList[index];
 
-            return CardMofaserBalance(txt: "   تم تحويل مبلغ ${item.amount}  من قبل البنك   ${emptyString(item.bank)} ",);
+            return CardMofaserBalance(txt: "${AppLocalizations.of(context).translate("amountHasBeenTransferred")} ${item.amount} ${AppLocalizations.of(context).translate("ByTheBank")} ${emptyString(item.bank)} ",);
           });
     else
       return ListView(
@@ -58,7 +60,7 @@ class _MofaserBalanceState extends State<MofaserBalance> {
             height: MediaQuery.of(context).size.height,
             child: Center(
                 child: Text(
-                  noData,
+                  AppLocalizations.of(context).translate("noData"),
                   style: TextStyle(color: Colors.grey, fontSize: 16),
                 )),
           ),
@@ -84,7 +86,7 @@ class _MofaserBalanceState extends State<MofaserBalance> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(centerTitle: true,
-      title: Text("رصيد مقدم الخدمة",style: getTextSyle(16, Colors.white),),)
+      title: Text(AppLocalizations.of(context).translate("TheBalanceOfTheServiceProvider"),style: getTextSyle(16, Colors.white),),)
 
       ,
       body: SafeArea(
@@ -110,16 +112,16 @@ class _MofaserBalanceState extends State<MofaserBalance> {
             child: Column(
               children: <Widget>[
                 SizedBox(height: 10,),
-                ApplicationInfoPage(hint:"الرصيد المعلق" ,text:emptyString(userInfo.suspendedBalance.toString()) ),
-                ApplicationInfoPage(hint:"الرصيد المتاح" ,text:emptyString(userInfo.availableBalance.toString()) ),
-                ApplicationInfoPage(hint:"الرصيد المحول" ,text:emptyString(userInfo.totalBalance.toString()) ),
+                ApplicationInfoPage(hint:AppLocalizations.of(context).translate("OutstandingBalance") ,text:emptyString(userInfo.suspendedBalance.toString()) ),
+                ApplicationInfoPage(hint:AppLocalizations.of(context).translate("theAvailableBalance") ,text:emptyString(userInfo.availableBalance.toString()) ),
+                ApplicationInfoPage(hint:AppLocalizations.of(context).translate("TransferredBalance") ,text:emptyString(userInfo.totalBalance.toString()) ),
 
                 Row(
                   children: <Widget>[
 
                     Expanded(
-                      child: Text("سجل التحويلات المادية ",style: getTextSyle(16, kPrimaryColor),
-                      textAlign: TextAlign.center,textDirection: TextDirection.rtl,),
+                      child: Text(AppLocalizations.of(context).translate("RecordPhysicalTransfers"),style: getTextSyle(16, kPrimaryColor),
+                      textAlign: TextAlign.center,),
                     )
                   ],
                 ),

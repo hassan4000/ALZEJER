@@ -16,6 +16,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
+import '../../app_localizations.dart';
 import '../../constants.dart';
 import 'components/or_divider.dart';
 import 'components/social_icon.dart';
@@ -185,7 +186,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text(createAccount,style: NormalTextWhite,),
+          title: Text(AppLocalizations.of(context).translate("createAccount"),style: NormalTextWhite,),
         ),
         body: ModalProgressHUD(
           inAsyncCall: isLoading,
@@ -216,7 +217,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                         child: TextFormField(
                           maxLines: 1,
-                          textDirection: TextDirection.rtl,
+
                           textAlign: TextAlign.start,
                           style: TextStyle(
                             color: kPrimaryColor,
@@ -225,10 +226,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           keyboardType: TextInputType.text,
                           controller: nameController,
                           cursorColor: kPrimaryColor,
-                          decoration: getInputDecorationHassan(label: name),
+                          decoration: getInputDecorationHassan(label: AppLocalizations.of(context).translate("name")),
                           validator: (String item) {
                             if (nameController.text.isEmpty)
-                              return emptyValidation;
+                              return AppLocalizations.of(context).translate("emptyValidation");
                             else
                               return null;
                           },
@@ -245,7 +246,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                         child: TextFormField(
                             maxLines: 1,
-                            textDirection: TextDirection.rtl,
+
                             textAlign: TextAlign.start,
                             style: TextStyle(
                               color: kPrimaryColor,
@@ -254,10 +255,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             keyboardType: TextInputType.text,
                             controller: userNameController,
                             cursorColor: kPrimaryColor,
-                            decoration: getInputDecorationHassan(label: userName),
+                            decoration: getInputDecorationHassan(label: AppLocalizations.of(context).translate("userName")),
                             validator: (String item) {
                               if (userNameController.text.isEmpty)
-                                return emptyValidation;
+                                return AppLocalizations.of(context).translate("emptyValidation");
 
                               return null;
                             }),
@@ -273,7 +274,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                         child: TextFormField(
                             maxLines: 1,
-                            textDirection: TextDirection.rtl,
+
                             textAlign: TextAlign.start,
                             style: TextStyle(
                               color: kPrimaryColor,
@@ -282,12 +283,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             keyboardType: TextInputType.emailAddress,
                             controller: emailController,
                             cursorColor: kPrimaryColor,
-                            decoration: getInputDecorationHassan(label: email,icon: Icon(Icons.email,color: kPrimaryColor,)),
+                            decoration: getInputDecorationHassan(label: AppLocalizations.of(context).translate("email")
+                                ,icon: Icon(Icons.email,color: kPrimaryColor,)),
                             validator: (String item) {
                               if (emailController.text.isEmpty)
-                                return emptyValidation;
+                                return AppLocalizations.of(context).translate("emptyValidation");
                               if(!validateEmail(emailController.text.trim()))
-                                return  emailValidation;
+                                return  AppLocalizations.of(context).translate("emailValidation");
                               return null;
                             }
 
@@ -304,7 +306,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                         child: TextFormField(
                             maxLines: 1,
-                            textDirection: TextDirection.rtl,
+
                             textAlign: TextAlign.start,
                             style: TextStyle(
                               color: kPrimaryColor,
@@ -313,10 +315,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             keyboardType: TextInputType.number,
                             controller: phoneController,
                             cursorColor: kPrimaryColor,
-                            decoration: getInputDecorationCountry(myPrefix:initAddCountryPrefixIcon(),label: phone),
+                            decoration: getInputDecorationCountry(myPrefix:initAddCountryPrefixIcon(),
+                                label: AppLocalizations.of(context).translate("phone")),
                             validator: (String item) {
                               if (phoneController.text.isEmpty)
-                                return emptyValidation;
+                                return AppLocalizations.of(context).translate("emptyValidation");
 
                               return null;
                             }
@@ -335,7 +338,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         child: TextFormField(
                             obscureText: shildPasswrod,
                             maxLines: 1,
-                            textDirection: TextDirection.rtl,
+
                             textAlign: TextAlign.start,
                             style: TextStyle(
                               color: kPrimaryColor,
@@ -345,7 +348,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             controller: passwordController,
                             cursorColor: kPrimaryColor,
                             decoration: getInputDecorationPassword(
-                                label: password,
+                                label: AppLocalizations.of(context).translate("password"),
                                 icon: Icon(Icons.remove_red_eye),
                                 pressPrifix: reSetShild,
                                 obsecure: shildPasswrod),
@@ -354,9 +357,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               if (passwordController.text.isEmpty)
                                 return emptyValidation;
                               if(!validatePassWord(passwordController.text.trim()))
-                                return passwordLengthValidation;
+                                return AppLocalizations.of(context).translate("passwordLengthValidation");
                               if(passwordController.text.trim()!=rePasswordController.text.trim())
-                                return  passwordValidation;
+                                return  AppLocalizations.of(context).translate("passwordValidation");
 
                               return null;
                             }
@@ -376,7 +379,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                         child: TextFormField(
                             obscureText: reShildPasswrod,
-                            textDirection: TextDirection.rtl,
+
                             textAlign: TextAlign.start,
                             maxLines: 1,
                             style: TextStyle(
@@ -387,17 +390,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             controller: rePasswordController,
                             cursorColor: kPrimaryColor,
                             decoration: getInputDecorationPassword(
-                                label: rePassword,
+                                label: AppLocalizations.of(context).translate("rePassword"),
                                 icon: Icon(Icons.remove_red_eye),
                                 pressPrifix: reSetReShild,
                                 obsecure: reShildPasswrod),
                             validator: (String item) {
                               if (rePasswordController.text.isEmpty)
-                                return emptyValidation;
+                                return AppLocalizations.of(context).translate("emptyValidation");
                               if(!validatePassWord(rePasswordController.text.trim()))
-                                return passwordLengthValidation;
+                                return AppLocalizations.of(context).translate("passwordLengthValidation");
                               if(passwordController.text.trim()!=rePasswordController.text.toString())
-                                return passwordValidation;
+                                return AppLocalizations.of(context).translate("passwordValidation");
 
 
                               return null;
@@ -416,7 +419,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                         child: TextFormField(
 
-                            textDirection: TextDirection.rtl,
+
                             textAlign: TextAlign.start,
                             maxLines: 1,
                             style: TextStyle(
@@ -427,7 +430,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             controller: codeController,
                             cursorColor: kPrimaryColor,
                             decoration: getInputDecorationHassan(
-                                label: code,
+                                label: AppLocalizations.of(context).translate("code"),
                                 icon: Icon(Icons.code),
 
                               ),
@@ -437,13 +440,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       SizedBox(
                         height: 10,
                       ),
-                      MyButton(txt: createAccount,press: createAccountRQ,),
+                      MyButton(txt: AppLocalizations.of(context).translate("createAccount"),press: createAccountRQ,),
                       SizedBox(
                         height: 10,
                       ),
 
                        Row(
-                        textDirection: TextDirection.rtl,
+
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.end,
 
@@ -452,11 +455,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             child: Container(
 
                               child: RichText(
-                                textDirection: TextDirection.rtl,
+
                                 textAlign: TextAlign.center,
-                                text: TextSpan(text: alreadyHaveAccount,style: getTextSyle(14, Colors.black87),
+                                text: TextSpan(text: AppLocalizations.of(context).translate("alreadyHaveAccount"),style: getTextSyle(14, Colors.black87),
                                     children: <TextSpan>[
-                                      TextSpan(text: login,style: getTextSyle(14, kPrimaryColor,fontWeight: FontWeight.w600),
+                                      TextSpan(text: AppLocalizations.of(context).translate("login")
+                                          ,style: getTextSyle(14, kPrimaryColor,fontWeight: FontWeight.w600),
                                           recognizer: TapGestureRecognizer()
                                             ..onTap = () {
 

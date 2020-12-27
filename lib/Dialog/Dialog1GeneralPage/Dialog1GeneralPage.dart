@@ -8,6 +8,8 @@ import 'package:faserholmak/wigets/ApplicationInfoPage.dart';
 import 'package:faserholmak/wigets/PersonalProfileContent.dart';
 import 'package:flutter/material.dart';
 
+import '../../app_localizations.dart';
+
 
 class Dialog1GeneralPage extends StatefulWidget {
   @override
@@ -63,7 +65,7 @@ class _Dialog1GeneralPageState extends State<Dialog1GeneralPage> {
             width: 4.0,
           ),
           Text(
-            "تفاصيل  ",
+              AppLocalizations.of(context).translate("details"),
             style: getTextSyle(20, kPrimaryColor,fontWeight: FontWeight.w600)
           ),
         ],
@@ -86,7 +88,7 @@ class _Dialog1GeneralPageState extends State<Dialog1GeneralPage> {
             Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  'Loading ..',
+                  AppLocalizations.of(context).translate("waitLittleBit"),
                   style: TextStyle(
                     fontFamily: 'Heading',
                     fontSize: 18.0,
@@ -102,21 +104,21 @@ class _Dialog1GeneralPageState extends State<Dialog1GeneralPage> {
               width: width,
               child: Column(
                 children: <Widget>[
-                  ApplicationInfoPage(hint:"عدد الجمهور المتصل" ,text:emptyString(data.allActiveClients.toString()) ),
-                  ApplicationInfoPage(hint:"عدد  الزيارات" ,text:emptyString(data.allActiveClientsInThePastThreeDays.toString()) ),
-                  ApplicationInfoPage(hint:"كل العملاء" ,text:emptyString(data.allClients.toString()) ),
-                  ApplicationInfoPage(hint:"كل المستخدمين" ,text:emptyString(data.allUsers.toString()) ),
+                  ApplicationInfoPage(hint:AppLocalizations.of(context).translate("TheNumberConnectedAudience") ,text:emptyString(data.allActiveClients.toString()) ),
+                  ApplicationInfoPage(hint:AppLocalizations.of(context).translate("numberVisits") ,text:emptyString(data.allActiveClientsInThePastThreeDays.toString()) ),
+                  ApplicationInfoPage(hint:AppLocalizations.of(context).translate("EveryCustomer"),text:emptyString(data.allClients.toString()) ),
+                  ApplicationInfoPage(hint:AppLocalizations.of(context).translate("AllUsers"),text:emptyString(data.allUsers.toString()) ),
 
-                  ApplicationInfoPage(hint:"مجموع مقدمي الخدمات" ,text:emptyString(data.allServiceProviders.toString()) ),
-                  ApplicationInfoPage(hint:"عدد مفسرين الاحلام" ,text:emptyString(data.allDreamUsers.toString()) ),
-                  ApplicationInfoPage(hint:"عدد الرقاة الشرعيين" ,text:emptyString(data.allRouqiaUsers.toString()) ),
-                  ApplicationInfoPage(hint:"عدد المستشارين الاسريين" ,text:emptyString(data.allIstasharaUsers.toString()) ),
-                  ApplicationInfoPage(hint:"عدد المستشارين الطبيين" ,text:emptyString(data.allMedicalUsers.toString()) ),
+                  ApplicationInfoPage(hint:AppLocalizations.of(context).translate("TotalServiceProviders") ,text:emptyString(data.allServiceProviders.toString()) ),
+                  ApplicationInfoPage(hint:AppLocalizations.of(context).translate("TheNumberOfInterpretersDreams") ,text:emptyString(data.allDreamUsers.toString()) ),
+                  ApplicationInfoPage(hint:AppLocalizations.of(context).translate("TheNumberLegitimatePromotions") ,text:emptyString(data.allRouqiaUsers.toString()) ),
+                  ApplicationInfoPage(hint:AppLocalizations.of(context).translate("NumberOfFamilyCounselors"),text:emptyString(data.allIstasharaUsers.toString()) ),
+                  ApplicationInfoPage(hint:AppLocalizations.of(context).translate("NumberMedicalAdvisors"),text:emptyString(data.allMedicalUsers.toString()) ),
 
 
-                  ApplicationInfoPage(hint:"عدد الخدمات القيد التنفيذ" ,text:emptyString(data.allActiveServices.toString()) ),
-                  ApplicationInfoPage(hint:"عدد الخدمات المنفذة" ,text:emptyString(data.allDoneServices.toString()) ),
-                  ApplicationInfoPage(hint:"عدد المفتين" ,text:emptyString(data.allIftaaUsers.toString()) ),
+                  ApplicationInfoPage(hint:AppLocalizations.of(context).translate("NumberOfServicesUnderImplementation"),text:emptyString(data.allActiveServices.toString()) ),
+                  ApplicationInfoPage(hint:AppLocalizations.of(context).translate("NumberServicesImplemented"),text:emptyString(data.allDoneServices.toString()) ),
+                  ApplicationInfoPage(hint:AppLocalizations.of(context).translate("TheNumberOfMuftis"),text:emptyString(data.allIftaaUsers.toString()) ),
 
                 ],
               ),

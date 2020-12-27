@@ -15,6 +15,8 @@ import 'package:faserholmak/wigets/MyButton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_share/flutter_share.dart';
 
+import '../../app_localizations.dart';
+
 
 
 class AreYouHarryPage extends StatefulWidget {
@@ -44,7 +46,7 @@ class _AreYouHarryPageState extends State<AreYouHarryPage> {
 
 
   String getAvg(String txt){
-    if(emptyString(txt)=="") return soonTxt;
+    if(emptyString(txt)=="") return AppLocalizations.of(context).translate("soonTxt");
     else return emptyString(txt);
   }
   Widget dataListView(List<ServicesPathModel> data, context) {
@@ -55,7 +57,7 @@ class _AreYouHarryPageState extends State<AreYouHarryPage> {
             height: MediaQuery.of(context).size.height,
             child: Center(
                 child: Text(
-                  failedOpreation,
+                  AppLocalizations.of(context).translate("failedOpreation"),
                   style: TextStyle(color: Colors.grey, fontSize: 16),
                 )),
           ),
@@ -98,7 +100,7 @@ class _AreYouHarryPageState extends State<AreYouHarryPage> {
             height: MediaQuery.of(context).size.height,
             child: Center(
                 child: Text(
-                  noData,
+                  AppLocalizations.of(context).translate("noData"),
                   style: TextStyle(color: Colors.grey, fontSize: 16),
                 )),
           ),
@@ -120,7 +122,7 @@ class _AreYouHarryPageState extends State<AreYouHarryPage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("استعجال الخدمة",style: getTextSyle(16, Colors.white),),
+        title: Text(AppLocalizations.of(context).translate("UrgentService"),style: getTextSyle(16, Colors.white),),
       ),
 
       body: SafeArea(
@@ -132,23 +134,23 @@ class _AreYouHarryPageState extends State<AreYouHarryPage> {
             child: Column(
               children: <Widget>[
                 SizedBox(height: 20,),
-                MyButton(txt: "قم بمشاركة التطبيق",press: () async {
+                MyButton(txt: AppLocalizations.of(context).translate("ShareTheApp"),press: () async {
 
 
                   await FlutterShare.share(
-                      title: 'يرجى مشاركة هذا الرابط ',
+                      title: AppLocalizations.of(context).translate("pleaseShareThisLink"),
 
                       text:
-                      '${shareHitn1}\n ${userInfo.userSpecialCode}',
+                      '${AppLocalizations.of(context).translate("shareHitn1")}\n ${userInfo.userSpecialCode}',
                       linkUrl:
-                      ' {$linkApp} \n  ${googlePlayUrl}',
+                      ' {${AppLocalizations.of(context).translate("linkApp")} \n  ${googlePlayUrl}',
                       chooserTitle:
                       'Share');
                 },textStyle: getTextSyle(18, Colors.white),
                 raduis: 4,),
 
                 ListTile(
-                  title: Text(pointDesc,style: getTextSyle(16, Colors.black),textDirection: TextDirection.rtl,),
+                  title: Text(AppLocalizations.of(context).translate("pointDesc"),style: getTextSyle(16, Colors.black)),
                   selected: true,
                   trailing: Icon(Icons.info),
                 ),

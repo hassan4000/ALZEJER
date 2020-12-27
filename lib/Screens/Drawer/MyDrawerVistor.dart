@@ -11,6 +11,7 @@ import 'package:faserholmak/wigets/LogoIcon.dart';
 import 'package:flutter/material.dart';
 
 
+import '../../app_localizations.dart';
 import '../../constants.dart';
 import 'package:faserholmak/Helper/Content.dart';
 
@@ -80,7 +81,7 @@ class _MyDrawerVistorState extends State<MyDrawerVistor> {
                           ,child: Row(
                             children: <Widget>[
                               IconButton(onPressed: (){},icon: Icon(Icons.add_box,color:  Colors.grey,),),
-                              Text(serviceRequest,style: getTextSyle(16, kPrimaryColor),)
+                              Text(AppLocalizations.of(context).translate("serviceRequest"),style: getTextSyle(16, kPrimaryColor),)
                             ],
                           )),
                      ),
@@ -105,7 +106,7 @@ class _MyDrawerVistorState extends State<MyDrawerVistor> {
                               IconButton(onPressed: (){
 
                               },icon: Icon(Icons.done,color:  Colors.grey,),),
-                              Text(completedServices,style: getTextSyle(16, kPrimaryColor),)
+                              Text(AppLocalizations.of(context).translate("completedServices"),style: getTextSyle(16, kPrimaryColor),)
                             ],
                           )),
                         ),
@@ -125,7 +126,7 @@ class _MyDrawerVistorState extends State<MyDrawerVistor> {
                               ,child: Row(
                             children: <Widget>[
                               IconButton(onPressed: (){},icon: Icon(Icons.timelapse,color:  Colors.grey,),),
-                              Text(servicesInProgress,style: getTextSyle(16, kPrimaryColor),)
+                              Text(AppLocalizations.of(context).translate("servicesInProgress"),style: getTextSyle(16, kPrimaryColor),)
                             ],
                           )),
                         ),
@@ -144,7 +145,7 @@ class _MyDrawerVistorState extends State<MyDrawerVistor> {
                               ,child: Row(
                             children: <Widget>[
                               IconButton(onPressed: (){},icon: Icon(Icons.people,color:  Colors.grey,),),
-                              Text(serviceProviders,style: getTextSyle(16, kPrimaryColor),)
+                              Text(AppLocalizations.of(context).translate("serviceProviders"),style: getTextSyle(16, kPrimaryColor),)
                             ],
                           )),
                         ),
@@ -163,7 +164,7 @@ class _MyDrawerVistorState extends State<MyDrawerVistor> {
                               ,child: Row(
                             children: <Widget>[
                               IconButton(onPressed: (){},icon: Icon(Icons.chat_bubble_outline,color:  Colors.grey,),),
-                              Text(audienceChat,style: getTextSyle(16, kPrimaryColor),)
+                              Text(AppLocalizations.of(context).translate("audienceChat"),style: getTextSyle(16, kPrimaryColor),)
                             ],
                           )),
                         ),
@@ -185,7 +186,7 @@ class _MyDrawerVistorState extends State<MyDrawerVistor> {
                               ,child: Row(
                             children: <Widget>[
                               IconButton(onPressed: (){},icon: Icon(Icons.collections_bookmark,color:  kPrimaryColor),),
-                              Text(privacyPolicy,style: getTextSyle(16, kPrimaryColor),)
+                              Text(AppLocalizations.of(context).translate("privacyPolicy"),style: getTextSyle(16, kPrimaryColor),)
                             ],
                           )),
                         ),
@@ -206,7 +207,7 @@ class _MyDrawerVistorState extends State<MyDrawerVistor> {
                               ,child: Row(
                             children: <Widget>[
                               IconButton(onPressed: (){},icon: Icon(Icons.star_half,color:  Colors.grey,),),
-                              Text(rateApplication,style: getTextSyle(16, kPrimaryColor),)
+                              Text(AppLocalizations.of(context).translate("rateApplication"),style: getTextSyle(16, kPrimaryColor),)
                             ],
                           )),
                         ),
@@ -228,7 +229,7 @@ class _MyDrawerVistorState extends State<MyDrawerVistor> {
                               ,child: Row(
                             children: <Widget>[
                               IconButton(onPressed: (){},icon: Icon(Icons.share,color:  Colors.grey,),),
-                              Text(shareApp,style: getTextSyle(16, kPrimaryColor),)
+                              Text(AppLocalizations.of(context).translate("shareApp"),style: getTextSyle(16, kPrimaryColor),)
                             ],
                           )),
                         ),
@@ -249,7 +250,7 @@ class _MyDrawerVistorState extends State<MyDrawerVistor> {
                               ,child: Row(
                             children: <Widget>[
                               IconButton(onPressed: (){},icon: Icon(Icons.contacts,color: kPrimaryColor,),),
-                              Text(cotactWithUsTxt,style: getTextSyle(16, kPrimaryColor),)
+                              Text(AppLocalizations.of(context).translate("cotactWithUsTxt"),style: getTextSyle(16, kPrimaryColor),)
                             ],
                           )),
                         ),

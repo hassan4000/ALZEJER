@@ -24,6 +24,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_share/flutter_share.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
+import '../../app_localizations.dart';
+
 class DetailsServiceYouWant extends StatefulWidget {
   AllServicesData servicesData;
   bool forPublicPage=false;
@@ -72,7 +74,7 @@ class _DetailsServiceYouWantState extends State<DetailsServiceYouWant> {
         height: MediaQuery.of(context).size.height,
         child: Center(
             child: Text(
-              failedOpreation,
+              AppLocalizations.of(context).translate("failedOpreation"),
               style: TextStyle(color: Colors.grey, fontSize: 16),
             )),
       );
@@ -95,7 +97,7 @@ class _DetailsServiceYouWantState extends State<DetailsServiceYouWant> {
         height: MediaQuery.of(context).size.height,
         child: Center(
             child: Text(
-              noComment,
+              AppLocalizations.of(context).translate("noComment"),
               style: TextStyle(color: Colors.grey, fontSize: 16),
             )),
       );
@@ -124,7 +126,7 @@ class _DetailsServiceYouWantState extends State<DetailsServiceYouWant> {
         child: Scaffold(
           appBar: AppBar(
             centerTitle: true,
-            title: Text("تفاصيل صاحب الخدمة"),
+            title: Text(AppLocalizations.of(context).translate("DetailsTheServiceOwner")),
           ),
           body: SafeArea(
             child: Background(
@@ -158,14 +160,14 @@ class _DetailsServiceYouWantState extends State<DetailsServiceYouWant> {
                               showStateAndTime(createrID: servicesData.creatorId)?Column(
                               children: <Widget>[
                                 Row(
-                                  textDirection: TextDirection.rtl,
+                                //  textDirection: TextDirection.rtl,
                                   children: <Widget>[
                                     Flexible(
-                                      child: Text(state,style: getTextSyle(16, Colors.black),),
+                                      child: Text(AppLocalizations.of(context).translate("state"),style: getTextSyle(16, Colors.black),),
 
                                     ),
-                                    Expanded(flex: 5,child: Text(emptyString(stateToArabic(servicesData.status)),style:
-                                    getTextSyle(16, kPrimaryColor,fontWeight: FontWeight.w600),textDirection: TextDirection.rtl,
+                                    Expanded(flex: 5,child: Text(emptyString(stateToArabic(servicesData.status,context)),style:
+                                    getTextSyle(16, kPrimaryColor,fontWeight: FontWeight.w600),
                                       textAlign: TextAlign.center,),)
                                   ],
                                 ),
@@ -180,10 +182,10 @@ class _DetailsServiceYouWantState extends State<DetailsServiceYouWant> {
                                   children: <Widget>[
                                     Expanded(
                                       child: Text(
-                                        expectedTimeForInterpretation,
+                                        AppLocalizations.of(context).translate("expectedTimeForInterpretation"),
                                         style: getTextSyle(16, kPrimaryColor),
                                         textAlign: TextAlign.center,
-                                        textDirection: TextDirection.rtl,
+                                     //   textDirection: TextDirection.rtl,
                                       ),
                                     )
                                   ],
@@ -192,7 +194,7 @@ class _DetailsServiceYouWantState extends State<DetailsServiceYouWant> {
                                 SizedBox(height: 10,),
                                 CardTimeDreams(textAboveLine: emptyString(servicesData.numberOfAllPeopleWaiting.toString()),
                                   textUnderLine: emptyString(servicesData.numberOfRemainingPeople.toString()),
-                                  textUnderLineHint: "$youAreHere",
+                                  textUnderLineHint: AppLocalizations.of(context).translate("youAreHere"),
                                   name: emptyString(servicesData.serviceProvider==null?"":servicesData.serviceProvider.name),
                                   price: "",
                                   showDolar: false,),
@@ -204,7 +206,7 @@ class _DetailsServiceYouWantState extends State<DetailsServiceYouWant> {
 
 
                             showAreYouHurry(singleServicesModel: servicesData,creationId: servicesData.creatorId) ?
-                            MyButton(txt: areYouHurryToExplain,press: (){
+                            MyButton(txt: AppLocalizations.of(context).translate("areYouHurryToExplain"),press: (){
 
                               print(servicesData.toJson().toString());
                               openPage(context, AreYouHarryPage(servicesID: servicesData.id,providerID:
@@ -224,32 +226,32 @@ class _DetailsServiceYouWantState extends State<DetailsServiceYouWant> {
                                   ?Column(
                                 children: <Widget>[
                                   PersonalProfileContent(
-                                      hint: name, text: emptyString(servicesData.name)),
+                                      hint: AppLocalizations.of(context).translate("name"), text: emptyString(servicesData.name)),
                                   PersonalProfileContent(
-                                      hint: gener, text: emptyString(servicesData.sex)),
+                                      hint: AppLocalizations.of(context).translate("gener"), text: emptyString(servicesData.sex)),
                                   PersonalProfileContent(
-                                      hint: socialStatus,
+                                      hint: AppLocalizations.of(context).translate("socialStatus"),
                                       text: emptyString(servicesData.socialStatus)),
                                   PersonalProfileContent(
-                                      hint: country,
+                                      hint: AppLocalizations.of(context).translate("country"),
                                       text: emptyString(StringToBoolean(
-                                          servicesData.isThereWakefulness))),
+                                          servicesData.isThereWakefulness,context))),
                                   PersonalProfileContent(
-                                      hint: work,
+                                      hint: AppLocalizations.of(context).translate("work"),
                                       text: emptyString(servicesData.jobStatus)),
                                   PersonalProfileContent(
-                                      hint: isThereAnyChild,
+                                      hint: AppLocalizations.of(context).translate("isThereAnyChild"),
                                       text: emptyString(servicesData.kidsStatus)),
                                   PersonalProfileContent(
-                                      hint: didYouPrayBeforeDreams,
+                                      hint: AppLocalizations.of(context).translate("didYouPrayBeforeDreams"),
                                       text: emptyString(StringToBoolean(
-                                          servicesData.haveYouPrayedBeforeTheDream))),
+                                          servicesData.haveYouPrayedBeforeTheDream,context))),
                                   PersonalProfileContent(
-                                      hint: didYouExorcism,
+                                      hint: AppLocalizations.of(context).translate("didYouExorcism"),
                                       text: emptyString(StringToBoolean(
-                                          servicesData.didYouExorcism))),
+                                          servicesData.didYouExorcism,context))),
                                   PersonalProfileContent(
-                                      hint: religiousState,
+                                      hint: AppLocalizations.of(context).translate("religiousState"),
                                       text: emptyString(servicesData.regligionStatus)),
                                   SizedBox(
                                     height: 20,
@@ -362,11 +364,11 @@ class _DetailsServiceYouWantState extends State<DetailsServiceYouWant> {
                                         getSplit(servicesData.clientToken));
                                         if (map != null && map.isNotEmpty){
                                           if(widget.forPublicPage){
-                                          showToast(successfulAddExplnationForPublic);
+                                          showToast(AppLocalizations.of(context).translate("successfulAddExplnationForPublic"));
                                           openPageAndClearPrev(context:context,page: GeneralPageServicesProvider(),route: HomePageRoute2);
                                           }
                                           else
-                                          showToast(successfulAddExplnation);
+                                          showToast(AppLocalizations.of(context).translate("successfulAddExplnation"));
                                           refreshKey.currentState.show();}
                                       },
                                 ratingPress: (){
@@ -374,12 +376,12 @@ class _DetailsServiceYouWantState extends State<DetailsServiceYouWant> {
                                 },
                                      sharePress: () async {
                                        var response=     await FlutterShare.share(
-                                           title: 'يرجى مشاركة هذا الرابط ',
+                                           title: AppLocalizations.of(context).translate("pleaseShareThisLink"),
 
                                            text:
-                                           '  ${serviceProvider}: ${servicesData.serviceProvider.name}\n ${specalist}: ${servicesData.userWork.name}\n${shareHitn2}\n${userInfo.userSpecialCode}',
+                                           '  ${AppLocalizations.of(context).translate("serviceProvider")}: ${servicesData.serviceProvider.name}\n ${AppLocalizations.of(context).translate("specalist")}: ${servicesData.userWork.name}\n${AppLocalizations.of(context).translate("shareHitn2")}\n${userInfo.userSpecialCode}',
                                            linkUrl:
-                                           '${linkApp} \n ${googlePlayUrl}',
+                                           '${AppLocalizations.of(context).translate("linkApp")} \n ${googlePlayUrl}',
                                            chooserTitle:
                                            'share');
                                      },

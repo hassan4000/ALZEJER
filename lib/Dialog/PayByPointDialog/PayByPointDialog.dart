@@ -4,6 +4,7 @@ import 'package:faserholmak/Helper/StyleForApp.dart';
 import 'package:faserholmak/Model/SingleServicesModel/SingleServicesModel.dart';
 import 'package:flutter/material.dart';
 
+import '../../app_localizations.dart';
 import '../../constants.dart';
 
 
@@ -84,7 +85,7 @@ class _PayByPointDialogState extends State<PayByPointDialog> {
               width: 4.0,
             ),
             Text(
-                "ترقية الخطة بالنقاط  ",
+                AppLocalizations.of(context).translate("UpgradePlanWithPoints"),
                 style: getTextSyle(20, kPrimaryColor,fontWeight: FontWeight.w600)
             ),
           ],
@@ -107,7 +108,7 @@ class _PayByPointDialogState extends State<PayByPointDialog> {
                   Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        'الرجاء الانتظار ..',
+                        AppLocalizations.of(context).translate("waitLittleBit"),
                         style: TextStyle(
                           fontFamily: 'Heading',
                           fontSize: 18.0,

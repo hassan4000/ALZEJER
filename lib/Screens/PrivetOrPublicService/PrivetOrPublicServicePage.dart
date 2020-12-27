@@ -21,6 +21,8 @@ import 'package:faserholmak/wigets/MyButton.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
+import '../../app_localizations.dart';
+
 class PrivetOrPublicServicePage extends StatefulWidget {
   AddServiceModel addServiceModel;
 
@@ -107,7 +109,7 @@ class _PrivetOrPublicServicePageState extends State<PrivetOrPublicServicePage> {
             height: MediaQuery.of(context).size.height,
             child: Center(
                 child: Text(
-                  failedOpreation,
+                  AppLocalizations.of(context).translate("failedOpreation"),
                   style: TextStyle(color: Colors.grey, fontSize: 16),
                 )),
           ),
@@ -140,7 +142,7 @@ class _PrivetOrPublicServicePageState extends State<PrivetOrPublicServicePage> {
             height: MediaQuery.of(context).size.height,
             child: Center(
                 child: Text(
-                  noData,
+                  AppLocalizations.of(context).translate("noData"),
                   style: TextStyle(color: Colors.grey, fontSize: 16),
                 )),
           ),
@@ -189,7 +191,7 @@ class _PrivetOrPublicServicePageState extends State<PrivetOrPublicServicePage> {
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text('اختر نوع الخدمة'),
+          title: Text(AppLocalizations.of(context).translate("ChooseTypeService")),
         ),
         body: ModalProgressHUD(
           inAsyncCall: isLoadingHUD,
@@ -209,8 +211,8 @@ class _PrivetOrPublicServicePageState extends State<PrivetOrPublicServicePage> {
                   double oldPrice=double.parse(widget.addServiceModel.privateServicePrice);
                   double allPrice=oldPrice+newPrice;
 
-                 dataList.add(PrivetOrPublicServiceModel(orginalPrice:"${widget.addServiceModel.privateServicePrice}" ,price: "${widget.addServiceModel.privateServicePrice}",desc: publicServicesHint,name: publicTxt));
-                 dataList.add(PrivetOrPublicServiceModel(orginalPrice:"${widget.addServiceModel.privateServicePrice}",price: allPrice.toString(),desc: privateServicesHint,name: privateTxt));
+                 dataList.add(PrivetOrPublicServiceModel(orginalPrice:"${widget.addServiceModel.privateServicePrice}" ,price: "${widget.addServiceModel.privateServicePrice}",desc: AppLocalizations.of(context).translate("publicServicesHint"),name: AppLocalizations.of(context).translate("publicTxt")));
+                 dataList.add(PrivetOrPublicServiceModel(orginalPrice:"${widget.addServiceModel.privateServicePrice}",price: allPrice.toString(),desc: AppLocalizations.of(context).translate("privateServicesHint"),name: AppLocalizations.of(context).translate("privateTxt")));
 
                   setState(() {
                     listServices=dataList;

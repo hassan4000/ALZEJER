@@ -11,6 +11,7 @@ import 'package:faserholmak/wigets/SmallHomeCard.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
+import '../../app_localizations.dart';
 import '../../constants.dart';
 
 class CommentPage extends StatefulWidget {
@@ -42,7 +43,7 @@ class _CommentPageState extends State<CommentPage> {
             height: MediaQuery.of(context).size.height,
             child: Center(
                 child: Text(
-                  failedOpreation,
+                  AppLocalizations.of(context).translate("failedOpreation"),
                   style: TextStyle(color: Colors.grey, fontSize: 16),
                 )),
           ),
@@ -66,7 +67,7 @@ class _CommentPageState extends State<CommentPage> {
             height: MediaQuery.of(context).size.height,
             child: Center(
                 child: Text(
-                  noData,
+                  AppLocalizations.of(context).translate("noData"),
                   style: TextStyle(color: Colors.grey, fontSize: 16),
                 )),
           ),
@@ -140,7 +141,7 @@ class _CommentPageState extends State<CommentPage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("تعليقات"),
+        title: Text(AppLocalizations.of(context).translate("Comments")),
       ),
 
       body: SafeArea(
@@ -173,11 +174,11 @@ class _CommentPageState extends State<CommentPage> {
                         flex:4,
                         child: TextFormField(
                           controller: controller,
-                          textDirection: TextDirection.rtl,
+                         // textDirection: TextDirection.rtl,
                           minLines: 1,
                           maxLines: 2,
 
-                          decoration: getInputDecorationChat(hint: "ارسال تعليق",
+                          decoration: getInputDecorationChat(hint: AppLocalizations.of(context).translate("SendComments"),
                           ),
 
                         ),

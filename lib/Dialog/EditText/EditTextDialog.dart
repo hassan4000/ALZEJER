@@ -8,6 +8,7 @@ import 'package:faserholmak/Helper/Content.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../app_localizations.dart';
 import '../../constants.dart';
 
 class EditTextDialog extends StatefulWidget {
@@ -59,7 +60,7 @@ class _EditTextDialogState extends State<EditTextDialog> {
           SizedBox(
             width: 4.0,
           ),
-          Text( editText,
+          Text( AppLocalizations.of(context).translate("editText"),
               style:
               getTextSyle(20, kPrimaryColor, fontWeight: FontWeight.w600)),
         ],
@@ -81,7 +82,7 @@ class _EditTextDialogState extends State<EditTextDialog> {
                 Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      'انتظر قليلا ..',
+                      AppLocalizations.of(context).translate("waitLittleBit"),
                       style: TextStyle(
                         fontFamily: 'Heading',
                         fontSize: 18.0,
@@ -99,12 +100,12 @@ class _EditTextDialogState extends State<EditTextDialog> {
                     TextFormField(
                       controller: textEditingController,
                       decoration: getInputDecorationHassan(
-                          hint: sendComments,
+                          hint: AppLocalizations.of(context).translate("sendComments"),
                           icon: Icon(
                             Icons.description,
                             color: kPrimaryColor,
                           )),
-                      textDirection: TextDirection.rtl,
+                    //  textDirection: TextDirection.rtl,
                       textAlign: TextAlign.start,
                       minLines: 6,
                       maxLines: 10,
@@ -125,7 +126,7 @@ class _EditTextDialogState extends State<EditTextDialog> {
                       children: <Widget>[
                         Expanded(
                           child: MyButton(
-                            txt: cancel,
+                            txt:AppLocalizations.of(context).translate("cancel"),
                             raduis: 4,
                             press: () {
                               Navigator.of(context).pop();
@@ -140,11 +141,11 @@ class _EditTextDialogState extends State<EditTextDialog> {
                         SizedBox(width: 10,),
                         Expanded(
                           child: MyButton(
-                            txt: editTxt,
+                            txt: AppLocalizations.of(context).translate("editTxt"),
                             raduis: 4,
                             press: () async {
                               if(textEditingController.text.toString().isEmpty)
-                                showToast(addAllEmptyField);
+                                showToast(AppLocalizations.of(context).translate("addAllEmptyField"));
                               else{
                                 setState(() {
                                   isLoading=true;

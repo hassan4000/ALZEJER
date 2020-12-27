@@ -27,6 +27,8 @@ import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
+import '../../app_localizations.dart';
+
 class CreateAccountMofaser extends StatefulWidget {
   List<Value> userWorks;
 
@@ -58,7 +60,7 @@ class _CreateAccountMofaserState extends State<CreateAccountMofaser> {
   void initState() {
     super.initState();
     setState(() {
-      myCountry=addCountreisHasssan();
+      myCountry=countryList;
     });
 
     selectedCountry=initCountry("971");
@@ -209,26 +211,19 @@ class _CreateAccountMofaserState extends State<CreateAccountMofaser> {
     return item;
   }
 
+
   List<DropDownItem> genderList = <DropDownItem>[
-    const DropDownItem(
-      'ذكر',
-    ),
-    const DropDownItem(
-      'انثى',
-    ),
+    const DropDownItem("male"),
+    const DropDownItem("female"),
   ];
 
   List<DropDownItem> socialStatusList = <DropDownItem>[
-    const DropDownItem(
-      'اعزب',
-    ),
-    const DropDownItem(
-      'متزوج',
-    ),
-    const DropDownItem(
-      'مطلق',
-    ),
+    const DropDownItem("single",),
+    const DropDownItem("marred",),
+    const DropDownItem("divorcee",),
   ];
+
+
 
 
 
@@ -240,7 +235,8 @@ class _CreateAccountMofaserState extends State<CreateAccountMofaser> {
           appBar: AppBar(
           centerTitle: true,
           backgroundColor: kPrimaryColor,
-          title: Text(hireMe,style: getTextSyle(16, Colors.white),textDirection: TextDirection.rtl,),
+          title: Text(AppLocalizations.of(context).translate("hireMe"),
+            style: getTextSyle(16, Colors.white),),
         ),
           body: ModalProgressHUD(
             inAsyncCall: isLoading,
@@ -278,7 +274,7 @@ class _CreateAccountMofaserState extends State<CreateAccountMofaser> {
                           ),
                             child: TextFormField(
                               maxLines: 1,
-                              textDirection: TextDirection.rtl,
+                            //  textDirection: TextDirection.rtl,
                               textAlign: TextAlign.start,
                               style: TextStyle(
                                 color: kPrimaryColor,
@@ -287,10 +283,10 @@ class _CreateAccountMofaserState extends State<CreateAccountMofaser> {
                               keyboardType: TextInputType.text,
                               controller: nameController,
                               cursorColor: kPrimaryColor,
-                              decoration: getInputDecorationHassan(label: name),
+                              decoration: getInputDecorationHassan(label: AppLocalizations.of(context).translate("name")),
                               validator: (String item) {
                                 if (nameController.text.isEmpty)
-                                  return emptyValidation;
+                                  return AppLocalizations.of(context).translate("emptyValidation");
                                 else
                                   return null;
                               },
@@ -307,7 +303,7 @@ class _CreateAccountMofaserState extends State<CreateAccountMofaser> {
                           ),
                           child: TextFormField(
                               maxLines: 1,
-                              textDirection: TextDirection.rtl,
+                             // textDirection: TextDirection.rtl,
                               textAlign: TextAlign.start,
                               style: TextStyle(
                                 color: kPrimaryColor,
@@ -316,10 +312,10 @@ class _CreateAccountMofaserState extends State<CreateAccountMofaser> {
                               keyboardType: TextInputType.text,
                               controller: userNameController,
                               cursorColor: kPrimaryColor,
-                              decoration: getInputDecorationHassan(label: userName),
+                              decoration: getInputDecorationHassan(label: AppLocalizations.of(context).translate("userName")),
                               validator: (String item) {
                                 if (userNameController.text.isEmpty)
-                                  return emptyValidation;
+                                  return AppLocalizations.of(context).translate("emptyValidation");
 
                                   return null;
                               }),
@@ -335,7 +331,7 @@ class _CreateAccountMofaserState extends State<CreateAccountMofaser> {
                           ),
                           child: TextFormField(
                               maxLines: 1,
-                              textDirection: TextDirection.rtl,
+                              //textDirection: TextDirection.rtl,
                               textAlign: TextAlign.start,
                               style: TextStyle(
                                 color: kPrimaryColor,
@@ -344,12 +340,12 @@ class _CreateAccountMofaserState extends State<CreateAccountMofaser> {
                               keyboardType: TextInputType.emailAddress,
                               controller: emailController,
                               cursorColor: kPrimaryColor,
-                              decoration: getInputDecorationHassan(label: email,icon: Icon(Icons.email,color: kPrimaryColor,)),
+                              decoration: getInputDecorationHassan(label:AppLocalizations.of(context).translate("email"),icon: Icon(Icons.email,color: kPrimaryColor,)),
                               validator: (String item) {
                                 if (emailController.text.isEmpty)
-                                  return emptyValidation;
+                                  return AppLocalizations.of(context).translate("emptyValidation");
                                 if(!validateEmail(emailController.text.trim()))
-                                  return  emailValidation;
+                                  return  AppLocalizations.of(context).translate("emailValidation");
                                 return null;
                               }
 
@@ -366,7 +362,7 @@ class _CreateAccountMofaserState extends State<CreateAccountMofaser> {
                           ),
                           child: TextFormField(
                               maxLines: 1,
-                              textDirection: TextDirection.rtl,
+                             // textDirection: TextDirection.rtl,
                               textAlign: TextAlign.start,
                               style: TextStyle(
                                 color: kPrimaryColor,
@@ -375,10 +371,11 @@ class _CreateAccountMofaserState extends State<CreateAccountMofaser> {
                               keyboardType: TextInputType.number,
                               controller: phoneController,
                               cursorColor: kPrimaryColor,
-                              decoration: getInputDecorationCountry(myPrefix:initAddCountryPrefixIcon(),label: phone),
+                              decoration: getInputDecorationCountry(myPrefix:initAddCountryPrefixIcon()
+                                  ,label: AppLocalizations.of(context).translate("phone")),
                               validator: (String item) {
                                 if (phoneController.text.isEmpty)
-                                  return emptyValidation;
+                                  return AppLocalizations.of(context).translate("emptyValidation");
 
                                 return null;
                               }
@@ -397,7 +394,7 @@ class _CreateAccountMofaserState extends State<CreateAccountMofaser> {
                           child: TextFormField(
                               obscureText: shildPasswrod,
                               maxLines: 1,
-                              textDirection: TextDirection.rtl,
+                             // textDirection: TextDirection.rtl,
                               textAlign: TextAlign.start,
                               style: TextStyle(
                                 color: kPrimaryColor,
@@ -407,18 +404,18 @@ class _CreateAccountMofaserState extends State<CreateAccountMofaser> {
                               controller: passwordController,
                               cursorColor: kPrimaryColor,
                               decoration: getInputDecorationPassword(
-                                  label: password,
+                                  label: AppLocalizations.of(context).translate("password"),
                                   icon: Icon(Icons.remove_red_eye),
                                   pressPrifix: reSetShild,
                                   obsecure: shildPasswrod),
 
                               validator: (String item) {
                                 if (passwordController.text.isEmpty)
-                                  return emptyValidation;
+                                  return AppLocalizations.of(context).translate("emptyValidation");
                                 if(!validatePassWord(passwordController.text.trim()))
-                                  return passwordLengthValidation;
+                                  return AppLocalizations.of(context).translate("passwordLengthValidation");
                                 if(passwordController.text.trim()!=rePasswordController.text.trim())
-                                  return  passwordValidation;
+                                  return  AppLocalizations.of(context).translate("passwordValidation");
 
                                 return null;
                               }
@@ -438,7 +435,7 @@ class _CreateAccountMofaserState extends State<CreateAccountMofaser> {
                           ),
                           child: TextFormField(
                               obscureText: reShildPasswrod,
-                              textDirection: TextDirection.rtl,
+                             // textDirection: TextDirection.rtl,
                               textAlign: TextAlign.start,
                               maxLines: 1,
                               style: TextStyle(
@@ -449,17 +446,17 @@ class _CreateAccountMofaserState extends State<CreateAccountMofaser> {
                               controller: rePasswordController,
                               cursorColor: kPrimaryColor,
                               decoration: getInputDecorationPassword(
-                                  label: rePassword,
+                                  label: AppLocalizations.of(context).translate("rePassword"),
                                   icon: Icon(Icons.remove_red_eye),
                                   pressPrifix: reSetReShild,
                                   obsecure: reShildPasswrod),
                               validator: (String item) {
                                 if (rePasswordController.text.isEmpty)
-                                  return emptyValidation;
+                                  return AppLocalizations.of(context).translate("emptyValidation");
                                 if(!validatePassWord(rePasswordController.text.trim()))
-                                  return passwordLengthValidation;
+                                  return AppLocalizations.of(context).translate("passwordLengthValidation");
                                 if(passwordController.text.trim()!=rePasswordController.text.toString())
-                                  return passwordValidation;
+                                  return AppLocalizations.of(context).translate("passwordValidation");
 
 
                                 return null;
@@ -478,8 +475,8 @@ class _CreateAccountMofaserState extends State<CreateAccountMofaser> {
                           ),
                           child: TextFormField(
                             controller: workController,
-                            decoration: getInputDecorationHassan(label: work,icon: Icon(Icons.work,color: kPrimaryColor,)),
-                            textDirection: TextDirection.rtl,
+                            decoration: getInputDecorationHassan(label: AppLocalizations.of(context).translate("work"),icon: Icon(Icons.work,color: kPrimaryColor,)),
+                          //  textDirection: TextDirection.rtl,
                             textAlign: TextAlign.start,
                             maxLines: 1,
                             style: TextStyle(
@@ -490,7 +487,7 @@ class _CreateAccountMofaserState extends State<CreateAccountMofaser> {
                             cursorColor: kPrimaryColor,
                               validator: (String item) {
                                 if (workController.text.isEmpty)
-                                  return emptyValidation;
+                                  return AppLocalizations.of(context).translate("emptyValidation");
 
                                 return null;
                               }
@@ -507,9 +504,9 @@ class _CreateAccountMofaserState extends State<CreateAccountMofaser> {
                           ),
                           child: TextFormField(
                               controller: ageController,
-                              decoration: getInputDecorationHassan(label: ageTxt,icon: Icon(Icons.perm_contact_calendar,
+                              decoration: getInputDecorationHassan(label:AppLocalizations.of(context).translate("ageTxt"),icon: Icon(Icons.perm_contact_calendar,
                                 color: kPrimaryColor,)),
-                              textDirection: TextDirection.rtl,
+                            //  textDirection: TextDirection.rtl,
                               textAlign: TextAlign.start,
                               maxLines: 1,
                               style: TextStyle(
@@ -520,7 +517,7 @@ class _CreateAccountMofaserState extends State<CreateAccountMofaser> {
                               cursorColor: kPrimaryColor,
                               validator: (String item) {
                                 if (ageController.text.isEmpty)
-                                  return emptyValidation;
+                                  return AppLocalizations.of(context).translate("emptyValidation");
 
                                 return null;
                               }
@@ -543,7 +540,7 @@ class _CreateAccountMofaserState extends State<CreateAccountMofaser> {
                                     color: kPrimaryLightColor,
                                   )),
                               child: DropdownButton<DropDownItem>(
-                                hint: Text(gener),
+                                hint: Text(AppLocalizations.of(context).translate("gener")),
                                 value: genderSelected,
                                 underline: Container(),
                                 onChanged: (DropDownItem Value) {
@@ -557,7 +554,7 @@ class _CreateAccountMofaserState extends State<CreateAccountMofaser> {
                                     child: Row(
                                       children: <Widget>[
                                         Text(
-                                          data.name.toString(),
+                                    AppLocalizations.of(context).translate(data.name.toString()),
                                           textAlign: TextAlign.center,
                                           style: TextStyle(color: Colors.black),
                                         ),
@@ -579,7 +576,7 @@ class _CreateAccountMofaserState extends State<CreateAccountMofaser> {
                               child: DropdownButton<DropDownItem>(
                                 underline: Container(),
                                 elevation: 10,
-                                hint: Text(socialStatus),
+                                hint: Text(AppLocalizations.of(context).translate("socialStatus")),
                                 value: socialStatusSelected,
                                 onChanged: (DropDownItem Value) {
                                   setState(() {
@@ -593,7 +590,7 @@ class _CreateAccountMofaserState extends State<CreateAccountMofaser> {
                                       mainAxisAlignment: MainAxisAlignment.center,
                                       children: <Widget>[
                                         Text(
-                                          data.name.toString(),
+                                    AppLocalizations.of(context).translate(data.name.toString()),
                                           textAlign: TextAlign.center,
                                           style: TextStyle(color: Colors.black),
                                         ),
@@ -626,7 +623,7 @@ class _CreateAccountMofaserState extends State<CreateAccountMofaser> {
                                   isExpanded: true,
                                   underline: Container(),
                                   elevation: 10,
-                                  hint: Text(country),
+                                  hint: Text(AppLocalizations.of(context).translate("country")),
                                   value: countrySelected,
                                   onChanged: (Country Value) {
                                     setState(() {
@@ -662,8 +659,8 @@ class _CreateAccountMofaserState extends State<CreateAccountMofaser> {
                         /*desc*/
                         TextFormField(
                           controller: descController,
-                          decoration: getInputDecorationHassan(hint: deschint1,icon: Icon(Icons.description,color: kPrimaryColor,)),
-                          textDirection: TextDirection.rtl,
+                          decoration: getInputDecorationHassan(hint: AppLocalizations.of(context).translate("deschint1"),icon: Icon(Icons.description,color: kPrimaryColor,)),
+                    //      textDirection: TextDirection.rtl,
                           textAlign: TextAlign.start,
                           minLines: 3,
                           maxLines: 3,
@@ -686,13 +683,13 @@ class _CreateAccountMofaserState extends State<CreateAccountMofaser> {
                               
 
                               if(profileImage==null)
-                                showToast(picValidation);
+                                showToast(AppLocalizations.of(context).translate("picValidation"));
                              else if(genderSelected==null)
-                                showToast(genderValidation);
+                                showToast(AppLocalizations.of(context).translate("genderValidation"));
                               else if(socialStatusSelected==null)
-                                showToast(socialStatusValidation);
+                                showToast(AppLocalizations.of(context).translate("socialStatusValidation"));
                               else if(countrySelected==null)
-                                showToast(countryValidation);
+                                showToast(AppLocalizations.of(context).translate("countryValidation"));
                               else{
 
                                 reSetLoading(true);

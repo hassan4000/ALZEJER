@@ -10,6 +10,8 @@ import 'package:faserholmak/wigets/MyButton.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../app_localizations.dart';
+
 class PrivacyPolicyPage extends StatefulWidget {
   @override
   _PrivacyPolicyPageState createState() => _PrivacyPolicyPageState();
@@ -38,7 +40,7 @@ class _PrivacyPolicyPageState extends State<PrivacyPolicyPage> {
     return  Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text(privacyPolicy,style: getTextSyle(16, Colors.white),),
+        title: Text(AppLocalizations.of(context).translate("privacyPolicy"),style: getTextSyle(16, Colors.white),),
       ),
         body:SafeArea(
           top: true,
@@ -64,7 +66,7 @@ class _PrivacyPolicyPageState extends State<PrivacyPolicyPage> {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 30,vertical:2),
               child: Column(
-                textDirection: TextDirection.rtl,
+
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   SizedBox(height: 4,),
@@ -75,7 +77,7 @@ class _PrivacyPolicyPageState extends State<PrivacyPolicyPage> {
                     children: <Widget>[
                       LogoIcon(),
                       Expanded(
-                        child: Text(privacyPolicy,style: getTextSyle(16, kPrimaryColor,fontWeight: FontWeight.w600),textDirection: TextDirection.rtl,),
+                        child: Text(AppLocalizations.of(context).translate("privacyPolicy"),style: getTextSyle(16, kPrimaryColor,fontWeight: FontWeight.w600),),
                       )
                     ],
                   ),
@@ -84,14 +86,14 @@ class _PrivacyPolicyPageState extends State<PrivacyPolicyPage> {
                       (child:
                     Container(
                         width: MediaQuery.of(context).size.width,
-                        child: Text(txt,style: getTextSyle(14, Colors.black87),textDirection: TextDirection.rtl))
+                        child: Text(txt,style: getTextSyle(14, Colors.black87)))
                     ),
                   ),
 
                   Row(mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
-                      MyButton(txt: continueTxt,press: (){Navigator.of(context).pop();},)
+                      MyButton(txt: AppLocalizations.of(context).translate("continueTxt"),press: (){Navigator.of(context).pop();},)
                     ],)
                 ],
               ),

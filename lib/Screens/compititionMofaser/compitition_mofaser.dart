@@ -19,6 +19,7 @@ import 'package:faserholmak/wigets/PersonalProfileContent.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:faserholmak/Helper/AppApi.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 import '../../constants.dart';
 import 'card_compition.dart';
@@ -112,14 +113,19 @@ class _TabWithImageState extends State<CompititionMofaser> with TickerProviderSt
 
 
 
-    var response=await getAllCompition();
+    printWrapped("Skip$skip/top$top");
+    var response=await getAllCompition(skip: skip,top: top,);
     if(response.statusCode==200){
       CompitionResponse item=response.object;
       setState(() {
         notDoneAllCount=item.count;
         if(loadMore==null ||!loadMore){
           notDoneIsLoadingRefersh=false;
-          notDoneListServicesData=item.competitions;}
+          notDoneListServicesData=item.competitions;
+
+
+
+        }
         else notDoneListServicesData.addAll(item.competitions);
       });
 
@@ -139,7 +145,7 @@ class _TabWithImageState extends State<CompititionMofaser> with TickerProviderSt
   int doneSkipNumber=0;
   int doneTopNumber=10;
   int doneAllCount=10;
-  List<AllServicesData>doneListServicesData;
+  List<Competition>doneListServicesData;
   GlobalKey<RefreshIndicatorState>doneRefreshKey=new GlobalKey<RefreshIndicatorState>();
   bool doneIsLoadingRefersh=false;
   bool doneIsLoadingMore=false;
@@ -155,10 +161,10 @@ class _TabWithImageState extends State<CompititionMofaser> with TickerProviderSt
     });
   }
 
-/*  Widget doneDataListView(List<AllServicesData> data, context) {
- //   if (data == null)
+  Widget doneDataListView(List<Competition> data, context) {
 
-    *//*  return Container(
+    if (data == null)
+      return Container(
         height: MediaQuery.of(context).size.height,
         child: Center(
           child: Text(
@@ -166,58 +172,57 @@ class _TabWithImageState extends State<CompititionMofaser> with TickerProviderSt
             style: TextStyle(color: Colors.grey, fontSize: 16),
           ),
         ),
-      );*//*
- //   else if (data.length > 0)
+      );
+    else if (data.length > 0)
       return ListView.builder(
           shrinkWrap: true,
 
-          controller:doneControllerScroll,
+          controller: doneControllerScroll,
           physics: AlwaysScrollableScrollPhysics(),
-          itemCount: 4,
+          itemCount: data.length,
           //      controller: _controllerScrollRecevier,
 
 
           itemBuilder: (context, index) {
             if(doneIsLoadingMore&&index==data.length-1)
               return Center(child: CircularProgressIndicator(),);
-            else{  Competition item=doneListServicesData[index];
-
-
-            return CardCompition()
-
-
-
-
-
-            }
+            else{  Competition  item=doneListServicesData[index];
+            return CardCompition(item,end: true,);}
           });
-//    else
-//      return Container(
-//        height: MediaQuery.of(context).size.height,
-//        child: Center(
-//            child: Text(
-//              noData,
-//              style: TextStyle(color: Colors.grey, fontSize: 16),
-//            )),
-//      );
-  }*/
+    else
+      return Container(
+        height: MediaQuery.of(context).size.height,
+        child: Center(
+            child: Text(
+              noData,
+              style: TextStyle(color: Colors.grey, fontSize: 16),
+            )),
+      );
+  }
 
-//  Future<void> doneGetAllServicesRQ({int skip,int top,bool loadMore=false}) async {
-//    // var response=await getAllServiceClient(filterUserID: userInfo.id,filterType: DoneTxt);
-//
-//    var response=await getAllServiceServicesProvider(filterUserID: widget.item.id,top: top,skip: skip,filterType: DoneTxt);
-//    if(response.statusCode==200){
-//      AllServicesModel item=response.object;
-//      setState(() {
-//       doneAllCount=int.parse(item.odata_count);
-//        if(!loadMore)
-//         doneListServicesData=item.value;
-//        else doneListServicesData.addAll(item.value);
-//      });
-//
-//
-//    }
-//  }
+  Future<void> doneGetAllServicesRQ({int skip,int top,bool loadMore=false}) async {
+    // var response=await getAllServiceClient(filterUserID: userInfo.id,filterType: DoneTxt);
+
+    printWrapped("Skip$skip/top$top");
+    var response=await getAllCompition(skip: skip,top: top,filterType:"Finished");
+    if(response.statusCode==200){
+      CompitionResponse item=response.object;
+      setState(() {
+        doneAllCount=item.count;
+        if(loadMore==null ||!loadMore){
+          doneIsLoadingRefersh=false;
+          doneListServicesData=item.competitions;
+
+
+
+
+        }
+        else doneListServicesData.addAll(item.competitions);
+      });
+
+
+    }
+  }
 
 
 
@@ -227,13 +232,19 @@ class _TabWithImageState extends State<CompititionMofaser> with TickerProviderSt
     super.initState();
     tabController = new TabController( length: 2, vsync: this);
     tabController.index=0;
+    initializeDateFormatting();
 
 
-    getAllNotDone();
+    getAllNotDone(top: notDoneTopNumber,skip: notDoneSkipNumber);
     tabController.addListener((){
       if (tabController.index == 0 && notDoneListServicesData == null&& notDoneRefreshKey.currentState!=null){
         notDoneRefreshKey.currentState.show();
         printWrapped("done  ${tabController.index}/ $notDoneListServicesData/");
+      }
+
+      if (tabController.index == 1 && doneListServicesData == null&& doneRefreshKey.currentState!=null){
+        doneRefreshKey.currentState.show();
+
       }
 
       else  printWrapped("${tabController.index}/ $notDoneListServicesData/");
@@ -253,7 +264,7 @@ class _TabWithImageState extends State<CompititionMofaser> with TickerProviderSt
           // you are at top position
         }
         else{
-/*
+
 
           int listSize=notDoneListServicesData.length;
           if(listSize<notDoneAllCount&&!notDoneIsLoadingRefersh&&!notDoneIsLoadingMore){
@@ -262,12 +273,14 @@ class _TabWithImageState extends State<CompititionMofaser> with TickerProviderSt
               notDoneTopNumber=(notDoneAllCount-listSize);
             else notDoneTopNumber=10;
             notDoneSetMore(true);
-         //   await getAllRatingRQ(skip: notDoneSkipNumber,top: notDoneTopNumber,loadMore: true);
+            await getAllNotDone(skip: notDoneSkipNumber,top: notDoneTopNumber,loadMore: true);
             notDoneSetMore(false);
           }
+
+
+
           // loadMoreReceiver();
           // you are at bottom position
-*/
 
 
         }
@@ -283,13 +296,13 @@ class _TabWithImageState extends State<CompititionMofaser> with TickerProviderSt
 
 
 
- /*   doneControllerScroll.addListener(() async {
+   doneControllerScroll.addListener(() async {
       if (doneControllerScroll.position.atEdge) {
         if (doneControllerScroll.position.pixels == 0){
           // you are at top position
         }
         else{
-*//*
+
 
           int listSize=doneListServicesData.length;
           if(listSize<doneAllCount&&!doneIsLoadingRefersh&&!doneIsLoadingMore){
@@ -298,17 +311,17 @@ class _TabWithImageState extends State<CompititionMofaser> with TickerProviderSt
               doneTopNumber=(doneAllCount-listSize);
             else doneTopNumber=10;
             doneSetMore(true);
-          //  await doneGetAllServicesRQ(skip: doneSkipNumber,top: doneTopNumber,loadMore: true);
+            await doneGetAllServicesRQ(skip: doneSkipNumber,top: doneTopNumber,loadMore: true);
             doneSetMore(false);
           }
           // loadMoreReceiver();
           // you are at bottom position
-*//*
+
 
 
         }
       }
-    });*/
+    });
 
 
 
@@ -424,16 +437,24 @@ class _TabWithImageState extends State<CompititionMofaser> with TickerProviderSt
                   key: notDoneRefreshKey,
                   onRefresh: ()async{
                     notDoneSetRefresh(true);
-                    await getAllNotDone();
+                    await getAllNotDone(skip: notDoneSkipNumber,top: notDoneTopNumber);
                     notDoneSetRefresh(false);
 
                   },
                   child: !notDoneIsLoadingRefersh?  notDoneDataListView(notDoneListServicesData, context):
                   Center(child: Text("$pleazeWait"),),
                 ),
-                Container(
-                  child: Text("asdasdasd"),
-                )
+                RefreshIndicator(
+                  key: doneRefreshKey,
+                  onRefresh: ()async{
+                    doneSetRefresh(true);
+                    await doneGetAllServicesRQ(skip: notDoneSkipNumber,top: notDoneTopNumber);
+                    doneSetRefresh(false);
+
+                  },
+                  child: !doneIsLoadingRefersh?  doneDataListView(doneListServicesData, context):
+                  Center(child: Text("$pleazeWait"),),
+                ),
 
 
 

@@ -7,6 +7,7 @@ import 'package:faserholmak/components/rounded_button.dart';
 import 'package:flutter/material.dart';
 import 'package:faserholmak/Helper/Content.dart';
 
+import '../app_localizations.dart';
 import '../constants.dart';
 
 class SendDreamV2 extends StatefulWidget {
@@ -28,7 +29,7 @@ class _SendDreamV2State extends State<SendDreamV2> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("ارسل الخدمة المطلوبة"),
+        title: Text(AppLocalizations.of(context).translate("SendRequiredService")),
       ),
       body: SafeArea(
         child: Background(
@@ -40,27 +41,29 @@ class _SendDreamV2State extends State<SendDreamV2> {
                   SizedBox(height: 24,),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8,vertical: 8),
-                    child: Text(sendDreamsHeader,style: getTextSyle(16, Colors.black),textAlign: TextAlign.center),
+                    child: Text(AppLocalizations.of(context).translate("sendDreamsHeader"),style: getTextSyle(16, Colors.black),textAlign: TextAlign.center),
                   ),
                   SizedBox(height: 24),
                   TextFormField(
                     controller:descControler ,
                     decoration: getInputDecorationHassan(hint: dreamsText),
-                    textDirection: TextDirection.rtl,
+
                     textAlign: TextAlign.start,
                     minLines: 6,
                     maxLines: 8,
+                    maxLength: 300,
+                    maxLengthEnforced: true,
                     style: TextStyle(color: kPrimaryColor,fontSize: 20,),
                     keyboardType: TextInputType.text,
                     cursorColor: kPrimaryColor,
                   ),
                   SizedBox(height: 24,),
 
-                  Text(sendDreamCheckBoxHint,style: getTextSyle(16, kPrimaryColor),
-                  textDirection: TextDirection.rtl,),
+                  Text(AppLocalizations.of(context).translate("sendDreamCheckBoxHint"),style: getTextSyle(16, kPrimaryColor),
+                 ),
                   SizedBox(height: 4,),
                   Row(
-                    textDirection: TextDirection.rtl,
+
                     children: <Widget>[
                       Expanded(
                         child: RadioListTile(
@@ -77,7 +80,7 @@ class _SendDreamV2State extends State<SendDreamV2> {
                           selected: false,
 
 
-                          title: Text(no,style: TextStyle(),textAlign: TextAlign.center,),
+                          title: Text(AppLocalizations.of(context).translate("no"),style: TextStyle(),textAlign: TextAlign.center,),
                         ),
                       ),
                       Expanded(
@@ -94,7 +97,7 @@ class _SendDreamV2State extends State<SendDreamV2> {
 
 
 
-                          title: Text(yes,style: TextStyle(),textAlign: TextAlign.center,),
+                          title: Text(AppLocalizations.of(context).translate("yes"),style: TextStyle(),textAlign: TextAlign.center,),
                         ),
                       ),
                     ],

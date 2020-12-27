@@ -19,6 +19,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../app_localizations.dart';
 import 'Content.dart';
 
 
@@ -173,9 +174,9 @@ String emptyString(String txt){
   return txt;
 }
 
-String StringToBoolean(bool txt){
- if(txt==null ||!txt)  return "$no";
- else return "$yes";
+String StringToBoolean(bool txt,BuildContext context){
+ if(txt==null ||!txt)  return AppLocalizations.of(context).translate("no");
+ else return AppLocalizations.of(context).translate("yes");
 }
 
  bool validatePassWord(password) {
@@ -280,11 +281,11 @@ bool showRating({String createrID,String explnation}){
 }
 
 
-String stateToArabic(String txt){
+String stateToArabic(String txt,BuildContext context){
   if(emptyString(txt)=="Active")
-    return "قيد التنفيذ";
+    return AppLocalizations.of(context).translate("dreamsPending");
   else if(emptyString(txt)=="Done")
-    return "منتهية";
+    return AppLocalizations.of(context).translate("done");
   else return txt;
 }
 bool showCardDreamsInDetails({String creationID,String providerID,bool forPublicPage=false}){

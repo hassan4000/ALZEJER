@@ -3,6 +3,7 @@ import 'package:faserholmak/Helper/StyleForApp.dart';
 import 'package:faserholmak/Screens/Login/components/background.dart';
 import 'package:flutter/material.dart';
 
+import '../app_localizations.dart';
 import '../constants.dart';
 
 class CardTimeDreams extends StatelessWidget {
@@ -39,7 +40,7 @@ class CardTimeDreams extends StatelessWidget {
               Expanded(
                 flex: 2,
                 child: Column(children: <Widget>[
-                  Text('$people $textAboveLine',style: getTextSyle(16, kPrimaryColor),textDirection: TextDirection.rtl,),
+                  Text('${AppLocalizations.of(context).translate("people")} $textAboveLine',style: getTextSyle(16, kPrimaryColor),textDirection: TextDirection.rtl,),
                   line?
                   Divider(thickness: 2,height: 2,)
                       :SizedBox(height:2,),

@@ -12,6 +12,7 @@ import 'package:faserholmak/Screens/Login/components/background.dart';
 import 'package:faserholmak/wigets/CardDreams.dart';
 import 'package:flutter/cupertino.dart';
 
+import '../../../app_localizations.dart';
 import '../../../constants.dart';
 
 class OnProgressServiceVisitor extends StatefulWidget {
@@ -62,7 +63,7 @@ class _OnProgressServiceVisitorState extends State<OnProgressServiceVisitor> {
         height: MediaQuery.of(context).size.height,
         child: Center(
           child: Text(
-            failedOpreation,
+            AppLocalizations.of(context).translate("failedOpreation"),
             style: TextStyle(color: Colors.grey, fontSize: 16),
           ),
         ),
@@ -88,7 +89,7 @@ class _OnProgressServiceVisitorState extends State<OnProgressServiceVisitor> {
         height: MediaQuery.of(context).size.height,
         child: Center(
             child: Text(
-              noData,
+              AppLocalizations.of(context).translate("noData"),
               style: TextStyle(color: Colors.grey, fontSize: 16),
             )),
       );
@@ -168,7 +169,7 @@ class _OnProgressServiceVisitorState extends State<OnProgressServiceVisitor> {
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text("الخدمات قيد التنفيذ"),
+          title: Text(AppLocalizations.of(context).translate("servicesInProgress")),
         ),
         body: RefreshIndicator(
           key: refreshKey,
@@ -217,7 +218,7 @@ class _OnProgressServiceVisitorState extends State<OnProgressServiceVisitor> {
                         underline: Container(),
                         elevation: 10,
                         hint: Text(orderBy,style: getTextSyle(16, Colors.black,fontWeight: FontWeight.w600),
-                          textDirection: TextDirection.rtl, textAlign: TextAlign.center,),
+                      textAlign: TextAlign.center,),
                         value: selectedUserWork!=null?selectedUserWork:null,
                         onChanged: (Value value) async {
                           print("-----------------");

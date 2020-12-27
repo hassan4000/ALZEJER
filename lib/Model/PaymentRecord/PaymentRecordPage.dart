@@ -10,6 +10,8 @@ import 'package:faserholmak/wigets/CardMofaserBalance.dart';
 import 'package:faserholmak/wigets/CardTimeDreams.dart';
 import 'package:flutter/material.dart';
 
+import '../../app_localizations.dart';
+
 class PaymentRecordPage extends StatefulWidget {
 
 
@@ -31,7 +33,7 @@ class _PaymentRecordPageState extends State<PaymentRecordPage> {
             height: MediaQuery.of(context).size.height,
             child: Center(
                 child: Text(
-                  failedOpreation,
+                  AppLocalizations.of(context).translate("failedOpreation"),
                   style: TextStyle(color: Colors.grey, fontSize: 16),
                 )),
           ),
@@ -49,7 +51,7 @@ class _PaymentRecordPageState extends State<PaymentRecordPage> {
               padding: const EdgeInsets.all(4.0),
               child:CardMofaserBalance(name: emptyString(item.creatorName),
               date: emptyString(item.creationDate),
-              txt: emptyString("تم دفع مبلغ ${item.amount} ${item.currency} "),),
+              txt: emptyString("${AppLocalizations.of(context).translate("AnAmountWasPaid")} ${item.amount} ${item.currency} "),),
             );
           });
     else
@@ -59,7 +61,7 @@ class _PaymentRecordPageState extends State<PaymentRecordPage> {
             height: MediaQuery.of(context).size.height,
             child: Center(
                 child: Text(
-                  noData,
+                  AppLocalizations.of(context).translate("noData"),
                   style: TextStyle(color: Colors.grey, fontSize: 16),
                 )),
           ),
@@ -88,7 +90,7 @@ class _PaymentRecordPageState extends State<PaymentRecordPage> {
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text('سجل المدفوعات'),
+          title: Text(AppLocalizations.of(context).translate("balanceRecord")),
         ),
         body: Background(
           topAlignment: true,

@@ -9,6 +9,8 @@ import 'package:flutter/material.dart';
 
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../app_localizations.dart';
+
 class ContactWithUs extends StatefulWidget {
   @override
   _ContactWithUsState createState() => _ContactWithUsState();
@@ -50,7 +52,7 @@ class _ContactWithUsState extends State<ContactWithUs> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text(cotactWithUsTxt,style: getTextSyle(16, Colors.white),),
+        title: Text(AppLocalizations.of(context).translate("cotactWithUsTxt"),style: getTextSyle(16, Colors.white),),
       ),
 
       body: SafeArea(
@@ -62,27 +64,27 @@ class _ContactWithUsState extends State<ContactWithUs> {
               child: Column(
                 children: [
 
-                  Text("الوظائف المتوفره حاليا",style: getTextSyle(20, Colors.black),),
+                  Text(AppLocalizations.of(context).translate("CurrentlyAvailableJobs"),style: getTextSyle(20, Colors.black),),
                   SizedBox(height: 4,),
-                  Text("مفسر احلام",style: getTextSyle(16, Colors.black),),
+                  Text(AppLocalizations.of(context).translate("InterpreterDreams"),style: getTextSyle(16, Colors.black),),
                   SizedBox(height: 4,),
-                  Text("مفتي شرعي",style: getTextSyle(16, Colors.black),),
+                  Text(AppLocalizations.of(context).translate("LegalMufti"),style: getTextSyle(16, Colors.black),),
                   SizedBox(height: 4,),
-                  Text("راقي شرعي",style: getTextSyle(16, Colors.black),),
+                  Text(AppLocalizations.of(context).translate("LegitClassy"),style: getTextSyle(16, Colors.black),),
                   SizedBox(height: 4,),
-                  Text("مستشار طبي",style: getTextSyle(16, Colors.black),),
+                  Text(AppLocalizations.of(context).translate("MedicalAdvisor"),style: getTextSyle(16, Colors.black),),
                   SizedBox(height: 4,),
-                  Text("مستشار قانوني",style: getTextSyle(16, Colors.black),),
+                  Text(AppLocalizations.of(context).translate("Counsel"),style: getTextSyle(16, Colors.black),),
                   SizedBox(height: 4,),
-                  Text("مستشار اسري",style: getTextSyle(16, Colors.black),),
+                  Text(AppLocalizations.of(context).translate("FamilyCounselor"),style: getTextSyle(16, Colors.black),),
                   SizedBox(height: 4,),
-                  Text("اذا كنت تجيد احد هذه التخصصات ولديك خبره كافيه يرجى متابعة التسجيل وكتابة السيره الذاتيه ليتم قبولك",
+                  Text(AppLocalizations.of(context).translate("hint_1_callUs"),
                     style: getTextSyle(16, Colors.black),textAlign: TextAlign.center,),
-                  Text("بعد اكمال التسجيل يرجى التواصل مع الإدارة ليتم تفعيل حسابك",
+                  Text(AppLocalizations.of(context).translate("hint_2_callUs"),
                     style: getTextSyle(16, Colors.black),textAlign: TextAlign.center,),
 
 
-                  Text("ويمكنك التواصل معنا من خلال",
+                  Text(AppLocalizations.of(context).translate("You_can_contact_us_through"),
                     style: getTextSyle(16, Colors.black),textAlign: TextAlign.center,),
 //                <key>LSApplicationQueriesSchemes</key>
 //<array>
@@ -91,14 +93,14 @@ class _ContactWithUsState extends State<ContactWithUs> {
                   SizedBox(height: 4,),
                   Row(
                     children: [
-                      MyButton(txt: "تواصل معنا عبر واتس",textStyle: getTextSyle(16, Colors.white),press: (){
+                      MyButton(txt: AppLocalizations.of(context).translate("callUSOnWhats"),textStyle: getTextSyle(16, Colors.white),press: (){
 
                         if(userInfo.type==clientTxt)
-                        launchWhatsApp(phone: "+971505018450", message: "مرحبا ");
-                        else  launchWhatsApp(phone: "+971555661133", message: "مرحبا ");
+                        launchWhatsApp(phone: "+971505018450", message: "hi ");
+                        else  launchWhatsApp(phone: "+971555661133", message: "hi ");
                       },raduis: 4,),
                       SizedBox(width: 4,),
-                      MyButton(txt: "تواصل معنا عبر الايميل",textStyle: getTextSyle(16, Colors.white),press: (){
+                      MyButton(txt: AppLocalizations.of(context).translate("callUSOnEmail"),textStyle: getTextSyle(16, Colors.white),press: (){
 
                         _launchURL(toMailId: "FSRHILMAK@GMAIL.COM",subject: "رسالة الى الادارة من تطبيق اهل الذكر",
                             body: "");

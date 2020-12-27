@@ -27,6 +27,8 @@ import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
+import '../../app_localizations.dart';
+
 class EditMofaserAccount extends StatefulWidget {
   List<Value> userWorks;
 
@@ -56,7 +58,8 @@ class _EditMofaserAccountState extends State<EditMofaserAccount> {
   void initState() {
     super.initState();
     setState(() {
-      myCountry=addCountreisHasssan();
+      //myCountry=addCountreisHasssan();
+      myCountry=countryList;
 
     });
 
@@ -208,25 +211,16 @@ class _EditMofaserAccountState extends State<EditMofaserAccount> {
   }
 
   List<DropDownItem> genderList = <DropDownItem>[
-    const DropDownItem(
-      'ذكر',
-    ),
-    const DropDownItem(
-      'انثى',
-    ),
+    const DropDownItem("male"),
+    const DropDownItem("female"),
   ];
 
   List<DropDownItem> socialStatusList = <DropDownItem>[
-    const DropDownItem(
-      'اعزب',
-    ),
-    const DropDownItem(
-      'متزوج',
-    ),
-    const DropDownItem(
-      'مطلق',
-    ),
+    const DropDownItem("single",),
+    const DropDownItem("marred",),
+    const DropDownItem("divorcee",),
   ];
+
 
 
 
@@ -239,7 +233,7 @@ class _EditMofaserAccountState extends State<EditMofaserAccount> {
         appBar: AppBar(
           centerTitle: true,
           backgroundColor: kPrimaryColor,
-          title: Text(editProfile,style: getTextSyle(16, Colors.white),textDirection: TextDirection.rtl,),
+          title: Text(  AppLocalizations.of(context).translate("editProfile"),style: getTextSyle(16, Colors.white),),
         ),
         body: ModalProgressHUD(
           inAsyncCall: isLoading,
@@ -278,7 +272,7 @@ class _EditMofaserAccountState extends State<EditMofaserAccount> {
                         ),
                         child: TextFormField(
                           maxLines: 1,
-                          textDirection: TextDirection.rtl,
+
                           textAlign: TextAlign.start,
                           style: TextStyle(
                             color: kPrimaryColor,
@@ -287,10 +281,10 @@ class _EditMofaserAccountState extends State<EditMofaserAccount> {
                           keyboardType: TextInputType.text,
                           controller: nameController,
                           cursorColor: kPrimaryColor,
-                          decoration: getInputDecorationHassan(label: name),
+                          decoration: getInputDecorationHassan(label:AppLocalizations.of(context).translate("name")),
                           validator: (String item) {
                             if (nameController.text.isEmpty)
-                              return emptyValidation;
+                              return   AppLocalizations.of(context).translate("emptyValidation");
                             else
                               return null;
                           },
@@ -310,8 +304,8 @@ class _EditMofaserAccountState extends State<EditMofaserAccount> {
                         ),
                         child: TextFormField(
                             controller: workController,
-                            decoration: getInputDecorationHassan(label: work,icon: Icon(Icons.work,color: kPrimaryColor,)),
-                            textDirection: TextDirection.rtl,
+                            decoration: getInputDecorationHassan(label:AppLocalizations.of(context).translate("work"),icon: Icon(Icons.work,color: kPrimaryColor,)),
+
                             textAlign: TextAlign.start,
                             maxLines: 1,
                             style: TextStyle(
@@ -322,7 +316,7 @@ class _EditMofaserAccountState extends State<EditMofaserAccount> {
                             cursorColor: kPrimaryColor,
                             validator: (String item) {
                               if (workController.text.isEmpty)
-                                return emptyValidation;
+                                return   AppLocalizations.of(context).translate("emptyValidation");
 
                               return null;
                             }
@@ -339,9 +333,9 @@ class _EditMofaserAccountState extends State<EditMofaserAccount> {
                         ),
                         child: TextFormField(
                             controller: ageController,
-                            decoration: getInputDecorationHassan(label: ageTxt,icon: Icon(Icons.perm_contact_calendar,
+                            decoration: getInputDecorationHassan(label:AppLocalizations.of(context).translate("ageTxt"),icon: Icon(Icons.perm_contact_calendar,
                               color: kPrimaryColor,)),
-                            textDirection: TextDirection.rtl,
+
                             textAlign: TextAlign.start,
                             maxLines: 1,
                             style: TextStyle(
@@ -352,7 +346,7 @@ class _EditMofaserAccountState extends State<EditMofaserAccount> {
                             cursorColor: kPrimaryColor,
                             validator: (String item) {
                               if (ageController.text.isEmpty)
-                                return emptyValidation;
+                                return   AppLocalizations.of(context).translate("emptyValidation");
 
                               return null;
                             }
@@ -375,7 +369,7 @@ class _EditMofaserAccountState extends State<EditMofaserAccount> {
                                   color: kPrimaryLightColor,
                                 )),
                             child: DropdownButton<DropDownItem>(
-                              hint: Text(gener),
+                              hint: Text(AppLocalizations.of(context).translate("gener")),
                               value: genderSelected,
                               underline: Container(),
 
@@ -390,7 +384,7 @@ class _EditMofaserAccountState extends State<EditMofaserAccount> {
                                   child: Row(
                                     children: <Widget>[
                                       Text(
-                                        data.name.toString(),
+                                  AppLocalizations.of(context).translate(data.name.toString()),
                                         textAlign: TextAlign.center,
                                         style: TextStyle(color: Colors.black),
                                       ),
@@ -412,7 +406,7 @@ class _EditMofaserAccountState extends State<EditMofaserAccount> {
                             child: DropdownButton<DropDownItem>(
                               underline: Container(),
                               elevation: 10,
-                              hint: Text(socialStatus),
+                              hint: Text(  AppLocalizations.of(context).translate("socialStatus")),
                               value: socialStatusSelected,
                               onChanged: (DropDownItem Value) {
                                 setState(() {
@@ -426,7 +420,7 @@ class _EditMofaserAccountState extends State<EditMofaserAccount> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: <Widget>[
                                       Text(
-                                        data.name.toString(),
+                                  AppLocalizations.of(context).translate(data.name.toString()),
                                         textAlign: TextAlign.center,
                                         style: TextStyle(color: Colors.black),
                                       ),
@@ -459,7 +453,7 @@ class _EditMofaserAccountState extends State<EditMofaserAccount> {
                                 isExpanded: true,
                                 underline: Container(),
                                 elevation: 10,
-                                hint: Text(country),
+                                hint: Text(  AppLocalizations.of(context).translate("country")),
                                 value: countrySelected,
                                 onChanged: (Country Value) {
                                   setState(() {
@@ -495,8 +489,8 @@ class _EditMofaserAccountState extends State<EditMofaserAccount> {
                       /*desc*/
                       TextFormField(
                         controller: descController,
-                        decoration: getInputDecorationHassan(hint: deschint1,icon: Icon(Icons.description,color: kPrimaryColor,)),
-                        textDirection: TextDirection.rtl,
+                        decoration: getInputDecorationHassan(hint: AppLocalizations.of(context).translate("deschint1"),icon: Icon(Icons.description,color: kPrimaryColor,)),
+
                         textAlign: TextAlign.start,
                         minLines: 3,
                         maxLines: 3,
@@ -511,7 +505,7 @@ class _EditMofaserAccountState extends State<EditMofaserAccount> {
                         height: 24,
                       ),
                       RoundedButton(
-                        text: save,
+                        text:   AppLocalizations.of(context).translate("save"),
                         color: kPrimaryColor,
                         textColor: Colors.white,
                         press: () async {

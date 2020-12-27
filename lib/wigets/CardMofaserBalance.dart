@@ -11,6 +11,8 @@ import 'package:faserholmak/wigets/MyCircularImage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../app_localizations.dart';
+
 class CardMofaserBalance extends StatelessWidget {
 
 
@@ -53,7 +55,7 @@ class CardMofaserBalance extends StatelessWidget {
                           padding: const EdgeInsets.all(4.0),
                           child: Text(emptyString(txt)
                             ,style: getTextSyle(16, Colors.black87,fontWeight: FontWeight.w600),
-                            textDirection: TextDirection.rtl,
+
                           ),
                         ),
 
@@ -61,16 +63,16 @@ class CardMofaserBalance extends StatelessWidget {
                         Container()
                       :Padding(
                           padding: const EdgeInsets.all(4.0),
-                          child: Text(emptyString(' المستخدم: '+name)
+                          child: Text(emptyString(AppLocalizations.of(context).translate("theUser")+name)
                             ,style: getTextSyle(16, Colors.black87,fontWeight: FontWeight.w100),
-                          textDirection: TextDirection.rtl,),
+                          ),
                         ),
 
 
                         Padding(
                           padding: const EdgeInsets.all(4.0),
                           child: Text(emptyString(date),style: getTextSyle(14, Colors.grey.shade400,
-                              fontWeight: FontWeight.normal),  textDirection: TextDirection.rtl,),
+                              fontWeight: FontWeight.normal), ),
                         ),
 
 

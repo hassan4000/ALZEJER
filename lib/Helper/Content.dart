@@ -229,6 +229,13 @@ const String privateServies="خدمة خاصة";
 const String typeCompition="نوع المسابقة";
 const String prizeCompition="جائزة المسابقة";
 const String endCompition="تنتهي خلال";
+const String pointTxt="النقاط";
+const String speedTxt="السرعة";
+const String servicesTxt="الخدمات";
+const String compitionUsers="المتسابقون";
+const String forgotPasswordlogin="هل نسيت كلمة المرور؟";
+const String waitUsSoon="انتظرونا قريبا";
+
 
 
 

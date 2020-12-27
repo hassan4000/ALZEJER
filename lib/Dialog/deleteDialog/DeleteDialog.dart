@@ -8,6 +8,7 @@ import 'package:faserholmak/Helper/Content.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../app_localizations.dart';
 import '../../constants.dart';
 
 class DeleteServiceDialog extends StatefulWidget {
@@ -74,7 +75,7 @@ class _DeleteServiceDialogState extends State<DeleteServiceDialog> {
                 Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      'انتظر قليلا ..',
+                        AppLocalizations.of(context).translate("waitLittleBit"),
                       style: TextStyle(
                         fontFamily: 'Heading',
                         fontSize: 18.0,
@@ -99,7 +100,7 @@ class _DeleteServiceDialogState extends State<DeleteServiceDialog> {
                       children: <Widget>[
                         Expanded(
                           child: MyButton(
-                            txt: cancel,
+                            txt: AppLocalizations.of(context).translate("cancel"),
                             raduis: 4,
                             press: () {
                               Navigator.of(context).pop();
@@ -114,7 +115,7 @@ class _DeleteServiceDialogState extends State<DeleteServiceDialog> {
                         SizedBox(width: 10,),
                         Expanded(
                           child: MyButton(
-                            txt: deleteText,
+                            txt: AppLocalizations.of(context).translate("deleteText"),
                             raduis: 4,
                             press: () async {
 

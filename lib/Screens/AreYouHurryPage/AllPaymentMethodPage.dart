@@ -21,6 +21,8 @@ import 'package:flutter/material.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:myfatoorah_flutter/myfatoorah_flutter.dart';
 
+import '../../app_localizations.dart';
+
 class AllPaymentMethodPage extends StatefulWidget {
 
   PaymentModel paymentModel;
@@ -78,7 +80,7 @@ class _AllPaymentMethodPageState extends State<AllPaymentMethodPage> {
 
               var respose=await addPaymentToServer(widget.paymentModel);
               if(respose.statusCode==200){
-                showToast("تم الدفع بنجاح");
+                showToast(AppLocalizations.of(context).translate("PaymentWasSuccessful"));
                 openPageAndClearPrev(context:context,page: GeneralPageClient(),route: HomePageRoute);
               }
 
@@ -150,7 +152,7 @@ class _AllPaymentMethodPageState extends State<AllPaymentMethodPage> {
             height: MediaQuery.of(context).size.height,
             child: Center(
                 child: Text(
-                  noData,
+                  AppLocalizations.of(context).translate("noData"),
                   style: TextStyle(color: Colors.grey, fontSize: 16),
                 )),
           ),
@@ -259,7 +261,7 @@ class _AllPaymentMethodPageState extends State<AllPaymentMethodPage> {
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text('اختر طريقة الدفع'),
+          title: Text(AppLocalizations.of(context).translate("choosePaymentMethod")),
         ),
         body: ModalProgressHUD(
           inAsyncCall: isLoadingHUD,
@@ -302,12 +304,12 @@ class _AllPaymentMethodPageState extends State<AllPaymentMethodPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Expanded(child: Text("$yourBalanceByPoint ${userInfo.pointsBalance.toString()}"
+                      Expanded(child: Text("${AppLocalizations.of(context).translate("yourBalanceByPoint")} ${userInfo.pointsBalance.toString()}"
                         ,style: getTextSyle(16, Colors.grey),
-                        textDirection: TextDirection.rtl,textAlign: TextAlign.center,)),
+                        textAlign: TextAlign.center,)),
                     ],
                   ),
-                  MyButton(txt: payByPointTxt,press: () async {
+                  MyButton(txt: AppLocalizations.of(context).translate("payByPointTxt"),press: () async {
 
                     bool canPayPyPoint=await checkPoint(addPointInPaymnet(widget.paymentModel.amount));
 
@@ -327,18 +329,18 @@ class _AllPaymentMethodPageState extends State<AllPaymentMethodPage> {
 
                           var  point=response.object;
                           userInfo.pointsBalance=int.parse(point['Modifier']['PointsBalance'].toString());
-                          showToast(successfulOpreation);
+                          showToast(AppLocalizations.of(context).translate("successfulOpreation"));
                           openPageAndClearPrev(context: context,route:HomePageRoute,page: GeneralPageClient() );
 
                         }else{
-                          showToast(failedToPayOpreation);
+                          showToast(AppLocalizations.of(context).translate("failedToPayOpreation"));
                         }
 
                       }else
-                        showToast(faildToAddService);
+                        showToast(AppLocalizations.of(context).translate("faildToAddService"));
                       reSetLoadingHUD(false);
                     }else{
-                      showToast(youDonotHaveEnoughtPoint);
+                      showToast(AppLocalizations.of(context).translate("youDonotHaveEnoughtPoint"));
                     }
 
 

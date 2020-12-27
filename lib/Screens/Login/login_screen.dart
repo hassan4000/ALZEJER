@@ -34,6 +34,7 @@ import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:http/http.dart' as http;
 
 import 'dart:convert' as JSON;
+import '../../app_localizations.dart';
 import '../../constants.dart';
 import 'components/background.dart';
 
@@ -359,7 +360,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         child: TextFormField(
                             maxLines: 1,
-                            textDirection: TextDirection.rtl,
+                          //  textDirection: TextDirection.rtl,
                             textAlign: TextAlign.start,
                             style: TextStyle(
                               color: kPrimaryColor,
@@ -368,10 +369,10 @@ class _LoginScreenState extends State<LoginScreen> {
                             keyboardType: TextInputType.emailAddress,
                             controller: userNameControler,
                             cursorColor: kPrimaryColor,
-                            decoration: getInputDecorationHassan(label: usernameOrEmail),
+                            decoration: getInputDecorationHassan(label:AppLocalizations.of(context).translate("usernameOrEmail")),
                             validator: (String item) {
                               if (userNameControler.text.isEmpty)
-                                return emptyValidation;
+                                return   AppLocalizations.of(context).translate("emptyValidation");
                           /*    if(!validateEmail(userNameControler.text.trim()))
                                 return  emailValidation;*/
                               return null;
@@ -390,7 +391,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: TextFormField(
                             obscureText: shildPasswrod,
                             maxLines: 1,
-                            textDirection: TextDirection.rtl,
+                          //  textDirection: TextDirection.rtl,
                             textAlign: TextAlign.start,
                             style: TextStyle(
                               color: kPrimaryColor,
@@ -400,16 +401,16 @@ class _LoginScreenState extends State<LoginScreen> {
                             controller: passwordControler,
                             cursorColor: kPrimaryColor,
                             decoration: getInputDecorationPassword(
-                                label: password,
+                                label:   AppLocalizations.of(context).translate("password"),
                                 icon: Icon(Icons.remove_red_eye),
                                 pressPrifix: reSetShild,
                                 obsecure: shildPasswrod),
 
                             validator: (String item) {
                               if (passwordControler.text.isEmpty)
-                                return emptyValidation;
+                                return   AppLocalizations.of(context).translate("emptyValidation");
                               if(!validatePassWord(passwordControler.text.trim()))
-                                return passwordLengthValidation;
+                                return   AppLocalizations.of(context).translate("passwordLengthValidation");
 
 
                               return null;
@@ -421,7 +422,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       SizedBox(height: 10,),
 
-                      MyButton(txt: login,press:(){
+                      MyButton(txt: AppLocalizations.of(context).translate("login"),press:(){
                         loginPress(initMap());
                       },),
 
@@ -433,7 +434,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         /*-------VISistor*/
                         Expanded(
                           child: MyButton(
-                            txt: visitor,
+                            txt: AppLocalizations.of(context).translate("visitor"),
                             raduis: 4,
                             buttonColor: kPrimaryColor,
                             press: () {
@@ -448,7 +449,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           child:
                           MyButton(
                             raduis: 4,
-                            txt: createAccount,
+                            txt: AppLocalizations.of(context).translate("createAccount"),
                             buttonColor: kPrimaryColor,
                             press: () { openPage(context, SignUpScreen());},
                           ) ,
@@ -457,13 +458,13 @@ class _LoginScreenState extends State<LoginScreen> {
 
                       SizedBox(height: 10,),
                       Row(
-                        textDirection: TextDirection.rtl,
+                        //textDirection: TextDirection.rtl,
 
                         children: <Widget>[
                           Expanded(
-                            child: InkWell(child: Text("هل نسيت كلمة المرور؟",
+                            child: InkWell(child: Text(AppLocalizations.of(context).translate("forgotPasswordlogin"),
                               style: getTextSyle(16, Colors.grey.shade500),
-                              textDirection: TextDirection.rtl,textAlign: TextAlign.right,),
+                            textAlign: TextAlign.start,),
                               onTap: (){
                                 openPage(context, Code());
                               },),
@@ -524,19 +525,15 @@ class _LoginScreenState extends State<LoginScreen> {
                       Row(children: <Widget>[
                         //  ------HIR MEr
                         Expanded(
-                          child:MyButton(
-                            txt: hireMe,
-                            textStyle: TextStyle(color: kPrimaryColor,fontSize: 16),
-                            buttonColor:kPrimaryLightColor,
-                            raduis: 4,
-                            press: () {
-
-                             // openPage(context, HowAppWork.interprete());
-                              openPage(context, InfoBeforHireMe());
-
-
-                              },
-                          ),
+                           child:InkWell(
+                             child: Text("${AppLocalizations.of(context).translate('hireMe')}",
+                                style: getTextSyle(20, Colors.grey.shade500),
+                                textAlign: TextAlign.center,),
+                             onTap: (){
+                               // openPage(context, HowAppWork.interprete());
+                               openPage(context, InfoBeforHireMe());
+                             },
+                           )
                         ),
 
 
@@ -546,7 +543,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       SizedBox(height: 20,),
 
                       Row(
-                        textDirection: TextDirection.rtl,
+                       // textDirection: TextDirection.rtl,
                         mainAxisSize: MainAxisSize.max,
 
 
@@ -555,17 +552,17 @@ class _LoginScreenState extends State<LoginScreen> {
                             child: Container(
 
                               child: RichText(
-                                textDirection: TextDirection.rtl,
+                               // textDirection: TextDirection.rtl,
                                 textAlign: TextAlign.center,
-                                text: TextSpan(text: loginHint1,style: getTextSyle(14, Colors.black87),
+                                text: TextSpan(text: AppLocalizations.of(context).translate("loginHint1"),style: getTextSyle(14, Colors.black87),
                                 children: <TextSpan>[
-                                  TextSpan(text: acceptPrivacy,style: getTextSyle(14, kPrimaryColor,underLine: true),
+                                  TextSpan(text: AppLocalizations.of(context).translate("acceptPrivacy"),style: getTextSyle(14, kPrimaryColor,underLine: true),
                                   recognizer: TapGestureRecognizer()
                                     ..onTap = () {
 
                                     openPage(context,PrivacyPolicyPage());
                                     }),
-                                  TextSpan(text: acceptTerms,style: getTextSyle(14, kPrimaryColor,underLine: true),
+                                  TextSpan(text: AppLocalizations.of(context).translate("acceptTerms"),style: getTextSyle(14, kPrimaryColor,underLine: true),
                                       recognizer: TapGestureRecognizer()
                                         ..onTap = () {
 

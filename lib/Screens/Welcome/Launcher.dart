@@ -24,6 +24,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/animation.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../app_localizations.dart';
+
 
 class Launcher extends StatefulWidget {
 
@@ -172,8 +174,8 @@ class _LauncherState extends State<Launcher>
                           children: <Widget>[
                             Expanded(
                               child: Text(
-                                '$logoText',
-                                textDirection: TextDirection.rtl,
+                                AppLocalizations.of(context).translate("logoText"),
+                               textAlign: TextAlign.center,
                                 style: TextStyle(
                                     color: Colors.blue,
                                     fontSize: MediaQuery.of(context).size.width / 16.0,

@@ -12,6 +12,8 @@ import 'package:faserholmak/wigets/LogoIcon.dart';
 import 'package:faserholmak/wigets/MyButton.dart';
 import 'package:flutter/material.dart';
 
+import '../../app_localizations.dart';
+
 class SelectUserType extends StatefulWidget {
   @override
   _SelectUserTypeState createState() => _SelectUserTypeState();
@@ -43,7 +45,7 @@ class _SelectUserTypeState extends State<SelectUserType> {
                     children: <Widget>[
                       Expanded(
                           child: MyButton(
-                        txt: visitor,
+                        txt: AppLocalizations.of(context).translate("visitor"),
                         buttonColor: kPrimaryColor,
                         press: () {
                           openPage(context, HowAppWork.visitor());
@@ -60,7 +62,7 @@ class _SelectUserTypeState extends State<SelectUserType> {
                     children: <Widget>[
                       Expanded(
                           child: MyButton(
-                        txt: createAccount,
+                        txt: AppLocalizations.of(context).translate("createAccount"),
                         buttonColor: kPrimaryColor,
                         press: () { openPage(context, SignUpScreen());},
                       )),
@@ -75,7 +77,7 @@ class _SelectUserTypeState extends State<SelectUserType> {
                     children: <Widget>[
                       Expanded(
                           child: MyButton(
-                        txt: hireMe,
+                        txt: AppLocalizations.of(context).translate("hireMe"),
                         buttonColor: kPrimaryColor,
                         press: () {openPage(context, HowAppWork.interprete());},
                       )),
@@ -90,7 +92,7 @@ class _SelectUserTypeState extends State<SelectUserType> {
                     children: <Widget>[
                       Expanded(
                           child: MyButton(
-                        txt: login,
+                        txt: AppLocalizations.of(context).translate("login"),
                         buttonColor: kPrimaryColor,
                         press: () {
                           openPage(context, LoginScreen());

@@ -10,6 +10,7 @@ import 'package:faserholmak/wigets/MyButton.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
+import '../../app_localizations.dart';
 import '../../constants.dart';
 
 class Code extends StatefulWidget {
@@ -41,7 +42,7 @@ class _CodeState extends State<Code> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("ارسال الرمز",style: getTextSyle(16, Colors.white),),
+        title: Text(AppLocalizations.of(context).translate("SendTheCode"),style: getTextSyle(16, Colors.white),),
       ),
       body:ModalProgressHUD(
         inAsyncCall: isLoading,
@@ -60,7 +61,7 @@ class _CodeState extends State<Code> {
                       width: size.width * 0.35,
                     ),
                     Text(
-                      "إرسال الرمز",
+                      AppLocalizations.of(context).translate("SendTheCode"),
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                     SizedBox(height: size.height * 0.03),
@@ -76,7 +77,7 @@ class _CodeState extends State<Code> {
                       ),
                       child: TextFormField(
                           maxLines: 1,
-                          textDirection: TextDirection.rtl,
+                         // textDirection: TextDirection.rtl,
                           textAlign: TextAlign.start,
                           style: TextStyle(
                             color: kPrimaryColor,
@@ -85,12 +86,12 @@ class _CodeState extends State<Code> {
                           keyboardType: TextInputType.emailAddress,
                           controller: emailController,
                           cursorColor: kPrimaryColor,
-                          decoration: getInputDecorationHassan(label: email,icon: Icon(Icons.email,color: kPrimaryColor,)),
+                          decoration: getInputDecorationHassan(label:AppLocalizations.of(context).translate("email"),icon: Icon(Icons.email,color: kPrimaryColor,)),
                           validator: (String item) {
                             if (emailController.text.isEmpty)
-                              return emptyValidation;
+                              return AppLocalizations.of(context).translate("emptyValidation");
                             if(!validateEmail(emailController.text.trim()))
-                              return  emailValidation;
+                              return  AppLocalizations.of(context).translate("emailValidation");
                             return null;
                           }
 
@@ -98,7 +99,7 @@ class _CodeState extends State<Code> {
                     ),
                    SizedBox(height: 10,),
                    MyButton(
-                     txt: "إرسال الرمز",
+                     txt: AppLocalizations.of(context).translate("SendTheCode"),
                      press: () async {
                       if(validationForm(formKeyValidation)){
                         setState(() {

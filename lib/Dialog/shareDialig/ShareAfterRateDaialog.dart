@@ -8,6 +8,7 @@ import 'package:faserholmak/wigets/MyButton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_share/flutter_share.dart';
 
+import '../../app_localizations.dart';
 import '../../constants.dart';
 
 
@@ -39,7 +40,7 @@ class _ShareAfterDialogState extends State<ShareAfterDialog> {
           SizedBox(
             width: 4.0,
           ),
-          Text(" مشاركة التطبيق  ",
+          Text(AppLocalizations.of(context).translate("ShareTheApp"),
               style:
               getTextSyle(20, kPrimaryColor, fontWeight: FontWeight.w600)),
         ],
@@ -61,7 +62,7 @@ class _ShareAfterDialogState extends State<ShareAfterDialog> {
                 Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      'Loading ..',
+                      AppLocalizations.of(context).translate("waitLittleBit"),
                       style: TextStyle(
                         fontFamily: 'Heading',
                         fontSize: 18.0,
@@ -75,32 +76,32 @@ class _ShareAfterDialogState extends State<ShareAfterDialog> {
               child: Container(
                 width: width,
                 child: Column(
-                  textDirection: TextDirection.rtl,
+                  //textDirection: TextDirection.rtl,
 
                   children: <Widget>[
 
                     Padding(
                       padding: EdgeInsets.all(8),
-                      child: Text(" تقدير لجهود منفذ الخدمة ${widget.name}  يرجى مشاركة هذا الرابط واحصل على نقاط لتسريع تنفيذ خدمتك القادمة  ",textDirection: TextDirection.rtl,
+                      child: Text("  ${AppLocalizations.of(context).translate("share_hint3")} \n  ${widget.name} ${AppLocalizations.of(context).translate("AppreciationTheProviderEfforts")}   ",
                         style: getTextSyle(16, kPrimaryColor),),
                     ),
 
 
                     Padding(
                       padding: EdgeInsets.all(8),
-                      child: Text(" ${googlePlayUrl} \n رابط التطبيق",textDirection: TextDirection.rtl,style: getTextSyle(16, Colors.blue),
+                      child: Text(" ${googlePlayUrl} \n ${AppLocalizations.of(context).translate("linkApp")}",style: getTextSyle(16, Colors.blue),
                       ),
                     ),
 
                     Padding(
                       padding: EdgeInsets.all(8),
-                      child: Text("قم بإدخال الكود التالي عند التسجيل واكسب نقاط لتسريع تنفيذ خدمتك ",
-                        textDirection: TextDirection.rtl,style: getTextSyle(16, kPrimaryColor),),
+                      child: Text(AppLocalizations.of(context).translate("share_hint4"),
+                        style: getTextSyle(16, kPrimaryColor),),
                     ),
 
                     Padding(
                       padding: EdgeInsets.all(8),
-                      child: Text("${userInfo.userSpecialCode}",textDirection: TextDirection.rtl,style: getTextSyle(16, Colors.blue),),
+                      child: Text("${userInfo.userSpecialCode}",style: getTextSyle(16, Colors.blue),),
                     ),
 
                     SizedBox(
@@ -112,7 +113,7 @@ class _ShareAfterDialogState extends State<ShareAfterDialog> {
                       children: <Widget>[
                         Expanded(
                           child: MyButton(
-                            txt: cancel,
+                            txt:  AppLocalizations.of(context).translate("cancel"),
                             raduis: 4,
                             press: () {
                               openPageAndClearPrev(context:context,page: GeneralPageClient(),route: HomePageRoute);
@@ -132,12 +133,12 @@ class _ShareAfterDialogState extends State<ShareAfterDialog> {
                             press: () async {
 
                        var response=     await FlutterShare.share(
-                                  title: 'يرجى مشاركة هذا الرابط ',
+                                  title:AppLocalizations.of(context).translate("pleaseShareThisLink"),
 
                                   text:
-                                  '  ${serviceProvider}: ${widget.name}\n ${specalist}: ${widget.userWorkname}\n${shareHitn2}\n${userInfo.userSpecialCode}',
+                                  '  ${AppLocalizations.of(context).translate("serviceProvider")}: ${widget.name}\n ${AppLocalizations.of(context).translate("specalist")}: ${widget.userWorkname}\n${AppLocalizations.of(context).translate("shareHitn2")}\n${userInfo.userSpecialCode}',
                                   linkUrl:
-                                  '${linkApp} \n ${googlePlayUrl}',
+                                  '${AppLocalizations.of(context).translate("linkApp")} \n ${googlePlayUrl}',
                                   chooserTitle:
                                   'share');
 

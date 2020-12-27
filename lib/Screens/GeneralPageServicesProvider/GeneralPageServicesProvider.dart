@@ -17,6 +17,7 @@ import 'package:faserholmak/Screens/ServicesForServiceProviders/PublicServiceSer
 import 'package:faserholmak/Screens/ServicesIndex/ServicesIndexPage.dart';
 import 'package:faserholmak/Screens/ServicesYouWant/ServiceYouWant.dart';
 import 'package:faserholmak/Screens/TabWithImage/TabWithImageHomePage.dart';
+import 'package:faserholmak/Screens/compititionMofaser/compitition_mofaser.dart';
 import 'package:faserholmak/wigets/CardDreams.dart';
 import 'package:faserholmak/wigets/MessageChat.dart';
 import 'package:faserholmak/wigets/MyButton.dart';
@@ -26,6 +27,7 @@ import 'package:flutter/material.dart';
 import 'package:faserholmak/Helper/AppApi.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../app_localizations.dart';
 import '../../constants.dart';
 
 class GeneralPageServicesProvider extends StatefulWidget {
@@ -83,7 +85,7 @@ class _GeneralPageServicesProviderState extends State<GeneralPageServicesProvide
         height: 100,
         child: Center(
             child: Text(
-              failedOpreation,
+              AppLocalizations.of(context).translate("failedOpreation"),
               style: TextStyle(color: Colors.grey, fontSize: 16),
             )),
       );
@@ -134,7 +136,7 @@ class _GeneralPageServicesProviderState extends State<GeneralPageServicesProvide
         height: 100,
         child: Center(
             child: Text(
-              noData,
+              AppLocalizations.of(context).translate("noData"),
               style: TextStyle(color: Colors.grey, fontSize: 16),
             )),
       );
@@ -159,7 +161,7 @@ class _GeneralPageServicesProviderState extends State<GeneralPageServicesProvide
         height: MediaQuery.of(context).size.height,
         child: Center(
             child: Text(
-              failedOpreation,
+              AppLocalizations.of(context).translate("failedOpreation"),
               style: TextStyle(color: Colors.grey, fontSize: 16),
             )),
       );
@@ -180,7 +182,7 @@ class _GeneralPageServicesProviderState extends State<GeneralPageServicesProvide
         height: MediaQuery.of(context).size.height,
         child: Center(
             child: Text(
-              noData,
+              AppLocalizations.of(context).translate("noData"),
               style: TextStyle(color: Colors.grey, fontSize: 16),
             )),
       );
@@ -226,7 +228,7 @@ class _GeneralPageServicesProviderState extends State<GeneralPageServicesProvide
       drawer: MyDrawerServicsProvider(),
       appBar: AppBar(
         centerTitle: true,
-        title: Text("صفحة العامة"),
+        title: Text(AppLocalizations.of(context).translate("homePageTxt")),
       ),
       body: SafeArea(
         top:true,
@@ -271,15 +273,15 @@ class _GeneralPageServicesProviderState extends State<GeneralPageServicesProvide
                             (userInfo.verifiedUser==null||userInfo.verifiedUser==false)?
                             Column(
                               children: [
-                                Text(youHaveToCallUs,style: getTextSyle(18, kPrimaryColor),),
+                                Text(AppLocalizations.of(context).translate("youHaveToCallUs"),style: getTextSyle(18, kPrimaryColor),),
                                 Row(
                                   children: [
-                                    MyButton(txt: "تواصل معنا عبر واتس",textStyle: getTextSyle(16, Colors.white),press: (){
+                                    MyButton(txt: AppLocalizations.of(context).translate("callUSOnWhats"),textStyle: getTextSyle(16, Colors.white),press: (){
 
-                                    launchWhatsApp(phone: "+971555661133", message: "مرحبا ");
+                                    launchWhatsApp(phone: "+971555661133", message: "hi ");
                                     },raduis: 4,),
                                     SizedBox(width: 4,),
-                                    MyButton(txt: "تواصل معنا عبر الايميل",textStyle: getTextSyle(16, Colors.white),press: (){
+                                    MyButton(txt: AppLocalizations.of(context).translate("callUSOnEmail"),textStyle: getTextSyle(16, Colors.white),press: (){
 
                                       _launchURL(toMailId: "FSRHILMAK@GMAIL.COM",subject: "رسالة الى الادارة من تطبيق اهل الذكر",
                                           body: "");
@@ -294,7 +296,7 @@ class _GeneralPageServicesProviderState extends State<GeneralPageServicesProvide
                               children: <Widget>[
                                 Expanded(child: Padding(
                                   padding: const EdgeInsets.all(8.0),
-                                  child: SmallHomeCard(txt: completedServices,press:(){
+                                  child: SmallHomeCard(txt: AppLocalizations.of(context).translate("completedServices"),press:(){
                                     openPage(context, CompletedServiceServiceProviders());
 
                                   },),
@@ -302,7 +304,7 @@ class _GeneralPageServicesProviderState extends State<GeneralPageServicesProvide
 
                                 Expanded(child: Padding(
                                   padding: const EdgeInsets.all(8.0),
-                                  child: SmallHomeCard(txt: servicesInProgress,press:(){
+                                  child: SmallHomeCard(txt: AppLocalizations.of(context).translate("servicesInProgress"),press:(){
                                     openPage(context, OnProgressServiceServiceProviders());
                                   },),
                                 )),
@@ -315,13 +317,13 @@ class _GeneralPageServicesProviderState extends State<GeneralPageServicesProvide
                               children: <Widget>[
                                 Expanded(child: Padding(
                                   padding: const EdgeInsets.all(8.0),
-                                  child: SmallHomeCard(txt: balanceTxt,press: (){
+                                  child: SmallHomeCard(txt: AppLocalizations.of(context).translate("balanceTxt"),press: (){
                                     openPage(context, MofaserBalance());
                                   },),
                                 )),
                                 Expanded(child: Padding(
                                   padding: const EdgeInsets.all(8.0),
-                                  child: SmallHomeCard(txt: publicServices,press: (){
+                                  child: SmallHomeCard(txt: AppLocalizations.of(context).translate("publicServices"),press: (){
                                     openPage(context, PublicServiceServiceProviders());
                                   },),
                                 )),
@@ -332,14 +334,14 @@ class _GeneralPageServicesProviderState extends State<GeneralPageServicesProvide
                               children: <Widget>[
                                 Expanded(child: Padding(
                                   padding: const EdgeInsets.all(8.0),
-                                  child: SmallHomeCard(txt: chatProviders,press: (){
+                                  child: SmallHomeCard(txt: AppLocalizations.of(context).translate("chatProviders"),press: (){
                                     openPage(context, ChatForMofaser());
                                   },),
                                 )),
 
                                 Expanded(child: Padding(
                                   padding: const EdgeInsets.all(8.0),
-                                  child: SmallHomeCard(txt:moreInfo,press: (){
+                                  child: SmallHomeCard(txt:AppLocalizations.of(context).translate("moreInfo"),press: (){
                                     openPage(context, TabWithImageHomePage(userInfo));
                                   },),
                                 )),
@@ -349,22 +351,17 @@ class _GeneralPageServicesProviderState extends State<GeneralPageServicesProvide
                             Row(
                               mainAxisSize: MainAxisSize.max,
                               children: <Widget>[
-                                Expanded(child: GestureDetector(
-                                  onTap: (){
-
-
-                                    openDialog2GeneralPage(context);
-                                  },
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Icon(Icons.assessment,color: kPrimaryColor,size: 30,)
-                                    ,
-                                  ),
-                                )),
 
                                 Expanded(child: Padding(
                                   padding: const EdgeInsets.all(8.0),
-                                  child: SmallHomeCard(txt: servicesIndex,press: (){
+                                  child: SmallHomeCard(txt: AppLocalizations.of(context).translate("comptiotn"),press: (){
+                                  //  openPage(context, CompititionMofaser());
+                                    showToast(AppLocalizations.of(context).translate("waitUsSoon"));
+                                  },),
+                                )),
+                                Expanded(child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: SmallHomeCard(txt: AppLocalizations.of(context).translate("servicesIndex"),press: (){
                                     openPage(context, ServicesIndexPage());
                                   },),
                                 )),
@@ -379,6 +376,23 @@ class _GeneralPageServicesProviderState extends State<GeneralPageServicesProvide
                                     ,
                                   ),
                                 )),*/
+                              ],
+                            ),
+
+                            Row(
+                              children: [
+                                Expanded(child: GestureDetector(
+                                  onTap: (){
+
+
+                                    openDialog2GeneralPage(context);
+                                  },
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Icon(Icons.assessment,color: kPrimaryColor,size: 30,)
+                                    ,
+                                  ),
+                                )),
                               ],
                             ),
 

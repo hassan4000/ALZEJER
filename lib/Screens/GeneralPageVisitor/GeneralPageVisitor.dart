@@ -20,6 +20,8 @@ import 'package:faserholmak/wigets/MyButton.dart';
 import 'package:faserholmak/wigets/SmallHomeCard.dart';
 import 'package:flutter/material.dart';
 
+import '../../app_localizations.dart';
+
 
 class GeneralPageVisitor extends StatefulWidget {
 
@@ -47,7 +49,7 @@ class _GeneralPageVisitorState extends State<GeneralPageVisitor> {
         height: MediaQuery.of(context).size.height,
         child: Center(
             child: Text(
-              failedOpreation,
+              AppLocalizations.of(context).translate("failedOpreation"),
               style: TextStyle(color: Colors.grey, fontSize: 16),
             )),
       );
@@ -69,7 +71,7 @@ class _GeneralPageVisitorState extends State<GeneralPageVisitor> {
         height: MediaQuery.of(context).size.height,
         child: Center(
             child: Text(
-              noData,
+              AppLocalizations.of(context).translate("noData"),
               style: TextStyle(color: Colors.grey, fontSize: 16),
             )),
       );
@@ -90,7 +92,7 @@ class _GeneralPageVisitorState extends State<GeneralPageVisitor> {
         drawer: MyDrawerVistor(),
         appBar: AppBar(
           centerTitle: true,
-          title: Text("صفحة الزائر"),
+          title: Text(AppLocalizations.of(context).translate("homePageTxt")),
         ),
         body: RefreshIndicator(
           key: refreshKey,
@@ -131,7 +133,7 @@ class _GeneralPageVisitorState extends State<GeneralPageVisitor> {
                               children: <Widget>[
                                 Expanded(child: Padding(
                                   padding: const EdgeInsets.all(8.0),
-                                  child: SmallHomeCard(txt: whatIsServicesYouWant,press:(){
+                                  child: SmallHomeCard(txt:  AppLocalizations.of(context).translate("whatIsServicesYouWant"),press:(){
                                  showToast(youHaveToLogin);
                                  openPageAndClearPrev(context: context,route: SelectUserTypeRoute,page:  LoginScreen());
                                   },),
@@ -156,13 +158,13 @@ class _GeneralPageVisitorState extends State<GeneralPageVisitor> {
                               children: <Widget>[
                                 Expanded(child: Padding(
                                   padding: const EdgeInsets.all(8.0),
-                                  child: SmallHomeCard(txt: chatForPeople,press: (){
+                                  child: SmallHomeCard(txt:  AppLocalizations.of(context).translate("chatForPeople"),press: (){
                                     openPage(context, ChatForPublic());
                                   },),
                                 )),
                                 Expanded(child: Padding(
                                   padding: const EdgeInsets.all(8.0),
-                                  child: SmallHomeCard(txt: servicesIndex,press: (){
+                                  child: SmallHomeCard(txt:  AppLocalizations.of(context).translate("servicesIndex"),press: (){
                                     openPage(context, ServicesIndexPage());
                                   },),
                                 )),
@@ -201,7 +203,7 @@ class _GeneralPageVisitorState extends State<GeneralPageVisitor> {
                       ),
                     ),
                     SizedBox(height: 10,),
-                    MyButton(txt: doYouWantServiceLogin,press: (){
+                    MyButton(txt:  AppLocalizations.of(context).translate("doYouWantServiceLogin"),press: (){
                       openPageAndClearPrev(context: context,route: SelectUserTypeRoute,page:  LoginScreen());
                     },),
                     isLoading?Container():dataListView(listServicesData,context)
