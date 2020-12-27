@@ -17,7 +17,7 @@ class ServiceYouWant extends StatefulWidget {
 }
 
 class _ServiceYouWantState extends State<ServiceYouWant> {
-
+  String mobileLange="ar";
   bool isLoading=false;
   List<Value> listViewItem;
   GlobalKey<RefreshIndicatorState> refreshKey=new GlobalKey<RefreshIndicatorState>();
@@ -45,7 +45,7 @@ class _ServiceYouWantState extends State<ServiceYouWant> {
           itemBuilder: (context, index) {
             return Padding(
               padding: const EdgeInsets.all(4.0),
-              child: MyButton(txt: data[index].adjectiveName.toString(),raduis: 10,
+              child: MyButton(txt: userWorkLanguage(id: data[index].id,name: data[index].adjectiveName,lang: mobileLange),raduis: 10,
                 borderColor: Colors.transparent,
                 press: (){
                 Value item=data.elementAt(index);
@@ -86,6 +86,7 @@ class _ServiceYouWantState extends State<ServiceYouWant> {
 
   @override
   Widget build(BuildContext context) {
+    mobileLange=Localizations.localeOf(context).toString();
     return SafeArea(
       top: true,
       child: Scaffold(

@@ -179,6 +179,22 @@ String StringToBoolean(bool txt,BuildContext context){
  else return AppLocalizations.of(context).translate("yes");
 }
 
+
+
+ String userWorkLanguage({int id,String lang,String name}){
+
+  if(lang=="en"){
+
+    if(id==26) return"Interpreter of dreams";
+    if(id==27) return"Legit classy";
+    if(id==28) return "Legal Mufti";
+    if(id==29) return "Family Counselor";
+    if(id==36) return "Medical advisor";
+    if(id==37) return "Counsel";
+  }
+  return name;
+ }
+
  bool validatePassWord(password) {
    if (password
        .toString()

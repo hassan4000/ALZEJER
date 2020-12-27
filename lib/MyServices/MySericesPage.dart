@@ -25,7 +25,7 @@ class MySericesPage extends StatefulWidget {
 
 class _MySericesPageState extends State<MySericesPage> {
 
-
+  String mobileLange="ar";
   /*User work Types*/
   List<Value>userWorkList=List();
   Value selectedUserWork;
@@ -135,6 +135,7 @@ class _MySericesPageState extends State<MySericesPage> {
 
         userWorkList=List();
         userWorkList.addAll(item.value);
+       // userWorkList.removeRange(0, 3);
 
       });
     }
@@ -197,6 +198,7 @@ class _MySericesPageState extends State<MySericesPage> {
 
   @override
   Widget build(BuildContext context) {
+    mobileLange=Localizations.localeOf(context).toString();
     return SafeArea(
       top: true,
       child: Scaffold(
@@ -279,7 +281,7 @@ class _MySericesPageState extends State<MySericesPage> {
                               children: <Widget>[
                                 Flexible(
                                   child: Text(
-                                    data.name.toString(),
+                                    userWorkLanguage(id: data.id,name: data.name,lang: mobileLange),
                                     textAlign: TextAlign.center,
                                     style: TextStyle(color: Colors.black),
                                   ),

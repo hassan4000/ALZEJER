@@ -120,7 +120,7 @@ class _HowAppWorkState extends State<HowAppWork> {
                   Row(mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
-                      MyButton(txt: continueTxt,press: (){
+                      MyButton(txt: AppLocalizations.of(context).translate("continueTxt"),press: (){
 
                         if(widget.vistiors){
                           openPage(context, GeneralPageVisitor());

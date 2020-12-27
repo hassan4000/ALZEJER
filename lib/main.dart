@@ -77,7 +77,7 @@ class _MyAppState extends State<MyApp> {
         }
         // If the locale of the device is not supported, use the first one
         // from the list (English, in this case).
-        print("not SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS");
+
         return supportedLocales.first;
       },
       //home: CommentPage(),

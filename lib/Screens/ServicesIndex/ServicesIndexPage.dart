@@ -27,7 +27,7 @@ class _ServicesIndexPageState extends State<ServicesIndexPage> {
   List<Value>userWorkList=List();
   Value selectedUserWork;
 
-
+  String mobileLange="ar";
   int skipNumber=0;
   int topNumber=10;
   int allCount=10;
@@ -195,6 +195,7 @@ class _ServicesIndexPageState extends State<ServicesIndexPage> {
 
   @override
   Widget build(BuildContext context) {
+    mobileLange=Localizations.localeOf(context).toString();
     return  SafeArea(
       top: true,
       child: Scaffold(
@@ -269,7 +270,7 @@ class _ServicesIndexPageState extends State<ServicesIndexPage> {
                               children: <Widget>[
                                 Flexible(
                                   child: Text(
-                                    data.name.toString(),
+                                    userWorkLanguage(id: data.id,name: data.name,lang: mobileLange),
                                     textAlign: TextAlign.center,
                                     style: TextStyle(color: Colors.black),
                                   ),

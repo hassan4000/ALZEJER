@@ -50,6 +50,7 @@ class _GeneralPageClientState extends State<GeneralPageClient> {
   bool isLoadingTime=false;
   List<AllServicesData> listServicesData;
 
+  String mobileLange="ar";
   List<UserWorkWithNumber> listUserWork;
   AllServicesData firstServicesData;
   SingleServicesModel singleServicesModel;
@@ -249,7 +250,7 @@ class _GeneralPageClientState extends State<GeneralPageClient> {
 
 
 
-            return MyButtonWithNumber(txt: emptyString(item.userWork.name),
+            return MyButtonWithNumber(txt: emptyString(userWorkLanguage(id: item.userWork.id,name: item.userWork.name,lang: mobileLange)),
             number: item.userCount,raduis: 6,textStyle: getTextSyle(14, Colors.white),
             press: (){
               openPage(context, ServiceProviders(selectedService: item.userWork,));
@@ -408,6 +409,9 @@ class _GeneralPageClientState extends State<GeneralPageClient> {
   }
   @override
   Widget build(BuildContext context) {
+
+   mobileLange= Localizations.localeOf(context).toString();
+   print(mobileLange);
     return SafeArea(
       top: true,
 

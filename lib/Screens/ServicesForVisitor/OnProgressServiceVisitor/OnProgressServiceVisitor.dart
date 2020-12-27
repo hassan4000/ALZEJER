@@ -37,7 +37,7 @@ class _OnProgressServiceVisitorState extends State<OnProgressServiceVisitor> {
   bool isLoadingMore=false;
 
   var controllerScroll = ScrollController();
-
+  String mobileLange="ar";
   void setPage(bool state){
     setState(() {
       isLoadingPage=state;
@@ -164,6 +164,7 @@ class _OnProgressServiceVisitorState extends State<OnProgressServiceVisitor> {
   }
   @override
   Widget build(BuildContext context) {
+    mobileLange=Localizations.localeOf(context).toString();
     return SafeArea(
       top: true,
       child: Scaffold(
@@ -217,7 +218,7 @@ class _OnProgressServiceVisitorState extends State<OnProgressServiceVisitor> {
                         isExpanded: true,
                         underline: Container(),
                         elevation: 10,
-                        hint: Text(orderBy,style: getTextSyle(16, Colors.black,fontWeight: FontWeight.w600),
+                        hint: Text(AppLocalizations.of(context).translate("orderBy"),style: getTextSyle(16, Colors.black,fontWeight: FontWeight.w600),
                       textAlign: TextAlign.center,),
                         value: selectedUserWork!=null?selectedUserWork:null,
                         onChanged: (Value value) async {
@@ -238,7 +239,7 @@ class _OnProgressServiceVisitorState extends State<OnProgressServiceVisitor> {
                               children: <Widget>[
                                 Flexible(
                                   child: Text(
-                                    data.name.toString(),
+                                    userWorkLanguage(id: data.id,name: data.name,lang: mobileLange),
                                     textAlign: TextAlign.center,
                                     style: TextStyle(color: Colors.black),
                                   ),
