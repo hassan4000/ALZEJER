@@ -52,8 +52,8 @@ class _MyAppState extends State<MyApp> {
         '/SelectUserType': (BuildContext context) => new SelectUserType(),
       },
       supportedLocales: [
-        Locale('en', ''),
         Locale('ar', ''),
+        Locale('en', ''),
       ],
       // These delegates make sure that the localization data for the proper language is loaded
       localizationsDelegates: [
@@ -72,7 +72,8 @@ class _MyAppState extends State<MyApp> {
           print("---------------------------${supportedLocale.countryCode}/${locale.countryCode}");
           if (supportedLocale.languageCode == locale.languageCode
            ) {
-            return supportedLocale;
+            return supportedLocales.first;
+           // return supportedLocale;
           }
         }
         // If the locale of the device is not supported, use the first one

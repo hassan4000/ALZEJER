@@ -80,7 +80,7 @@ class _AddExplnationDialogState extends State<AddExplnationDialog> {
                       TextFormField(
                         controller: textEditingController,
                         maxLengthEnforced: true,
-                        maxLength: 300,
+                        maxLength: 500,
                         decoration: getInputDecorationHassan(
                             hint: AppLocalizations.of(context).translate("AddAnExplanation"),
                             icon: Icon(

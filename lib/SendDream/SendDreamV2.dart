@@ -51,7 +51,7 @@ class _SendDreamV2State extends State<SendDreamV2> {
                     textAlign: TextAlign.start,
                     minLines: 6,
                     maxLines: 8,
-                    maxLength: 300,
+                    maxLength: 500,
                     maxLengthEnforced: true,
                     style: TextStyle(color: kPrimaryColor,fontSize: 20,),
                     keyboardType: TextInputType.text,

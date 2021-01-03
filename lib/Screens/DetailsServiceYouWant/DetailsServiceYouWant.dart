@@ -141,6 +141,8 @@ class _DetailsServiceYouWantState extends State<DetailsServiceYouWant> {
                     SingleServicesModel item = response.object;
                     setState(() {
                       servicesData = item;
+                      if(servicesData.comments!=null &&servicesData.comments.isNotEmpty)
+                      servicesData.comments.removeRange(0, 1);
                     });
                   }
                   SetLoading(false);

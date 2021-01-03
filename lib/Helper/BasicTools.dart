@@ -39,6 +39,9 @@ Future<bool> logOutFacebook() async {
 
 
 
+
+
+
 final GoogleSignIn googleSignIn = GoogleSignIn(
   scopes: [
     'email',
@@ -194,6 +197,22 @@ String StringToBoolean(bool txt,BuildContext context){
   }
   return name;
  }
+
+
+ Widget userWorkIcon({int id}){
+
+  var width=24.0;
+  var height=24.0;
+
+    if(id==26) return Image.asset('assets/images/ahlam.png',width: width,height: height,color: Colors.white,);
+    if(id==27) return Image.asset('assets/images/raki.png',width: width,height: height,color: Colors.white,);
+    if(id==28) return Image.asset('assets/images/mofte.png',width: width,height: height,color: Colors.white,);
+    if(id==29) return  Image.asset('assets/images/famely.png',width: width,height: height,color: Colors.white,);
+    if(id==36) return Image.asset('assets/images/doctor.png',width: width,height: height,color: Colors.white,);
+    if(id==37) return Image.asset('assets/images/legal.png',width: width,height: height,color: Colors.white,);
+
+    return Image.asset('assets/images/users.png',width: width,height: height,color: Colors.white,);
+}
 
  bool validatePassWord(password) {
    if (password

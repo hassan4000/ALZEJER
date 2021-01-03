@@ -411,7 +411,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         height: 24,
                       ),
 
-                      SizedBox(height: 24,),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text( AppLocalizations.of(context).translate("This_code_is_optional"),style: getTextSyle(16, kPrimaryColor),)
+                        ],
+                      ),
+                      SizedBox(height: 10,),
                       Container(
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(30),

@@ -240,7 +240,7 @@ class _GeneralPageClientState extends State<GeneralPageClient> {
             crossAxisCount: 2,
             mainAxisSpacing: 4,
             crossAxisSpacing: 6,
-            childAspectRatio: (MediaQuery.of(context).size.width)/(MediaQuery.of(context).size.height/7)
+            childAspectRatio: (MediaQuery.of(context).size.width)/(MediaQuery.of(context).size.height/6)
           ),
           //      controller: _controllerScrollRecevier,
 
@@ -250,8 +250,11 @@ class _GeneralPageClientState extends State<GeneralPageClient> {
 
 
 
-            return MyButtonWithNumber(txt: emptyString(userWorkLanguage(id: item.userWork.id,name: item.userWork.name,lang: mobileLange)),
+            return MyButtonWithNumber(id: item.userWork.id,
+              txt: emptyString(userWorkLanguage(id: item.userWork.id,name: item.userWork.name
+                ,lang: mobileLange)),
             number: item.userCount,raduis: 6,textStyle: getTextSyle(14, Colors.white),
+            doneServices: item.doneServices,
             press: (){
               openPage(context, ServiceProviders(selectedService: item.userWork,));
             },);

@@ -2,6 +2,7 @@ import 'package:faserholmak/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
+import '../../../app_localizations.dart';
 import 'CommentRatingTab.dart';
 
 class RatingInsideTab extends StatelessWidget {
@@ -60,7 +61,7 @@ class RatingInsideTab extends StatelessWidget {
                       },
                     ),
                   ),
-                  Expanded(child: Text("  الرؤية  $idServices",style: TextStyle(color:Colors.white),
+                  Expanded(child: Text(" ${AppLocalizations.of(context).translate("vision")} $idServices",style: TextStyle(color:Colors.white),
                     textDirection: TextDirection.rtl,),),
 
 
