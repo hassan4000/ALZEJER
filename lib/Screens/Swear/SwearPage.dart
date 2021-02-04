@@ -112,7 +112,7 @@ class _SwearPageState extends State<SwearPage> {
                       (child:
                     Container(
                         width: MediaQuery.of(context).size.width,
-                        child: Text(AppLocalizations.of(context).translate("txt"),style: getTextSyle(14, Colors.black87),))
+                        child: Text(txt,style: getTextSyle(14, Colors.black87),))
                     ),
                   ),
 

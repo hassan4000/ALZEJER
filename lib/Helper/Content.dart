@@ -16,9 +16,10 @@ const String  SelectUserTypeRoute="SelectUserType";
 const String  TabWithImageRoute="TabWtihImage";
 const String  MyServicesPageRoute="MyServicesPage";
 
+const String codeDreams="Dream";
 const String SERVER_TOKEN="AAAAaeoROG4:APA91bEq4mIHEkhrXMzjYGHL9K6HqNRsuo-lsrtq7M694axkEpI29d5rfCCbX_sgvqkpqzRsjvVgjyWuWqSUBBnHdMnJp5Z_cavV5PuSMxmhdtMXAStrvjCcURP8IDUIHi3Fku9GHJbd";
 
-//const String googlePlayUrl="https://play.google.com/store/apps/details?id=com.faserholmak.alzeker.faserholmak";
+const String googlePlayUrlV1="https://play.google.com/store/apps/details?id=com.faserholmak.alzeker.faserholmak&hl=ar&gl=US";
 const String googlePlayUrl="https://mks.onelink.me/yTgK/ba6b0f45";
 
 

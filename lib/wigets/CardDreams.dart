@@ -4,7 +4,9 @@ import 'package:faserholmak/Helper/StyleForApp.dart';
 import 'package:faserholmak/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_share/flutter_share.dart';
 import 'package:lottie/lottie.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../app_localizations.dart';
 
@@ -21,6 +23,7 @@ class CardDreams extends StatelessWidget {
   bool showDelete;
   bool showExplanationText;
   bool showToAnotherMofaser;
+  bool indexServices;
   VoidCallback press;
   VoidCallback commentPress;
   VoidCallback editTextPress;
@@ -33,9 +36,24 @@ class CardDreams extends StatelessWidget {
   bool showLove;
 
 
-  CardDreams({this.deletePress,this.showDelete=false,this.showEditText=false,this.editTextPress,this.showLove=false,this.lovePress,this.provierName,this.sharePress,this.toAnotherMofaserPress,this.showToAnotherMofaser=false,this.likes, this.views, this.desc,this.showComment=false,this.explantaion,
+  CardDreams({this.indexServices=false,this.deletePress,this.showDelete=false,this.showEditText=false,this.editTextPress,this.showLove=false,this.lovePress,this.provierName,this.sharePress,this.toAnotherMofaserPress,this.showToAnotherMofaser=false,this.likes, this.views, this.desc,this.showComment=false,this.explantaion,
     this.press,this.commentPress,this.explanationPress,this.ratingPress,this.showRating=false,this.showExplnationButton=false,this.showExplanationText=false});
 
+
+
+  _launchURL() async {
+    const url = "$googlePlayUrlV1";
+    if (await canLaunch(url)) {
+      await launch(url).then((value) {
+
+
+
+
+      });
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
   @override
   Widget build(BuildContext context) {
 
@@ -135,7 +153,7 @@ class CardDreams extends StatelessWidget {
                   child: Padding(
                     padding: EdgeInsets.all(4),
                     child: Text(
-                      AppLocalizations.of(context).translate("shareForMofaserHint"),style: getTextSyle(14, Colors.white),
+                      AppLocalizations.of(context).translate("shareForMofaserHint"),style: getTextSyle(16, Colors.red,fontWeight: FontWeight.w600),
                     ),
                   ),
                 ):Container()
@@ -228,6 +246,44 @@ class CardDreams extends StatelessWidget {
                     ),
                   ),
                 ):Container(),
+
+
+                indexServices?
+                Flexible(
+                  child: InkWell(
+                    onTap: (){
+                      _launchURL();
+                    },
+                    child: Padding(
+                      padding: EdgeInsets.all(4),
+                      child: Text(AppLocalizations.of(context).translate("addRating"),
+                        style: getTextSyle(12, Colors.white),textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
+                ):Container(),
+
+                indexServices?
+                Flexible(
+                  child: InkWell(
+                    onTap: () async {
+                      await FlutterShare.share(
+                          title:
+                          '${AppLocalizations.of(context).translate("pleaseShareThisLink")}',
+                          text:
+                          '${AppLocalizations.of(context).translate("shareHitn1")}\n ${userInfo.userSpecialCode}',
+                          linkUrl:
+                          ' ${AppLocalizations.of(context).translate("linkApp")} \n  ${googlePlayUrl}',
+                          chooserTitle: 'Share');
+                    },
+                    child: Padding(
+                      padding: EdgeInsets.all(4),
+                      child: Text(AppLocalizations.of(context).translate("shareApp"),
+                        style: getTextSyle(12, Colors.white),textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
+                ):Container()
 
               ],
             ),

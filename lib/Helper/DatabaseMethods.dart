@@ -35,6 +35,9 @@ Future<void> addMessageFirebase( chatMessageData){
 
   FirebaseFirestore.instance.collection("Chats")
       .add(chatMessageData).catchError((e){
+
+
+    print("send faile\n");
     print(e.toString());
   });
 }

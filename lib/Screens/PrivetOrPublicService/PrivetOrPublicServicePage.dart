@@ -19,7 +19,9 @@ import 'package:faserholmak/wigets/CardTimeDreams.dart';
 import 'package:faserholmak/wigets/CardTimeDreamsV2.dart';
 import 'package:faserholmak/wigets/MyButton.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_share/flutter_share.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../app_localizations.dart';
 
@@ -42,6 +44,31 @@ class _PrivetOrPublicServicePageState extends State<PrivetOrPublicServicePage> {
   GlobalKey<RefreshIndicatorState> refreshKey=new GlobalKey<RefreshIndicatorState>();
 
 
+  _launchURL() async {
+    const url = "$googlePlayUrlV1";
+    if (await canLaunch(url)) {
+      await launch(url).then((value) async {
+        await FlutterShare.share(
+            title: '${AppLocalizations.of(context).translate("pleaseShareThisLink")}',
+
+            text:
+            '${AppLocalizations.of(context).translate("shareHitn1")}\n ${userInfo.userSpecialCode}',
+            linkUrl:
+            ' ${AppLocalizations.of(context).translate("linkApp")} \n  ${googlePlayUrl}',
+            chooserTitle:
+            'Share').then((value) {
+          showToast(successfulOpreation);
+            openPageAndClearPrev(context:context,page: GeneralPageClient(),route: HomePageRoute);
+
+
+        });
+      //  showToast(successfulOpreation);
+     //   openPageAndClearPrev(context:context,page: GeneralPageClient(),route: HomePageRoute);
+      });
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
 
   Future<void> addServicesFun(PrivetOrPublicServiceModel item) async {
     PaymentModel paymentModel=PaymentModel(myMoeny: double.parse(widget.addServiceModel.privateServicePrice),
@@ -73,8 +100,30 @@ class _PrivetOrPublicServicePageState extends State<PrivetOrPublicServicePage> {
           var  response=await AddServicesRQ(widget.addServiceModel);
           reSetLoadingHUD(false);
           if(response.statusCode==200){
-        showToast(successfulOpreation);
-        openPageAndClearPrev(context:context,page: GeneralPageClient(),route: HomePageRoute);}
+           if(userInfo.numberOfFreeServices>0)
+            await openShareAndRateApp(context).then((value) {
+              openPageAndClearPrev(context:context,page: GeneralPageClient(),route: HomePageRoute);
+            });
+             //_launchURL();
+        /*    await FlutterShare.share(
+                title: '${AppLocalizations.of(context).translate("pleaseShareThisLink")}',
+
+                text:
+                '${AppLocalizations.of(context).translate("shareHitn1")}\n ${userInfo.userSpecialCode}',
+                linkUrl:
+                ' ${AppLocalizations.of(context).translate("linkApp")} \n  ${googlePlayUrl}',
+                chooserTitle:
+                'Share').then((value) {
+              showToast(successfulOpreation);
+               _launchURL();
+
+            });*/
+           // _launchURL();
+          //  await _launchURL();
+
+       // showToast(successfulOpreation);
+        //openPageAndClearPrev(context:context,page: GeneralPageClient(),route: HomePageRoute);
+          }
       }
 
       else{

@@ -32,8 +32,9 @@ class UserInfoModel {
     double totalBalance ;
     double availableBalance ;
     double suspendedBalance ;
+    int numberOfFreeServices ;
 
-    UserInfoModel({this.availableBalance,this.suspendedBalance,this.totalBalance,this.age, this.avgServicesInOneDay, this.country, this.email, this.fireBaseId, this.hasRegistered, this.id, this.jobDescription, this.joiningDate, this.loginProvider, this.martialStatus, this.name, this.numberOfActiveServices, this.numberOfDoneServices, this.personalDescription, this.phoneNumber, this.pictureId, this.sex, this.socialStatus, this.speed, this.status, this.type, this.userName, this.userRoles, this.userWorks, this.verifiedUser,this.userRegistrationCode,this.userSpecialCode,this.pointsBalance});
+    UserInfoModel({this.availableBalance,this.suspendedBalance,this.totalBalance,this.age, this.avgServicesInOneDay, this.country, this.email, this.fireBaseId, this.hasRegistered, this.id, this.jobDescription, this.joiningDate, this.loginProvider, this.martialStatus, this.name, this.numberOfActiveServices, this.numberOfDoneServices, this.personalDescription, this.phoneNumber, this.pictureId, this.sex, this.socialStatus, this.speed, this.status, this.type, this.userName, this.userRoles, this.userWorks, this.verifiedUser,this.userRegistrationCode,this.userSpecialCode,this.pointsBalance,this.numberOfFreeServices});
 
     factory UserInfoModel.fromJson(Map<String, dynamic> json) {
         return UserInfoModel(
@@ -69,6 +70,7 @@ class UserInfoModel {
             totalBalance : json['TotalBalance'],
             availableBalance  : json['AvailableBalance'],
             suspendedBalance  : json['SuspendedBalance'],
+            numberOfFreeServices  : json['numberOfFreeServices'],
 
         );
     }
@@ -105,6 +107,7 @@ class UserInfoModel {
         data['TotalBalance'] = this.totalBalance ;
         data['AvailableBalance'] = this.availableBalance  ;
         data['SuspendedBalance'] = this.suspendedBalance   ;
+        data['numberOfFreeServices'] = this.numberOfFreeServices   ;
         if (this.userRoles != null) {
             data['UserRoles'] = this.userRoles;
         }

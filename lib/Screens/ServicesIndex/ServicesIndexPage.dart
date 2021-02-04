@@ -82,8 +82,10 @@ class _ServicesIndexPageState extends State<ServicesIndexPage> {
             if(isLoadingMore&&index==data.length-1)
               return Center(child: CircularProgressIndicator(),);
             else{  AllServicesData item=listServicesData[index];
-            return CardDreams(showLove: item.showLove,desc: item.description,likes: item.numberOfLikes,views: item.numberOfViews,
+            return CardDreams(
+              showLove: item.showLove,desc: item.description,likes: item.numberOfLikes,views: item.numberOfViews,
               provierName:emptyString( item.serviceProvider.name),
+              indexServices: true,
               
               lovePress: () async {
                 setState(() {

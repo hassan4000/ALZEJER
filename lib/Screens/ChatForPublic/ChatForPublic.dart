@@ -88,10 +88,10 @@ class _ChatForPublicState extends State<ChatForPublic> {
   }
 
   @override
-  void initState() async {
+  void initState()  {
     super.initState();
     if(mounted){
-      await Firebase.initializeApp();
+
       getChats().then((val) {
         setState(() {
           chats = val;

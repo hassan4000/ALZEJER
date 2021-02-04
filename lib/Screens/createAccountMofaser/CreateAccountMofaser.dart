@@ -22,10 +22,12 @@ import 'package:faserholmak/constants.dart';
 import 'package:faserholmak/wigets/MyCircularIcon.dart';
 import 'package:faserholmak/wigets/MyCircularImage.dart';
 import 'package:faserholmak/wigets/MyCountryPicker.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
+//import 'package:sms_autofill/sms_autofill.dart';
 
 import '../../app_localizations.dart';
 
@@ -50,6 +52,14 @@ class _CreateAccountMofaserState extends State<CreateAccountMofaser> {
   TextEditingController workController = TextEditingController();
   TextEditingController ageController = TextEditingController();
   Country selectedCountry;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final TextEditingController _phoneNumberController = TextEditingController();
+  final TextEditingController _smsController = TextEditingController();
+  String _verificationId;
+  //final SmsAutoFill _autoFill = SmsAutoFill();
+
+
+
 
   List<Country>myCountry=List();
   int picID;
@@ -65,6 +75,12 @@ class _CreateAccountMofaserState extends State<CreateAccountMofaser> {
 
     selectedCountry=initCountry("971");
   }
+
+
+
+
+
+
 
 
   /*--------------------------------Widget----------------------*/
@@ -222,16 +238,65 @@ class _CreateAccountMofaserState extends State<CreateAccountMofaser> {
     const DropDownItem("marred",),
     const DropDownItem("divorcee",),
   ];
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
+
+
+  void showSnackbar(String message) {
+    _scaffoldKey.currentState.showSnackBar(SnackBar(content: Text(message)));
+  }
+
+  void verifyPhoneNumber() async {
+
+    PhoneVerificationCompleted verificationCompleted =
+        (PhoneAuthCredential phoneAuthCredential) async {
+      await _auth.signInWithCredential(phoneAuthCredential);
+      showToast("Phone number automatically verified and user signed in: ${_auth.currentUser.uid}");
+    };
+
+    PhoneVerificationFailed verificationFailed =
+        (FirebaseAuthException authException) {
+      showSnackbar('Phone number verification failed. Code: ${authException.code}. Message: ${authException.message}');
+    };
+
+    PhoneCodeSent codeSent =
+        (String verificationId, [int forceResendingToken]) async {
+      showSnackbar('Please check your phone for the verification code.');
+      _verificationId = verificationId;
+    };
+
+    PhoneCodeAutoRetrievalTimeout codeAutoRetrievalTimeout =
+        (String verificationId) {
+      showSnackbar("verification code: " + verificationId);
+      _verificationId = verificationId;
+    };
 
 
 
+    try {
+      await _auth.verifyPhoneNumber(
+         // phoneNumber:"+"+selectedCountry.phoneCode+phoneController.text.toString().trim(),
+          phoneNumber:"+963993461719",
+          timeout: const Duration(seconds: 60),
+          verificationCompleted: verificationCompleted,
+          verificationFailed: verificationFailed,
+          codeSent: codeSent,
+          codeAutoRetrievalTimeout: codeAutoRetrievalTimeout);
+    } catch (e) {
+      showSnackbar("Failed to Verify Phone Number: ${e}");
+    }
+
+  }
 
 
   @override
   Widget build(BuildContext context) {
+
+
+
     return SafeArea(
         top: true,
         child: Scaffold(
+          key: _scaffoldKey,
           appBar: AppBar(
           centerTitle: true,
           backgroundColor: kPrimaryColor,
@@ -679,6 +744,8 @@ class _CreateAccountMofaserState extends State<CreateAccountMofaser> {
                           color: kPrimaryColor,
                           textColor: Colors.white,
                           press: () async {
+
+                           // verifyPhoneNumber();
                             if(validationForm(formKeyValidation)){
                               
 
@@ -711,14 +778,7 @@ class _CreateAccountMofaserState extends State<CreateAccountMofaser> {
                               });
                             }
 
-                            /*Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) {
-                                  return HomeVisitor();
-                                },
-                              ),
-                            );*/
+
                           },
                         ),
                       ],

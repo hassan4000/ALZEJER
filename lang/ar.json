@@ -105,7 +105,7 @@
   "successfulOpreation":"تمت العملية بنجاح",
   "timeToStart":"الوقت المتوقع  لتنفيذ الخدمة",
   "expectedTimeForInterpretation":"الوقت المتوقع  لتنفيذ الخدمة",
-  "areYouHurryToExplain":"هل انت مستعجل اضفط هنا",
+  "areYouHurryToExplain":"هل انت مستعجل اضغط هنا",
   "publicServicesHint":"يتم عرض نص الخدمة للجمهور بدون ذكر اسمك",
   "publicTxt":"عام",
   "privateTxt":"خاص",
@@ -266,7 +266,12 @@
   "share_hint3": "يرجى مشاركة هذا الرابط واحصل على نقاط لتسريع تنفيذ خدمتك القادمة",
   "share_hint4": "قم بإدخال الكود التالي عند التسجيل واكسب نقاط لتسريع تنفيذ خدمتك",
   "vision": "الرؤية",
-  "This_code_is_optional": "هذا الكود اختياري"
+  "This_code_is_optional": "هذا الكود اختياري",
+  "sent_successfully": "تم ارسال الخدمة بنجاح ",
+  "supportApplicationHint": "نرجو دعم التطبيق بتقيمه ومشاركته للإستمرار بتوفير الخدمات مجانا",
+  "daysText":"ايام",
+  "monthsText":"اشهر",
+  "tellFriends": "اخبر اصدقائك"
 
 
 }

@@ -106,6 +106,17 @@ class _DetailsServiceYouWantState extends State<DetailsServiceYouWant> {
     return emptyString(widget.servicesData.creatorId) == userInfo.id;
   }
 
+  bool showDreamSection(SingleServicesModel item){
+
+    if(item==null||item.userWork==null||item.userWork.code==null) return false;
+
+    return item.userWork.code==codeDreams;
+
+
+
+
+  }
+
   @override
   void initState() {
     WidgetsBinding.instance
@@ -236,25 +247,25 @@ class _DetailsServiceYouWantState extends State<DetailsServiceYouWant> {
                                       text: emptyString(servicesData.socialStatus)),
                                   PersonalProfileContent(
                                       hint: AppLocalizations.of(context).translate("country"),
-                                      text: emptyString(StringToBoolean(
-                                          servicesData.isThereWakefulness,context))),
+                                      text: emptyString(
+                                          servicesData.country)),
                                   PersonalProfileContent(
                                       hint: AppLocalizations.of(context).translate("work"),
                                       text: emptyString(servicesData.jobStatus)),
                                   PersonalProfileContent(
                                       hint: AppLocalizations.of(context).translate("isThereAnyChild"),
                                       text: emptyString(servicesData.kidsStatus)),
-                                  PersonalProfileContent(
-                                      hint: AppLocalizations.of(context).translate("didYouPrayBeforeDreams"),
+                                  showDreamSection(servicesData)?PersonalProfileContent(
+                                      hint: AppLocalizations.of(context).translate("doYouHaveinsomnia"),
                                       text: emptyString(StringToBoolean(
-                                          servicesData.haveYouPrayedBeforeTheDream,context))),
-                                  PersonalProfileContent(
+                                          servicesData.isThereWakefulness,context))):Container(),
+                                  showDreamSection(servicesData)?PersonalProfileContent(
                                       hint: AppLocalizations.of(context).translate("didYouExorcism"),
                                       text: emptyString(StringToBoolean(
-                                          servicesData.didYouExorcism,context))),
-                                  PersonalProfileContent(
+                                          servicesData.didYouExorcism,context))):Container(),
+                                 showDreamSection(servicesData)?PersonalProfileContent(
                                       hint: AppLocalizations.of(context).translate("religiousState"),
-                                      text: emptyString(servicesData.regligionStatus)),
+                                      text: emptyString(servicesData.regligionStatus)):Container(),
                                   SizedBox(
                                     height: 20,
                                   ),

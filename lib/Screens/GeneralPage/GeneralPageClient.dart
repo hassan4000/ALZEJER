@@ -132,7 +132,7 @@ class _GeneralPageClientState extends State<GeneralPageClient> {
     if(isLoading|| firstServicesData==null)
       return Container();
 
-    else return MyButton(txt: areYouHurryToExplain,press: () async {
+    else return MyButton(txt: AppLocalizations.of(context).translate("areYouHurryToExplain"),press: () async {
      // _loginWithFB();
 
       print(firstServicesData.toJson().toString());
@@ -171,7 +171,7 @@ class _GeneralPageClientState extends State<GeneralPageClient> {
         Text("  ${getAvg(singleServicesModel.avgWaitingTime)} ",style: getTextSyle(16, kPrimaryColor),textAlign: TextAlign.center,),
 
         CardTimeDreams(showDolar: false,name: emptyString(singleServicesModel.serviceProvider!=null?singleServicesModel.serviceProvider.name:""),
-        price: "",textUnderLineHint:hintHomeClient,
+        price: "",textUnderLineHint:AppLocalizations.of(context).translate("hintHomeClient"),
           textUnderLine: emptyString(singleServicesModel.numberOfRemainingPeople.toString()),
         textAboveLine: emptyString(singleServicesModel.numberOfAllPeopleWaiting.toString()),),
       ],
@@ -240,7 +240,7 @@ class _GeneralPageClientState extends State<GeneralPageClient> {
             crossAxisCount: 2,
             mainAxisSpacing: 4,
             crossAxisSpacing: 6,
-            childAspectRatio: (MediaQuery.of(context).size.width)/(MediaQuery.of(context).size.height/6)
+            childAspectRatio: (MediaQuery.of(context).size.width)/(MediaQuery.of(context).size.height/4.8)
           ),
           //      controller: _controllerScrollRecevier,
 
@@ -450,7 +450,10 @@ class _GeneralPageClientState extends State<GeneralPageClient> {
               setState(() {
                 listServicesData=item.value;
                 if(item.value!=null &&item.value.isNotEmpty){
+                  if(item.value[0].commentList!=null &&item.value[0].commentList.isNotEmpty)
+                  item.value[0].commentList.removeRange(0, 1);
                   firstServicesData=item.value[0];
+
                 }
 
               });

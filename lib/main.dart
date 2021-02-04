@@ -6,6 +6,7 @@ import 'package:faserholmak/Screens/GeneralPageVisitor/GeneralPageVisitor.dart';
 import 'package:faserholmak/Screens/SelectUserType/SelectUserType.dart';
 import 'package:faserholmak/Screens/TESTHASSAN/TESTHASSAN.dart';
 import 'package:faserholmak/Screens/createAccountMofaser/CreateAccountMofaser.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -18,7 +19,14 @@ import 'constants.dart';
 import 'app_localizations.dart';
 
 
-void main() => runApp(MyApp());
+/*void main() => runApp(MyApp());*/
+Future<void> main() async {
+
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp());
+
+}
 
 class MyApp extends StatefulWidget {
 

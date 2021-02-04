@@ -511,7 +511,7 @@ class _HisVisionAllPageState extends State<HisVisionAllPage> {
 
 
                                         Text(
-                                          data.name.toString(),
+                                    AppLocalizations.of(context).translate(data.name.toString()),
                                           textAlign: TextAlign.center,
                                           style:  TextStyle(color: Colors.black),
                                         ),
@@ -704,12 +704,12 @@ class _HisVisionAllPageState extends State<HisVisionAllPage> {
                               return;
                             }
 
-                            widget.addServiceModel.socialStatus=socialStatusSelected.name;
-                            widget.addServiceModel.sex=genderSelected.name;
+                            widget.addServiceModel.socialStatus=AppLocalizations.of(context).translate(socialStatusSelected.name);
+                            widget.addServiceModel.sex=AppLocalizations.of(context).translate(genderSelected.name);
                             //widget.addServiceModel.isThereWakefulness=insomniaSelected.state;
                             widget.addServiceModel.isThereWakefulness=false;
-                           widget.addServiceModel.jobStatus=workStatusSelected.name;
-                            widget.addServiceModel.kidsStatus=childernSelected.name;
+                           widget.addServiceModel.jobStatus=AppLocalizations.of(context).translate(workStatusSelected.name);
+                            widget.addServiceModel.kidsStatus=AppLocalizations.of(context).translate(childernSelected.name);
                             widget.addServiceModel.name=nameControler.text.toString();
                             widget.addServiceModel.dreamDate='2020-01-01T00:00:00';
                            // widget.addServiceModel.dreamDateText=dreamTimeControler.text.toString();

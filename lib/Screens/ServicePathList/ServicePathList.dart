@@ -27,7 +27,11 @@ class _ServicePathListState extends State<ServicePathList> {
 
   String getAvg(String txt){
     if(emptyString(txt)=="") return AppLocalizations.of(context).translate("soonTxt");
-    else return emptyString(txt);
+    else{
+
+      return emptyString(txt).replaceAll("days",AppLocalizations.of(context).translate("daysText")).replaceAll("months", AppLocalizations.of(context).translate("monthsText"));
+
+    }
   }
 
   Widget dataListView(List<ServicesPathModel> data, context) {
@@ -58,6 +62,7 @@ class _ServicePathListState extends State<ServicePathList> {
               name: item.name,
               textAboveLine: item.numberOfPeopleWaiting.toString(),
               textUnderLine:getAvg(emptyString(item.avgWaitingTime)) ,
+              textUnderLineHint:  AppLocalizations.of(context).translate("timeToStart"),
               press: (){
 
                 widget.addServiceModel.servicePathId=item.id;

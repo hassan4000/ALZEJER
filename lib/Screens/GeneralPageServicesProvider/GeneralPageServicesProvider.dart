@@ -25,6 +25,7 @@ import 'package:faserholmak/wigets/SmallHomeCard.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:faserholmak/Helper/AppApi.dart';
+import 'package:flutter_share/flutter_share.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../app_localizations.dart';
@@ -381,7 +382,7 @@ class _GeneralPageServicesProviderState extends State<GeneralPageServicesProvide
 
                             Row(
                               children: [
-                                Expanded(child: GestureDetector(
+                                GestureDetector(
                                   onTap: (){
 
 
@@ -392,7 +393,25 @@ class _GeneralPageServicesProviderState extends State<GeneralPageServicesProvide
                                     child: Icon(Icons.assessment,color: kPrimaryColor,size: 30,)
                                     ,
                                   ),
-                                )),
+                                ),
+
+                                Flexible(
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                                    child: SmallHomeCard(
+                                      txt: AppLocalizations.of(context).translate("tellFriends"),
+                                      press: () async {
+                                      await FlutterShare.share(
+                                    title:
+                                    '${AppLocalizations.of(context).translate("pleaseShareThisLink")}',
+                                    text:
+                                    '${AppLocalizations.of(context).translate("shareHitn1")}\n 0610',
+                                    linkUrl:
+                                    '${AppLocalizations.of(context).translate("linkApp")} \n  ${googlePlayUrl}',
+                                    chooserTitle: 'Share');
+                                    },),
+                                  ),
+                                ),
                               ],
                             ),
 

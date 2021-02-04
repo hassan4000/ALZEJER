@@ -47,7 +47,7 @@ class _AreYouHarryPageState extends State<AreYouHarryPage> {
 
   String getAvg(String txt){
     if(emptyString(txt)=="") return AppLocalizations.of(context).translate("soonTxt");
-    else return emptyString(txt);
+    return emptyString(txt).replaceAll("days",  AppLocalizations.of(context).translate("daysText"));
   }
   Widget dataListView(List<ServicesPathModel> data, context) {
     if (data == null)
@@ -77,6 +77,7 @@ class _AreYouHarryPageState extends State<AreYouHarryPage> {
                 name: item.name,
                 textAboveLine: item.numberOfPeopleWaiting.toString(),
                 textUnderLine: getAvg(emptyString(item.avgWaitingTime)),
+                textUnderLineHint: AppLocalizations.of(context).translate("timeToStart"),
                 press: (){
 
 

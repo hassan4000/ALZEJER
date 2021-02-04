@@ -11,7 +11,7 @@ description: fffffffffffff
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.4.6+118
+version: 1.5.4+126
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
@@ -42,7 +42,7 @@ dependencies:
   flutter_share: ^1.0.2+1
   myfatoorah_flutter: ^1.0.7
   google_sign_in: ^4.5.1
-#  firebase_auth: ^0.16.1
+  firebase_auth: ^0.18.4+1
   flutter_facebook_login: ^3.0.0
   firebase_messaging: ^6.0.16
   lottie: ^0.6.0
@@ -51,7 +51,7 @@ dependencies:
   cloud_firestore: ^0.14.2
   intl: ^0.16.1
   flutter_countdown_timer: ^1.4.0
-
+#  sms_autofill: ^1.2.6
 dev_dependencies:
   flutter_test:
     sdk: flutter

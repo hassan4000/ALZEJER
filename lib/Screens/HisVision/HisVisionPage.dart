@@ -606,7 +606,7 @@ class _HisVisionPageState extends State<HisVisionPage> {
 
 
                                         Text(
-                                          data.name.toString(),
+                                    AppLocalizations.of(context).translate(data.name.toString()),
                                           textAlign: TextAlign.center,
                                           style:  TextStyle(color: Colors.black),
                                         ),
@@ -705,18 +705,18 @@ class _HisVisionPageState extends State<HisVisionPage> {
                               return;
                             }
 
-                            widget.addServiceModel.socialStatus=socialStatusSelected.name;
-                            widget.addServiceModel.sex=genderSelected.name;
+                            widget.addServiceModel.socialStatus=AppLocalizations.of(context).translate(socialStatusSelected.name);
+                            widget.addServiceModel.sex=AppLocalizations.of(context).translate(genderSelected.name);
                             widget.addServiceModel.isThereWakefulness=insomniaSelected.state;
-                           widget.addServiceModel.jobStatus=workStatusSelected.name;
-                            widget.addServiceModel.kidsStatus=childernSelected.name;
+                           widget.addServiceModel.jobStatus=AppLocalizations.of(context).translate(workStatusSelected.name);
+                            widget.addServiceModel.kidsStatus=AppLocalizations.of(context).translate(childernSelected.name);
                             widget.addServiceModel.name=nameControler.text.toString();
                             widget.addServiceModel.dreamDate='2020-01-01T00:00:00';
                             widget.addServiceModel.dreamDateText=dreamTimeControler.text.toString();
 
 
                             widget.addServiceModel.country=countrySelected.name;
-                            widget.addServiceModel.regligionStatus=religiousSelected.name;
+                            widget.addServiceModel.regligionStatus=AppLocalizations.of(context).translate(religiousSelected.name);
                             widget.addServiceModel.didYouExorcism=exorcismSelected.state;
                             widget.addServiceModel.haveYouPrayedBeforeTheDream=false;
 

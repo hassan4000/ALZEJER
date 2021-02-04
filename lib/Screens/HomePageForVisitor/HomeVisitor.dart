@@ -9,6 +9,8 @@ import 'package:faserholmak/wigets/MyButton.dart';
 import 'package:faserholmak/wigets/SmallHomeCard.dart';
 import 'package:flutter/material.dart';
 
+import '../../app_localizations.dart';
+
 class HomeVisitor extends StatefulWidget {
   @override
   _HomeVisitorState createState() => _HomeVisitorState();
@@ -103,7 +105,7 @@ class _HomeVisitorState extends State<HomeVisitor> {
                     ),
                   ),
                   SizedBox(height: 10,),
-                 MyButton(txt: areYouHurryToExplain,press: openPage2,),
+                 MyButton(txt: AppLocalizations.of(context).translate("areYouHurryToExplain"),press: openPage2,),
                   CardDreams(),
 
                 ],

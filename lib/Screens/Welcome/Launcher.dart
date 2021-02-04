@@ -73,7 +73,7 @@ class _LauncherState extends State<Launcher>
         showToast(userDataRequest.object.toString());
         openPageAndClearPrev(context: context,route: SelectUserTypeRoute,page:  LoginScreen());
      //   openPage(context,  LoginScreen());
-        Navigator.pop(context);
+     //   Navigator.pop(context);
 
       }
 

@@ -35,44 +35,50 @@ class CardTimeDreams extends StatelessWidget {
           child: Row(
 
             mainAxisSize: MainAxisSize.max,
+            
             children: <Widget>[
 
-              Expanded(
-                flex: 2,
+              Flexible(
                 child: Column(children: <Widget>[
-                  Text('${AppLocalizations.of(context).translate("people")} $textAboveLine',style: getTextSyle(16, kPrimaryColor),textDirection: TextDirection.rtl,),
+                  Text('${AppLocalizations.of(context).translate("people")} $textAboveLine',style: getTextSyle(16, kPrimaryColor)),
                   line?
                   Divider(thickness: 2,height: 2,)
                       :SizedBox(height:2,),
                   line?
-                  Text('$textUnderLineHint $textUnderLine',style: getTextSyle(12, kPrimaryColor),textDirection: TextDirection.rtl,)
+                  Text('$textUnderLineHint $textUnderLine',style: getTextSyle(16, Colors.red))
                   :Container(),
                 ],),
               ),
               SizedBox(width: 12,),
-              Container(
-                padding: EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(50),
-                  border: Border.all(
-                    width: 1,
-                    color: kPrimaryColor
-                  )
-                ),
-                child: Column(
-                  children: <Widget>[
-                    Text("$name",style: getTextSyle(14, kPrimaryColor),textDirection: TextDirection.rtl,),
-                   /* Container(
-                      width: 100,height: 100,
-                      child:
-                      ClipOval(child:Container(color: Colors.black,)),
-                    ),*/
-                    SizedBox(height: 2,),
-                   showDolar? Text("$price \$",style: getTextSyle(14, kPrimaryColor,fontWeight: FontWeight.w600),
-                      textDirection: TextDirection.rtl,):
-                   Text("$price",style: getTextSyle(14, kPrimaryColor,fontWeight: FontWeight.w600),
-                     textDirection: TextDirection.rtl,),
-                  ],
+              Flexible(
+                child: Container(
+                  padding: EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(50),
+                    border: Border.all(
+                      width: 1,
+                      color: kPrimaryColor
+                    )
+                  ),
+                  child: Column(
+                    children: <Widget>[
+                      Row(
+                        children: [
+                          Expanded(child: Text("$name",style: getTextSyle(14, kPrimaryColor),textAlign: TextAlign.center,)),
+                        ],
+                      ),
+                     /* Container(
+                        width: 100,height: 100,
+                        child:
+                        ClipOval(child:Container(color: Colors.black,)),
+                      ),*/
+                      SizedBox(height: 2,),
+                     showDolar? Text("$price \$",style: getTextSyle(14, kPrimaryColor,fontWeight: FontWeight.w600),
+                        textDirection: TextDirection.rtl,):
+                     Text("$price",style: getTextSyle(14, kPrimaryColor,fontWeight: FontWeight.w600),
+                      ),
+                    ],
+                  ),
                 ),
               ),
 

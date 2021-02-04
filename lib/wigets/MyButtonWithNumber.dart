@@ -117,10 +117,10 @@ class MyButtonWithNumber extends StatelessWidget {
               child: Container(
                 color: kPrimaryLightColor,
                 child:  Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 4),
+                  padding: const EdgeInsets.symmetric(horizontal: 2),
                   child: Row(
                     children: [
-                      Text("${AppLocalizations.of(context).translate("dreamsExplained")} $doneServices",style: getTextSyle(10, Colors.black),maxLines: 2,),
+                      Flexible(child: Text("${AppLocalizations.of(context).translate("dreamsExplained")} $doneServices",style: getTextSyle(13, Colors.black),maxLines: 1,)),
                     ],
                   ),
                 ),

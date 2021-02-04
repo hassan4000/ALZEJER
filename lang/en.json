@@ -266,7 +266,12 @@
   "share_hint3": "Please share this link and get points to speed up the implementation of your next service",
   "share_hint4": "Enter the following code when registering and earn points to speed up the implementation of your service",
   "vision": "Vision",
-  "This_code_is_optional": "This code is optional"
+  "This_code_is_optional": "This code is optional",
+  "sent_successfully": "The service has been sent successfully",
+  "supportApplicationHint": "Please support the application with its evaluation and participation to continue providing services for free",
+  "daysText":"days",
+  "monthsText":"months",
+  "tellFriends": "Tell your friends"
 
 
 

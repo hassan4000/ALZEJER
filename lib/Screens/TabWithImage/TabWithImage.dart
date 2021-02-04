@@ -46,10 +46,10 @@ class _TabWithImageState extends State<TabWithImage> with TickerProviderStateMix
           children: <Widget>[
 
             PersonalProfileContent(hint:AppLocalizations.of(context).translate("personalDescription") ,text:emptyString(userInfoModel.personalDescription) ),
-            PersonalProfileContent(hint:AppLocalizations.of(context).translate("socialStatus"),text: emptyString(userInfoModel.socialStatus)),
+         //   PersonalProfileContent(hint:AppLocalizations.of(context).translate("socialStatus"),text: emptyString(userInfoModel.socialStatus)),
             PersonalProfileContent(hint:AppLocalizations.of(context).translate("country") ,text:emptyString(userInfoModel.country)),
-            PersonalProfileContent(hint:AppLocalizations.of(context).translate("work"),text: emptyString(userInfoModel.jobDescription)),
-            PersonalProfileContent(hint:AppLocalizations.of(context).translate("dreamsDone") ,text: emptyString(userInfoModel.numberOfDoneServices.toString())),
+         //   PersonalProfileContent(hint:AppLocalizations.of(context).translate("work"),text: emptyString(userInfoModel.jobDescription)),
+            PersonalProfileContent(hint:AppLocalizations.of(context).translate("dreamsiInterpreted") ,text: emptyString(userInfoModel.numberOfDoneServices.toString())),
             PersonalProfileContent(hint:AppLocalizations.of(context).translate("dreamsPending"),text:  emptyString(userInfoModel.numberOfActiveServices.toString())),
             PersonalProfileContent(hint:AppLocalizations.of(context).translate("speen"),text:  emptyString(userInfoModel.speed.toString())),
             PersonalProfileContent(hint:AppLocalizations.of(context).translate("dreamsPerDay"), text:emptyString(userInfoModel.avgServicesInOneDay.toString())),
@@ -67,6 +67,7 @@ class _TabWithImageState extends State<TabWithImage> with TickerProviderStateMix
   int rateTopNumber=10;
   int rateAllCount=10;
   List<AllServicesData>rateListServicesData;
+  //List<AllServicesData>rateListServicesData=List();
   GlobalKey<RefreshIndicatorState> rateRefreshKey=new GlobalKey<RefreshIndicatorState>();
   bool rateIsLoadingRefersh=false;
   bool rateIsLoadingMore=false;
@@ -111,6 +112,7 @@ class _TabWithImageState extends State<TabWithImage> with TickerProviderStateMix
             if(rateIsLoadingMore&&index==data.length-1)
               return Center(child: CircularProgressIndicator(),);
             else{  AllServicesData item=rateListServicesData[index];
+            if(item.ratingMessage==null) return Container();
             return RatingInsideTab(date: emptyString(item.ratingDate),
             idServices: item.id.toString(),
             message: emptyString(item.ratingMessage),
@@ -135,9 +137,25 @@ class _TabWithImageState extends State<TabWithImage> with TickerProviderStateMix
       AllServicesModel item=response.object;
       setState(() {
         rateAllCount=int.parse(item.odata_count);
-        if(!loadMore)
-          rateListServicesData=item.value;
-        else rateListServicesData.addAll(item.value);
+
+
+        if(!loadMore){
+         // rateListServicesData.clear();
+          if(rateListServicesData!=null) rateListServicesData.clear();
+       //  rateListServicesData=item.value;
+        }
+       // else rateListServicesData.addAll(item.value);
+
+
+        for (var i in item.value){
+          if(i.ratingMessage!=null)
+            rateListServicesData.add(i);
+        }
+
+        if(rateListServicesData==null)
+          rateListServicesData=List<AllServicesData>();
+
+
       });
 
 
@@ -260,7 +278,7 @@ class _TabWithImageState extends State<TabWithImage> with TickerProviderStateMix
   int doneAllCount=10;
   List<AllServicesData>doneListServicesData;
   GlobalKey<RefreshIndicatorState>doneRefreshKey=new GlobalKey<RefreshIndicatorState>();
-  bool doneIsLoadingRefersh=false;
+  bool doneIsLoadingRefersh=true;
   bool doneIsLoadingMore=false;
   var doneControllerScroll = ScrollController();
   void doneSetMore(bool state){
@@ -289,8 +307,8 @@ class _TabWithImageState extends State<TabWithImage> with TickerProviderStateMix
       return ListView.builder(
           shrinkWrap: true,
 
-          controller:doneControllerScroll,
-          physics: AlwaysScrollableScrollPhysics(),
+         // controller:doneControllerScroll,
+          physics: NeverScrollableScrollPhysics(),
           itemCount: data.length,
           //      controller: _controllerScrollRecevier,
 
@@ -346,6 +364,7 @@ class _TabWithImageState extends State<TabWithImage> with TickerProviderStateMix
     if(response.statusCode==200){
       AllServicesModel item=response.object;
       setState(() {
+        doneIsLoadingRefersh=false;
        doneAllCount=int.parse(item.odata_count);
         if(!loadMore)
          doneListServicesData=item.value;
@@ -362,17 +381,21 @@ class _TabWithImageState extends State<TabWithImage> with TickerProviderStateMix
   @override
   void initState() {
     super.initState();
-    tabController = new TabController( length: 4, vsync: this);
-    
+    tabController = new TabController( length: 3, vsync: this);
+    tabController.index=0;
+
+    doneGetAllServicesRQ(skip: doneSkipNumber,top: doneTopNumber);
     tabController.addListener((){
       if (tabController.index == 1 && rateListServicesData == null&& rateRefreshKey.currentState!=null)
         rateRefreshKey.currentState.show();
       if (tabController.index == 2 && onProgessListServicesData == null&& onProgessRefreshKey.currentState!=null)
         onProgessRefreshKey.currentState.show();
 
-      if (tabController.index == 3 && doneListServicesData == null&& doneRefreshKey.currentState!=null)
+      if (tabController.index == 0 && doneListServicesData == null&& doneRefreshKey.currentState!=null)
         doneRefreshKey.currentState.show();
     });
+
+
 
 
     rateControllerScroll.addListener(() async {
@@ -462,7 +485,7 @@ class _TabWithImageState extends State<TabWithImage> with TickerProviderStateMix
         body: DefaultTabController(
 
 
-          length: 4,
+          length: 3,
           child: NestedScrollView(
             headerSliverBuilder:
                 (BuildContext context, bool innerBoxIsScrolled) {
@@ -545,7 +568,7 @@ class _TabWithImageState extends State<TabWithImage> with TickerProviderStateMix
                         Tab(icon: Icon(Icons.info), text:  AppLocalizations.of(context).translate("rating")),
                         Tab(icon: Icon(Icons.info), text:  AppLocalizations.of(context).translate("dreamsPending")),
 
-                        Tab(icon: Icon(Icons.info), text:  AppLocalizations.of(context).translate("dreamsiInterpreted")),
+                      //  Tab(icon: Icon(Icons.info), text:  AppLocalizations.of(context).translate("dreamsiInterpreted")),
                       ],
                     ),
                   ),
@@ -558,7 +581,27 @@ class _TabWithImageState extends State<TabWithImage> with TickerProviderStateMix
 
               children: [
                 //PersonalInfo(),
-                personalInfoWidget(widget.item),
+               // personalInfoWidget(widget.item),
+                RefreshIndicator(
+                  key:doneRefreshKey,
+                  onRefresh: ()async{
+                    tabController.index=0;
+                    doneSetRefresh(true);
+                      await doneGetAllServicesRQ(skip: doneSkipNumber,top: doneTopNumber);
+                    doneSetRefresh(false);
+
+                  },
+                  child: SingleChildScrollView(
+                    controller: doneControllerScroll,
+                    physics: AlwaysScrollableScrollPhysics(),
+                    child: Column(
+                      children: [
+                        personalInfoWidget(widget.item),
+                        !doneIsLoadingRefersh?  doneDataListView(doneListServicesData, context):
+                        Center(child: Text(AppLocalizations.of(context).translate("pleazeWait")),),
+                    ],),
+                  )
+                ),
                 RefreshIndicator(
                   key: rateRefreshKey,
                   onRefresh: ()async{
@@ -581,17 +624,7 @@ class _TabWithImageState extends State<TabWithImage> with TickerProviderStateMix
                   child: !onProgessIsLoadingRefersh?  onProgressDataListView(onProgessListServicesData, context):
                   Container(),
                 ),
-                RefreshIndicator(
-                  key:doneRefreshKey,
-                  onRefresh: ()async{
-                    doneSetRefresh(true);
-                    await doneGetAllServicesRQ(skip: doneSkipNumber,top: doneTopNumber);
-                    doneSetRefresh(false);
-
-                  },
-                  child: !doneIsLoadingRefersh?  doneDataListView(doneListServicesData, context):
-                  Container(),
-                ),
+               // personalInfoWidget(widget.item),
 
 
               ],

@@ -16,6 +16,7 @@ import 'package:faserholmak/Model/SingleServicesModel/SingleServicesModel.dart';
 import 'package:flutter/material.dart';
 
 import 'AddCommentDialog/AddCommentDialog.dart';
+import 'shareRateDialog/ShareRateAppDialog.dart';
 import 'Dialog2GeneralPage/Dialog2GeneralPage.dart';
 import 'EditExplanationDialog/EditExplanationDialog.dart';
 import 'deleteDialog/DeleteDialog.dart';
@@ -57,6 +58,18 @@ Future<String> openAddExplnation(BuildContext context,String id,bool fromPublicP
     barrierDismissible: true, // user must tap button!
     builder: (BuildContext context) {
       return AddExplnationDialog(servicesID: id,fromPublicPage: fromPublicPage,clientToken: clinetToken,);
+    },
+  );
+}
+
+
+/*when you add services*/
+Future<void> openShareAndRateApp(BuildContext context) async {
+  return showDialog<String>(
+    context: context,
+    barrierDismissible: false, // user must tap button!
+    builder: (BuildContext context) {
+      return ShareRateAppDialog();
     },
   );
 }

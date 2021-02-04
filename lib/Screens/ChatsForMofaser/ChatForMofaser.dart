@@ -85,10 +85,10 @@ class _ChatForMofaserState extends State<ChatForMofaser> {
   }
 
   @override
-  void initState()async {
+  void initState() {
     super.initState();
     if(mounted){
-      await Firebase.initializeApp();
+
       getChatsMofaser().then((val) {
         setState(() {
           chats = val;

@@ -21,6 +21,7 @@ import 'package:flutter/material.dart';
 import 'package:faserholmak/Helper/AppApi.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
+import '../../app_localizations.dart';
 import '../../constants.dart';
 import 'card_compition.dart';
 
@@ -453,7 +454,7 @@ class _TabWithImageState extends State<CompititionMofaser> with TickerProviderSt
 
                   },
                   child: !doneIsLoadingRefersh?  doneDataListView(doneListServicesData, context):
-                  Center(child: Text("$pleazeWait"),),
+                  Center(child: Text(AppLocalizations.of(context).translate("pleazeWait"),)),
                 ),
 
 
