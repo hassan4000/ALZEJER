@@ -215,17 +215,17 @@
   "RecordPhysicalTransfers":"سجل التحويلات المادية",
   "ApplicationStats":"احصائيات التطبيق",
   "TotalServiceProviders":"مجموع مقدمي الخدمات",
-  "TheNumberOfInterpretersDreams":"عدد مفسرين الاحلام",
-  "TheNumberLegitimatePromotions":"عدد الرقاة الشرعيين",
-  "NumberOfFamilyCounselors":"عدد المستشارين الاسريين",
-  "NumberMedicalAdvisors":"عدد المستشارين الطبيين",
-  "NumberOfServicesUnderImplementation":"عدد الخدمات القيد التنفيذ",
-  "NumberServicesImplemented":"عدد الخدمات المنفذة",
-  "TheNumberOfMuftis":"عدد المفتين",
-  "TheNumberConnectedAudience":"عدد الجمهور المتصل",
-  "numberVisits":"عدد  الزيارات",
-  "EveryCustomer":"كل العملاء",
-  "AllUsers":"كل المستخدمين",
+  "TheNumberOfInterpretersDreams":"مفسرين الاحلام",
+  "TheNumberLegitimatePromotions":"الرقاة الشرعيين",
+  "NumberOfFamilyCounselors":"المستشارين الاسريين",
+  "NumberMedicalAdvisors":"المستشارين الطبيين",
+  "NumberOfServicesUnderImplementation":"الخدمات القيد التنفيذ",
+  "NumberServicesImplemented":"الخدمات المنفذة",
+  "TheNumberOfMuftis":"المفتين",
+  "TheNumberConnectedAudience":"الجمهور المتصل",
+  "numberVisits":"الزيارات",
+  "EveryCustomer":"العملاء",
+  "AllUsers":"المستخدمين",
   "ConfirmTheCode": "تأكيد الرمز",
   "reSendCode": "اعادة الارسال",
   "codeSendTime": "تم إرسال الرمز إلى البريد الإلكتروني وهو صالح لمدة ساعتين فقط",
@@ -271,7 +271,7 @@
   "supportApplicationHint": "نرجو دعم التطبيق بتقيمه ومشاركته للإستمرار بتوفير الخدمات مجانا",
   "daysText":"ايام",
   "monthsText":"اشهر",
-  "tellFriends": "اخبر اصدقائك"
+  "tellFriends": "كسب جمهور جديد"
 
 
 }

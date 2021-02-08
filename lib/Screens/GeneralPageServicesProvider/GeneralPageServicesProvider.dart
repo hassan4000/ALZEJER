@@ -7,6 +7,7 @@ import 'package:faserholmak/Helper/StyleForApp.dart';
 import 'package:faserholmak/Model/AllServicesModel/AllServicesData.dart';
 import 'package:faserholmak/Model/AllServicesModel/AllServicesModel.dart';
 import 'package:faserholmak/Model/CommentModel/CommentModel.dart';
+import 'package:faserholmak/Model/UserInfoModel/UserWork.dart';
 import 'package:faserholmak/Screens/ChatsForMofaser/ChatForMofaser.dart';
 import 'package:faserholmak/Screens/DetailsServiceYouWant/DetailsServiceYouWant.dart';
 import 'package:faserholmak/Screens/Drawer/MyDrawerServiceProviders.dart';
@@ -401,14 +402,35 @@ class _GeneralPageServicesProviderState extends State<GeneralPageServicesProvide
                                     child: SmallHomeCard(
                                       txt: AppLocalizations.of(context).translate("tellFriends"),
                                       press: () async {
-                                      await FlutterShare.share(
+
+                                        var hisWork="";
+                                        if(userInfo.userWorks!=null &&userInfo.userWorks.isNotEmpty){
+
+                                          for(var x in userInfo.userWorks){
+                                           hisWork+=emptyString(x.userWork.name);
+                                           hisWork+="-";
+                                          }
+                                        }
+
+                                        await FlutterShare.share(
+                                            title: AppLocalizations.of(context).translate("pleaseShareThisLink"),
+
+                                            text:
+                                            '  ${AppLocalizations.of(context).translate("serviceProvider")}: ${emptyString(userInfo.name)}\n ${AppLocalizations.of(context).translate("specalist")}: ${hisWork}\n${AppLocalizations.of(context).translate("shareHitn2")}0610',
+                                            linkUrl:
+                                            '${AppLocalizations.of(context).translate("linkApp")} \n ${googlePlayUrl}',
+                                            chooserTitle:
+                                            'share');
+
+
+                                     /* await FlutterShare.share(
                                     title:
                                     '${AppLocalizations.of(context).translate("pleaseShareThisLink")}',
                                     text:
                                     '${AppLocalizations.of(context).translate("shareHitn1")}\n 0610',
                                     linkUrl:
                                     '${AppLocalizations.of(context).translate("linkApp")} \n  ${googlePlayUrl}',
-                                    chooserTitle: 'Share');
+                                    chooserTitle: 'Share');*/
                                     },),
                                   ),
                                 ),

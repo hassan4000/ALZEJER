@@ -104,6 +104,12 @@ class _Dialog2GeneralPageState extends State<Dialog2GeneralPage> {
               child: Column(
                 children: <Widget>[
 
+
+                  /*المفذة
+عدد مقدمي الخدمات
+شيل العدد
+شيل العملاء
+                شيل كل*/
                   ApplicationInfoPage(hint:AppLocalizations.of(context).translate("TotalServiceProviders") ,text:emptyString(data.allServiceProviders.toString()) ),
                   ApplicationInfoPage(hint:AppLocalizations.of(context).translate("TheNumberOfInterpretersDreams") ,text:emptyString(data.allDreamUsers.toString()) ),
                   ApplicationInfoPage(hint:AppLocalizations.of(context).translate("TheNumberLegitimatePromotions") ,text:emptyString(data.allRouqiaUsers.toString()) ),

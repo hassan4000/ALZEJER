@@ -319,7 +319,9 @@ class _TabWithImageState extends State<TabWithImage> with TickerProviderStateMix
             else{  AllServicesData item=doneListServicesData[index];
 
             if(!widget.normalUser)
-            return CardDreams(desc: emptyString(item.description),likes: item.numberOfLikes,views: item.numberOfViews,
+            return CardDreams(
+              indexServices: true,
+              desc: emptyString(item.description),likes: item.numberOfLikes,views: item.numberOfViews,
               showExplanationText: showExplnationText(
                   explnation: item.explanation),
               explantaion:
