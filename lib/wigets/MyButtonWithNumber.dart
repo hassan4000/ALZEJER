@@ -21,7 +21,7 @@ class MyButtonWithNumber extends StatelessWidget {
   int doneServices;
 
 
-  MyButtonWithNumber({this.txt,
+    MyButtonWithNumber({this.txt,
     this.borderColor=kPrimaryColor,
     this.splashColor=Colors.grey,
     this.borderWidth=0.2,

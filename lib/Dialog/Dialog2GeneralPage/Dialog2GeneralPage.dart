@@ -4,8 +4,9 @@ import 'package:faserholmak/Helper/Content.dart';
 import 'package:faserholmak/Helper/StyleForApp.dart';
 import 'package:faserholmak/Model/ApplicationInfoModel/ApplicationInfoModel.dart';
 import 'package:faserholmak/constants.dart';
-import 'package:faserholmak/wigets/ApplicationInfoPage.dart';
+
 import 'package:faserholmak/wigets/PersonalProfileContent.dart';
+import 'package:faserholmak/wigets/list_title_dialog_info.dart';
 import 'package:flutter/material.dart';
 
 import '../../app_localizations.dart';
@@ -72,7 +73,7 @@ class _Dialog2GeneralPageState extends State<Dialog2GeneralPage> {
       ),
 
       content: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 10),
+        padding: EdgeInsets.symmetric(horizontal: 0),
         child: isLoading?Container(
         height: 120,
         width: width,
@@ -110,24 +111,24 @@ class _Dialog2GeneralPageState extends State<Dialog2GeneralPage> {
 شيل العدد
 شيل العملاء
                 شيل كل*/
-                  ApplicationInfoPage(hint:AppLocalizations.of(context).translate("TotalServiceProviders") ,text:emptyString(data.allServiceProviders.toString()) ),
-                  ApplicationInfoPage(hint:AppLocalizations.of(context).translate("TheNumberOfInterpretersDreams") ,text:emptyString(data.allDreamUsers.toString()) ),
-                  ApplicationInfoPage(hint:AppLocalizations.of(context).translate("TheNumberLegitimatePromotions") ,text:emptyString(data.allRouqiaUsers.toString()) ),
-                  ApplicationInfoPage(hint:AppLocalizations.of(context).translate("NumberOfFamilyCounselors"),text:emptyString(data.allIstasharaUsers.toString()) ),
-                  ApplicationInfoPage(hint:AppLocalizations.of(context).translate("NumberMedicalAdvisors"),text:emptyString(data.allMedicalUsers.toString()) ),
+                  ListTitleDialogInfo(number:AppLocalizations.of(context).translate("TotalServiceProviders") ,text:emptyString(data.allServiceProviders.toString()),image: "provider.png", ),
+                  ListTitleDialogInfo(number:AppLocalizations.of(context).translate("TheNumberOfInterpretersDreams") ,text:emptyString(data.allDreamUsers.toString()) ,image: "ahlam.png"),
+                  ListTitleDialogInfo(number:AppLocalizations.of(context).translate("TheNumberLegitimatePromotions") ,text:emptyString(data.allRouqiaUsers.toString()),image: "raki.png"),
+                  ListTitleDialogInfo(number:AppLocalizations.of(context).translate("NumberOfFamilyCounselors"),text:emptyString(data.allIstasharaUsers.toString()),image: "famely.png"),
+                  ListTitleDialogInfo(number:AppLocalizations.of(context).translate("NumberMedicalAdvisors"),text:emptyString(data.allMedicalUsers.toString()),image: "doctor.png"),
 
 
 
-                  ApplicationInfoPage(hint:AppLocalizations.of(context).translate("NumberOfServicesUnderImplementation"),text:emptyString(data.allActiveServices.toString()) ),
-                  ApplicationInfoPage(hint:AppLocalizations.of(context).translate("NumberServicesImplemented"),text:emptyString(data.allDoneServices.toString()) ),
-                  ApplicationInfoPage(hint:AppLocalizations.of(context).translate("TheNumberOfMuftis"),text:emptyString(data.allIftaaUsers.toString()) ),
+                  ListTitleDialogInfo(number:AppLocalizations.of(context).translate("NumberOfServicesUnderImplementation"),text:emptyString(data.allActiveServices.toString()),image: "waiting.png"),
+                  ListTitleDialogInfo(number:AppLocalizations.of(context).translate("NumberServicesImplemented"),text:emptyString(data.allDoneServices.toString()),image: "checklist.png"),
+                  ListTitleDialogInfo(number:AppLocalizations.of(context).translate("TheNumberOfMuftis"),text:emptyString(data.allIftaaUsers.toString()),image: "mofte.png"),
 
 
 
-                  ApplicationInfoPage(hint:AppLocalizations.of(context).translate("TheNumberConnectedAudience") ,text:emptyString(data.allActiveClients.toString()) ),
-                  ApplicationInfoPage(hint:AppLocalizations.of(context).translate("numberVisits") ,text:emptyString(data.allActiveClientsInThePastThreeDays.toString()) ),
-                  ApplicationInfoPage(hint:AppLocalizations.of(context).translate("EveryCustomer"),text:emptyString(data.allClients.toString()) ),
-                  ApplicationInfoPage(hint:AppLocalizations.of(context).translate("AllUsers"),text:emptyString(data.allUsers.toString()) ),
+                  ListTitleDialogInfo(number:AppLocalizations.of(context).translate("TheNumberConnectedAudience") ,text:emptyString(data.allActiveClients.toString()),image: "wireless_symbol.png"),
+                  ListTitleDialogInfo(number:AppLocalizations.of(context).translate("numberVisits") ,text:emptyString(data.allActiveClientsInThePastThreeDays.toString()),image: "visitors.png"),
+                 // ListTitleDialogInfo(number:AppLocalizations.of(context).translate("EveryCustomer"),text:emptyString(data.allClients.toString()),image: "alzeker_logo.png"),
+                  ListTitleDialogInfo(number:AppLocalizations.of(context).translate("AllUsers"),text:emptyString(data.allUsers.toString()),image: "crm.png"),
 
 
                 ],
