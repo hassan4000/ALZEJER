@@ -7,7 +7,7 @@
   "youDonotHaveEnoughtPoint":"Sorry, you don't have enough balance",
   "pointDesc":"Share the application and earn points through which you can upgrade your services",
   "pointPrice":"Every 10 Points Equals 1$",
-  "addExplanation":"Response added to the service",
+  "addExplanation":"Click here to answer the question",
   "add":"Add",
   "editTxt":"Edit",
   "logoText":"Welcome to Ahel AlZeker app",
@@ -165,7 +165,7 @@
   "serviceRequest":"Request a service",
   "myServices":"My Services",
   "completedServices":"completed services",
-  "publicServices":"Public Services",
+  "publicServices":"Gain new audiences",
   "balanceTxt":"Balance",
   "balanceRecord":"Record of payments",
   "chatProviders":"Chat Service Provider",
@@ -213,13 +213,13 @@
   "theAvailableBalance":"the available balance",
   "TransferredBalance":"Transferred balance",
   "RecordPhysicalTransfers":"Record of physical transfers",
-  "ApplicationStats":"Application stats",
+  "ApplicationStats":"Program achievements",
   "TotalServiceProviders":"Total service providers",
   "TheNumberOfInterpretersDreams":"The number of interpreters of dreams",
   "TheNumberLegitimatePromotions":"The number of legitimate promotions",
   "NumberOfFamilyCounselors":"Number of family counselors",
   "NumberMedicalAdvisors":"Number of medical advisors",
-  "NumberOfServicesUnderImplementation":"Number of services under implementation",
+  "NumberOfServicesUnderImplementation":"The audience is waiting",
   "NumberServicesImplemented":"Number of services implemented",
   "TheNumberOfMuftis":"The number of muftis",
   "TheNumberConnectedAudience":"The number of the connected audience",
@@ -271,7 +271,7 @@
   "supportApplicationHint": "Please support the application with its evaluation and participation to continue providing services for free",
   "daysText":"days",
   "monthsText":"months",
-  "tellFriends": "Gain new audiences"
+  "tellFriends": "Invite your friends"
 
 
 

@@ -111,7 +111,11 @@ class _Dialog2GeneralPageState extends State<Dialog2GeneralPage> {
 شيل العدد
 شيل العملاء
                 شيل كل*/
+                  ListTitleDialogInfo(number:AppLocalizations.of(context).translate("NumberServicesImplemented"),text:emptyString(data.allDoneServices.toString()),image: "checklist.png"),
                   ListTitleDialogInfo(number:AppLocalizations.of(context).translate("TotalServiceProviders") ,text:emptyString(data.allServiceProviders.toString()),image: "provider.png", ),
+                  ListTitleDialogInfo(number:AppLocalizations.of(context).translate("AllUsers"),text:emptyString(data.allUsers.toString()),image: "crm.png"),
+                  ListTitleDialogInfo(number:AppLocalizations.of(context).translate("numberVisits") ,text:emptyString(data.allActiveClientsInThePastThreeDays.toString()),image: "visitors.png"),
+                  ListTitleDialogInfo(number:AppLocalizations.of(context).translate("TheNumberConnectedAudience") ,text:emptyString(data.allActiveClients.toString()),image: "wireless_symbol.png"),
                   ListTitleDialogInfo(number:AppLocalizations.of(context).translate("TheNumberOfInterpretersDreams") ,text:emptyString(data.allDreamUsers.toString()) ,image: "ahlam.png"),
                   ListTitleDialogInfo(number:AppLocalizations.of(context).translate("TheNumberLegitimatePromotions") ,text:emptyString(data.allRouqiaUsers.toString()),image: "raki.png"),
                   ListTitleDialogInfo(number:AppLocalizations.of(context).translate("NumberOfFamilyCounselors"),text:emptyString(data.allIstasharaUsers.toString()),image: "famely.png"),
@@ -120,15 +124,15 @@ class _Dialog2GeneralPageState extends State<Dialog2GeneralPage> {
 
 
                   ListTitleDialogInfo(number:AppLocalizations.of(context).translate("NumberOfServicesUnderImplementation"),text:emptyString(data.allActiveServices.toString()),image: "waiting.png"),
-                  ListTitleDialogInfo(number:AppLocalizations.of(context).translate("NumberServicesImplemented"),text:emptyString(data.allDoneServices.toString()),image: "checklist.png"),
+
                   ListTitleDialogInfo(number:AppLocalizations.of(context).translate("TheNumberOfMuftis"),text:emptyString(data.allIftaaUsers.toString()),image: "mofte.png"),
 
 
 
-                  ListTitleDialogInfo(number:AppLocalizations.of(context).translate("TheNumberConnectedAudience") ,text:emptyString(data.allActiveClients.toString()),image: "wireless_symbol.png"),
-                  ListTitleDialogInfo(number:AppLocalizations.of(context).translate("numberVisits") ,text:emptyString(data.allActiveClientsInThePastThreeDays.toString()),image: "visitors.png"),
+
+
                  // ListTitleDialogInfo(number:AppLocalizations.of(context).translate("EveryCustomer"),text:emptyString(data.allClients.toString()),image: "alzeker_logo.png"),
-                  ListTitleDialogInfo(number:AppLocalizations.of(context).translate("AllUsers"),text:emptyString(data.allUsers.toString()),image: "crm.png"),
+
 
 
                 ],

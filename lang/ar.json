@@ -7,7 +7,7 @@
   "youDonotHaveEnoughtPoint":"عذرا انت لاتملك رصيد كافي ",
   "pointDesc":"شارك التطبيق واكسب نقاط تستطيع من خلالها ترقية خدماتك",
   "pointPrice":"كل 10 نقاط تساوي 1$",
-  "addExplanation":"اضاف الرد على الخدمة",
+  "addExplanation":"اضغط هنا للجواب على السؤال",
   "add":"اضف ",
   "editTxt":"تعديل ",
   "logoText":"فَاسْأَلُوا أَهْلَ الذِّكْرِ إِن كُنتُمْ لَا تَعْلَمُونََ ",
@@ -165,7 +165,7 @@
   "serviceRequest":"طلب خدمة",
   "myServices":"خدماتي",
   "completedServices":"الخدمات المنجزة",
-  "publicServices":"الخدمات العامة",
+  "publicServices":"كسب جمهور جديد",
   "balanceTxt":"الرصيد",
   "balanceRecord":"سجل المدفوعات",
   "chatProviders":"دردشة مقدم الخدمة",
@@ -213,13 +213,13 @@
   "theAvailableBalance":"الرصيد المتاح",
   "TransferredBalance":"الرصيد المحول",
   "RecordPhysicalTransfers":"سجل التحويلات المادية",
-  "ApplicationStats":"احصائيات التطبيق",
+  "ApplicationStats":"انجازات البرنامج",
   "TotalServiceProviders":"مقدمي الخدمات",
   "TheNumberOfInterpretersDreams":"مفسرين الاحلام",
   "TheNumberLegitimatePromotions":"الرقاة الشرعيين",
   "NumberOfFamilyCounselors":"المستشارين الاسريين",
   "NumberMedicalAdvisors":"المستشارين الطبيين",
-  "NumberOfServicesUnderImplementation":"الخدمات القيد التنفيذ",
+  "NumberOfServicesUnderImplementation":"الجمهور قيد الانتظار",
   "NumberServicesImplemented":"الخدمات المنفذة",
   "TheNumberOfMuftis":"المفتين",
   "TheNumberConnectedAudience":"الجمهور المتصل",
@@ -271,7 +271,7 @@
   "supportApplicationHint": "نرجو دعم التطبيق بتقيمه ومشاركته للإستمرار بتوفير الخدمات مجانا",
   "daysText":"ايام",
   "monthsText":"اشهر",
-  "tellFriends": "كسب جمهور جديد"
+  "tellFriends": "دعوة اصدقائك"
 
 
 }
