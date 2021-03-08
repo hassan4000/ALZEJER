@@ -32,8 +32,8 @@ class _ServiceProvidersState extends State<ServiceProviders> {
   List<UserInfoModel> listUser;
   var controllerScroll = ScrollController();
   int skipNumber=0;
-  int topNumber=10;
-  int allCount=10;
+  int topNumber=30;
+  int allCount=30;
   bool isLoadingMore=false;
 
 
@@ -171,10 +171,10 @@ class _ServiceProvidersState extends State<ServiceProviders> {
 
           if (listSize < allCount && !isLoading&&!isLoadingMore) {
             skipNumber = listSize;
-            if ((allCount - listSize) < 10)
+            if ((allCount - listSize) < 30)
               topNumber = (allCount - listSize);
             else
-              topNumber = 10;
+              topNumber = 30;
             setMore(true);
             await getAllData(skip: skipNumber, top: topNumber, loadMore: true);
             setMore(false); // loadMoreReceiver();

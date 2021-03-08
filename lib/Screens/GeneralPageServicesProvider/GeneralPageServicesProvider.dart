@@ -383,7 +383,7 @@ class _GeneralPageServicesProviderState extends State<GeneralPageServicesProvide
 
                             Row(
                               children: [
-                                GestureDetector(
+                                /*GestureDetector(
                                   onTap: (){
 
 
@@ -393,6 +393,14 @@ class _GeneralPageServicesProviderState extends State<GeneralPageServicesProvide
                                     padding: const EdgeInsets.all(8.0),
                                     child: Icon(Icons.assessment,color: kPrimaryColor,size: 30,)
                                     ,
+                                  ),
+                                ),*/
+                                Flexible(
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                                    child: SmallHomeCard(txt: AppLocalizations.of(context).translate("ApplicationStats"),press: (){
+                                      openDialog2GeneralPage(context);
+                                    },),
                                   ),
                                 ),
 

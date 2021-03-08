@@ -60,7 +60,7 @@ class _AllPaymentMethodPageState extends State<AllPaymentMethodPage> {
 
     MFSDK.executePayment(
         context,
-        request,
+        mfExecutePaymentRequest,
         MFAPILanguage.AR,
             (String invoiceId, MFResult<MFPaymentStatusResponse> result)  async {
           if (result.isSuccess())

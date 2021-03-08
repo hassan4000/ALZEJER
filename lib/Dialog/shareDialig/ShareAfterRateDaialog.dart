@@ -107,6 +107,12 @@ class _ShareAfterDialogState extends State<ShareAfterDialog> {
                     SizedBox(
                       height: 8,
                     ),
+
+
+                    Padding(
+                      padding: EdgeInsets.all(8),
+                      child: Text(AppLocalizations.of(context).translate("rateUsOnStore"),style: getTextSyle(16, Colors.blue),),
+                    ),
                     Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,

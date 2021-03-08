@@ -94,7 +94,7 @@
   "interpreter":"interpreter",
   "users":"users",
   "comments":"comments",
-  "sendComments":"Add a comment",
+  "sendComments":"Add a question",
   "editText":"Edit service text",
   "deleteServiceText":"delete service",
   "deleteText":"delete",
@@ -271,8 +271,8 @@
   "supportApplicationHint": "Please support the application with its evaluation and participation to continue providing services for free",
   "daysText":"days",
   "monthsText":"months",
-  "tellFriends": "Invite your friends"
-
+  "tellFriends": "Invite your friends",
+  "rateUsOnStore": "Rate us on the store to improve our services"
 
 
 }

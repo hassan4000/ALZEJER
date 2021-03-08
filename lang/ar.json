@@ -94,7 +94,7 @@
   "interpreter":"المفسر",
   "users":"المستخدمون",
   "comments":"التعليقات",
-  "sendComments":"اضف تعليقاً",
+  "sendComments":"اضف سؤال",
   "editText":"تعديل نص الخدمة",
   "deleteServiceText":" حذف الخدمة",
   "deleteText":" حذف ",
@@ -169,7 +169,7 @@
   "balanceTxt":"الرصيد",
   "balanceRecord":"سجل المدفوعات",
   "chatProviders":"دردشة مقدم الخدمة",
-  "servicesInProgress":"الخدمات قيد التنفيذ",
+  "servicesInProgress":"جمهوري الخاص",
   "serviceProviders":"مقدمو الخدمة",
   "serviceProvider":"مقدم الخدمة",
   "audienceChat":"دردشة الجمهور",
@@ -213,7 +213,7 @@
   "theAvailableBalance":"الرصيد المتاح",
   "TransferredBalance":"الرصيد المحول",
   "RecordPhysicalTransfers":"سجل التحويلات المادية",
-  "ApplicationStats":"انجازات البرنامج",
+  "ApplicationStats":"انجازات التطبيق",
   "TotalServiceProviders":"مقدمي الخدمات",
   "TheNumberOfInterpretersDreams":"مفسرين الاحلام",
   "TheNumberLegitimatePromotions":"الرقاة الشرعيين",
@@ -271,7 +271,8 @@
   "supportApplicationHint": "نرجو دعم التطبيق بتقيمه ومشاركته للإستمرار بتوفير الخدمات مجانا",
   "daysText":"ايام",
   "monthsText":"اشهر",
-  "tellFriends": "دعوة اصدقائك"
+  "tellFriends": "دعوة اصدقائك",
+  "rateUsOnStore": "قيمنا على المتجر من اجل تحسين خدماتنا"
 
 
 }
